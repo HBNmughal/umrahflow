@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Add New Voucher" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Add New Voucher" %} - {% trans "B2B without Contract" %} </h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+      </aside>
+      {% include "error.html" %}
+        <div class="card">
+          
+        </div>
+
+        <div class="card card-outline card-info">
+
+                      <!-- /.card-header -->
+                      
+                      <div class="card-body">
+                        <form class"form-group" method="post">
+                          {% csrf_token %}
+                        {{form}}
+                        <div class="card-footer">
+                          <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                        </div>
+                        </form>
+
+                        </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+        
+      </section>
+      <!-- /.content -->  
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+
+

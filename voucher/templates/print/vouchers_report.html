@@ -1,0 +1,118 @@
+
+{% extends 'print_document_header.html' %}
+{% load static %}
+{% load my_filter %}
+{% load i18n %}
+{% block page_content %}
+
+<style type="text/css">
+    @font-face {
+        font-family: ArialUnicode;
+        src: url("static/Arial Unicode.ttf")
+    }
+    <!-- other stuff here -->
+    body {
+        margin: 0;
+        font-family: "ArialUnicode", sans-serif;
+    }
+    
+    <!-- more css here -->
+</style>
+
+
+
+
+        <h4>{% trans "Vouchers Report" %}</h4>
+        
+        <table class="table table-bordered table-sm" >
+            <tr>
+                <h6>{% trans "Vouchers Report" %} </h6>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "From Date" %} </th>
+                <td style="">{% if request.GET.date_min %}{{request.GET.date_min}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+                <th style="" class="align-middle" >{% trans "To Date" %}</th>
+                <td style="text-align: center;"> {% if request.GET.date_max %}{{request.GET.date_max}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Agent" %}</th>
+                <td style="text-align: center;" colspan="3">{{current_agent}}</td>
+            </tr>
+            <tr >
+            </tr>
+        </table>
+        <table class="table table-sm table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">{% trans "Voucher no" %}</th>
+                <th scope="col">{% trans "Group no" %}</th>
+
+                <th scope="col">{% trans "Date" %}</th>
+                <th scope="col">{% trans "Agent" %}</th>
+                <th scope="col">{% trans "PAX" %}</th>
+                <th scope="col">{% trans "Price" %}</th>
+                <th scope="col">{% trans "Total" %}</th>
+
+               
+
+              </tr>
+            </thead>
+            <tbody>
+                {% for voucher in vouchers %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{voucher.voucher_no}}</td>
+                <td>{{voucher.group_no}}</td>
+                <td>{{voucher.date|date:'d/m/Y'}}</td>
+                <td>{{voucher.agent}}</td>
+                <td>{{voucher.pax}}</td>
+                <td>{{voucher.sale_price}}</td>
+                <td>{{voucher.voucher_total.sale_price|replace_commas}}</td>
+
+                
+              
+
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>  
+        <table class="table table-bordered table-sm" >
+            <tr>
+                <h6>{% trans "Report Summary" %} {% if detailed == True %}{% trans "Detailed" %}{% endif %}</h6>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "From Date" %} </th>
+                <td style="">{% if request.GET.date_min %}{{request.GET.date_min}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+                <th style="" class="align-middle" >{% trans "To Date" %}</th>
+                <td style="text-align: center;"> {% if request.GET.date_max %}{{request.GET.date_max}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Agent" %}</th>
+                <td style="text-align: center;" colspan="3">{{current_agent}}</td>
+            </tr>
+        <tr>
+                <th style="" class="align-middle" >{% trans "Total PAX" %}</th>
+                <th style="text-align: center;" colspan="3">{{total.pax}}</th>
+            </tr><tr>
+                <th style="" class="align-middle" >{% trans "Total Cost Price" %}</th>
+                <th style="text-align: center;" colspan="3">{{total.cost|replace_commas}}</th>
+            </tr>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Total Sale Price" %}</th>
+                <th style="text-align: center;" colspan="3">{{total_sales|replace_commas}}</th>
+            </tr>
+            
+
+            
+            
+           
+          
+        </table>
+          
+
+
+       
+{% endblock page_content %}

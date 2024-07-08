@@ -1,0 +1,62 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% block wrapper %}
+<div class="card card-default">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Current Visa Price" %} - {% trans "Agent" %}: {{agent}}</h4>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+    <form class"form-group" method="post">
+        {% csrf_token %}
+        {{form}}
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+          </div>
+    </form>
+      </div>
+    <h5>{% trans "Change History" %}</h5>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">{% trans "From"  %} {% trans "Date" %}</th>
+            <th scope="col">{% trans "Visa Price" %}</th>
+            <th scope="col">{% trans "Visa Including Transport Price" %}</th>
+
+            <th scope="col">{% trans "Changed By" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for h in history %}
+          <tr>
+            <td>{{h.date}}</td>
+            <td>{{h.visa_price}}
+              
+
+            {% if h.id == current_price_id %}
+                ({% trans "Current" %})
+            {% endif %}
+            </td>
+            <td>{{h.visa_included_transport_price}}
+              
+
+              {% if h.id == current_price_id %}
+                  ({% trans "Current" %})
+              {% endif %}
+              </td>
+            <td>{{h.changed_by.employee.name}}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      
+    </div>
+
+{% endblock %}

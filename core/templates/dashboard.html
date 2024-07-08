@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Dashboard" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Dashboard" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0 text-success">{{request.user.employee.company.report.total_pilgrims.pax__sum}} </span>
+                    <p class="small text-muted mb-0">{% trans "Total Pilgrims" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-user text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0  text-success">{{request.user.employee.company.report.total_groups}} </span>
+                    <p class="small text-muted mb-0">{% trans "Total Groups" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0 text-success">{{request.user.employee.company.report.total_agents}} </span>
+                    <p class="small text-muted mb-0">{% trans "Total Agents" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-briefcase text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+{% endblock %}

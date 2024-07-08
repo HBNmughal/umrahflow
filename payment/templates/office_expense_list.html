@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Office Expenses" %} {% endblock %}
+{% block content %}
+{% load my_filter %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Office Expenses" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        {% comment %} <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div {% if agent.account_balance <= 0.00 %}class="small-box bg-danger"{% else %}class="small-box bg-success"{% endif %} >
+              <div class="inner">
+                
+                <p>{% trans "Expenses this Month" %}</p>
+                <h3 dir="ltr">{{agent.account_balance|replace_commas}}</h3>
+                <h6>{{company}}</h6>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-cash"></i>
+              </div>
+              <a href="#" class="small-box-footer">{{agent.get_agent_type_display}}<i class=""></i></a>
+            </div>
+            
+          </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                
+                <p>{% trans "Expenses this Season" %}</p>
+                <h3 dir="ltr">{{agent.total_expe|replace_commas}}</h3>
+                <h6>{{agent}}</h6>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-cash"></i>
+              </div>
+              <a href="#" class="small-box-footer">{{agent.get_agent_type_display}}<i class=""></i></a>
+            </div>
+            
+          </div>
+          
+        </div> {% endcomment %}
+        <!-- /.row -->
+        <div class="card card-success card-outline">
+          <div class="card-body">
+
+            <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'office_expense_form'  %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Add New" %} 
+            </button>
+  
+
+
+        
+  
+   
+
+              <div class="tab-pane fade show active" id="custom-content-below-main" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead>
+                  <tr>
+                    <th>{% trans "Transaction No." %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Amount" %}</th>
+                    <th>{% trans "Reason" %}</th>
+                    <th>{% trans "Bill No" %}</th>
+
+                    <th>{% trans "Paid to" %}</th>
+                    <th>{% trans "Accountant" %}</th>
+                    <th>{% trans "Action" %}</th>
+
+                    
+    
+    
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for t in expenses %}
+                    <tr>
+                      <td>OE-{{t.id}}</td>
+                      <td>{{t.date|date:"d/m/Y"}}</td>
+                      <td>{{t.amount|replace_commas}}</td>
+                    <td>{{t.reason}}</td>
+                    <td>{{t.bill_no}}</td>
+                    <td> {% trans t.paid_to %}</td>
+                    <td> {% trans t.accountant %}</td>
+
+                    <td> 
+                      
+                      <a href="{% url 'print_withdrawl_voucher_office' t.id %}" target="_blank" class="btn btn-warning"><i class="fe fe-printer fe-16"></i></a>
+                      <a href="" target="_blank" class="btn btn-danger"><i class="fe fe-trash-2 fe-16"></i></a>
+
+                      
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+

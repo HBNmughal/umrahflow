@@ -1,0 +1,133 @@
+                  {% load i18n %}
+                  <div class="table-responsive" id="search-results">
+                    <table id="dataTable" class="table table-bordered table-striped table-sm table-hover">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>#</th>
+                          <th>{% trans "Voucher " %}</th>
+                          <th>{% trans "Agent Reference No" %}</th>
+                          <th>{% trans "BRN" %}</th>
+                          <th>{% trans "Agent" %}</th>
+                          <th>{% trans "Country" %}</th>
+                          <th>{% trans "PAX" %}</th>
+                          <th>{% trans "Group no" %}</th>
+                          {% comment %} <th>{% trans "Status" %}</th> {% endcomment %}
+                          <th>{% trans "Transport Company" %}</th>
+                          <th>{% trans "Type" %}</th>
+                          <th>{% trans "Status" %}</th>
+                          <th>{% trans "Starting Date" %}</th>
+                          <th>{% trans "Total Movements" %}</th>
+                          <th>{% trans "Completed" %}</th>
+                          <th>{% trans "Action" %}</th>
+                        </tr>
+                      </thead>
+                      <tbody >
+
+                    {% for v in arrival_vouchers %}
+                    <tr>
+                      <td>{{ forloop.counter0|add:arrival_vouchers.start_index }}</td>
+                      <td>UP-{{v.id}}</td>
+                      <td>{% if v.agent_referance_no %}{{v.agent_referance_no}}{% endif %}</td>
+
+                      
+                      <td>{% if v.transport_brn %}{{v.transport_brn}}{% endif %}</td>
+                      <td>{{v.agent}}</td>
+                      <td>{{v.country}}</td>
+                      <td>{{v.pax}}</td>
+                      <td>{{v.group_no}}</td>
+                      <td>{% if v.transport_company %}{{v.transport_company}}{% endif %}</td>
+                      
+                      
+                      <td>
+                        {% if v.transport_type %}
+                        {{v.transport_type}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+                        {{v.get_status_display}}                     
+                      </td>
+                      <td>
+                        {% if v.starting_date %}
+                        {{v.starting_date|date:"d/m/Y"}}
+                        {% endif %}
+                      </td>
+                      
+                      
+
+                      <td>{{v.total_movement}}</td>
+                      <td>{{v.total_movements_completed}}</td>
+                      <td>
+                        <a href='{% url 'arrival_voucher' v.id %}'  class="btn btn-sm"><i class="fe fe-edit fe-16"></i></a>
+                        <a href="javascript:;" onclick="popupCenter({url: '{% url 'arrival_voucher_print' v.id %}', title: 'xtf', w: 900, h: 900});"  class="btn btn-sm"><i class="fe fe-printer fe-16"></i></a>
+
+                      </td>
+
+ 
+
+
+                    </tr>
+                    {% endfor %}
+                  </tbody>    
+                </table>
+                <div class="card-footer clearfix">
+                {% if arrival_vouchers.has_other_pages %}
+                
+                  <ul class="pagination pagination-sm m-0 float-right">
+                  {% if arrival_vouchers.has_previous %}
+                  <li class="page-item"><a class="page-link" hx-get="{% url 'search_view' %}?status={% if request.GET.status %}{{request.GET.status}}{% endif %}&page={{ arrival_vouchers.previous_page_number }}&q={{ request.GET.q }}"
+                    hx-trigger="click"
+                    hx-target="#search-results" 
+                    hx-swap="outerHTML" >«</a></li>
+                  {% else %}
+                  <li class="page-item disabled"><a class="page-link">«</a></li>
+                  {% endif %}
+                  {% for i in arrival_vouchers.paginator.page_range %}
+                  {% if arrival_vouchers.number == i %}
+                  <li class="page-item active"><a class="page-link">{{ i }} <span class="sr-only">(current)</span></a></li>
+                  {% else %}
+                  <li class="page-item"><a class="page-link" hx-get="{% url 'search_view' %}?status={% if request.GET.status %}{{request.GET.status}}{% endif %}&page={{ i }}&q={{ request.GET.q }}"
+                    hx-trigger="click"
+                    hx-target="#search-results" 
+                    hx-swap="outerHTML">{{ i }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                  {% if arrival_vouchers.has_next %}
+                  <li class="page-item"><a class="page-link" hx-get="{% url 'search_view' %}?status={% if request.GET.status %}{{request.GET.status}}{% endif %}&page={{ arrival_vouchers.next_page_number }}&q={{ request.GET.q }}"
+                    hx-trigger="click"
+                    hx-target="#search-results" 
+                    hx-swap="outerHTML">»</a></li>
+                  {% else %}
+                  <li class="page-item disabled"><a class="page-link">»</a></li>
+                  {% endif %}
+                  </ul>
+                {% endif %}
+              </div>
+
+
+
+                {% if users.has_other_pages %}
+                  <ul class="pagination">
+                    {% if users.has_previous %}
+                      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in users.paginator.page_range %}
+                      {% if users.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% if users.has_next %}
+                      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                  </ul>
+                {% endif %}
+                 
+
+              
+              
+              </div>

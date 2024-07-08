@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Agents List" %} {% endblock %}
+{% block content %}
+{% load my_filter %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Treasury" %} </h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div {% if agent.account_balance <= 0.00 %}class="small-box bg-danger"{% else %}class="small-box bg-success"{% endif %} >
+              <div class="inner">
+                
+                <p>{% trans "Balance" %}</p>
+                <h3 dir="ltr">{{company.treasury_balance|replace_commas}}</h3>
+                <h6>{{agent}}</h6>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-vault"></i>
+              </div>
+              
+            </div>
+            
+          </div>
+          
+          
+        </div>
+        <!-- /.row -->
+            <div class="card card-success card-outline">
+            <div class="card-body">
+
+                <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'treasury_collect_payment' %}', title: 'xtf', w: 900, h: 900});">
+                {% trans "Collect Payment" %} 
+                </button>
+                <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#report_modal" >
+                  {% trans "Treasury Transactions Report" %} 
+                </button>
+                {% comment %} <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="popupCenter({url: '{% url 'withdraw_payment' 1 1 %}', title: 'xtf', w: 900, h: 900});">
+                {% trans "Withdraw Amount" %} 
+                </button> {% endcomment %}
+    
+            </div>
+            </div> 
+
+        
+  
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="card"><ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="custom-content-below-main-tab" data-toggle="pill" href="#custom-content-below-main" role="tab" aria-controls="custom-content-below-home" aria-selected="true">{% trans "Main Transactions" %}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-content-below-salaries-tab" data-toggle="pill" href="#custom-content-below-salaries" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">{% trans "Salaries" %}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-content-below-office_expense-tab" data-toggle="pill" href="#custom-content-below-office_expense" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">{% trans "Office Expenses" %}</a>
+              </li>
+              
+              
+            </ul>
+            <div class="tab-content" id="custom-content-below-tabContent">
+              <div class="tab-pane fade show active" id="custom-content-below-main" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                    <thead>
+                  <tr>
+                    <th>{% trans "Transaction No." %}</th>
+                    <th>{% trans "Date" %} - {% trans "Time" %}</th>
+                    <th>{% trans "Amount" %}</th>
+                    <th>{% trans "Reason" %}</th>
+                    <th>{% trans "Paid By" %}</th>
+                    <th>{% trans "Performed By" %}</th>
+    
+    
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for t in general_transactions %}
+                    <tr>
+                      <td>{{t.id}}</td>
+                      <td>{{t.date|date:"d/m/Y"}} - {{t.time|date:"H:i:s"}}</td>
+                      {% if t.transaction_type == "c" %}
+                      <td style="color: green;">+ {{t.amount}}</td>
+                      {% elif t.transaction_type == "d" %}
+                      <td style="color: red;">- {{t.amount}}</td>
+                      {% endif %}
+                    <td> {{t.reason}} </td>
+                    <td>{{t.performed_by}}</td>
+                    <td> {% trans t.received_by %}</td>
+                   
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="custom-content-below-office_expense" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+                    <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                        <thead>
+                    <tr>
+                      <th>{% trans "Transaction No." %}</th>
+                      <th>{% trans "Date" %} - {% trans "Time" %}</th>
+                      <th>{% trans "Amount" %}</th>
+                      <th>{% trans "Reason" %}</th>
+                      <th>{% trans "Paid By" %}</th>
+                      <th>{% trans "Performed By" %}</th>
+      
+      
+                    </tr>
+                    </thead>
+                    
+                      <tbody>
+                        {% for t in office_expenses %}
+                        <tr>
+                          <td>{{t.transaction.id}}</td>
+                          <td>{{t.date|date:"d/m/Y"}} - {{t.transaction.time|date:"H:i:s"}}</td>
+                          {% if t.transaction.transaction_type == "d" %}
+                          <td style="color: red;">- {{t.amount}}</td>
+                          {% elif t.transaction.transaction_type == "c" %}
+                          <td style="color: green;">+ {{t.amount}}</td>
+                          {% endif %}
+                        <td>{{t.reason}}</td>
+                        <td>{{t.get_payment_by_display}}</td>
+                        <td> {% trans t.transaction.performed_by %}</td>
+                        <td> 
+                          
+                          {% comment %} <a href="{% url 'print_receipt_voucher' "sub_agent" agent.id t.id %}" target="_blank" class="btn btn-warning"><i class="fe fe-printer fe-16"></i></a> {% endcomment %}
+                          
+                        </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="custom-content-below-salaries" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+                    <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                        <thead>
+                          <tr>
+                            <th>{% trans "Transaction No." %}</th>
+                            <th>{% trans "Date" %} - {% trans "Time" %}</th>
+                            <th>{% trans "Amount" %}</th>
+                            <th>{% trans "Reason" %}</th>
+                            <th>{% trans "Paid By" %}</th>
+                            <th>{% trans "Accountant" %}</th>
+            
+            
+                          </tr>
+                          </thead>
+                          
+                            <tbody>
+                              {% for t in salary_transactions %}
+                              <tr>
+                                <td>{{t.id}}</td>
+                                <td>{{t.date|date:"d/m/Y"}} - {{t.time|date:"H:i:s"}}</td>
+                                <td style="color: red;">- {{t.amount}}</td>
+                              <td>{{t.reason}}</td>
+                              <td>{{t.get_payment_by_display}}</td>
+                              <td> {% trans t.performed_by %}</td>
+                              <td> 
+                                
+                                {% comment %} <a href="{% url 'print_receipt_voucher' "sub_agent" agent.id t.id %}" target="_blank" class="btn btn-warning"><i class="fe fe-printer fe-16"></i></a> {% endcomment %}
+                                
+                              </td>
+                              </tr>
+                              {% endfor %}
+                              </tbody>
+                        </table>
+                      </div>
+                
+              
+                
+            
+
+          </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+ <!-- Modal -->
+ <div class="modal fade" id="report_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Treasury Transactions Report" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action='{% url 'treasury_report' %}'>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+

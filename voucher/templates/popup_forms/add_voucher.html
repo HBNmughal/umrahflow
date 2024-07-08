@@ -1,0 +1,292 @@
+{% extends 'core.html' %}  
+{% load static %}
+{% load i18n %} 
+{% load my_filter %}
+{% block wrapper %}
+{% block title %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<style>
+.disable{
+  pointer-events:none;
+  background:grey;
+  }
+</style>
+
+<script language="javascript">
+  function findTotal(calculate_sale_price = true){
+    var pax = document.getElementById('pax').value 
+    var init_ground_services_price = {{initial_prices.ground_services_price|replace_commas}}
+    var init_processing_fees = {{initial_prices.processing_fees|replace_commas}}
+    var init_insurance_price = {{initial_prices.insurance_price|replace_commas}}
+    var init_visa_fees = {{initial_prices.visa_fees|replace_commas}}
+    var makkah_brn_price = Number(document.getElementById('makkah_brn_price').value)
+    var medina_brn_price = Number(document.getElementById('medina_brn_price').value)
+    var transport_brn_price = Number(document.getElementById('transport_brn_price').value)
+    var agent_return = Number(document.getElementById('agent_return').value)
+    var sale_price = Number(document.getElementById('sale_price').value)
+
+
+
+    var additional_services_price = Number(document.getElementById('additional_services_price').value)
+    document.getElementById('ground_services_price').value = (pax * init_ground_services_price).toFixed(2);
+    document.getElementById('processing_fees').value = (pax * init_processing_fees).toFixed(2);
+    document.getElementById('insurance_price').value = (pax * init_insurance_price).toFixed(2);
+    document.getElementById('visa_fees').value = (pax * init_visa_fees).toFixed(2);
+      
+    var total = (
+      (pax * init_ground_services_price) +
+      (pax * init_processing_fees)+
+      (pax * init_insurance_price) +
+      (pax * init_visa_fees) + makkah_brn_price + transport_brn_price + medina_brn_price + additional_services_price
+    ).toFixed(2)
+    
+    document.getElementById("total").innerHTML = total;
+    document.getElementById("_ground_services_price").value = (pax * init_ground_services_price).toFixed(2);
+    document.getElementById("_visa_fees").value = (pax * init_visa_fees).toFixed(2);;
+    document.getElementById("_insurance_price").value = (pax * init_insurance_price).toFixed(2);;
+    document.getElementById("_processing_fees").value = (pax * init_processing_fees).toFixed(2);;
+    document.getElementById('amount').value = total;
+    
+
+}
+window.addEventListener("load", (event) => {
+  findTotal(calculate_sale_price = false);
+});
+</script>
+<script>
+  $(document).ready(function(){
+      $('#agentSelect').change(function(){
+          var selectedAgent = $(this).val();
+          $.ajax({
+              url: '{% url "get_agent_price" %}',  // URL to your Django view to fetch agent price
+              method: 'GET',
+              data: { 'agent': selectedAgent },
+              success: function(response){
+                  $('#sale_price').val(response.price);
+              },
+              error: function(xhr, status, error){
+                  console.error('AJAX Error:', status, error);
+              }
+          });
+      });
+  });
+</script>
+  
+
+<div class="card card-default" style="background-color: light-grey;" >
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Voucher" %}</h4>
+          </div><!-- /.col -->
+          {% include "error.html" %}
+
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+        <div class="card card-success card-outline">
+          <div class="card-body">
+            <form class"form-group" method="post">
+            <h6>{% trans "Voucher Details" %} </h6>
+            <table class="table table-bordered   table-sm" style="text-align: left;">
+              <tbody>
+              </td>
+              <th>{% trans "Agent" %}</th>
+              <td>
+                  <select class="form-control select2 agen" name='agent' id='agentSelect' style="width: 100%;" required tabindex="5">
+                      <option value="">{% trans "Select Agent" %}</option>
+                    {% for agent in agents %}
+                      <option value='{{agent.id}}' {% if voucher.agent.id == agent.id %} selected="selected" {% endif %} >{{agent}} ( {{agent.get_agent_type_display}})</option>
+                      {% endfor %}
+                    </select>
+                  
+              </td>
+              <th>{% trans "Date" %}</th>
+                  <td>
+                  {% if voucher.date %}
+                  <input type="date"  name="date"  class="form-control input-sm"  required="" value="{{voucher.date|date:"Y-m-d"}}" required>
+                  {% else %}
+                  <input type="date"  name="date"  class="form-control input-sm"  required="" value="{{date|date:'Y-m-d'}}" required>
+                  {% endif %}
+              </td>
+            </tr>
+                <tr>
+                  <th>{% trans "Voucher no" %}</th>
+                  <td>
+                      <input type="text" name="voucher_no"  class="form-control input-sm"  required="" onload="findTotal();" 
+                      value="{{voucher.voucher_no}}"
+                        required>
+                  </td>
+                  <th>{% trans "Group no" %}</th>
+                  <td>
+                    <input type="text" name="group_no"  class="form-control input-sm"  required="" 
+                    value="{{voucher.group_no}}" required>
+                </td>
+                 
+                </tr>
+                <tr>
+                  <th>{% trans "PAX" %}</th>
+                  <td>
+                    <input type="number" step="1" name="pax" id="pax" class="form-control input-sm"  required="" value="{{voucher.pax}}" onchange="findTotal()" onkeyup="findTotal()"   required>
+
+                  </td>
+          
+          </table>
+        </div>
+          <!-- /.card -->
+        
+        <div class="card card-success card-outline" style="display: none;">
+            <div class="card-body">
+              <form class"form-group" method="post">
+              <h6>{% trans "Basic Fees" %}</h6>
+              <table class="table table-bordered   table-sm" style="text-align: left;">
+                <tbody>
+                  <tr>
+                    <th>{% trans "Ground Services Fees" %}</th>
+                    <td>
+                        <input type="number" id='ground_services_price' class="form-control input-sm"  value="0.00" disabled required>
+                    </td>
+                    <th>{% trans "Additional Services Fees" %}</th>
+                    <td>
+                        <input type="number" name="additional_services_price" id="additional_services_price"  class="form-control input-sm" step="0.01"  value="{% if voucher %}{{voucher.additional_services_price|replace_commas}}{% else %}{{initial_prices.additional_services_price|replace_commas}}{% endif %}" required onchange="findTotal()" onkeyup="findTotal()">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Processing Fees" %}</th>
+                    <td>
+                        <input type="number"id="processing_fees"  class="form-control input-sm"  required="" value="0.00" disabled required>
+
+                    </td>
+                    <th>{% trans "Visa Fees" %}</th>
+                    <td>
+                        <input type="number"  id="visa_fees" class="form-control input-sm"  required="" value="{{voucher.visa_fees|replace_commas}}" disabled required>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Insurance Fees" %}</th>
+                    <td>
+                      <input type="text"  id="insurance_price" class="form-control input-sm"  required="" value="0.00" disabled required>
+
+                    </td>
+                    <th>{% trans "Transport BRN" %}</th>
+                    <td>
+                        <input type="number" name="transport_brn_price" id="transport_brn_price" class="form-control input-sm" step="0.01"  required value="{% if voucher %}{{voucher.transport_brn_price|replace_commas}}{% else %}{{initial_prices.transport_brn_price|replace_commas}}{% endif %}" onchange="findTotal()" onkeyup="findTotal()">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Makkah BRN" %}</th>
+                    <td>
+                        <input type="number" name="makkah_brn_price" id="makkah_brn_price" class="form-control input-sm" step="0.01"  required value="{% if voucher %}{{voucher.makkah_brn_price|replace_commas}}{% else %}{{initial_prices.makkah_brn_price|replace_commas}}{% endif %}" onchange="findTotal()" onkeyup="findTotal()">
+                    </td>
+                    <th>{% trans "Medina BRN" %}</th>
+                    <td>
+                        <input type="number" name="medina_brn_price" id="medina_brn_price" class="form-control input-sm" step="0.01"   required value="{% if voucher %}{{voucher.medina_brn_price|replace_commas}}{% else %}{{initial_prices.medina_brn_price|replace_commas}}{% endif %}" onchange="findTotal()" onkeyup="findTotal()">
+                    </td>
+                  </tr>
+            </table>
+            <div style="text-align: center;"><h4>{% trans "Total" %}: <strong id="total">0.00</strong></h4></div>
+          </div>
+            <!-- /.card -->
+          </div>
+          <div class="card card-success card-outline"  style="display: none;">
+            <div class="card-body">
+              <h6>{% trans "Returns" %}</h6>
+              <table class="table table-bordered   table-sm" style="text-align: left;">
+                <tbody>
+
+                 <tr>
+                    <th>{% trans "Transport BRN" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                        <input type="number" name="transport_brn_return" class="form-control input-sm" step="0.01" required value="{% if voucher %}{{voucher.transport_brn_return|replace_commas}}{% else %}{{initial_prices.transport_brn_return|replace_commas}}{% endif %}">
+                    </td>
+                    <th>{% trans "Commission" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                        <input type="number" name="commission" class="form-control input-sm" step="0.01" required value="{% if voucher %}{{voucher.commission|replace_commas}}{% else %}0.00{% endif %}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Makkah BRN" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                        <input type="number" name="makkah_brn_return" class="form-control input-sm" step="0.01" required value="{% if voucher %}{{voucher.makkah_brn_return|replace_commas}}{% else %}{{initial_prices.makkah_brn_return|replace_commas}}{% endif %}">
+                    </td>
+                    <th>{% trans "Medina BRN" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                        <input type="number" name="medina_brn_return" class="form-control input-sm" step="0.01" required value="{% if voucher %}{{voucher.medina_brn_return|replace_commas}}{% else %}{{initial_prices.medina_brn_return|replace_commas}}{% endif %}">
+                    </td>
+                  </tr>
+            </table>
+            </div>
+          </div>
+          <di v class="card card-success card-outline">
+            <div class="card-body">
+              <h6>{% trans "Sale Price" %}</h6>
+              <table class="table table-bordered   table-sm" style="text-align: left;">
+                <tbody>
+                  <tr>
+                    <th>{% trans "Sale Price" %}/{% trans "per 1 person" %}</th> 
+                    <td>
+                      <input type="number" step="0.01" name="sale_price" id='sale_price' class="form-control input-sm"  required value="{% if voucher.sale_price %}{{voucher.sale_price|replace_commas}}{% else %}0.00{% endif %}">
+                    </td>
+                    {% comment %} <th>{% trans "Agent Refund" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                      <input type="number" step="0.01" name="agent_return" id='agent_return' class="form-control input-sm"  required value="{% if voucher.agent_return %}{{voucher.agent_return|replace_commas}}{% else %}0.00{% endif %}" onchange="findTotal()" >
+                    </td> {% endcomment %}
+                  </tr>
+                  <input type="hidden" name="amount" id="amount" value="0.00">
+                  <input type="hidden" name="ground_services_price" id="_ground_services_price" value="0.00">
+                  <input type="hidden" name="insurance_price" id="_insurance_price" value="0.00">
+                  <input type="hidden" name="processing_fees" id="_processing_fees" value="0.00">
+                  <input type="hidden" name="visa_fees" id="_visa_fees" value="0.00">
+
+            </table>
+            </div>
+          </div>
+        {% csrf_token %}
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+      {% if voucher.id %}
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">{% trans "Delete" %}</button>
+      {% endif %}
+
+          </div>
+      </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+   {% if voucher.id %}
+    <div class="modal fade" id="modal-danger">
+      <div class="modal-dialog">
+        <div class="modal-content bg-danger">
+          <div class="modal-header">
+            <h4 class="modal-title">{% trans "Delete Voucher" %}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>{% trans "This record will be deleted. Are you sure?" %}</p>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-outline-light" data-dismiss="modal">{% trans "Close" %}</button>
+          <form action="{% url 'delete_voucher' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="{{voucher.id}}" name='voucher' class="btn btn-outline-light">{% trans "Delete" %}</button>
+          </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+   
+    {% endif %}
+    <script>
+      $('select').select2();
+    </script>
+{% endblock %}

@@ -1,0 +1,111 @@
+
+{% extends 'print_document_header.html' %}
+{% load static %}
+{% load my_filter %}
+{% load i18n %}
+{% block page_content %}
+
+<style type="text/css">
+    @font-face {
+        font-family: ArialUnicode;
+        src: url("static/Arial Unicode.ttf")
+    }
+    <!-- other stuff here -->
+    body {
+        margin: 0;
+        font-family: "ArialUnicode", sans-serif;
+    }
+    
+    <!-- more css here -->
+</style>
+
+
+
+
+        <h4>{% trans "Receipt Vouchers Report" %}</h4>
+        
+        <table class="table table-bordered table-sm" >
+            <tr>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "From Date" %} </th>
+                <td style="">{% if request.GET.date_min %}{{request.GET.date_min}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+                <th style="" class="align-middle" >{% trans "To Date" %}</th>
+                <td style="text-align: center;"> {% if request.GET.date_max %}{{request.GET.date_max}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Agent" %}</th>
+                <td style="text-align: center;" colspan="3">{{agent}}</td>
+            </tr>
+            <tr >
+            </tr>
+        </table>
+        <table class="table table-sm table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">{% trans "Transaction No." %}</th>
+                <th scope="col">{% trans "Agent" %}</th>
+                <th scope="col">{% trans "Date" %} - {% trans "Time" %}</th>
+                <th scope="col">{% trans "Amount" %}</th>
+                <th scope="col">{% trans "Reason" %}</th>
+                <th scope="col">{% trans "Payment method" %}</th>
+                <th scope="col">{% trans "Received By" %}</th>            
+              </tr>
+            </thead>
+            <tbody>
+                {% for voucher in transactions %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{voucher.id}}</td>
+                <td>{{voucher.agent}}</td>
+
+                <td>{{voucher.date|date:'d/m/Y'}} - {{voucher.time|date:'H:i:s'}}</td>
+                <td><strong>{{voucher.amount}}</strong></td>
+                <td>{{voucher.get_reason_display}}</td>
+                <td>{{voucher.get_payment_by_display}}</td>
+                <td>{{voucher.performed_by}}</td>
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>  
+        <table class="table table-bordered table-sm" >
+            <tr>
+                <h6>{% trans "Report Summary" %} {% if detailed == True %}{% trans "Detailed" %}{% endif %}</h6>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "From Date" %} </th>
+                <td style="">{% if request.GET.date_min %}{{request.GET.date_min}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+                <th style="" class="align-middle" >{% trans "To Date" %}</th>
+                <td style="text-align: center;"> {% if request.GET.date_max %}{{request.GET.date_max}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Agent" %}</th>
+                <td style="text-align: center;" colspan="3">{{agent}}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Total" %} {% trans "Amount" %}</th>
+                <th style="text-align: center;" colspan="3">{{total_amount}}</th>
+            </tr>
+            {% if total_visas != 0 %}
+            <tr>
+                <th style="" class="align-middle" >{% trans "Total purchase amount" %}</th>
+                <td style="text-align: center;" colspan="1">{{total_visas_amount}}</td>
+                <th style="" class="align-middle" >{% trans "Total Visas" %}</th>
+                <td style="text-align: center;" colspan="1">{{total_visas}}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Current Account Balance" %}</th>
+                <td style="text-align: center;" colspan="1">{{agent.account_balance}}</td>
+                <th style="" class="align-middle" >{% trans "Print Date" %}</th>
+                <td style="text-align: center;" colspan="1">{{print_date|date:'d/m/Y -  H:i'}}</td>
+            </tr>
+            {% endif %}
+            
+        </table>
+          
+
+
+       
+{% endblock page_content %}

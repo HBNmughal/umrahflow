@@ -1,0 +1,231 @@
+{% load i18n %}
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'assets/images/favicon.ico' %}">
+    <title>{% block title %}{% endblock title %}</title>
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href="{% static 'css/simplebar.css' %}">
+    <!-- Fonts CSS -->
+    {% comment %} <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> {% endcomment %}
+    {% comment %} <link href="https://fonts.googleapis.com/css?family=Noto+Kufi+Arabic" rel="stylesheet"> {% endcomment %}
+    {% comment %} <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="{% static 'css/feather.css' %}">
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="{% static 'css/daterangepicker.css' %}">
+
+    <!--AJAX Datatables -->
+    <link href="{% static 'plugins/ajax_datatable/style.css' %}" rel="stylesheet" />
+    
+    <!-- Datatables -->
+    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.css' %}">
+    <!-- App CSS -->
+    <link rel="stylesheet" href="{% static 'css/app-light.css' %}" id="lightTheme">
+    <link rel="stylesheet" href="{% static 'css/app-dark.css' %}" id="darkTheme" disabled>
+
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.dataTables.min.css' %}">
+    
+    
+
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+
+    <style>
+      .number {
+        direction: ltr;
+        unicode-bidi: bidi-override;
+      }
+      .select2-rtl .select2-selection__arrow {
+        left: 0; /* Set the left position of the arrow */
+        right: auto; /* Reset the right position */
+    }
+    </style>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{% static 'css/select2.css' %}">
+    {% if request.LANGUAGE_CODE == 'ar' %}
+    <style>
+      .datepicker-dropdown {max-width: 300px;}
+      .datepicker {float: right}
+      .datepicker.dropdown-menu {right:auto}
+  
+      .dataTables_filter {
+        float: left;
+      }
+  
+    </style>
+    {% endif %}
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  </head>
+  <body class="vertical  light {% if request.LANGUAGE_CODE == 'ar' %}rtl{% endif %}">
+    {% block base %}{% endblock base %}
+    {% block wrapper %}{% endblock wrapper %}
+
+    
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/moment.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/simplebar.min.js' %}"></script>
+    <script src="{% static 'js/daterangepicker.js' %}"></script>
+    <script src="{% static 'js/jquery.stickOnScroll.js' %}"></script>
+    <script src="{% static 'js/tinycolor-min.js' %}"></script>
+    <script src="{% static 'js/config.js' %}"></script>
+    <script src="{% static 'js/apps.js' %}"></script>
+    <script src="{% static 'js/select2.min.js' %}"></script>
+    <script src="{% static 'js/sweetalert2.js' %}"></script>
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/ajax_datatable/utils.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
+    </script>
+   
+
+      
+      
+
+    <script>
+      {% for message in messages %}
+      Swal.fire({
+        type: '{{ message.tags }}',
+        text: '{{ message }}',
+        icon: '{{ message.tags }}',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#4e73df',
+      })
+      {% endfor %}
+    </script>
+    <script>
+      $('.select2').select2({
+        theme: 'bootstrap4',
+        width: '100%',
+        placeholder: '{% trans "Select" %}',
+        allowClear: true,
+        {% if request.LANGUAGE_CODE == 'ar' %}
+        dir: '{% if request.LANGUAGE_CODE == "ar" %}rtl{% endif %}',
+        {% endif %}
+        });
+      const popupCenter = ({url, title, w, h}) => {
+      // Fixes dual-screen position                             Most browsers      Firefox
+      const dualScreenLeft = window.screenLeft !==  undefined ? window.screenLeft : window.screenX;
+      const dualScreenTop = window.screenTop !==  undefined   ? window.screenTop  : window.screenY;
+  
+      const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+      const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+  
+      const systemZoom = width / window.screen.availWidth;
+      const left = (width - w) / 2 / systemZoom + dualScreenLeft
+      const top = (height - h) / 2 / systemZoom + dualScreenTop
+      const newWindow = window.open(url, title, 
+        `
+        scrollbars=yes,
+        width=${w / systemZoom}, 
+        height=${h / systemZoom}, 
+        top=${top}, 
+        left=${left}
+        `
+      )
+  
+      if (window.focus) newWindow.focus();
+
+
+      
+  }
+  </script>
+  {% if custom_datatable_script %}
+{% block datatable_script %}
+{% endblock datatable_script %}
+{% else %}
+<script>
+  $(function () {
+  
+    $('.data-table').DataTable({
+      "paging": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+      "responsive": false,
+      "processing": true,
+      "order": [],
+      
+      
+      dom: 'Bfrtip',
+      buttons: [
+        'excel',
+        'print',
+               ],
+      
+      "pageLength": 100,
+
+      {% if request.LANGUAGE_CODE == 'ar' %}
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Arabic.json"
+      }
+      {% endif %}
+
+
+    });
+  });
+</script>
+{% endif %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Get all forms with the specified class
+      var forms = document.querySelectorAll('form.prevent-double-submit');
+      
+      // Iterate over each form
+      forms.forEach(function(form) {
+          // Add event listener to prevent double submit
+          form.addEventListener('submit', function(event) {
+              var submitButton = form.querySelector('[type="submit"]');
+              if (submitButton) {
+                  submitButton.disabled = true;
+                  submitButton.innerHTML = "{% trans 'Processing...' %}";
+              }
+          });
+      });
+  });
+  </script>
+
+
+  </body>
+  {{ redirect_to_login_immediately }}
+
+</html>
+
+

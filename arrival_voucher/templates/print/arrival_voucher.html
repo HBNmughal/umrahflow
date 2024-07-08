@@ -1,0 +1,400 @@
+{% load static %}
+<body onload="window.print()">
+    <title>Arrival Voucher UP-{{voucher.id}}اشعار الوصول</title>
+<table class="table table-borderless" style="width: 100%;">
+    <tr>
+        <td style="text-align: left;" class="align-middle">
+            <h4>{{request.user.agent.company.name_en}}</h4>
+        </td>
+        <td><img src="{{request.user.agent.company.logo.url}}" width="130px"></td>
+
+        <td style="text-align: right;" class="align-middle"><h4> {{request.user.agent.company.name_ar}}</h4>
+        </td>
+    </tr>
+</table>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;'><span style="font-size:21px;line-height:107%;">Arrival Voucher &ndash;&nbsp;</span><span dir="RTL" style='font-size:21px;font-family:"Calibri",sans-serif;'>اشعار الوصول</span></p>
+<table style="border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td colspan="3" style="width: 260.75pt;border: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><strong><span style="color:black;">Basic Details</span></strong></p>
+            </td>
+            <td colspan="3" style="width: 262.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>بيانات أساسية</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Agent</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.agent}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>الوكيل</span></p>
+            </td>
+            <td style="width: 67.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Voucher No.</span></p>
+            </td>
+            <td style="width: 2in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>
+                    <img src="https://barcode.tec-it.com/barcode.ashx?data=UP-{{voucher.id}}&code=Code128&translate-esc=on" height="50px">
+                </p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>رقم اشعار</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Group Name</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.id}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>اسم المجموعة</span></p>
+            </td>
+            <td style="width: 67.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">PAX</span></p>
+            </td>
+            <td style="width: 2in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong>{{voucher.pax}}</strong></p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>عدد</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Group No.</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;'>{{voucher.group_no}}</span></p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>رقم المجموعة</span></p>
+            </td>
+            <td style="width: 67.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Country</span></p>
+            </td>
+            <td style="width: 2in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.country.name_en}} - {{voucher.country.name_ar}}</p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>الدولة</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Group Leader</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.group_leader}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>اسم المشرف</span></p>
+            </td>
+            <td style="width: 67.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Mobile No.</span></p>
+            </td>
+            <td style="width: 2in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.group_leader_contact}}</p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>رقم الجوال</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Reference No</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.agent_referance_no}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>رقم المرجع </span></p>
+            </td>
+            <td style="width: 67.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Umrah Company</span></p>
+            </td>
+            <td style="width: 2in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.company}}</p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>شركة عمرة</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table style="border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td colspan="3" style="width: 260.75pt;border: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><strong><span style="color:black;">Flight Details</span></strong></p>
+            </td>
+            <td colspan="3" style="width: 262.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>بيانات الرحلة</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="width: 260.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="color:black;">Arrival -&nbsp;</span></strong><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>الوصول</span></strong></p>
+            </td>
+            <td colspan="3" style="width: 262.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="color:black;">Departure -&nbsp;</span></strong><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>المغادرة</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Flight No</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.arrival_flight_no}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>رقم الرحلة</span></p>
+            </td>
+            <td style="width: 58.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Flight No</span></p>
+            </td>
+            <td style="width: 139.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.departure_flight_no}}</p>
+            </td>
+            <td style="width: 64.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>رقم الرحلة</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Arrival Date</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.arrival_date|date:"d/m/Y"}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>تاريخ الوصول</span></p>
+            </td>
+            <td style="width: 58.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Dep. Date</span></p>
+            </td>
+            <td style="width: 139.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.departure_date|date:"d/m/Y"}}</p>
+            </td>
+            <td style="width: 64.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>تاريخ المغادرة</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;height: 14.35pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Arrival Time</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;height: 14.35pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.arrival_time|date:"H:i"}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;height: 14.35pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>وقت الوصول</span></p>
+            </td>
+            <td style="width: 58.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;height: 14.35pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Dep. Time</span></p>
+            </td>
+            <td style="width: 139.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;height: 14.35pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.departure_time|date:"H:i"}}</p>
+            </td>
+            <td style="width: 64.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;height: 14.35pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>وقت المغادرة</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 71.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Airport</span></p>
+            </td>
+            <td style="width: 1.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.get_arrival_airport_display}}</p>
+            </td>
+            <td style="width: 63pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>مطار</span></p>
+            </td>
+            <td style="width: 58.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Airport</span></p>
+            </td>
+            <td style="width: 139.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.get_departure_airport_display}}</p>
+            </td>
+            <td style="width: 64.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>مطار</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table style="border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td colspan="3" style="width: 260.75pt;border: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><strong><span style="color:black;">Accommodation Details</span></strong></p>
+            </td>
+            <td colspan="3" style="width: 262.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>بيانات السكن</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="width: 260.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="color:black;">Medina -&nbsp;</span></strong><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>المدينة</span></strong></p>
+            </td>
+            <td colspan="3" style="width: 262.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="color:black;">Makkah -&nbsp;</span></strong><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>مكة</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 62.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Hotel Name</span></p>
+            </td>
+            <td style="width: 148.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.medina_hotel}}</p>
+            </td>
+            <td style="width: 49.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>اسم الفندق</span></p>
+            </td>
+            <td style="width: 1.0in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Hotel Name</span></p>
+            </td>
+            <td style="width: 157.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;'>{{voucher.makkah_hotel}}</span></p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>اسم الفندق</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:none;"><br></td>
+            <td style="border:none;"><br></td>
+            <td style="border:none;"><br></td>
+            <td style="border:none;"><br></td>
+            <td style="border:none;"><br></td>
+            <td style="border:none;"><br></td>
+        </tr>
+    </tbody>
+</table>
+<table style="border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td colspan="3" style="width: 260.75pt;border: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><strong><span style="color:black;">Transport Booking Details</span></strong></p>
+            </td>
+            <td colspan="3" style="width: 262.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>بيانات حجز نقل</span></strong></p>
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="width: 62.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Transport Company</span></p>
+            </td>
+            <td style="width: 148.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.transport_company}}</p>
+            </td>
+            <td style="width: 49.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>شركة النقل</span></p>
+            </td>
+            <td style="width: 0.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">BRN</span></p>
+            </td>
+            <td style="width: 157.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;'>{{voucher.transport_brn}}</span></p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>رقم المرجع</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 62.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;">Transport Type</span></p>
+            </td>
+            <td style="width: 148.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>{{voucher.transport_type.name_en}} - {{voucher.transport_type.name_ar}}</p>
+            </td>
+            <td style="width: 49.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>نوع النقل</span></p>
+            </td>
+            <td style="width: 0.75in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;line-height:  normal;'><span style="color:black;"></span></p>
+            </td>
+            <td style="width: 157.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;'>   </span></p>
+            </td>
+            <td style="width: 50.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>   </span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:none;"><br></td>  
+        </tr>
+    </tbody>
+</table>
+<table style="border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td colspan="3" style="width: 260.75pt;border: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><strong><span style="color:black;">Transport Movements</span></strong></p>
+            </td>
+            <td colspan="3" style="width: 262.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:right;line-height:normal;'><strong><span dir="RTL" style='font-family:"Calibri",sans-serif;color:black;'>حركات النقل</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 17.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:13px;color:black;">#</span></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>م</span></p>
+            </td>
+            <td style="width: 121.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:13px;color:black;">From</span></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>من</span></p>
+            </td>
+            <td style="width: 121.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:13px;color:black;">To&nbsp;</span></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>الى</span></p>
+            </td>
+            <td style="width: 76.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:13px;color:black;">Date&nbsp;</span></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>تاريخ</span></p>
+            </td>
+            <td style="width: 76.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:13px;color:black;">Time&nbsp;</span></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>وقت</span></p>
+            </td>
+            <td style="width: 109.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(204, 240, 206);padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:13px;color:black;">Remarks&nbsp;</span></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>ملاحظات</span></p>
+            </td>
+        </tr>
+        {% for route in transport_movements %}
+        <tr>
+            <td style="width: 17.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: white;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>{{forloop.counter}}</span></p>
+            </td>
+            <td style="width: 121.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: white;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:13px;color:black;">{{route.route.from_en}}</span></strong></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>{{route.route.from_ar}} </span></strong></p>
+            </td>
+            <td style="width: 121.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: white;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:13px;color:black;">{{ route.route.to_en }}</span></strong></p>
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>{{route.route.to_ar}}</span></strong></p>
+            </td>
+            <td style="width: 76.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: white;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>{{route.date|date:"d/m/Y"}}</span></strong></p>
+            </td>
+            <td style="width: 76.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: white;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span dir="RTL" style='font-size:13px;font-family:"Calibri",sans-serif;color:black;'>{{route.time|time:"H:i"}}</span></strong></p>
+            </td>
+            <td style="width: 109.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: white;padding: 0in 5.4pt;vertical-align: top;">
+                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:13px;">&nbsp;</span>{% if route.remarks %}{{route.remarks}}{% endif %}</strong></p>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p ><img width="40px" src="{% static 'assets/images/umrahflow_logo.png'%}" </p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;'><span style="font-size:12px;line-height:107%;">&nbsp;</span></p>
+</body>

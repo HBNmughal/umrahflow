@@ -1,0 +1,472 @@
+from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Account, JournalEntry, ReceiptVoucher, PaymentVoucher, AccountSettlementCredit, AccountSettlementDebit, Transaction, delete_allowed, edit_allowed
+from .forms import AccountForm, ReceiptVoucherForm,  AccountSettlementCreditForm, AccountSettlementDebitForm, PaymentVoucherForm
+from django.contrib.auth.decorators import login_required
+from django import forms
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
+from transport.models import TransportCompany
+import datetime
+from django.http import HttpResponseRedirect
+from agent.models import Agent
+from django.db.models import Q
+from decimal import Decimal
+from django.core.exceptions import ValidationError
+from company.models import SystemSettings
+from company.forms import AccountsSettingsForm
+
+
+# @login_required
+# def account_create_view(request):
+#     if request.method == 'POST':
+#         form = AccountForm(request.POST)
+#         if form.is_valid():
+#             account = form.save(commit=False)
+#             account.company = request.user.company
+#             account.save()
+#             return redirect('account-list')
+#     else:
+#         form = AccountForm(company=request.user.company)
+#     return render(request, 'account/account_form.html', {'form': form})
+
+
+@login_required
+def account_list_view(request):
+    def get_account_tree():
+        accounts = Account.objects.filter(parent_account=None, company=request.user.employee.company)
+        tree = []
+
+        def build_tree(node):
+            children = Account.objects.filter(parent_account=node, company=request.user.employee.company)
+            if children:
+                node.children = [build_tree(child) for child in children]
+            return node
+
+        for account in accounts:
+            tree.append(build_tree(account))
+
+        return tree
+    
+    
+    
+    
+    return render(request, 'account_list.html', {'account_tree': get_account_tree()})
+
+@login_required
+def create_account(request, pk=None):
+    if pk:
+        parent_account = Account.objects.get(pk=pk)       
+    if request.method == 'POST':
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            account = form.save(commit=False)
+            account.company = request.user.employee.company
+            account.save()
+            messages.success(request, _('Account Created.'))
+            return render(request, "close_popup.html")
+    else:
+        form = AccountForm()
+        form['company'].initial = request.user.employee.company
+        parent_account = Account.objects.get(pk=pk)
+        form['parent_account'].initial = Account.objects.get(pk=pk)
+        form['account_type'].initial = parent_account.account_type
+        form['company'].initial = request.user.employee.company
+        form.fields['parent_account'].queryset = Account.objects.filter(company=request.user.employee.company, allow_child_accounts=False)
+        if pk:
+            form.fields['parent_account'].widget = forms.HiddenInput()
+            form.fields['account_type'].widget = forms.HiddenInput()
+            
+    return render(request, 'form.html', {'form': form})
+
+@login_required
+def edit_account(request, pk):
+    account = Account.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = AccountForm(request.POST, instance=account)
+        if form.is_valid():
+            account = form.save(commit=False)
+            account.company = request.user.employee.company
+            account.save()
+            messages.success(request, _('Account Updated.'))
+            return render(request, "close_popup.html")
+    else:
+        form = AccountForm(instance=account)
+        form['company'].initial = request.user.employee.company
+        form['parent_account'].initial = account.parent_account
+        form['account_type'].initial = account.account_type
+        form.fields['parent_account'].queryset = Account.objects.filter(company=request.user.employee.company, allow_child_accounts=True)
+        form.fields['parent_account'].widget = forms.HiddenInput()
+        form.fields['account_type'].widget = forms.HiddenInput()
+    return render(request, 'form.html', {'form': form})
+
+
+
+@login_required
+def transport_company_account_list_view(request):
+    companies = TransportCompany.objects.filter(company=request.user.employee.company)
+    context = {'companies': companies}
+    
+    
+    
+    
+    return render(request, 'transport_companies_list.html', {'companies': companies})
+
+
+@login_required
+def account_view(request, pk):
+    account = Account.objects.get(pk=pk, company=request.user.employee.company)
+    journal_entries = JournalEntry.objects.filter(account=account, company=request.user.employee.company).order_by('date', 'pk')
+    balance = Decimal(0.00)
+
+
+    agent = False
+   
+
+    entries = []
+    for entry in journal_entries:
+        balance += Decimal(entry.entry_amount())
+        entries.append({
+            'entry': entry,
+            'balance': balance,
+        })
+
+
+    
+
+
+
+    context = {'account': account, 'journal_entries': entries, 'agent':agent}
+    return render(request, 'account.html', context)
+
+
+@login_required
+def account_settlement_credit_add_view(request, pk):
+    if request.method == 'POST':
+        form = AccountSettlementCreditForm(request.POST)
+        if form.is_valid():
+            voucher = form.save(commit=False)
+            voucher.company = request.user.employee.company
+            voucher.user = request.user
+            voucher.save()
+            voucher_id = voucher.pk
+            messages.success(request, _('Account Settlement Credit has been added.'))
+            return render(request, "close_popup.html")
+        else:
+            form = AccountSettlementCreditForm(request.POST)
+            return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Credit')})
+    else:
+        form = AccountSettlementCreditForm()
+        form.fields['company'].initial = request.user.employee.company
+        form.fields['credit_account'].initial = Account.objects.get(pk=pk).pk
+        return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Credit')})
+
+@login_required
+def account_settlement_debit_add_view(request, pk):
+    if request.method == 'POST':
+        form = AccountSettlementDebitForm(request.POST)
+        if form.is_valid():
+            voucher = form.save(commit=False)
+            voucher.company = request.user.employee.company
+            voucher.user = request.user
+            voucher.save()
+            voucher_id = voucher.pk
+            
+            messages.success(request, _('Account Settlement Debit has been added.'))
+            return render(request, "close_popup.html")
+        else:
+            form = AccountSettlementDebitForm(request.POST)
+            return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Debit')})
+    else:
+        form = AccountSettlementDebitForm()
+        form.fields['company'].initial = request.user.employee.company
+        form.fields['debit_account'].initial = Account.objects.get(pk=pk).pk
+        return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Debit')})
+
+
+
+@login_required
+def print_receipt_voucher(request, pk):
+    voucher = ReceiptVoucher.objects.get(pk=pk, company=request.user.employee.company)
+    return render(request, 'print/receipt_voucher.html', {'transaction': voucher})
+
+@login_required
+def print_debit_voucher(request, pk):
+    voucher = None
+    return render(request, 'print/debit_voucher.html', {'transaction': voucher})
+
+
+
+@login_required()
+def print_account_statement(request, pk):
+    account = Account.objects.get(pk=pk, company=request.user.employee.company)
+    from_date = request.GET.get('date_min') or None
+    to_date = request.GET.get('date_max') or None
+    entries = JournalEntry.objects.filter(account=account, company=request.user.employee.company).order_by('date', 'pk')
+
+    # if from_date != None and to_date != None:
+    #     entries = entries.filter(date__gte=from_date, date__lte=to_date)
+    # elif from_date != None and to_date == None:
+    #     entries = entries.filter(date__gte=from_date)
+    # elif from_date == None and to_date != None:
+    #     entries = entries.filter(date__lte=to_date)
+    # else:
+    #     messages.error(request, _("Please enter valid dates"))
+    #     return HttpResponseRedirect('/account/account_view/' + str(pk) + '/')
+    context = {'account': account, 'entries': entries, 'from_date': from_date, 'to_date': to_date}
+    return render(request, "print/print_account_statement.html", context)
+    
+
+
+@login_required
+def transaction_list_view(request):
+    transactions = Transaction.objects.filter(company=request.user.employee.company).order_by('-date', '-pk')
+    return render(request, 'transaction_list.html', {'transactions': transactions})
+
+@login_required
+def transaction_view(request, pk):
+    transaction = Transaction.objects.get(pk=pk, company=request.user.employee.company)
+    journal_entries = JournalEntry.objects.filter(transaction=transaction, company=request.user.employee.company).order_by('date', 'pk')
+    return render(request, 'transaction.html', {'transaction': transaction, 'journal_entries': journal_entries})
+
+
+@login_required
+def receipt_voucher_list_view(request):
+    vouchers = ReceiptVoucher.objects.filter(company=request.user.employee.company).order_by('-date', '-pk')
+    return render(request, 'receipt_voucher_list.html', {'vouchers': vouchers})
+
+@login_required
+def receipt_voucher_view(request, pk):
+    voucher = ReceiptVoucher.objects.get(pk=pk, company=request.user.employee.company)
+    return render(request, 'receipt_voucher.html', {'voucher': voucher})
+
+
+@login_required
+def payment_voucher_list_view(request):
+    vouchers = PaymentVoucher.objects.filter(company=request.user.employee.company).order_by('-date', '-pk')
+    return render(request, 'payment_voucher_list.html', {'vouchers': vouchers})
+
+@login_required
+def payment_voucher_view(request, pk):
+    voucher = PaymentVoucher.objects.get(pk=pk, company=request.user.employee.company)
+    return render(request, 'payment_voucher.html', {'voucher': voucher})
+
+
+@login_required
+def receipt_voucher_add_view(request):
+    if request.method == 'POST':
+        form = ReceiptVoucherForm(request.POST)
+        try:
+            print('1')
+            if form.is_valid():
+                voucher = form.save(commit=False)
+                voucher.company = request.user.employee.company
+                voucher.save()
+                voucher_id = voucher.pk
+                messages.success(request, _('Receipt Voucher has been added.'))
+                print('added')
+                return redirect('receipt_voucher_edit_view', pk=voucher_id)
+            else:
+                form = ReceiptVoucherForm(request.POST)
+                context = {
+                'form': form,
+                'title': _('Receipt Voucher'),
+                'allow_edit': True
+                }
+                return render(request, 'receipt_voucher_form.html', context)
+        except ValidationError as e:
+            print('3')
+            print(e)
+            messages.error(request, e)
+            form = ReceiptVoucherForm(request.POST)
+            context = {
+            'form': form,
+            'title': _('Receipt Voucher'),
+            'allow_edit': True
+            }
+            return render(request, 'receipt_voucher_form.html', context)
+    else:
+        form = ReceiptVoucherForm()
+        form.fields['company'].initial = request.user.employee.company
+        form.fields['collected_from'].queryset = Account.objects.filter(company=request.user.employee.company)
+        form.fields['to_account'].queryset = Account.objects.filter(company=request.user.employee.company)
+
+        context = {
+            'form': form,
+            'title': _('Receipt Voucher'),
+            'allow_edit': True
+        }
+        return render(request, 'receipt_voucher_form.html', context)
+
+    
+
+@login_required
+def receipt_voucher_edit_view(request, pk):
+    voucher = ReceiptVoucher.objects.get(pk=pk)
+    delete = delete_allowed(voucher.company, voucher)
+    edit = edit_allowed(voucher.company, voucher)
+    if request.method == 'POST':
+        form = ReceiptVoucherForm(request.POST, instance=voucher)
+        try:
+            if form.is_valid():
+                voucher = form.save(commit=False)
+                voucher.company = request.user.employee.company
+                voucher.save()
+                messages.success(request, _('Receipt Voucher has been updated.'))
+                print('updated')
+                return redirect('receipt_voucher_list_view')
+            else:
+
+                form = ReceiptVoucherForm(request.POST)
+                context = {
+                'form': form,
+                'title': _('Receipt Voucher') + ' ' + str(voucher.pk),
+                'allow_edit': True
+                }
+                messages.error(request, _('Please correct the errors below.'))
+                return render(request, 'receipt_voucher_form.html', context)
+        except ValidationError as e:
+            print(e)
+            messages.error(request, e)
+            form = ReceiptVoucherForm(request.POST)
+            context = {
+            'form': form,
+            'title': _('Receipt Voucher') + ' ' + str(voucher.pk),
+            'allow_edit': True
+            }
+            if not edit:
+                context['allow_edit'] = False
+                for field in form.fields:
+                    form.fields[field].widget.attrs['disabled'] = True
+            return render(request, 'receipt_voucher_form.html', context)
+    else:
+        form = ReceiptVoucherForm(instance=voucher)
+        form.fields['company'].initial = request.user.employee.company
+        form.fields['collected_from'].queryset = Account.objects.filter(company=request.user.employee.company)
+        form.fields['to_account'].queryset = Account.objects.filter(company=request.user.employee.company)
+        context = {
+            'voucher': voucher,
+            'form': form,
+            'title': _('Receipt Voucher') + ' ' + str(voucher.pk),
+            'allow_edit': True
+        }
+        if not edit:
+            context['allow_edit'] = False
+            for field in form.fields:
+                form.fields[field].widget.attrs['disabled'] = True
+        return render(request, 'receipt_voucher_form.html', context)
+    
+@login_required
+def payment_voucher_add_view(request):
+    if request.method == 'POST':    
+        form = PaymentVoucherForm(request.POST)
+        if form.is_valid():
+            voucher = form.save(commit=False)
+            voucher.company = request.user.employee.company
+            voucher.save()
+            voucher_id = voucher.pk
+            messages.success(request, _('Payment Voucher has been added.'))
+            return redirect('payment_voucher_edit_view', pk=voucher_id)
+        else:
+            form = PaymentVoucherForm(request.POST)
+            context = {
+            'form': form,
+            'title': _('Payment Voucher'),
+            'allow_edit': True
+            }
+            return render(request, 'payment_voucher_form.html', context)
+            
+
+    else:
+        form = PaymentVoucherForm()
+        form.fields['company'].initial = request.user.employee.company
+        form.fields['paid_to'].queryset = Account.objects.filter(company=request.user.employee.company)
+        form.fields['from_account'].queryset = Account.objects.filter(company=request.user.employee.company)
+        context = {
+            'form': form,
+            'title': _('Payment Voucher'),
+            'allow_edit': True
+        }
+
+        return render(request, 'payment_voucher_form.html', context)
+    
+
+@login_required
+def payment_voucher_edit_view(request, pk):
+    voucher = PaymentVoucher.objects.get(pk=pk)
+    edit = edit_allowed(voucher.company, voucher)
+    if request.method == 'POST':
+        form = PaymentVoucherForm(request.POST, instance=voucher)
+        if form.is_valid():
+            voucher = form.save(commit=False)
+            voucher.company = request.user.employee.company
+            voucher.save()
+            messages.success(request, _('Payment Voucher has been updated.'))
+            return redirect('payment_voucher_list_view')
+        else:
+            form = PaymentVoucherForm(request.POST)
+            context = {
+            'form': form,
+            'title': _('Payment Voucher') + ' ' + str(voucher.pk),
+            'allow_edit': True
+            }
+            if not edit:
+                context['allow_edit'] = False
+                for field in form.fields:
+                    form.fields[field].widget.attrs['disabled'] = True
+            messages.error(request, _('Please correct the errors below.'))
+            return render(request, 'payment_voucher_form.html', context)
+    else:
+        form = PaymentVoucherForm(instance=voucher)
+        form.fields['company'].initial = request.user.employee.company
+        form.fields['paid_to'].queryset = Account.objects.filter(company=request.user.employee.company)
+        form.fields['from_account'].queryset = Account.objects.filter(company=request.user.employee.company)
+    
+
+        context = {
+            'voucher': voucher,
+            'form': form,
+            'title': _('Payment Voucher') + ' ' + str(voucher.pk),
+            'allow_edit': True
+        }
+        if not edit:
+            context['allow_edit'] = False
+            for field in form.fields:
+                form.fields[field].widget.attrs['disabled'] = True
+
+        return render(request, 'payment_voucher_form.html', context)
+    
+
+def tempelate_test(request):
+    return render(request, 'print/debit_voucher_test.html')
+
+
+@login_required
+def receipt_voucher_print(request, pk):
+    voucher = ReceiptVoucher.objects.get(pk=pk)
+    return render(request, 'print/receipt_voucher_print.html', {'voucher': voucher})
+
+def payment_voucher_print(request, pk):
+    voucher = PaymentVoucher.objects.get(pk=pk)
+    return render(request, 'print/payment_voucher_print.html', {'voucher': voucher})
+
+@login_required()
+def accounts_settings_form(request):
+    company = request.user.employee.company
+    settings = SystemSettings.objects.get(company=company)
+    form = AccountsSettingsForm(instance=settings)
+    if request.method == "POST":
+        form = AccountsSettingsForm(request.POST, instance=settings)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('Accounts settings have been updated successfully.'))
+            return render(request, "close_popup.html")
+        else:
+            messages.error(request, _('Error while updating accounts settings'))
+    context = {
+        "form": form,
+        "title": _("Accounts Settings")
+    }
+    return render(request, "form.html", context)

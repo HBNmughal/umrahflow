@@ -1,0 +1,101 @@
+{% load i18n %}
+
+<table id="dataTable" class="data-table table table-bordered table-striped table-sm table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>{% trans "Voucher " %}</th>
+      <th>{% trans "Agent Reference No" %}</th>
+
+      
+      
+
+      <th>{% trans "BRN" %}</th>
+      <th>{% trans "Agent" %}</th>
+      <th>{% trans "Country" %}</th>
+      <th>{% trans "PAX" %}</th>
+      <th>{% trans "Group no" %}</th>
+      {% comment %} <th>{% trans "Status" %}</th> {% endcomment %}
+      <th>{% trans "Transport Company" %}</th>
+      
+      <th>{% trans "Type" %}</th>
+      <th>{% trans "Transport Status" %}</th>
+
+      <th>{% trans "Starting Date" %}</th>
+      <th>{% trans "Routes" %}</th>
+
+      <th>{% trans "Total Movements" %}</th>
+      <th>{% trans "Completed" %}</th>
+      <th>{% trans "Action" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+      {% for v in arrival_vouchers %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>UP-{{v.id}}</td>
+        <td>{% if v.agent_referance_no %}{{v.agent_referance_no}}{% endif %}</td>
+
+        
+        <td>{% if v.transport_brn %}{{v.transport_brn}}{% endif %}</td>
+        <td>{{v.agent}}</td>
+        <td>{{v.country}}</td>
+        <td>{{v.pax}}</td>
+        <td>{{v.group_no}}</td>
+        <td>{% if v.transport_company %}{{v.transport_company}}{% endif %}</td>
+        
+        
+        <td>
+          {% if v.transport_type %}
+          {{v.transport_type}}
+          {% endif %}
+        </td>
+        <td class="align-middle">
+          {{v.get_transport_status_display}}                     
+        </td>
+        <td>
+          {% if v.starting_date %}
+          {{v.starting_date|date:"d/m/Y"}}
+          {% endif %}
+        </td>
+        <td>
+          {% for r in v.voucher_routes %}
+          ({{r.route_from}} - {{r.route_to}}) 
+          {% endfor %}
+        </td>
+        
+
+        <td>{{v.total_movement}}</td>
+        <td>{{v.total_movements_completed}}</td>
+
+        
+
+
+        {% comment %} <td>
+          {% if v.status == 'draft' %}
+          <small class="badge badge-secondary"><i class="far fa-edit"></i> {{v.get_status_display}}</small>
+          {% elif v.status == 'pending' %}
+          <small class="badge badge-warning"><i class="far fa-clock"></i> {{v.get_status_display}}</small>
+          {% elif v.status == 'rejected' %}
+          <small class="badge badge-danger"> {{v.get_status_display}}</small>
+          {% elif v.status == 'approved' %}
+          <small class="badge badge-success"></i> {{v.get_status_display}}</small>
+          {% endif %}
+
+
+        </td> {% endcomment %}
+        <td>
+          <a href='{% url 'agent_arrival_voucher' v.id %}'  class="btn btn-sm"><i class="fe fe-edit fe-16"></i></a>
+          <a href="javascript:;" onclick="popupCenter({url: '{% url 'arrival_voucher_print' v.id %}', title: 'xtf', w: 900, h: 900});"  class="btn btn-sm"><i class="fe fe-printer fe-16"></i></a>
+
+        </td>
+
+
+
+
+      </tr>
+      {% endfor %}
+
+      </tbody>
+      
+    </table>

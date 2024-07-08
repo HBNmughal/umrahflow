@@ -1,0 +1,45 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% block wrapper %}
+<div class="">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Withdraw Payment" %}</h4>
+            
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div> 
+      <div class="card-body">
+        <div class="row">
+
+
+        </div>
+      
+    <form class"form-group" method="post">
+      <label for="account_name">{% trans "Account" %}</label>
+      <input id="account_name" class="form-control" type="text" value="{{account}}" disabled>
+      <label for="account_name">{% trans "Balance" %}</label>
+      <input id="account_name" class="form-control" type="text" value="{{account.balance}}" disabled>
+        {% csrf_token %}
+        {{form}}
+      <label for="token">{% trans "Google Authenticator Key" %}</label>
+      <input id="token" name="token" class="form-control" type="number" value="">
+
+
+          
+       
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+          </div>
+    </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+
+{% endblock %}
+

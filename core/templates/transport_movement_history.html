@@ -1,0 +1,105 @@
+{% extends 'core.html' %}  
+{% load my_filter %}
+{% load i18n %} 
+{% block wrapper %}
+<div class="card card-default">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{{title}}</h4>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+        {% comment %} <table class="data-table">
+            <thead>
+              <tr>
+                <th>{% trans "Change Date Time" %}</th>
+                <th>{% trans "User" %}</th>
+
+                {% for header in field_verbose_names %}
+                  <th>{{ header }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    {% for field in data.fields %}
+                        <td>{{ item|getattribute:field }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table> {% endcomment %}
+
+
+          <h1>{% trans "Trips History" %}</h1>
+          <table class='table data-table table-hover table-striped table-sm'>
+            <thead class='thead-dark'>
+                <tr>
+                    <th>{% trans "Date" %} - {% trans "Time" %} {% trans "Change" %}</th>
+                    <th>{% trans "Movement No" %}</th>
+                    <th>{% trans "Route" %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Time" %}</th>
+                    <th>{% trans "Stats" %}</th>
+                    <th>{% trans "Outside Package" %}</th>
+                    <th>{% trans "Remarks" %}</th>
+                    <th>{% trans "Type" %}</th>
+                    <th>{% trans "Transport Company" %}</th>
+                    <th>{% trans "Driver(s)" %}</th>
+                    <th>{% trans "Plate no" %}</th>
+                    <th>{% trans "Action" %}</th>
+
+                    <th>{% trans "Username" %}</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in history %}
+                <tr>
+                    <td>{{ t.history_date|date:"d/m/Y H:i:s" }}</td>
+                    <td>{{t.id}}</td>
+                    <td>{{t.route}}</td>
+                    <td>{{t.date|date:"d/m/Y"}}</td>
+                    <td>{{t.time|date:"H:i"}}</td>
+                    <td>{{t.get_status_display}}</td>
+                    <td>
+                      
+                      {{t.outside_package}}
+                    </td>
+                    <td>{{t.remarks}}</td>
+                    <td>{{t.type}}</td>
+                    <td>{{t.transport_company}}</td>
+                    <td>
+                      {% if t.first_driver_name %}
+                        {{t.first_driver_name}}<br>{{t.first_driver_phone}}
+                        {% endif %}
+                        
+                        {% if t.second_driver_name %}
+                        <br>
+                        {{t.second_driver_name}}<br>{{t.second_driver_phone}}
+                        {% endif %}
+                        {% if not t.first_driver_name and not t.second_driver_name %}
+                        {% endif %}
+                    </td>
+                    <td>
+                      {% if movement.no_plate %}
+                      {{movement.no_plate}}
+                      {% endif %}
+                    </td>
+                    <td>{{ t.get_history_type_display }}</td>
+                    <td>{{ t.history_user }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+          </ul>
+
+
+{% endblock %}

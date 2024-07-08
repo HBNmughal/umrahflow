@@ -1,0 +1,168 @@
+{% extends "core.html" %}
+{% load i18n %}
+{% load static %}
+
+
+{% block wrapper %}
+<div class="wrapper vh-100">
+  <div class="row align-items-center h-100">
+    <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" action="" method="post">
+      {% csrf_token %}
+      <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+        <img src="{% static 'assets/images/umrahflow_logo.png' %}" alt="logo" width="250px">
+      </a>
+      <h1 class="h6 mb-3">{% trans "Log In" %}</h1>
+      <div class="form-group">
+        <label for="username" class="sr-only">{% trans "Username" %}</label>
+        <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="{% trans "Username" %}" required="" autofocus="">
+      </div>
+      <div class="form-group">
+        <label for="password" class="sr-only">{% trans "Password" %}</label>
+        <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="{% trans "Password" %}" required="">
+      </div>
+      <div class="form-group">
+        <label for="token" class="sr-only">{% trans "Google Authenticator Token" %}</label>
+        <input type="text" id="token" name="token" class="form-control form-control-lg" placeholder="{% trans "Google Authenticator Token" %}" required="" >
+      </div>
+      <div class="checkbox mb-3">
+        <label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans "Log In" %}</button>
+      {% get_current_language as CURRENT_LANGUAGE %}
+      {% get_available_languages as AVAILABLE_LANGUAGES %}
+      {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}               
+      {% for language in languages %}
+        {% if language.code != CURRENT_LANGUAGE %} 
+            <a class="nav-link text-muted my-2" href="/{{ language.code }}/{{ request.get_full_path |slice:'4:'}}">
+              <p>{{ language.name_local }}</p>
+            </a>
+        {% endif %}
+          
+        {% endfor %}
+      <p class="mt-5 mb-3 text-muted">By HBN Solution</p>
+    </form>
+  </div>
+</div>
+
+{% endblock wrapper %}
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>umrahpro | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  {% if request.LANGUAGE_CODE == 'ar' %}
+  <!-- Bootstrap 4 RTL -->
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+  <!-- Custom style for RTL -->
+  <link rel="stylesheet" href="{% static 'dist/css/custom.css' %}">
+  
+  
+
+  {% endif %}
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page" background="{% static 'dist/img/login_wallpaper.jpg' %}">
+  
+
+<div class="login-box">
+  <div class="login-logo">
+    <img width="100px" src="{% static 'assets/images/umrahflow_logo.png'%}">
+    
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <h4 class="login-box-msg">{% trans "Log In" %}</h4>
+
+      <form action="" method="post">  
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="{% trans "Username"%}" name="username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="{% trans "Password" %}" name="password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="{% trans "Google Authenticator Token" %}" name="token" autocomplete="off">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-key"></span>
+            </div>
+          </div>
+        </div>
+          <div class="col-4 ">
+            <button type="submit" class="btn btn-primary btn-block btn-flat ">{% trans "Log in" %}</button>
+          </div>
+      </form>
+     
+  </div>
+  
+  
+</div>
+      {% get_current_language as CURRENT_LANGUAGE %}
+              {% get_available_languages as AVAILABLE_LANGUAGES %}
+              {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+              <div class="languages login-box-msg">
+               
+                  {% for language in languages %}
+                    
+                        <a href="/{{ language.code }}/{{ request.get_full_path |slice:'4:'}}"{% if language.code == CURRENT_LANGUAGE %} class="btn btn-sm btn-primary"{% endif %}>{{ language.name_local }}</a>
+                      </a>
+                    
+                  {% endfor %}
+      
+              </div>
+{% for message in messages %}
+  <div class="container-fluid p-0">
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="True">&times;</span>
+      </button>
+      {{ message }}
+    </div>
+  </div>
+{% endfor %}
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+{% if request.LANGUAGE_CODE == 'ar' %}
+<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
+
+{% endif %}
+</body>
+</html>

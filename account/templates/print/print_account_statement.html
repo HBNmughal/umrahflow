@@ -1,0 +1,114 @@
+
+{% extends 'print_document_header.html' %}
+{% load static %}
+{% load my_filter %}
+{% load i18n %}
+{% block page_content %}
+
+
+<title>{% block title %}{% trans "Account Statement" %} {{account}}{% endblock title %}</title>
+
+<style type="text/css">
+    @font-face {
+        font-family: ArialUnicode;
+        src: url("static/Arial Unicode.ttf")
+    }
+    <!-- other stuff here -->
+    body {
+        margin: 0;
+        font-family: "ArialUnicode", sans-serif;
+    }
+    
+    <!-- more css here -->
+</style>
+
+
+
+
+        <h4>{% trans "Account Statement" %} - {{account}}</h4>
+        
+        <table class="table table-bordered table-sm" >
+            <tr>
+            </tr>
+            {% comment %} <tr>
+                <th style="" class="align-middle" >{% trans "From Date" %} </th>
+                <td style="">{% if request.GET.date_min %}{{request.GET.date_min}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+                <th style="" class="align-middle" >{% trans "To Date" %}</th>
+                <td style="text-align: center;"> {% if request.GET.date_max %}{{request.GET.date_max}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+            </tr> {% endcomment %}
+            <tr>
+                <th style="" class="align-middle" >{% trans "Account" %}</th>
+                <td style="text-align: center;">{{account}}</td>
+                <th style="" class="align-middle" >{% trans "Print Date" %}</th>
+                <td style="text-align: center;" colspan="1">{% now "d/m/Y H:i" %} {% trans "Username" %} {{request.user}}</td>
+                </td>
+            </tr>
+            <tr >
+            </tr>
+        </table>
+        <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+            <thead class="dark-thead">
+            <tr>
+              <th>
+                {% if request.LANGUAGE_CODE == 'ar' %}ع / ق
+                {% else %}T / E                {% endif %}
+              </th>
+              <th>{% trans "Date" %}</th>
+              <th>{% trans "Description" %}</th>
+              <th> {% trans "Reference No" %}</th>
+              <th>{% trans "Debit" %}</th>
+              <th>{% trans "Credit" %}</th>
+              
+            </tr>
+            </thead>
+            <tbody>
+              {% for t in entries %}
+              <tr>
+                <td>{{t.id}} / {{t.transaction.id}}</td>
+                <td>{{t.date|date:"d/m/Y"}}</td>
+                <td {% if request.LANGUAGE_CODE == 'ar' %}
+                    style='text-align:right;'
+                    {% elif request.LANGUAGE_CODE == 'en' %}
+                    style='text-align:left;'
+                    {% endif %}>{{t.transaction.description}}
+
+                  </td>
+                <td>
+                  {% if t.transaction.reference_no %} 
+                  {{t.transaction.reference_no}}
+                  {% endif %}
+                </td>
+
+                <td>{% if t.debit %}{{t.debit|replace_commas}}{% endif %}</td>
+                <td>{% if t.credit %}{{t.credit|replace_commas}}{% endif %}</td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+                <th style="color: red;">{{account.balance_debit|replace_commas}}</th>
+                <th style="color: green;">{{account.balance_credit|replace_commas}}</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th colspan="2">{% trans "Current Balance" %}</th>
+              <th {% if balance >= 0.00 %} style="color: green;" {% else %} style="color: red;" {% endif %}  dir='ltr' colspan="2">{{account.balance|replace_commas}}</th>
+              
+            </tr>
+              </tbody> 
+            </table>
+
+            <br>
+            {% if request.user.employee.company.settings.account_statement_note %}
+            <p class="text-danger">
+              <strong>{% trans "Note" %}: </strong>
+              {{request.user.employee.company.settings.account_statement_note|safe}}
+            </p>
+            {% endif %}
+
+       
+{% endblock page_content %}

@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% block title %}{% trans "Transaction List" %}{% endblock %}
+{% block content %}
+{% comment %} {% load my_filter %} {% endcomment %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Transaction List" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+
+          
+        </div>
+        <!-- /.row -->
+         {% comment %}
+        <div class="card card-success card-outline">
+          <div class="card-body">
+             <button type="button" class="btn btn-outline-success " onClick="popupCenter({url: '{% url 'account_settlement_credit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Credit" %}
+            </button>
+            <button type="button" class="btn btn-outline-danger " onClick="popupCenter({url: '{% url 'account_settlement_debit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Debit" %}
+            </button>
+            {% comment %} <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#print_account_statement" >
+              {% trans "Print Account Statement" %} 
+            </button>
+            <button type="button" class="btn btn-outline-success " onClick="popupCenter({url: '{% url 'print_account_statement' account.id %}', title: 'xtf', w: 900, h: 900});" >
+              {% trans "Print Account Statement" %} 
+            </button> 
+          </div>
+        </div>
+        {% endcomment %}
+
+        
+  
+          <!-- /.card-header -->
+        <div class="card">
+          <div class="card-body">
+            
+            
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead class="thead-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans "Transaction No." %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Entries Count" %}</th>
+                    <th>{% trans "Debit" %}</th>
+                    <th>{% trans "Credit" %}</th>
+                    <th>{% trans "Discription" %}</th>
+                    <th>{% trans "Reference No" %}</th>
+                    <th>{% trans "Username" %}</th>
+                    <th>{% trans "Action" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for t in transactions %}
+                    <tr {% if t.error_display %} class="table-danger" {% endif %}>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{t.id}}</td>
+                      <td>{{t.date}}</td>
+                      <td>
+                        <span dir="ltr">
+                        {{t.count_entries}}
+                        </span>
+                      </td>
+                      <td>
+                        <span dir="ltr">
+                        {{t.debit}}</td>
+                        </span>
+                      <td>
+                        <span dir="ltr">
+                        {{t.credit}}
+                        </span>
+                      </td>
+                
+
+                    <td {% if request.LANGUAGE_CODE == 'ar' %}
+                    style='text-align:right;'
+                    {% elif request.LANGUAGE_CODE == 'en' %}
+                    style='text-align:left;'
+                    {% endif %}>
+                    {{t.description}}
+                  
+
+                    <td>
+                    {% if t.entry.transaction.reference_no %} 
+                        {{t.reference_no}}
+                    {% endif %}
+                    </td>
+                    <td>
+                        {{t.entry.transaction.username}}
+                    </td>
+                      <td>
+                        {% if t %}
+                        <button type="button" class="btn btn-sm btn-primary" onclick="window.location.href='{% url "transaction_view" t.id %}';"><i class="fe fe-eye fe-16"></i>{% trans "View" %}</button>
+                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Modal -->
+<div class="modal fade" id="receipt_vouchers_report" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Receipt Vouchers Report" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action=''>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

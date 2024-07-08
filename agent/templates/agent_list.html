@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Agents List" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Agents List" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="card card-success card-outline">
+          <div class="card-body">
+            <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: 'add/', title: 'xtf', w: 900, h: 900});">
+              {% trans "Add New Agent" %} 
+            </button>
+          </div>
+          <!-- /.card -->
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    
+                    <th>{% trans "Country" %}</th>
+                    <th>{% trans "Agent" %}</th>
+                    <th>{% trans "Agent type" %}</th>
+                    <th>{% trans "Current Price" %}</th>
+                    <th>{% trans "Commission" %}</th>
+
+                    <th>{% trans "Code" %}</th>
+                    <th>{% trans "User" %}</th>
+
+                    <th>{% trans "Action" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for agent in agents %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{agent.country}}</td>
+                      <td>{{agent}}</td>
+
+                      <td>{{agent.get_agent_type_display}}</td>
+                      <td>{% trans "Visa Price" %}: {{agent.current_visa_price}} <br> {% trans "Visa Including Transport Price" %}: {{agent.current_visa_including_transport_price}} <a onClick="popupCenter({url: '{% url 'agent_price_list' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a></td>
+                      <td>{% trans "Comission Holder Account" %}: {{agent.commission.comission_holder_account}} <br> {% trans "Commission Per Visa Without Transport" %}: {{agent.commission.commission_per_visa_without_transport}} <br> {% trans "Commission Per Visa With Transport" %}: {{agent.commission.commission_per_visa_with_transport}} <br> <a onClick="popupCenter({url: '{% url 'agent_commission_form' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a></td>
+
+                      <td>
+                        <a onClick="popupCenter({url: '{% url 'agent_code_form' agent.id %}', title: 'xtf'});"   class="btn btn-link"><i class="fe fe-edit fe-16"></i>
+                          <span class="badge badge-primary right">{% trans "Total" %} {{agent.code_count}}</span>
+                        </a>
+                      </td>
+                      <td>
+                        {% if agent.user %}
+                        <a onClick="popupCenter({url: '{% url 'edit_agent_user' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i> {{agent.code_count}}</a>
+                        {% else %}
+                          <a onClick="popupCenter({url: '{% url 'create_agent_user' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-plus fe-16"></i> {% trans "Create" %}</a>
+                        {% endif %}                         
+                      </td>
+
+                      <td>
+                        <a onClick="popupCenter({url: '{% url 'edit_agent' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a>
+                      </td>
+
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    
+                  </table>
+              
+            
+            
+            </div>
+
+            
+            </div>
+          </div>
+
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        
+                        </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+

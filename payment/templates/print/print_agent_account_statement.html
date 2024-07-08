@@ -1,0 +1,170 @@
+
+{% extends 'print_document_header.html' %}
+{% load static %}
+{% load my_filter %}
+{% load i18n %}
+{% block page_content %}
+
+
+<title>{% block title %}{% trans "Account Statement" %} {{agent}}{% endblock title %}</title>
+
+<style type="text/css">
+    @font-face {
+        font-family: ArialUnicode;
+        src: url("static/Arial Unicode.ttf")
+    }
+    <!-- other stuff here -->
+    body {
+        margin: 0;
+        font-family: "ArialUnicode", sans-serif;
+    }
+    
+    <!-- more css here -->
+</style>
+
+
+
+
+        <h4>{% trans "Account Statement" %}</h4>
+        
+        <table class="table table-bordered table-sm" >
+            <tr>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "From Date" %} </th>
+                <td style="">{% if request.GET.date_min %}{{request.GET.date_min}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+                <th style="" class="align-middle" >{% trans "To Date" %}</th>
+                <td style="text-align: center;"> {% if request.GET.date_max %}{{request.GET.date_max}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Agent" %}</th>
+                <td style="text-align: center;">{{agent}}</td>
+                <th style="" class="align-middle" >{% trans "Print Date" %}</th>
+                <td style="text-align: center;" colspan="1">{{print_date|date:'d/m/Y -  H:i'}}</td>
+            </tr>
+            <tr >
+            </tr>
+        </table>
+        <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+            <thead class="dark-thead">
+            <tr>
+              <th>{% trans "Transaction No." %}</th>
+              <th>{% trans "Date" %} - {% trans "Time" %}</th>
+              <th>{% trans "Debit" %}</th>
+              <th>{% trans "Credit" %}</th>
+              <th>{% trans "Account Balance" %}</th>
+              <th>{% trans "Payment For" %}</th>
+              <th>{% trans "PAX" %}</th>
+              <th>{% trans "Price" %}</th>
+              <th>{% trans "Group No" %}</th>
+              <th>{% trans "Voucher no" %}</th>
+              <th>{% trans "Paid By" %}</th>
+              <th>{% trans "Reference No" %}</th>
+              <th>{% trans "Performed By" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for t in transactions %}
+              <tr>
+                <td>{{t.transaction.id}}</td>
+                <td>{{t.transaction.date|date:"d/m/Y"}}</td>
+                
+
+                {% if t.transaction.transaction_type == "d" %}
+                <td style="color: red;">{{t.transaction.amount|replace_commas}}</td>
+                {% else %}
+                <td>0.00</td>
+                {% endif %}
+                {% if t.transaction.transaction_type == "c" %}
+                <td style="color: green;">{{t.transaction.amount|replace_commas}}</td>
+                {% elif t.transaction.transaction_type == "r" %}
+                <td style="color: blue;">{{t.transaction.amount|replace_commas}}</td>
+                {% else %}
+                <td>0.00</td>
+                {% endif %}
+                <td>{{t.balance|replace_commas}}</td>
+
+              <td>
+                {% if not t.transaction.transport_invoice %}
+                {% if t.transaction.payment_for is None or t.transaction.payment_for == "" %}
+                {% if t.transaction.reason == "1" or t.transaction.reason ==  "2" or t.transaction.reason ==  "3" or t.transaction.reason ==  "4" or t.transaction.reason ==  "5"%}{{t.transaction.get_reason_display}}{% else %} {% trans t.transaction.reason %} {{t.transaction.voucher.voucher_no}} {% if t.transaction.voucher.voucher_no %}{% endif %} {% endif %}
+                {% else %}
+                
+                {{t.transaction.payment_for}}
+                {% endif %}
+                {% else %}
+                {% trans "Transport Invoice" %} <br>
+                {% trans "Invoice No" %}: {{t.transaction.transport_invoice.id}} <br>
+                {% trans "Transport type" %}: {{t.transaction.transport_invoice.get_transport_type_display}}<br>
+                {% if t.transaction.transport_invoice.description %}
+                {% trans "Description" %}: {{t.transaction.transport_invoice.description}}
+                {% endif %}
+
+                {% endif %}
+
+              </td>
+              <td>{{t.transaction.voucher.pax}} {{t.transaction.transport_invoice.qty}}</td>
+              <td>{{t.transaction.voucher.sale_price|replace_commas}} {{t.transaction.transport_invoice.total|replace_commas}}</td>
+              <td>{{t.transaction.voucher.group_no}}</td>
+              <td>
+                {% if t.transaction.voucher.voucher_no %}
+                {{t.transaction.voucher.voucher_no}}
+                {% endif %}
+                {% if t.transaction.transport_invoice %}
+                {{t.transaction.transport_invoice.id}}
+                {% endif %}
+
+              </td>
+
+
+              <td>{{t.transaction.get_payment_by_display}}
+                {% if t.transaction.is_settlement_transaction %}{% trans "Settlement" %}{% endif %}
+              </td>
+              <td>
+                
+                {{t.transaction.referance_no}}
+                {% if t.transaction.transport_invoice.referance_no %}
+                {{t.transaction.transport_invoice.referance_no}} 
+                {% endif %}
+              </td>
+              <td> {% trans t.transaction.performed_by %}</td>
+
+              </tr>
+              {% endfor %}
+              <tr>
+                <th></th>
+                <th></th>
+                <th style="color: red;">{{total_amount_debit|replace_commas}}</th>
+                <th style="color: green;">{{total_amount_credit|replace_commas}}</th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            <tr>
+                <th colspan="2">{% trans "Current Balance" %}</th>
+                <th {% if agent.account_balance >= 0.00 %} style="color: green;" {% else %} style="color: red;" {% endif %}  dir='ltr' colspan="2">{{agent.account_balance|replace_commas}}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+              </tbody> 
+            </table>
+        
+
+       
+{% endblock page_content %}

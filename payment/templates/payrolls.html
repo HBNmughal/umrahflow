@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Agents List" %} {% endblock %}
+{% block content %}
+{% load my_filter %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Payrolls" %} </h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+
+        <!-- /.row -->
+        <div class="card card-success card-outline">
+            <div class="card-body">
+
+                <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'create_payroll' %}', title: 'xtf', w: 900, h: 900});">
+                {% trans "Create Payroll" %} 
+                </button>
+                {% comment %} <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="popupCenter({url: '{% url 'withdraw_payment' 1 1 %}', title: 'xtf', w: 900, h: 900});">
+                {% trans "Withdraw Amount" %} 
+                </button> {% endcomment %}
+    
+            </div>
+        </div> 
+        <div class="card">
+            <div class="card-body">
+                  <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                    <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>{% trans "Start Date" %}</th>
+                      <th>{% trans "End Date" %}</th>
+                      <th>{% trans "Total Employees" %}</th>
+                      <th>{% trans "Total Amount" %}</th>
+                      {% comment %} <th>{% trans "Status" %}</th> {% endcomment %}
+                      <th>{% trans "Action" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      {% for p in payrolls %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{p.start_date|date:"d/m/Y"}}</td>  
+                        <td>{{p.end_date|date:"d/m/Y"}}</td>
+                        <td>{{p.employee_count}}</td>
+                        <td>{{p.amount}}</td>
+                        {% comment %} <td>{{p.status}}</td> {% endcomment %}
+
+                        
+  
+                        <td><a href="{% url 'view_payroll' p.id %}"  class="btn btn-primary"><i class="fe fe-eye fe-16"></i>{% trans "View" %}</a></td>
+                      </tr>
+                      {% endfor %}
+  
+                      </tbody>
+                      
+                    </table>
+                </div>
+                
+              </div>
+                    
+                  
+
+    </div>
+  </div>
+
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+

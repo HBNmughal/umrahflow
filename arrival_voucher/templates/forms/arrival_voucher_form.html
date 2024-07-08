@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Arrival Voucher" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Arrival Voucher" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+      </aside>
+      {% include "error.html" %}
+       
+
+                  <div class="card">
+                      <div class="card-body">
+                        <h4>{% trans "Voucher Details" %}</h4>
+                        <br>
+                        <form method='post'>
+                          {% csrf_token %}
+                          {{form.company}}
+                          <div class="form-row">
+                            <div class="form-group col-md-3">
+                              <label for="agent">{% trans "Agent" %}</label>
+                              {{form.agent}}
+                              <p style="color: red;">{{form.agent.error}}</p>
+                            </div>
+
+                          </div>
+                         
+                          <div class="form-row">
+                            <div class="form-group col-md-3">
+                              <label for="group_no">{% trans "Group No" %}</label>
+                             {{form.group_no}}
+
+                             <p style="color: red;">{{form.group_no.error}}</p>
+
+
+                            </div>
+                            <div class="form-group col-md-3">
+                              <label for="group_name">{% trans "Group Name" %}</label>
+                             {{form.group_name}}
+                             <p style="color: red;">{{form.group_name.error}}</p>
+
+                            </div>
+                            <div class="form-group col-md-3">
+                              <label for="pax">{% trans "PAX" %}</label>
+                              {{form.pax}}
+                              <p style="color: red;">{{form.pax.error}}</p>
+
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-3">
+                              <label for="group_no">{% trans "No of Transport Routes" %}</label>
+                             {{form.transport_routes}}
+                             <p style="color: red;">{{form.transport_routes.error}}</p>
+
+
+                            </div>
+                            <div class="form-group col-md-3">
+                              <label for="group_name">{% trans "Transportation Type" %}</label>
+                             {{form.transportation_type}}
+                             <p style="color: red;">{{form.transportation_type.error}}</p>
+
+                            </div>
+                            
+                          </div>
+                          
+                          <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+                          {% if allow_status_change %}
+                          <button type="submit" class="btn btn-success">{% trans "Approve" %}</button>
+                          <button type="submit" class="btn btn-danger">{% trans "Reject" %}</button>
+                          {% endif %}
+
+                        </form>
+                       
+                      </div>
+                      <!-- /.card-body -->
+                  </div>
+                  {% if allowed_flights_view %}
+                  <div class="card card-outline card-info">
+
+                              
+
+                  
+                    <div class="card-body">
+                      <h4>Flight</h4>
+                      <table class="table table-hover table-sm table-bordered table-responsive">
+                          <thead>
+                            <tr>
+                              <th scope="col">{% trans "Type" %}</th>
+                              <th scope="col">{% trans "From" %}</th>
+                              <th scope="col">{% trans "To" %}</th>
+                              <th scope="col">{% trans "Flight no" %}</th>
+                              <th scope="col">{% trans "Departure Date" %}</th>
+                              <th scope="col">{% trans "Departure Time" %}</th>
+                              <th scope="col">{% trans "Arrival Date" %}</th>
+                              <th scope="col">{% trans "Arrival Time" %}</th>
+                              <th scope="col">{% trans "Remarks" %}</th>
+
+                              <th scope="col">{% trans "Actions" %}</th>
+
+
+
+                            </tr>
+                          </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">{% trans "Arrival" %}</th>
+                            <td>KHI</td>
+                            <td>JED</td>
+                            <td>SV-809</td>
+                            <td>01/01/2023</td>
+                            <td>14:50</td>
+                            <td>01/01/2023</td>
+                            <td>20:40</td>
+                            <td>-</td>
+                            <td><button type="submit" class="btn btn-warning btn-sm">✏️</button></td>
+
+
+
+
+
+                          </tr>
+                          <tr>
+                            <th scope="row">{% trans "Return" %}</th>
+                            <td>MED</td>
+                            <td>KHI</td>
+                            <td>SV-819</td>
+                            <td>10/01/2023</td>
+                            <td>12:40</td>
+                            <td>10/01/2023</td>
+                            <td>15:40</td>
+                            <td>-</td>
+                            <td><button type="submit" class="btn btn-primary btn-sm">➕</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                     
+                        
+                      </div>
+                      </form>
+                      
+
+                    </div>
+                    {% endif %}
+                    <!-- /.card-body -->
+                </div>
+                <div>
+              </div>
+      </section>
+      <!-- /.content -->  
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+
+

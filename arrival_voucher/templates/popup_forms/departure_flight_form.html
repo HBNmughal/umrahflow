@@ -1,0 +1,28 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% block wrapper %}
+<div class="card card-default">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Edit" %} {% trans "Departure Flight" %}</h4>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+    <form class"form-group" method="post">
+        {% csrf_token %}
+        {{form}}
+        <div class="card-footer row">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+          </div>
+    </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+
+{% endblock %}

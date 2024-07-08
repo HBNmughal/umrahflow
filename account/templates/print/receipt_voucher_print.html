@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+{% load tz %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Receipt Voucher" %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .voucher {
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 0px;
+        }
+        .voucher h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .voucher .row {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .voucher .col-6, .voucher .col-12 {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 0px;
+        }
+        .voucher .amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .company-logo {
+            max-width: 150px;
+        }
+        .company-details {
+            margin-bottom: 20px;
+        }
+        .rtl {
+            direction: rtl;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="voucher {% if request.LANGUAGE_CODE == 'ar' %}rtl{% endif %}">
+    {% include 'print/company_header.html' %}
+    <h1 class="text-center">{% trans "Receipt Voucher" %}</h1>
+    <div class="row">
+        <div class="col-6"><strong>{% trans "Number" %}:</strong> {{voucher.id}}</div>  
+        <div class="col-6 "><strong>{% trans "Amount" %}:</strong> <span class="amount">{{voucher.amount}} {{request.user.employee.company.settings.get_default_currency_display}}</span></div>
+    </div>
+    <div class="row">
+        <div class="col-6"><strong>{% trans "Date" %}:</strong> {{voucher.date}}</div>
+    </div>
+    <div class="row">
+        <div class="col-12"><strong>{% trans "Received From" %}:</strong> {{voucher.collected_from.name}} ({{voucher.collected_from_name}}) </div>
+        <div class="col-12"><strong>{% trans "Account No." %}</strong> {{voucher.collected_from.account_number}}</div>
+    </div>
+    <div class="row">
+        <div class="col-12"><strong>{% trans "The Sum Of" %}:</strong> {{voucher.in_words}}</div>
+    </div>
+    <div class="row">
+        <div class="col-12"><strong>{% trans "Being" %}:</strong> {{voucher.description}}</div>
+    </div>
+    <div class="row">
+        <div class="col-6"><strong>{% trans "Payment Method" %}:</strong> {{voucher.get_payment_method_display}}</div>
+        <div class="col-6"><strong>{% trans "Bank Name" %}:</strong> {% if voucher.payment_method == 'bank_transfer' %}{{voucher.to_account.name}}{% endif %}</div>
+    </div>
+    <div class="row">
+        <div class="col-12"><strong>{% trans "Reference No" %}:</strong> {% if voucher.reference_no %} {{voucher.reference_no}}{% endif %}</div>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center"><strong>{% trans "Accountant" %}</strong></div>
+        <div class="col-3 text-center"><strong>{% trans "Auditor" %}</strong></div>
+        <div class="col-3 text-center"><strong>{% trans "Received By" %}</strong></div>
+        <div class="col-3 text-center"><strong>{% trans "Entered By" %}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center"></div>
+        <div class="col-3 text-center"></div>
+        <div class="col-3 text-center"></div>
+        <div class="col-3 text-center">{{voucher.transaction.username.employee.name}}</div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            
+            <p >{% trans "Created with" %} <img width="100px" src="{% static 'assets/images/umrahflow_logo.png'%}" alt="UmrahFlow"> {% trans "Print By" %} {{request.user}} {% trans "Date" %}: {% now "d/m/Y H:i" %}</p>
+        </div>
+    </div>
+</div>
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

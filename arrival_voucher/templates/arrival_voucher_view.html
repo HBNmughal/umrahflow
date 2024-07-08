@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Arrival Voucher" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Arrival Voucher" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">{% trans "Basic Details" %}</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">{% trans "Agent" %}</label>
+                      <input type="text" class="form-control" disabled value="{{basic_details.agent}}">
+                    </div>
+                    <div class="form-group">
+                      <label>{% trans "Country" %}</label>
+                      <input type="text" class="form-control" disabled value="{{basic_details.country}}">
+                    </div>
+                    <div class="form-group">
+                      <label>{% trans "Transportation Type" %}</label>
+                      <input type="text" class="form-control" disabled value="{{basic_details.get_transportation_type_display}}">
+                    </div>
+                    <div class="form-group">
+                      <label>{% trans "PAX" %}</label>
+                      <input type="text" class="form-control" disabled value="{{basic_details.pax}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">{% trans "Group No" %}</label>
+                      <input type="text" class="form-control" disabled value="{{basic_details.group_no}}">
+                    </div>
+                    <div class="form-group">
+                      <label>{% trans "Group Leader Name" %}</label>
+                      <input type="text" class="form-control" disabled value="{{basic_details.group_leader}}">
+                    </div>
+                    <div class="form-group">  
+                      <label>{% trans "Group Leader Mobile No" %}</label>
+                      <input type="text" class="form-control" disabled value="{{basic_details.group_leader_contact}}">
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+  
+                  <div class="card-footer">
+                    <button type="button" class="btn btn-primary swalDefaultSuccess" 
+                    onClick="popupCenter({url: '{% url 'arrival_voucher_basic_edit' basic_details.id %}', title: 'xtf', w: 900, h: 900});">
+                      {% trans "Edit" %} 
+                    </button>                  </div>
+                </form>
+              </div>
+  
+            </div>
+            <!--/.col (left) -->
+            <!-- right column -->
+            <div class="col-md-6">
+              <!-- Form Element sizes -->
+              
+              <!-- /.card -->
+              {% if basic_details.transportation_type == 'air' %}
+              <div class="card card-danger">
+                <div class="card-header">
+                  <h3 class="card-title">{% trans "Flight" %}</h3>
+                </div>
+                <div class="card-body">
+                  <table class="table table-striped table-hover table-bordered table-sm ">
+                    <thead>
+                      <tr>
+                        <th>{% trans "Type" %}</th>
+                        <th>{% trans "Flight No" %}</th>
+                        <th>{% trans "Date" %} - {% trans "Time" %}</th>
+                        <th>{% trans "From" %}</th>
+                        <th>{% trans "To" %}</th>
+                        <th>{% trans "Action" %}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{% trans "Arrival" %}</td>
+                        <td>{{basic_details.arrival_flight_no}}</td>
+                        <td>{{basic_details.arrival_date|date:'d/m/Y'}} - {{basic_details.arrival_time|date:'H:i'}}</td>
+                        <td></td>
+                        <td>{{basic_details.get_arrival_airport_display}}</td>
+
+                        <td>
+                          <a onClick="popupCenter({url: '{% url 'arrival_flight_form' basic_details.id %}', title: 'xtf', w: 900, h: 900});"  class="btn btn-warning btn-sm"><i class="fe fe-edit fe-16"></i></a>
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>{% trans "Departure" %}</td>
+                        <td>{{basic_details.departure_flight_no}}</td>
+                        <td>{{basic_details.departure_date|date:'d/m/Y'}} - {{basic_details.departure_time|date:'H:i'}}</td>
+                        <td>{{basic_details.get_departure_airport_display}}</td>
+                        <td></td>
+                        <td>
+                          <a onClick="popupCenter({url: '{% url 'departure_flight_form' basic_details.id %}', title: 'xtf', w: 900, h: 900});"  class="btn btn-warning btn-sm"><i class="fe fe-edit fe-16"></i></a>
+
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                 
+                </div>
+                <!-- /.card-body -->
+                
+              </div>
+              {% endif %}
+              <!-- /.card -->
+              <div class="card card-danger">
+                <div class="card-header">
+                  <h3 class="card-title">{% trans "Accommodation" %}</h3>
+                </div>
+                <div class="card-body">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th>{% trans "City" %}</th>
+                        <th>{% trans "Hotel" %}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{% trans "Makkah" %}</td>
+                        <td>{{basic_details.makkah_hotel}}</td>
+                      </tr>
+                      <tr>
+                        <td>{% trans "Medina" %}</td>
+                        <td>{{basic_details.medina_hotel}}</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                 
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="button" class="btn btn-primary swalDefaultSuccess" 
+                  onClick="popupCenter({url: '{% url 'hotel_form' basic_details.id %}', title: 'xtf', w: 900, h: 900});">
+                    {% trans "Edit" %} 
+                  </button>                  </div>
+              </div>
+              <!-- /.card -->
+
+              
+            </div>
+            <!--/.col (right) -->
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+        <div class="card card-danger">
+          <div class="card-header">
+            <h3 class="card-title">{% trans "Transport" %}</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-inline">
+            <div class="form-group" style="padding: 20px">
+              <label for="exampleInputEmail1">Company</label>
+              <input type="text" class="form-control" disabled value="Daleel Al Umrah">
+            </div>
+            <div class="form-group" style="padding: 20px">
+              <label>BRN</label>
+              <input type="text" class="form-control" disabled value="MQM00493609ROUP:6175175">
+            </div>
+            <div class="form-group" style="padding: 20px">
+              <label>Type</label>
+              <input type="text" class="form-control" disabled value="By Air">
+            </div>
+          </div>
+
+            <table class="table table-bordered table-hover table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>{% trans "Type" %}</th>
+                  <th>{% trans "Date" %}</th>
+                  <th>{% trans "Time" %}</th>
+                  <th>{% trans "From" %}</th>
+                  <th>{% trans "Hotel" %}</th>
+
+                  <th>{% trans "To" %}</th>
+                  <th>{% trans "Hotel" %}</th>                
+                  <th>{% trans "Action" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for r in transport_routes %}
+                <tr>
+                  <td>Arrival</td>
+                  <td>21/01/2023</td>
+                  <td>10:10</td>
+                  <td>Jeddah Airport</td>
+                  <td></td>
+                  <td>Medina</td>
+                  <td>Pulman Zamzam</td>
+                  <td>
+                    <a href=''  class="btn btn-warning btn-sm"><i class="fe fe-edit fe-16"></i></a>
+
+                  </td>
+                </tr>
+                {% endfor %}
+              
+              </tbody>
+            </table>
+           
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-success">{% trans "Add Arrival Transport" %}</button>
+            <button type="submit" class="btn btn-info">{% trans "Add InterCity Transport" %}</button>
+            <button type="submit" class="btn btn-warning">{% trans "Add City Tour Transport" %}</button>
+            
+            <button type="submit" class="btn btn-danger">{% trans "Add Departure Transport" %}</button>
+
+
+          </div>
+        </div>
+        <!-- /.card -->
+      </section>
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+
+
+
+
+

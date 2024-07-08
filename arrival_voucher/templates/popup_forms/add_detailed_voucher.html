@@ -1,0 +1,156 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% load my_filter %}
+{% block wrapper %}
+<div class="card card-default" style="background-color: light-grey;">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Detailed Voucher" %}</h4>
+            
+          </div><!-- /.col -->
+          {% include "error.html" %}
+
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+        <div class="card card-success card-outline">
+          <div class="card-body">
+            <form class"form-group" method="post">
+            <h6>{% trans "Voucher Details" %}</h6>
+            <table class="table table-bordered   table-sm" style="text-align: left;">
+              <tbody>
+                <tr>
+                  <th>{% trans "Voucher no" %}</th>
+                  <td>
+                      <input type="text"  class="form-control input-sm"  required="" value="{{voucher.voucher_no}}" disabled required>
+                  </td>
+                  <th>{% trans "PAX" %}</th>
+                  <td>
+                    <input type="text"  class="form-control input-sm"  required="" value="{{voucher.pax}}" disabled required>
+
+                  </td>
+                </tr>
+                <tr>
+                  <th>{% trans "Date" %}</th>
+                  <td>
+                    <input type="text"  class="form-control input-sm"  required="" value="{{voucher.date}}" disabled required>
+
+                  </td>
+                  <th>{% trans "Agent" %}</th>
+                  <td>
+                    <input type="text"  class="form-control input-sm"  required="" value="{{voucher.agent}}" disabled required>
+
+                  </td>
+                </tr>
+          </table>
+        </div>
+          <!-- /.card -->
+        
+        <div class="card card-success card-outline">
+            <div class="card-body">
+              <form class"form-group" method="post">
+              <h6>{% trans "Basic Fees" %}</h6>
+              <table class="table table-bordered   table-sm" style="text-align: left;">
+                <tbody>
+                  <tr>
+                    <th>{% trans "Ground Services Fees" %}</th>
+                    <td>
+                        <input type="text"  class="form-control input-sm"  required="" data-ac="(#pax*{{basic_fees.ground_services_price}})" disabled required>
+                    </td>
+                    <th>{% trans "Additional Services Fees" %}</th>
+                    <td>
+                      <input type="text"  class="form-control input-sm"  required="" value="{{basic_fees.additional_services_price}}" disabled required>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Processing Fees" %}</th>
+                    <td>
+                      <input type="text"  class="form-control input-sm"  required="" value="{{basic_fees.processing_fees}}" disabled required>
+
+                    </td>
+                    <th>{% trans "Visa Fees" %}</th>
+                    <td>
+                      <input type="text"  class="form-control input-sm"  required="" value="{{basic_fees.visa_fees}}" disabled required>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Insurance Fees" %}</th>
+                    <td>
+                      <input type="text"  class="form-control input-sm"  required="" value="{{basic_fees.insurance_price}}" disabled required>
+
+                    </td>
+                    <th>{% trans "Transport BRN" %}</th>
+                    <td>
+                        <input type="number" name="transport_brn_price" class="form-control input-sm" step="0.01"  required value="{{voucher.transport_brn_price|replace_commas}}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Makkah BRN" %}</th>
+                    <td>
+                        <input type="number" name="makkah_brn_price" class="form-control input-sm" step="0.01"  required value="{{voucher.makkah_brn_price|replace_commas}}">
+                    </td>
+                    <th>{% trans "Medina BRN" %}</th>
+                    <td>
+                        <input type="number" name="medina_brn_price" class="form-control input-sm" step="0.01"   required value="{{voucher.medina_brn_price|replace_commas}}">
+                    </td>
+                  </tr>
+            </table>
+          </div>
+            <!-- /.card -->
+          </div>
+          <div class="card card-success card-outline">
+            <div class="card-body">
+              <h6>{% trans "Returns" %}</h6>
+              <table class="table table-bordered   table-sm" style="text-align: left;">
+                <tbody>
+
+                 <tr>
+                    <th>{% trans "Transport BRN" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                        <input type="number" name="transport_brn_return" class="form-control input-sm" step="0.01" required value="{{voucher.transport_brn_return|replace_commas}}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>{% trans "Makkah BRN" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                        <input type="number" name="makkah_brn_return" class="form-control input-sm" step="0.01" required value="{{voucher.makkah_brn_return|replace_commas}}">
+                    </td>
+                    <th>{% trans "Medina BRN" %}/{% trans "per 1 person" %}</th>
+                    <td>
+                        <input type="number" name="medina_brn_return" class="form-control input-sm" step="0.01" required value="{{voucher.medina_brn_return|replace_commas}}">
+                    </td>
+                  </tr>
+            </table>
+            </div>
+          </div>
+          <di v class="card card-success card-outline">
+            <div class="card-body">
+              <h6>{% trans "Sale Price" %}</h6>
+              <table class="table table-bordered   table-sm" style="text-align: left;">
+                <tbody>
+                  <tr>
+                    <th>{% trans "Sale Price" %}/{% trans "per 1 person" %}</th>  
+                    <td>
+                      <input type="text" name="sale_price" class="form-control input-sm"  required value="{{voucher.sale_price|replace_commas}}">
+                    </td>
+                  </tr>
+            </table>
+            </div>
+          </div>
+    
+        {% csrf_token %}
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+          </div>
+      </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <script src="{% static 'plugins\autocalculate\jautocalculate.js' %}"></script>
+{% endblock %}

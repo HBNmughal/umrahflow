@@ -1,0 +1,37 @@
+{% load static %}
+{% load l10n %}
+{% comment %} {% load my_filter %} {% endcomment %}
+
+
+
+{% for account in account_tree %}
+<tr>       
+    <td >
+       {{ account.code }} 
+        
+    </td>
+    <td >
+        <span class="level_{{account.account_level}}" >{{ account.name }}</span>
+    </td>
+    <td>
+        <span class="{{account.balance_color}}" dir="ltr"> 
+        {{ account.balance }}
+        </span>
+        {% comment %} <span class="badge badge-{% if account.balance >= 0 %}success{% else %}danger{% endif %} badge-pill"  >{{ account.balance }}</span> {% endcomment %}
+    </td>
+    <td>
+        <button type="button" class="btn btn-link btn-sm" onClick="window.location.href='{% url "account_view" account.pk %}';"><i class="fe fe-eye fe-16"></i></button>
+        {% if account.allow_edit %}
+            <button type="button" class="btn btn-link btn-sm" onClick="popupCenter({url: '{% url 'edit_sub_account' account.pk %}', title: 'xtf', w: 900, h: 900});"><i class="fe fe-edit fe-16"></i></button>  
+        {% endif %}          
+        {% if account.allow_child_accounts %}
+            <button type="button" class="btn btn-link btn-sm" onClick="popupCenter({url: '{% url 'account_create_sub_account' account.pk %}', title: 'xtf', w: 900, h: 900});"><i class="fe fe-plus fe-16"></i></button>
+        {% endif %}
+    </td>  
+
+    
+</tr>
+{% if account.children %}
+        {% include "account_tree_template.html" with account_tree=account.children %}
+{% endif %}
+{% endfor %}

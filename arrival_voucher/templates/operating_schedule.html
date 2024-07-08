@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Operating Schedule" %} - {{date|date:"d/m/Y (D)"}} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Operating Schedule" %} - {{date|date:"d/m/Y (l)"}}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="card card-success card-outline">
+          <div class="card-body">
+              <div class='form-group'>
+                <form>
+
+                <div class='row'>
+                    
+                </div>
+                
+
+
+            </div>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target=".modal-filter">{% trans "Filter" %}</button>
+
+                    <button type="button" onClick="popupCenter({url: '{{request.get_full_path}}{% if 'filter' in request.GET %}&print=1{% else %}?print=1{% endif %}', title: 'xtf', w: 900, h: 900});" class="btn btn-primary swalDefaultSuccess"
+            >
+            {% trans "Print" %}
+            </button>
+
+            
+          </div>
+          <!-- /.card -->
+        </div>
+        <div class="card">
+          <div class="card-body small">
+          <div class="table-responsive">
+            <table id="dataTable" class="table data-table  table-striped table-sm table-hover table-bordered">
+              <thead class="thead-dark">  
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans "BRN" %}</th>
+                    <th>{% trans "Voucher " %}</th>
+                    <th>{% trans "Reference no " %}</th>
+
+
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Time" %}</th>
+                    <th>{% trans "Agent" %}</th>
+                    <th>{% trans "PAX" %}</th>
+                    <th>{% trans "From" %}</th>
+                    <th>{% trans "To" %}</th>
+
+                    <th>{% trans "Transport type" %}</th>
+                    <th>{% trans "Transport Company" %}</th>
+                    <th>{% trans "Transport Status" %}</th>
+
+
+
+                    <th>{% trans "Group Leader" %}</th>
+                    <th>{% trans "Driver(s)" %}</th>
+                    <th>{% trans "Plate no" %}</th>
+                    <th>{% trans "Remarks" %}</th>
+
+                    <th>{% trans "Status" %}</th>
+                    <th>{% trans "Action" %}</th>
+
+                  </tr>
+                  </thead >
+                  <tbody>
+                    {% for movement in movements %}
+                    {% if movement.status == 'draft' %}
+                    <tr class="">
+                    {% elif movement.status == 'pending' %}
+                    <tr class="table-warning">
+                    {% elif movement.status == 'cancelled' %}
+                    <tr class="table-dark">
+                    {% elif movement.status == 'on_the_way' %}
+                    <tr class="table-primary">
+                    {% elif movement.status == 'confirmed' %}
+                    <tr class="">
+                    {% elif movement.status == 'completed' %}
+                    <tr class="table-success">
+                    {% elif movement.status == 'delayed' %}
+                    <tr class="table-danger">
+                    {% else %}
+                    <tr class="">
+                    {% endif %}
+                      <td class="align-middle">{{forloop.counter}}</td>
+                      <td class="align-middle">
+                        {% if movement.voucher.transport_brn %}
+                        {{movement.voucher.transport_brn}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+                        UP-{{movement.voucher.id}}
+                      </td>
+                      <td class="align-middle">
+                        {% if movement.voucher.agent_referance_no %}
+                        {{movement.voucher.agent_referance_no}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">{{movement.date|date:"d/m/Y"}}</td>
+                      <td class="align-middle">{{movement.time|date:"H:i"}}</td>
+
+                      <td class="align-middle">{{movement.voucher.agent}} ({{movement.voucher.country}})</td>
+                      <td class="align-middle">{{movement.voucher.pax}}</td>
+                      <td class="align-middle"><strong>{{movement.route.route_from}}</strong>
+                        {% if movement.movement_from_hotel %}
+                        <br>
+                        {{movement.movement_from_hotel}}
+                        {% endif %}
+                        {% if movement.route.is_linked_with_arrival_flight %}
+                        <br>
+                        {{movement.flight_no}} - {{movement.voucher.arrival_time|date:"H:i"}} {% if movement.flight_date_differance %}<sup> {{movement.flight_date_differance}}</sup>{% endif %}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle"><strong>{{movement.route.route_to}}</strong>
+                        {% if movement.movement_to_hotel %}
+                        <br>
+                        {{movement.movement_to_hotel}}
+                        {% endif %}
+                        {% if movement.route.is_linked_with_departure_flight %}
+                        <br>
+                        {{movement.flight_no}} - {{movement.voucher.departure_time|date:"H:i"}} {% if movement.flight_date_differance %}<sup> {{movement.flight_date_differance}}</sup>{% endif %}
+                        {% endif %}
+                      </td>
+
+                      <td class="align-middle">
+                        {% if movement.type %}
+                        {{movement.type}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+
+                        {% if movement.transport_company %}
+                        {{movement.transport_company}}
+                        {% elif movement.voucher.transport_company %}
+                        {{movement.voucher.transport_company}}
+                        {% endif %}
+
+                      </td>
+                      <td class="align-middle">
+                        {{movement.voucher.get_transport_status_display}}                     
+                      </td>
+
+              
+
+
+                      <td class="align-middle">
+                        
+                        {% if not movement.voucher.group_leader %}
+                        <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_group_leader' movement.id %}', title: 'xtf', w: 900, h: 900});">
+                        <i class="fe fe-plus fe-16"></i>
+                        {% trans "Add" %}
+                        </a>
+                        {% else %}
+                        <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_group_leader' movement.id %}', title: 'xtf', w: 900, h: 900});">
+                          <strong>{{movement.voucher.group_leader}}</strong><br>{{movement.voucher.group_leader_contact}}
+                        </a>
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+                        <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_driver' movement.id %}', title: 'xtf', w: 900, h: 900});">
+                        {% if movement.first_driver_name %}
+                        <strong>{{movement.first_driver_name}}</strong><br>{{movement.first_driver_phone}}
+                        {% endif %}
+                        
+                        {% if movement.second_driver_name %}
+                        <br>
+                        <strong>{{movement.second_driver_name}}</strong><br>{{movement.second_driver_phone}}
+                        {% endif %}
+                        {% if not movement.first_driver_name and not movement.second_driver_name %}
+                        <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_driver' movement.id %}', title: 'xtf', w: 900, h: 900});">
+                        <i class="fe fe-plus fe-16"></i>
+                        {% trans "Add" %}
+                        </a>
+                        {% endif %}
+                        </a>
+
+
+                      </td>
+                      <td class="align-middle">
+                        {% if movement.no_plate %}
+                        {{movement.no_plate}}
+                        {% endif %}
+                        
+                      </td>
+                      <td class="align-middle">
+                        
+
+                        {% if movement.remarks %}
+                        {{movement.remarks}}
+
+                        <a href='javascript:;' onclick="popupCenter({url: '{% url 'movement_status_form' movement.id %}', title: 'xtf', w: 900, h: 900});">
+                          <i class="fe fe-edit fe-16"></i>
+                        </a>
+                        {% else %}
+                        <a href='javascript:;' onclick="popupCenter({url: '{% url 'movement_status_form' movement.id %}', title: 'xtf', w: 900, h: 900});">
+                        <i class="fe fe-plus fe-16"></i>
+                        </a>
+                        {% endif %}
+                      </td>
+
+
+
+
+                      <td class="align-middle">
+
+                        <form action="{% url 'movement_status_change_table' movement.id %}?return_path={{ request.get_full_path }}" method="post" class="form-inline">
+                        {% csrf_token %}
+                        <select name="status" class="form-control input-sm select2" style="border-radius: 0px !important;" onchange="this.form.submit()">
+                        
+                          <option value="pending" {% if movement.status == 'pending' %}selected {% endif %}>{% trans "Pending" %}</option>
+                        
+                          <option value="confirmed"{% if movement.status == 'confirmed' %}selected {% endif %}>{% trans "Confirmed" %}</option>
+                        
+                          <option value="cancelled"{% if movement.status == 'cancelled' %}selected {% endif %}>{% trans "Rejected" %}</option>
+                        
+                          <option value="completed"{% if movement.status == 'completed' %}selected {% endif %}>{% trans "Completed" %}</option>
+                        
+                          <option value="on_the_way"{% if movement.status == 'on_the_way' %}selected {% endif %}>{% trans "On the way" %}</option>
+                        
+                          <option value="delayed"{% if movement.status == 'delayed' %}selected {% endif %}>{% trans "Delayed" %}</option>
+                        
+                        </select>
+            
+                        </form>
+
+                      </td>
+                      <td class="align-middle">
+                        <div class="">
+                        <a href='{% url 'arrival_voucher' movement.voucher.id %}'  class="btn btn-sm"><i class="fe fe-eye fe-16"></i></a>
+                        {% comment %} <a href='https://api.whatsapp.com/'  class="btn btn-sm"><i class="fas"></i>WA</a> {% endcomment %}
+                          </div>
+                      </td>
+                      
+
+
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    
+                  </table>
+              
+              
+              
+            </div>
+            
+
+            
+            </div>
+          </div>
+          <!-- /.card -->
+          <div class="modal fade modal-filter modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <form method='get' action=''>
+
+                <div class="modal-header">
+                  <h5 class="modal-title" id="defaultModalLabel">{% trans "Filter" %}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  {{filter_form.as_p}}
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" name="filter" value="1" class="btn btn-secondary btn-block">{% trans "Display Records" %}</button>
+                </div>
+              </div>
+            </form>
+
+            </div>
+          </div>
+          
+          <div class="modal fade" id="arrival_voucher_add_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{% trans "Add Arrival Voucher" %}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method='post' action='{% url 'add_arrival_voucher' %}'>
+                        {% csrf_token %}
+                        {{add_voucher_form.as_p}}                       
+                    </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
+                </form>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+
+
+
+
+

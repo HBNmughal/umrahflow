@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% block title %}{% trans "Payment Voucher List" %}{% endblock %}
+{% block content %}
+{% comment %} {% load my_filter %} {% endcomment %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Payment Voucher List" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+
+          
+        </div>
+        <div class="card card-success card-outline">
+          <div class="card-body">
+             <button type="button" class="btn btn-primary " onClick="window.location.href='{% url "payment_voucher_add_view" %}';">
+              {% trans "Add New" %}
+            </button>
+            
+          </div>
+        </div>
+        
+  
+          <!-- /.card-header -->
+        <div class="card">
+          <div class="card-body">
+            
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead class="thead-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans "Voucher No." %}</th>
+                    <th>{% trans "Date" %}
+                    <th>{% trans "Paid to" %}</th>
+                    <th>{% trans "Paid from account" %}</th>
+                    <th>{% trans "Discription" %}</th>
+                    <th>{% trans "Amount" %}</th>
+                    <th>{% trans "Reference No" %}</th>
+                    <th>{% trans "Payment Method" %}</th>
+                    <th>{% trans "Transaction" %}</th>
+                    <th>{% trans "Username" %}</th>
+                    <th>{% trans "Action" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for v in vouchers %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{v.id}}</td>
+                      <td>{{v.date}}</td>
+                      <td>
+                        {{v.paid_to}} {% if v.paid_to_name %} ( {{v.paid_to_name}} ){% endif %}
+                      </td>
+                      <td>
+                        {{v.from_account}}
+                      </td>
+                     
+                      
+                
+                      <td 
+                      {% if request.LANGUAGE_CODE == 'ar' %}
+                      style='text-align:right;'
+                      {% elif request.LANGUAGE_CODE == 'en' %}
+                      style='text-align:left;'
+                      {% endif %}>
+                      {{v.description}}
+                    </td>
+                    <td>
+                        {{v.amount}}
+                    </td>
+                    <td>
+                    {% if v.reference_no %} 
+                        {{v.reference_no}}
+                    {% endif %}
+                    </td>
+                    <td>
+                      {{v.get_payment_method_display}}
+                    </td>
+                    <td>
+                      {% if v.transaction %}
+                        <a href="{% url 'transaction_view' v.transaction.id %}">{{v.transaction.id}}</a>
+                        {% else %}
+                        transaction not found
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{v.transaction.username}}
+                    </td>
+                      <td>
+                        {% if v %}
+                        <div class="btn-group"> 
+                        <a href="{% url 'payment_voucher_edit_view' v.id %}"></i>{% trans "View" %}</a>
+                        <a href="" onClick="popupCenter({url: '{% url 'payment_voucher_print' v.id %}', title: 'xtf', w: 900, h: 900});"> {% trans "Print" %}</a>
+                        </div>
+                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Modal -->
+<div class="modal fade" id="receipt_vouchers_report" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Receipt Vouchers Report" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action=''>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,131 @@
+<!-- search.html -->
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Include HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.7.0/dist/htmx.js"></script>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div>
+        <input class="form-control" type="search" 
+       name="search" placeholder="Begin Typing To Search Users..." 
+       hx-get="{% url 'search_view' %}?q={{ value }}"
+       hx-trigger="input changed delay:500ms, search" 
+       hx-target="#search-results" 
+       hx-indicator=".htmx-indicator">
+        <input type="text" id="search-input" class="form-control" placeholder="Search" hx-swap="outerHTML" hx-trigger="keyup delay:5ms" hx-get="{% url 'search_view' %}?q={{ value }}">
+    </div>
+
+    <div class="table-responsive mt-3" hx-swap="outerHTML" hx-target="#table-container">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{% trans "Voucher " %}</th>
+                    <th>{% trans "Agent Reference No" %}</th>
+
+                    
+                    
+
+                    <th>{% trans "BRN" %}</th>
+                    <th>{% trans "Agent" %}</th>
+                    <th>{% trans "Country" %}</th>
+                    <th>{% trans "PAX" %}</th>
+                    <th>{% trans "Group no" %}</th>
+                    {% comment %} <th>{% trans "Status" %}</th> {% endcomment %}
+                    <th>{% trans "Transport Company" %}</th>
+                    
+                    <th>{% trans "Type" %}</th>
+                    <th>{% trans "Transport Status" %}</th>
+
+                    <th>{% trans "Starting Date" %}</th>
+                    <th>{% trans "Routes" %}</th>
+
+                    <th>{% trans "Total Movements" %}</th>
+                    <th>{% trans "Completed" %}</th>
+                  </tr>
+            </thead>
+            <tbody hx-target="#table-body">
+                {% for v in data %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>UP-{{v.id}}</td>
+                      <td>{% if v.agent_referance_no %}{{v.agent_referance_no}}{% endif %}</td>
+
+                      
+                      <td>{% if v.transport_brn %}{{v.transport_brn}}{% endif %}</td>
+                      <td>{{v.agent}}</td>
+                      <td>{{v.country}}</td>
+                      <td>{{v.pax}}</td>
+                      <td>{{v.group_no}}</td>
+                      <td>{% if v.transport_company %}{{v.transport_company}}{% endif %}</td>
+                      
+                      
+                      <td>
+                        {% if v.transport_type %}
+                        {{v.transport_type}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+                        {{v.get_transport_status_display}}                     
+                      </td>
+                      <td>
+                        {% if v.starting_date %}
+                        {{v.starting_date|date:"d/m/Y"}}
+                        {% endif %}
+                      </td>
+                      <td>
+                        {% for r in v.voucher_routes %}
+                        ({{r.route_from}} - {{r.route_to}}) 
+                        {% endfor %}
+                      </td>
+                      
+
+                      <td>{{v.total_movement}}</td>
+                      <td>{{v.total_movements_completed}}</td>
+
+                      
+
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+
+    {% comment %} <div class="pagination mt-3">
+        <span class="step-links">
+            {% if data.has_previous %}
+                <a href="?page=1" class="page-link">&laquo; first</a>
+                <a href="?page={{ data.previous_page_number }}" class="page-link">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ data.number }} of {{ data.paginator.num_pages }}.
+            </span>
+
+            {% if data.has_next %}
+                <a href="?page={{ data.next_page_number }}" class="page-link">next</a>
+                <a href="?page={{ data.paginator.num_pages }}" class="page-link">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div> {% endcomment %}
+</div>
+
+
+
+</body>
+</html>

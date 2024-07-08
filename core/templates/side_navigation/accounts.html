@@ -1,0 +1,143 @@
+{% load i18n %}
+
+<p class="text-muted nav-heading mt-4 mb-1">
+  <span>{% trans "Finance and Accounts" %}</span>
+</p>
+
+<ul class="navbar-nav flex-fill w-100 mb-2">
+  <li class="nav-item dropdown">
+    <a href="#accounts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+      <i class="fe fe-folder fe-16"></i>
+      <span class="ml-3 item-text">{% trans "Accounts" %}</span>
+    </a>
+    <ul class="collapse list-unstyled pl-4 w-100" id="accounts">
+      {% if perms.account.can_view_agent_account %}
+      <li class="nav-item">
+        <a class="nav-link pl-3" href="{% url 'payments_agents_list' %}"><span class="ml-1 item-text">{% trans "Agents" %}</span>
+        </a>
+      </li>
+      {% endif %}
+      
+      {% if perms.account.can_view_transport_company_account %}
+      <li class="nav-item">
+        <a class="nav-link pl-3" href="{% url 'transport_company_account_list' %}"><span class="ml-1 item-text">{% trans "Transport Companies" %}</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if perms.account.can_view_internal_account %}
+      {% comment %} {% for account in account_names %}
+      <li class="nav-item">
+        <a class="nav-link pl-3" href="{% url 'demo_account_view' account.id %}"><span class="ml-1 item-text">{{account}}</span>
+        </a>
+      </li>
+      {% endfor %} {% endcomment %}
+      {% endif %}
+      {% if perms.account.can_view_accounts_tree %}
+      {% comment %} <li class="nav-item">
+        <a class="nav-link pl-3" href="{% url 'demo_account_list' %}"><span class="ml-1 item-text">{% trans "All Accounts" %}</span>
+        </a>
+      </li> {% endcomment %}
+      <li class="nav-item">
+        <a class="nav-link pl-3" href="{% url 'account-list' %}"><span class="ml-1 item-text">{% trans "Accounts Tree" %}</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </li>
+  <li class="nav-item w-100">
+    <a class="nav-link" href="{% url 'transaction_list_view' %}">
+      <i class="fe fe-repeat fe-16"></i>
+      <span class="ml-3 item-text">{% trans "Transactions" %}</span>
+    </a>
+  </li>
+  
+
+  <ul class="navbar-nav flex-fill w-100 mb-2">
+    <li class="nav-item dropdown">
+      <a href="#receipt_voucher_nav" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+        <i class="fe fe-file-text fe-16"></i>
+        <span class="ml-3 item-text">{% trans "Receipt Vouchers" %}</span>
+      </a>
+      <ul class="collapse list-unstyled pl-4 w-100" id="receipt_voucher_nav">
+        <li class="nav-item">
+          <a class="nav-link pl-3" href="{% url "receipt_voucher_list_view" %}"><span class="ml-1 item-text">{% trans "Receipt Voucher List" %}</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link pl-3" href="{% url "receipt_voucher_add_view" %}"><span class="ml-1 item-text">{% trans "Add new" %} </span>
+
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="navbar-nav flex-fill w-100 mb-2">
+    <li class="nav-item dropdown">
+      <a href="#payment_voucher_nav" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+        <i class="fe fe-file-text fe-16"></i>
+        <span class="ml-3 item-text">{% trans "Payment Vouchers" %}</span>
+      </a>
+      <ul class="collapse list-unstyled pl-4 w-100" id="payment_voucher_nav">
+        <li class="nav-item">
+          <a class="nav-link pl-3" href="{% url "payment_voucher_list_view" %}"><span class="ml-1 item-text">{% trans "Payment Voucher List" %}</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link pl-3" href="{% url "payment_voucher_add_view" %}"><span class="ml-1 item-text">{% trans "Add new" %} </span>
+
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  {% if perms.voucher.can_view_visa_invoice %}
+  <p class="text-muted nav-heading mt-4 mb-1">
+    <span>{% trans "Invoices" %}</span>
+  </p>
+  <li class="nav-item w-100">
+    <a class="nav-link" href="{% url 'umrah_visa_group_invoice_list' %}">
+      <i class="fe fe-file-text fe-16"></i>
+      <span class="ml-3 item-text">{% trans "Visa Invoices" %}</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if perms.voucher.can_view_transport_invoice %}
+  <li class="nav-item w-100">
+    <a class="nav-link" href="{% url 'transport_invoice_list' %}">
+      <i class="fe fe-file-text fe-16"></i>
+      <span class="ml-3 item-text">{% trans "Transport Invoices" %}</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if perms.arrival_voucher.can_view_arrival_voucher_invoice %}
+
+  <li class="nav-item dropdown">
+    <a href="#arrival_voucher_invoices" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+      <i class="fe fe-file fe-16"></i>
+      <span class="ml-3 item-text">{% trans "Arrival Voucher Invoices" %}</span>
+    </a>
+    <ul class="collapse list-unstyled pl-4 w-100" id="arrival_voucher_invoices">
+      <li class="nav-item">
+        <a class="nav-link pl-3" href="{% url 'pending_arrival_voucher_invoice_list' %}"><span class="ml-1 item-text">{% trans "Pending" %}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link pl-3" href="{% url 'approved_arrival_voucher_invoice_list' %}"><span class="ml-1 item-text">{% trans "Approved" %}</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  {% endif %}
+  {% if perms.agent.can_view_agent %}
+  <li class="nav-item w-100">
+    <a class="nav-link" href="{% url 'agent_list' %}">
+      <i class="fe fe-file-text fe-16"></i>
+      <span class="ml-3 item-text">{% trans "Agents" %}</span>
+    </a>
+  </li>
+  {% endif %}
+  
+</ul>

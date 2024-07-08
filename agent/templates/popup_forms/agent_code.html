@@ -1,0 +1,56 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+
+{% block wrapper %}
+<div class="card card-default">
+    <div class="container-fluid">      
+        <div class="row mb-2">
+            {% include "error.html" %}
+            <div class="col-sm-6">
+                <h4 class="m-0 text-dark">{% trans "Code" %}: {{agent}}</h4>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div> 
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <form method="post">
+                {% csrf_token %}
+                {{ agent_code_formset.non_form_errors.as_ul }}
+                <table id="formset" class="table table-bordered table-sm table-hover" >
+                {% for form in agent_code_formset.forms %}
+                    {% if forloop.first %}
+                        <thead>
+                            <tr>
+                                {% for field in form.visible_fields %}
+                                    <th>{{ field.label|capfirst }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                    {% endif %}
+                    <tr class="{% cycle row1 row2 %}">
+                        {% for field in form.visible_fields %}
+                            <td>
+                                {# Include the hidden fields in the form #}
+                                {% if forloop.first %}
+                                    {% for hidden in form.hidden_fields %}
+                                        {{ hidden }}
+                                    {% endfor %}
+                                {% endif %}
+                                {{ field }}
+                                <div class="text-danger">{{ field.errors.as_ul }}</div>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </table>
+                {% for hidden in agent_code_formset.management_form %}
+                    {{ hidden }}
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

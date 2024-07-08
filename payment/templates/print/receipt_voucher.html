@@ -1,0 +1,114 @@
+{% load static %}
+{% load my_filter %}
+{% load i18n %}
+
+
+<!doctype html>
+
+<html>
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+  
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <title>{{transaction.agent.name}} {% trans "Collect Payment" %} {% trans "Amount" %} {{transaction.amount|replace_commas}} {% trans "Date" %} {{transaction.date|date:"d-m-Y"}}</title>
+    
+  </head>
+
+
+  <body style="text-align: center" dir="ltr">
+    <table class="table table-borderless" >
+        <tr>
+            <td style="text-align: left;" class="align-middle">
+                <h4>{{request.user.employee.company.name_en}}</h4>
+                <h6>{{request.user.employee.company.address_en}}</h6>
+                <h6>C.R No. <strong>{{request.user.employee.company.cr_no}}</strong> - MOH Permit No. <strong>{{request.user.employee.company.permit_no}}</strong></h6>
+            </td>
+            <td><img src="{{request.user.employee.company.logo.url}}" width="130px"></td>
+
+            <td style="text-align: right;" class="align-middle"><h4> {{request.user.employee.company.name_ar}}</h4>
+                <h6>{{request.user.employee.company.address_ar}}</h6>
+                <h6>س.ت: <strong>{{request.user.employee.company.cr_no}}</strong> - رقم التصريح: <strong>{{request.user.employee.company.permit_no}}</strong></h6>
+            </td>
+        </tr>
+    </table>
+    <div class="container" dir="ltr" >
+    
+      <style type="text/css">
+        @font-face {
+            font-family: ArialUnicode;
+            src: url("static/Arial Unicode.ttf")
+        }
+        <!-- other stuff here -->
+        body {
+            margin: 0;
+            font-family: "ArialUnicode", sans-serif;
+        }
+        
+        <!-- more css here -->
+    </style>
+    
+    
+    
+    
+    <h4>Receipt Voucher - سند قبض</h4>
+    <div >  
+            <table class="table table-bordered align-middle" >
+                <tr>
+                    <th style="text-align: left; width: 30%; background-color: lightslategray;" class="align-middle" >Receipt Voucher No.</th>
+                    <td style="text-align: center;">{{transaction.id}}</td>
+                    <th style="text-align: right; width: 30%;background-color: lightslategray;" class="align-middle">رقم سند قبض</th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; width: 30%; background-color: lightslategray;" >Received From</th>
+                    <td style="text-align: center;">{{transaction.agent.name}}</td>
+                    <th style="text-align: right; width: 30%;background-color: lightslategray;">استلمت من السادة</th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; width: 30%; background-color: lightslategray;" >Date - Time</th>
+                    <td style="text-align: center;">{{transaction.date|date:"d/m/Y"}} - {{transaction.time|date:"H:i:s"}}</td>
+                    <th style="text-align: right; width: 30%;background-color: lightslategray;">التاريخ - الوقت</th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; width: 30%; background-color: lightslategray;" class="align-middle">Amount - Saudi Riyal</th>
+                    <th style="text-align: center;">{{transaction.amount|replace_commas}} <br>{{transaction.amount|replace_commas|number_in_words_ar}}</th>
+                    <th style="text-align: right; width: 30%;background-color: lightslategray;" class="align-middle">المبلغ - ريال السعودي</th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; width: 30%; background-color: lightslategray;" >Paid in</th>
+                    <td style="text-align: center;">{{transaction.get_payment_by_display}}</td>
+                    <th style="text-align: right; width: 30%;background-color: lightslategray;"> طريقة الدفع </th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; width: 30%; background-color: lightslategray;" >For</th>
+                    <td style="text-align: center;">{{transaction.payment_for}}</td>
+                    <th style="text-align: right; width: 30%;background-color: lightslategray;"> وذلك مقابل </th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; width: 30%; background-color: lightslategray;" >Collected By</th>
+                    <td style="text-align: center;">{{transaction.performed_by}}</td>
+                    <th style="text-align: right; width: 30%;background-color: lightslategray;"> اسم المستلم </th>
+                </tr>
+    
+    
+            </table>
+            <img src="https://barcode.tec-it.com/barcode.ashx?data={{transaction.id}}&code=Code128&translate-esc=on" height="50px">
+    </div>
+    
+    <footer >
+      <p ><br> <img width="80px" src="{% static 'assets/images/umrahflow_logo.png'%}" </p>
+  </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

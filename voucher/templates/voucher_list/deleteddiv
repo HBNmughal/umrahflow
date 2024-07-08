@@ -1,0 +1,5 @@
+dom: 'Bfrtip',
+      buttons: [
+        'excel', 'print'
+      ],
+      "lengthChange": true,

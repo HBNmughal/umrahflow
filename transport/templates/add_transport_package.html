@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {{page_title}} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="col-12">
+                  <div class="row align-items-center my-4">
+                    <div class="col">
+                      <h2 class="h3 mb-0 page-title">{{page_title}}</h2>
+                    </div>
+                    <div class="col-auto">
+                      {% comment %} <button type="button" class="btn btn-secondary"><span class="fe fe-trash fe-12 mr-2"></span>Delete</button> {% endcomment %}
+                      
+                    </div>
+                  </div>
+                <!-- /.content-header -->
+          <!-- Small boxes (Stat box) -->
+          <div class="card shadow">
+            <div class="card-body">
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+              {{form.as_p}}
+              <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+            </div>
+          </div> <!-- / .card -->
+          
+            
+            </div>
+            </div>
+            </div>
+
+
+
+          <!-- /.row -->
+          <!-- Main row -->
+          
+{% endblock %}

@@ -1,0 +1,74 @@
+<table class="table table-bordered table-hover"id="search-results" >
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>{% trans "Voucher " %}</th>
+            <th>{% trans "Agent Reference No" %}</th>
+
+            
+            
+
+            <th>{% trans "BRN" %}</th>
+            <th>{% trans "Agent" %}</th>
+            <th>{% trans "Country" %}</th>
+            <th>{% trans "PAX" %}</th>
+            <th>{% trans "Group no" %}</th>
+            {% comment %} <th>{% trans "Status" %}</th> {% endcomment %}
+            <th>{% trans "Transport Company" %}</th>
+            
+            <th>{% trans "Type" %}</th>
+            <th>{% trans "Transport Status" %}</th>
+
+            <th>{% trans "Starting Date" %}</th>
+            <th>{% trans "Routes" %}</th>
+
+            <th>{% trans "Total Movements" %}</th>
+            <th>{% trans "Completed" %}</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for v in data %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>UP-{{v.id}}</td>
+              <td>{% if v.agent_referance_no %}{{v.agent_referance_no}}{% endif %}</td>
+
+              
+              <td>{% if v.transport_brn %}{{v.transport_brn}}{% endif %}</td>
+              <td>{{v.agent}}</td>
+              <td>{{v.country}}</td>
+              <td>{{v.pax}}</td>
+              <td>{{v.group_no}}</td>
+              <td>{% if v.transport_company %}{{v.transport_company}}{% endif %}</td>
+              
+              
+              <td>
+                {% if v.transport_type %}
+                {{v.transport_type}}
+                {% endif %}
+              </td>
+              <td class="align-middle">
+                {{v.get_transport_status_display}}                     
+              </td>
+              <td>
+                {% if v.starting_date %}
+                {{v.starting_date|date:"d/m/Y"}}
+                {% endif %}
+              </td>
+              <td>
+                {% for r in v.voucher_routes %}
+                ({{r.route_from}} - {{r.route_to}}) 
+                {% endfor %}
+              </td>
+              
+
+              <td>{{v.total_movement}}</td>
+              <td>{{v.total_movements_completed}}</td>
+
+              
+
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

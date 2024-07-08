@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "vouchers List" %} {% endblock %}
+{% block content %}
+{% load my_filter %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Transport Invoices" %}</h1>
+
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+      {% include "error.html" %}
+
+      <div class="card card-success card-outline">
+        <div class="card-body">
+          <button type="button" class="btn btn-primary swalDefaultSuccess" 
+          onClick="popupCenter({url: '{% url 'add_transport_invoice' %}', title: 'xtf', w: 900, h: 900});">
+            {% trans "Add New Voucher" %}
+          </button>
+          {% comment %} <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#initial-prices">
+            {% trans "Initial Prices" %}
+          </button> {% endcomment %}
+          {% comment %} <button type="button" class="btn btn-success swalDefaultSuccess" onClick="window.open('add/', title: 'xtf', w: 900, h: 900});">
+            {% trans "Voucher with  Added Details" %} 
+          </button>
+          <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="window.open('add/', title: 'xtf', w: 900, h: 900});">
+            {% trans "Voucher Details not Added" %} 
+          </button> {% endcomment %}
+        </div>
+        <!-- /.card -->
+      </div>
+      <div class="card card-success card-outline">
+        <div class="card-body justify-content-center">
+          <form method="get" class="form-group ">
+            <div class="form-inline justify-content-center">
+            {{myFilter.form.date.label}}
+            {{myFilter.form.date}}
+            {{myFilter.form.agent.label}}
+            <select class="form-control select2" name='agent' id="agent_dropdown_list" >
+              <option value="">{% trans "All Agents" %}</option>
+            {% for agent in agents %}
+              <option value='{{agent.id}}' {% if request.GET.agent == agent.id %}{% endif %}>{{agent.name}} </option>
+              {% endfor %}
+            </select>
+            
+            <script>  
+              {% block voucher_list_script %}
+              $('#agent_dropdown_list').val('{{request.GET.agent}}');
+              $('#agent_dropdown_list').trigger('change');   
+              {% endblock %}  
+            </script>
+
+
+
+            
+            <input class="btn btn-outline-secondary"  type="submit" value="{% trans "Display Records" %}">
+            <input class="btn btn-outline-warning" type="submit" formaction="{% url 'print_voucher_list' 'sub_agent' %}" value="{% trans "Print" %}">
+           
+            </div>
+            
+            
+    
+            {% comment %} <input class="btn btn-outline-danger" type="submit" fformaction="{% url 'print_voucher_list' 'sub_agent' %}" value="{% trans "Print Detailed" %}"> {% endcomment %} 
+
+      
+          </form>
+
+
+        </div>
+        <!-- /.card -->
+      </div>
+
+                <div class="card">
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <table id="dataTable" class="data-table table table-bordered table-hover table-sm table-striped" >
+                          <thead class="thead-dark">
+                          <tr>
+                            <th>#</th>
+                            <th>{% trans "Invoice No." %}</th>
+                    
+                            <th>{% trans "Date" %}</th>
+                            <th>{% trans "Agent" %}</th>
+                            <th>{% trans "Transport type" %}</th>
+
+                            <th>{% trans "Description" %}</th>
+
+                            <th>{% trans "Price" %}</th>
+                            <th>{% trans "PAX" %}</th>
+                            <th>{% trans "Total" %}</th>
+                            <th>{% trans "Reference No" %}</th>
+
+
+
+                            <th>{% trans "Action" %}</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            {% for invoice in invoices %}
+                            <tr>
+                              <td>{{forloop.counter}}</td>
+                              <td>{{invoice.id}}</td>
+                              <td>{{invoice.date|date:"d/m/Y"}}</td>
+                              <td>{{invoice.agent}}</td>
+                              <td>{{invoice.get_transport_type_display}}</td>
+                              <td>
+                                {% if invoice.description %}
+                                {{invoice.description}}
+                                {% endif %}
+                              </td>
+
+                              <td>{{invoice.price|replace_commas}}</td>
+                              <td>{{invoice.qty}}</td>
+                              <td><strong>{{invoice.total|replace_commas}}</strong></td> 
+                              <td>
+                                {% if invoice.referance_no %}
+                                {{invoice.referance_no}}
+                                {% endif %}
+                              
+
+                              </td>
+                              
+                              <td align="center">                               
+                                
+                                <a onClick="popupCenter({url: '{% url 'edit_transport_invoice' invoice.id %}', title: 'xtf', w: 900, h: 900});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a>
+
+                                 
+                              </td>                         
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                  </div>
+                </div>
+    <!-- /.content-wrapper -->
+
+    <div class="modal fade" id="initial-prices">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{% trans "Initial Prices" %}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-success card-outline">
+              <div class="card-body">
+                <form class"form-group" method="post" action="{% url 'initial_voucher_price' %}">
+                  {% csrf_token %}
+                <h6>{% trans "Basic Fees" %}</h6>
+                <table class="table table-bordered   table-sm" style="text-align: left;">
+                  <tbody>
+                    <tr>
+                      <th>{% trans "Ground Services Fees" %}</th>
+                      <td>
+                          <input type="number" name="ground_services_price" class="form-control input-sm" step="0.01"  required value="{{initial_prices.ground_services_price|replace_commas}}">
+                      </td>
+                      <th>{% trans "Additional Services Fees" %}</th>
+                      <td>
+                        <input type="number" name="additional_services_price" class="form-control input-sm" step="0.01"  required value="{{initial_prices.additional_services_price|replace_commas}}">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Processing Fees" %}</th>
+                      <td>
+                        <input type="number" name="processing_fees" class="form-control input-sm" step="0.01"  required value="{{initial_prices.processing_fees|replace_commas}}">
+                      </td>
+                      <th>{% trans "Visa Fees" %}</th>
+                      <td>
+                        <input type="number" name="visa_fees" class="form-control input-sm" step="0.01"  required value="{{initial_prices.visa_fees|replace_commas}}">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Insurance Fees" %}</th>
+                      <td>
+                        <input type="number" name="insurance_price" class="form-control input-sm" step="0.01"  required value="{{initial_prices.insurance_price|replace_commas}}">
+  
+                      </td>
+                      <th>{% trans "Transport BRN" %}</th>
+                      <td>
+                          <input type="number" name="transport_brn_price" class="form-control input-sm" step="0.01"  required value="{{initial_prices.transport_brn_price|replace_commas}}">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Makkah BRN" %}</th>
+                      <td>
+                          <input type="number" name="makkah_brn_price" class="form-control input-sm" step="0.01"  required value="{{initial_prices.makkah_brn_price|replace_commas}}">
+                      </td>
+                      <th>{% trans "Medina BRN" %}</th>
+                      <td>
+                          <input type="number" name="medina_brn_price" class="form-control input-sm" step="0.01"   required value="{{initial_prices.medina_brn_price|replace_commas}}">
+                      </td>
+                    </tr>
+              </table>
+            </div>
+            <div class="card card-success card-outline">
+              <div class="card-body">
+                <h6>{% trans "Returns" %}</h6>
+                <table class="table table-bordered   table-sm" style="text-align: left;">
+                  <tbody>
+  
+                   <tr>
+                      <th>{% trans "Transport BRN" %}/{% trans "per 1 person" %}</th>
+                      <td>
+                          <input type="number" name="transport_brn_return" class="form-control input-sm" step="0.01" required value="{{initial_prices.transport_brn_return|replace_commas}}">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Makkah BRN" %}/{% trans "per 1 person" %}</th>
+                      <td>
+                          <input type="number" name="makkah_brn_return" class="form-control input-sm" step="0.01" required value="{{initial_prices.makkah_brn_return|replace_commas}}">
+                      </td>
+                      <th>{% trans "Medina BRN" %}/{% trans "per 1 person" %}</th>
+                      <td>
+                          <input type="number" name="medina_brn_return" class="form-control input-sm" step="0.01" required value="{{initial_prices.medina_brn_return|replace_commas}}">
+                      </td>
+                    </tr>
+              </table>
+              </div>
+            </div>
+            
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+            <button type="submit" class="btn btn-primary">{% trans "Save changes" %}</button>
+          </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+ 
+{% endblock %}
+
+

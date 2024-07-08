@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Umrah Visa Group Invoice" %} {% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+        
+    
+      
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="row align-items-center mb-4">
+                  <div class="col">
+                    <h2 class="h5 page-title"><small class="text-muted text-uppercase">{% trans "Umrah Visa Group Invoice" %}</h2>
+                  </div>
+                  {% comment %} {% if reservation %}
+                  <div class="col">
+                    <h2 class="h5 page-title"><small class="text-muted text-uppercase">{% trans "Request Date" %}</small><br />{{reservation.request_date}}</h2>
+                  </div>
+                  <div class="col">
+                    <h2 class="h5 page-title"><small class="text-muted text-uppercase">{% trans "Hotel" %}</small><br />{{reservation.hotel}}</h2>
+                  </div>
+                  <div class="col">
+                    <h2 class="h5 page-title"><small class="text-muted text-uppercase">{% trans "Status" %}</small><br /><span class="badge badge-{% if reservation.reservation_status == "request" %}primary{% elif reservation.reservation_status == "tentative" %}info{% elif reservation.reservation_status == "confirmed" %}success{% elif reservation.reservation_status == "cancelled" %}danger{% endif %}" >{{reservation.get_reservation_status_display}}</span></h2>
+                  </div>
+                  {% endif %} {% endcomment %}
+
+
+                  
+                  <div class="col-auto">
+                    {% comment %} {% if reservation %}
+                    <button type="button" class="btn btn-warning" onclick="window.location.href='{% url 'hotel_reservation_mailbox' reservation.id %}'" class="btn btn-primary btn-sm"><span class="fe fe-mail  mr-2"  ></span>{% trans "Reservation Mailbox" %}</button>
+                    {% endif %} {% endcomment %}
+                    {% comment %} {% if reservation.request and rooms %}
+                    {% if reservation.reservation_status == "tentative" %}
+                    <button type="button" class="btn btn-primary printButton" onclick="popupCenter({url: '{% url "print_tentative_reservation" reservation.id %}', title: 'xtf', w: 900, h: 500}); " class="btn btn-primary btn-sm"><span class="fe fe-printer  mr-2"  ></span>{% trans "Print Tentative Reservation" %}</button>
+                    {% elif reservation.reservation_status == "confirmed"  %}
+                    <button type="button" class="btn btn-primary printButton" onclick="popupCenter({url: '{% url "print_confirmed_reservation" reservation.id %}', title: 'xtf', w: 900, h: 500}); " class="btn btn-primary btn-sm"><span class="fe fe-printer  mr-2"  ></span>{% trans "Print Confirmed Reservation" %}</button>
+                    {% endif %}
+                    {% endif %} {% endcomment %}
+
+                  </div>
+                </div> <!-- .row -->
+                <div class="row my-4">
+                  <div class="col-md-9">
+                    <div class="card shadow mb-4">
+                      <div class="card-header">
+                        <strong class="card-title">{% trans "Basic Details" %}</strong>
+                        {% comment %} <span class="float-right"><i class="fe fe-flag mr-2"></i><span class="badge badge-pill badge-success text-white">Payment</span></span> {% endcomment %}
+                      </div>
+                      <div class="card-body">
+                        <form method="post" id="reservation_details_form">
+                            {% csrf_token %}
+                                {% for field in form %}
+                                {% if forloop.counter0|divisibleby:3 %}
+                                    <div class="row">
+                                {% endif %}
+                                
+                                        <div class="form-group col-md-4">
+                                            {{ field|as_crispy_field }}
+                                        </div>
+                                
+                                {% if forloop.counter|divisibleby:3 or forloop.last %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                          <button type="submit" class="btn btn-primary" id="saveButton">{% trans "Save" %}</button>
+                        </form>
+
+                      </div> <!-- .card-body -->
+                    </div> <!-- .card -->
+
+                  
+                  </div> <!-- .col-md -->
+                  <div class="col-md-3">
+                    <div class="card shadow mb-4">
+                        {% comment %} card-header {% endcomment %}
+                        <div class="card-header">
+                            <strong class="card-title">{% trans "Total" %}</strong>
+                        </div>
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label class="control-label  requiredField">{% trans "Total Paid in Bank" %}</label>
+                          <div class="controls ">
+                            <input type="number" name="total_paid_in_bank" value="" class="form-control numberinput" disabled="disabled" step="0.01" required="" id="id_total_paid_in_bank">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label  requiredField">{% trans "Invoice Total" %}</label>
+                          <div class="controls ">
+                            <input type="number" name="invoice_total" value="" class="form-control numberinput" disabled="disabled" step="0.01" required="" id="id_invoice_total">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- .col-md -->
+                </div> <!-- .row -->
+              </div> <!-- .col-md -->
+                  
+                </div> <!-- .col-md -->
+                
+              </div>
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+      </section>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const pax = document.getElementById('id_pax');
+          const visaFees = document.getElementById('id_visa_fees');
+          const insuranceFees = document.getElementById('id_insurance_fees');
+          const electronicServicesFees = document.getElementById('id_electronic_services_fees');
+          const groundServicesFee = document.getElementById('id_ground_service_price');
+          const transportBrn = document.getElementById('id_transport_brn');
+          const hotelBrn = document.getElementById('id_hotel_brn');
+          const totalPaidInBank = document.getElementById('id_total_paid_in_bank');
+          const agent = document.getElementById('id_agent');
+          const transportIncluded = document.getElementById('id_transport_included');
+
+          function calculateTotal() {
+              const visaFeeValue = parseFloat(visaFees.value) || 0;
+              const insuranceFeeValue = parseFloat(insuranceFees.value) || 0;
+              const electronicServicesFeeValue = parseFloat(electronicServicesFees.value) || 0;
+              const groundServicesFeeValue = parseFloat(groundServicesFee.value) || 0;
+              const transportBrnValue = parseFloat(transportBrn.value) || 0;
+              const hotelBrnValue = parseFloat(hotelBrn.value) || 0;
+              const paxValue = parseFloat(pax.value) || 1;
+
+              const total = ((visaFeeValue + insuranceFeeValue + electronicServicesFeeValue + groundServicesFeeValue) * paxValue) + transportBrnValue + hotelBrnValue;
+              totalPaidInBank.value = total.toFixed(2);
+          }
+
+          [pax, groundServicesFee, transportBrn, hotelBrn, agent, transportIncluded ].forEach(element => {
+              element.addEventListener('input', calculateTotal);
+          });
+          calculateTotal(); // Initial calculation
+
+          // Invoice total calculation, calculate visa_sale_price * pax
+          const visaSalePrice = document.getElementById('id_visa_sale_price');
+          const invoiceTotal = document.getElementById('id_invoice_total');
+
+          function calculateInvoiceTotal() {
+              const visaSalePriceValue = parseFloat(visaSalePrice.value) || 0;
+              const paxValue = parseFloat(pax.value) || 1;
+
+              const total = visaSalePriceValue * paxValue;
+              invoiceTotal.value = total.toFixed(2);
+          }
+
+          [pax, visaSalePrice].forEach(element => {
+              element.addEventListener('input', calculateInvoiceTotal);
+          });
+          calculateInvoiceTotal(); // Initial calculation
+        });
+
+        $(document).ready(function(){
+          $('#id_agent, #id_transport_included').change(function(){
+              var selectedAgent = $('#id_agent').val();
+              var transportIncluded = $('#id_transport_included').is(':checked');
+              var calculate_invoice_total = function () {
+                  var visaSalePriceValue = parseFloat($('#id_visa_sale_price').val()) || 0;
+                  var paxValue = parseFloat($('#id_pax').val()) || 1;
+
+                  var total = visaSalePriceValue * paxValue;
+                  $('#id_invoice_total').val(total.toFixed(2));
+              };
+
+              $.ajax({
+                  url: '{% url "get_agent_price" %}',  // URL to your Django view to fetch agent price
+                  method: 'GET',
+                  data: { 'agent': selectedAgent, 'transport_included': transportIncluded },
+                  success: function(response){
+                      $('#id_visa_sale_price').val(response.price);
+                      // check if response has transport_included_by_default key then set transport_included checkbox
+                      if (response.transport_included_by_default === true) {
+                          $('#id_transport_included').prop('checked', true);
+                      }
+                      
+
+                      calculate_invoice_total();
+                  },
+                  error: function(xhr, status, error){
+                      console.error('AJAX Error:', status, error);
+                  }
+              });
+          });
+        });
+
+
+      </script>
+      <script>
+
+      </script>
+{% endblock %}

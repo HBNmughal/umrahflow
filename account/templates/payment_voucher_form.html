@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{% trans "Payment Voucher" %}{% endblock %}
+{% block content %}
+{% comment %} {% load my_filter %} {% endcomment %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">  
+          <!-- /.card-header -->
+        <div class="card">
+          <div class="card-body">
+            <form method="post" class="prevent-double-submit">
+              {% csrf_token %}
+                  {% for field in form %}
+                  {% if forloop.counter0|divisibleby:3 %}
+                      <div class="row">
+                  {% endif %}
+                  
+                          <div class="form-group col-md-4">
+                              {{ field|as_crispy_field }}
+                          </div>
+                  
+                  {% if forloop.counter|divisibleby:3 or forloop.last %}
+                      </div>
+                  {% endif %}
+              {% endfor %}
+              <div class="card-footer">
+              {% if allow_edit %}
+              <button type="submit" class="btn btn-primary" id="saveButton">{% trans "Save" %}</button>
+              {% endif %}
+              {% if voucher %}
+              <button type="button" class="btn  btn-primary" onClick="popupCenter({url: '{% url 'payment_voucher_print' voucher.id %}', title: 'xtf', w: 900, h: 900});">{% trans "Print" %}</button>
+              {% endif %}
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Modal -->
+<div class="modal fade" id="receipt_vouchers_report" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Receipt Vouchers Report" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action=''>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,152 @@
+{% block mocements %}
+<table class="table table-sm table-bordered table-striped" style="font-size: 8px;">
+    <small>
+    <thead class="thead-dark">
+          <tr class="theader">
+              <th>#</th>
+              <th>{% trans "BRN" %}</th>
+              <th>{% trans "Voucher " %}</th>
+              <th>{% trans "Reference no " %}</th>
+
+              <th>{% trans "Date" %}</th>
+              <th>{% trans "Time" %}</th>
+              <th>{% trans "Agent" %}</th>
+              <th>{% trans "PAX" %}</th>
+              <th>{% trans "From" %}</th>
+              <th>{% trans "To" %}</th>
+
+              <th>{% trans "Transport type" %}</th>
+              <th>{% trans "Transport Company" %}</th>
+
+
+              <th>{% trans "Group Leader" %}</th>
+              <th>{% trans "Driver(s)" %}</th>
+              <th>{% trans "Plate no" %}</th>
+              <th>{% trans "Remarks" %}</th>
+              <th>{% trans "Status" %}
+
+            </tr>
+    </thead>
+</small>
+    <tbody>
+        <tbody>
+            {% for movement in movements %}
+            <tr class="trow">
+              <td class="align-middle" rowspan="2">{{forloop.counter}}</td>
+              <td class="align-middle"  rowspan="2">
+                {% if movement.voucher.transport_brn %}
+                {{movement.voucher.transport_brn}}
+                {% endif %}
+              </td>
+              <td class="align-middle" rowspan="2">
+                UP-{{movement.voucher.id}}
+              </td>
+              <td class="align-middle" rowspan="2">
+                {% if movement.voucher.agent_referance_no %}
+                {{movement.voucher.agent_referance_no}}
+                {% endif %}
+              </td>
+              <td class="align-middle" rowspan="2">{{movement.date|date:"d/m/Y"}}</td>
+              <td class="align-middle" rowspan="2">{{movement.time|date:"H:i"}}</td>
+
+              <td class="align-middle" rowspan="2">{{movement.voucher.agent}} ({{movement.voucher.country}})</td>
+              <td class="align-middle" rowspan="2"><strong>{{movement.voucher.pax}}</strong></td>
+              <td class="align-middle" rowspan="2"><strong>{{movement.route.route_from}}</strong>
+                {% if movement.movement_from_hotel %}
+                <br>
+                {{movement.movement_from_hotel}}
+                {% endif %}
+                {% if movement.route.is_linked_with_arrival_flight %}
+                <br>
+                {{movement.flight_no}} - {{movement.voucher.arrival_time|date:"H:i"}}
+                {% endif %}
+              </td>
+              <td class="align-middle" rowspan="2"><strong>{{movement.route.route_to}}</strong>
+                {% if movement.movement_to_hotel %}
+                <br>
+                {{movement.movement_to_hotel}}
+                {% endif %}
+                {% if movement.route.is_linked_with_departure_flight %}
+                <br>
+                {{movement.flight_no}} - {{movement.voucher.departure_time|date:"H:i"}}
+                {% endif %}
+              </td>
+              <td class="align-middle" rowspan="2">
+                {% if movement.type %}
+                {{movement.type}}
+                {% endif %}
+              </td>
+              <td class="align-middle" rowspan="2">
+                {% if movement.transport_company %}
+                {{movement.transport_company}}
+                {% elif movement.voucher.transport_company %}
+                {{movement.voucher.transport_company}}
+                {% endif %}
+              </td>
+      
+
+
+              <td class="align-middle" rowspan="2">
+                  <strong>
+                    {%if movement.voucher.group_leader %}
+                    {{movement.voucher.group_leader}}</strong>
+                    {% endif %}
+                    {% if movement.voucher.group_leader_contact %}
+                    <br>{{movement.voucher.group_leader_contact}}
+                    {% endif %}
+                </a>
+              </td>
+              <td class="align-middle">
+                {%if movement.first_driver_name %}
+                <strong>{{movement.first_driver_name}}</strong>
+                {% else %}
+                &nbsp;
+                {% endif %}
+                <br>
+                {%if movement.first_driver_phone %}
+                {{movement.first_driver_phone}}
+                {% else %}
+                -
+                {% endif %}
+              </td>
+
+
+
+              <td class="align-middle" rowspan="2">
+                {% if movement.no_plate %}
+                {{movement.no_plate}}
+                {% endif %}
+              </td>
+              <td class="align-middle" rowspan="2">
+                {% if movement.remarks %}
+                {{movement.remarks}}
+                {% endif %}
+              </td>
+              <td class="align-middle" rowspan="2">
+                {% if movement.status %}
+                {{movement.get_status_display}}
+                {% endif %}
+              </td>
+
+
+            </tr>
+            <tr class="trow">
+              <td class="rowspan2">
+                {%if movement.second_driver_name %}
+                <strong>{{movement.second_driver_name}}</strong>
+                {% else %}
+                &nbsp;
+                {% endif %}
+                <br>
+                {%if movement.second_driver_phone %}
+                {{movement.second_driver_phone}}
+                {% else %}
+                -
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+
+    </tbody>
+  </table> 
+  {% endblock mocements %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "vouchers List" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "B2C" %} - {% trans "Vouchers" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        {% include "error.html" %}
+  
+        <div class="card card-success card-outline">
+          <div class="card-body">
+                 <button type="button" class="btn btn-success swalDefaultSuccess" onClick="window.open('add/', title: 'xtf', w: 900, h: 900});">
+
+              {% trans "Add New Voucher" %} 
+            </button>
+  
+          </div>
+          <!-- /.card -->
+        </div>
+  
+          <div class="card">
+  
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <table id="dataTable" class="data-table table table-bordered table-hover table-sm">
+                            <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>{% trans "Voucher" %}</th>
+  
+                              <th>{% trans "Group ID" %}</th>
+                              <th>{% trans "PAX" %}</th>
+                              <th>{% trans "Issue Date" %}</th>
+                              <th>{% trans "Amount" %}</th>
+                              <th>{% trans "Group Code" %}</th>
+                              <th>{% trans "Arrival Date" %}</th>
+                              <th>{% trans "External Agent" %}</th>
+                              <th>{% trans "Action" %}</th>
+  
+  
+  
+                              
+  
+                              
+                            </tr>
+                            </thead>
+                            <tbody>
+                              {% for voucher in vouchers %}
+                              <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{voucher}}</td>
+  
+                                <td>{{voucher.group_id}}</td>
+                                <td>{{voucher.pax}}</td>
+                                <td>{{voucher.date}}</td>
+                                <td><strong>{{voucher.amount}}</strong></td>
+                                <td>{{voucher.group_no}}</td>
+                                <td>{{voucher.arrival_date}}</td>
+                                <td>{{voucher.agent.code}} - {{voucher.agent}}</td>
+                                <td><a href="invoice-print.html" target="_blank" class="btn btn-success"><i class="fe fe-printer fe-16"></i></a></td>
+  
+      
+  
+                              </tr>
+                              {% endfor %}
+  
+                              </tbody>
+                            
+                          </table>
+                        </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+
+

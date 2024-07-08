@@ -1,0 +1,104 @@
+{% load static %}
+{% load i18n %}
+    <table class="table" id="content_table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">{% trans "Date" %}</th>
+            <th scope="col" class="text-center">{% trans "Time" %}</th>
+            <th scope="col" class="text-center">{% trans "Voucher " %}</th>
+            <th scope="col" class="text-center">{% trans "Agent" %}</th>
+            <th scope="col" class="text-center">{% trans "Country" %}</th>
+            <th scope="col" class="text-center">{% trans "PAX" %}</th>
+            <th scope="col" class="text-center">{% trans "From" %}</th>
+            <th scope="col" class="text-center">{% trans "To" %}</th>
+            <th scope="col" class="text-center">{% trans "Transport Company" %}</th>
+            <th scope="col" class="text-center">{% trans "Type" %}</th>
+            <th scope="col" class="text-center">{% trans "Status" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for movement in movements %}
+          {% if movement.show_on_tracking_screen %}
+          {% if movement.status == 'draft' %}
+          <tr class="">
+          {% elif movement.status == 'pending' %}
+          <tr class="table-warning">
+          {% elif movement.status == 'cancelled' %}
+          <tr class="table-dark">
+          {% elif movement.status == 'on_the_way' %}
+          <tr class="table-primary">
+          {% elif movement.status == 'confirmed' %}
+          <tr class="table-success">
+          {% elif movement.status == 'completed' %}
+          <tr class="table-success">
+          {% elif movement.status == 'delayed' %}
+          <tr class="table-danger">
+          {% endif %}
+            <th scope="row" class="text-center align-middle">{{forloop.counter}}</th>
+            <th class="text-center align-middle">{{movement.date|date:"d/m/Y"}}</th>
+            <th class="text-center align-middle">{{movement.time|time:"H:i"}}</th>
+            <th class="text-center align-middle">UP-{{movement.voucher.id}}</th>
+            <th class="text-center align-middle">{{movement.voucher.agent.id}} - {{movement.voucher.agent.hidden_name}}</th>
+            <th class="text-center align-middle">{{movement.voucher.country}}</th>
+            <th class="text-center align-middle">{{movement.voucher.pax}}</th>
+            <th class="align-middle text-center">{{movement.route.route_from}}
+                        {% if movement.movement_from_hotel %}
+                        <br>
+                        {{movement.movement_from_hotel}}
+                        {% endif %}
+                        {% if movement.route.is_linked_with_arrival_flight %}
+                        <br>
+                        {{movement.flight_no}} - {{movement.voucher.arrival_time|date:"H:i"}}
+                        {% endif %}
+                      </th>
+                      <th class="text-center">{{movement.route.route_to}}
+                        {% if movement.movement_to_hotel %}
+                        <br>
+                        {{movement.movement_to_hotel}}
+                        {% endif %}
+                        {% if movement.route.is_linked_with_departure_flight %}
+                        <br>
+                        {{movement.flight_no}}
+                        {% endif %}
+                      </th>
+            <th class="text-center align-middle">
+              {% if movement.voucher.transport_company %}
+              {{movement.voucher.transport_company}}
+              {% endif %}</th>
+
+
+            <th class="text-center align-middle">
+
+              {% if movement.voucher.transport_type %}
+              {{movement.voucher.transport_type}}              
+              {% endif %}
+            </th>
+
+            {% if movement.status == 'confirmed' %}
+            <th class="text-center align-middle bg-success text-light"><span class="blink">{{movement.get_status_display}}</span></th>
+            {% elif movement.status == 'completed' %}
+            <th class="text-center align-middle bg-success"><span class="blink">{{movement.get_status_display}}</span></th>
+            {% elif movement.status == 'delayed' %}
+            <th class="text-center align-middle bg-danger text-light"><span class="blink">{{movement.get_status_display}}</span></th>
+            {% elif movement.status == 'cancelled' %}
+            <th class="text-center align-middle bg-dark"><span class="blink">{{movement.get_status_display}}</span></th>
+            {% elif movement.status == 'on_the_way' %}
+            <th class="text-center align-middle bg-primary text-light"><span class="blink">{{movement.get_status_display}}</span></th>
+            {% elif movement.status == 'pending' %}
+            <th class="text-center align-middle bg-warning"><span class="blink">{{movement.get_status_display}}</span></th>
+            {% elif movement.status == 'draft' %}
+            <th class="text-center align-middle ">
+              <span class="blink">{{movement.get_status_display}}</span>
+            </th>
+            {% endif %}
+          </th>
+
+
+          </tr>
+          {% endif %}
+
+          {% endfor %}
+        </tbody>
+      </table>
+    

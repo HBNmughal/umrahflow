@@ -1,0 +1,34 @@
+{% load my_filter %}
+<script>
+function findTotal(){
+    var pax = document.getElementById('pax').value 
+    var init_ground_services_price = {{initial_prices.ground_services_price|replace_commas}}
+    var init_processing_fees = {{initial_prices.processing_fees|replace_commas}}
+    var init_insurance_price = {{initial_prices.insurance_price|replace_commas}}
+    var init_visa_fees = {{initial_prices.visa_fees|replace_commas}}
+    var makkah_brn_price = Number(document.getElementById('makkah_brn_price').value)
+    var medina_brn_price = Number(document.getElementById('medina_brn_price').value)
+    var transport_brn_price = Number(document.getElementById('transport_brn_price').value)
+    var additional_services_price = Number(document.getElementById('additional_services_price').value)
+    document.getElementById('ground_services_price').value = (pax * init_ground_services_price).toFixed(2);
+    document.getElementById('processing_fees').value = (pax * init_processing_fees).toFixed(2);
+    document.getElementById('insurance_price').value = (pax * init_insurance_price).toFixed(2);
+    document.getElementById('visa_fees').value = (pax * init_visa_fees).toFixed(2);
+    var total = (
+      (pax * init_ground_services_price) +
+      (pax * init_processing_fees)+
+      (pax * init_insurance_price) +
+      (pax * init_visa_fees) + makkah_brn_price + transport_brn_price + medina_brn_price + additional_services_price
+    ).toFixed(2)
+    console.log(total)
+    document.getElementById("total").innerHTML = total;
+    document.getElementById("_ground_services_price").value = (pax * init_ground_services_price).toFixed(2);
+    document.getElementById("_visa_fees").value = (pax * init_visa_fees).toFixed(2);;
+    document.getElementById("_insurance_price").value = (pax * init_insurance_price).toFixed(2);;
+    document.getElementById("_processing_fees").value = (pax * init_processing_fees).toFixed(2);;
+    document.getElementById('amount').value = .toFixed(total, 2);
+}
+window.addEventListener("load", (event) => {
+  findTotal();
+});
+</script>

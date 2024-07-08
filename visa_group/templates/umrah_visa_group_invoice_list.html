@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Umrah Visa Group Invoices" %} {% endblock %}
+{% block content %}
+{% load my_filter %}
+    
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Umrah Visa Group Invoices" %}</h1>
+
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+      
+          <!-- Main content -->
+          <section class="content">
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <span dir="ltr" class="h2 mb-0 text-success">{{request.user.employee.company.report.total_pilgrims.pax__sum}} </span>
+                        <p class="small text-muted mb-0">{% trans "Total Pilgrims" %}</p>
+                      </div>
+                      <div class="col-auto">
+                        <span class="fe fe-32 fe-user text-muted mb-0"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <span dir="ltr" class="h2 mb-0  text-success">{{request.user.employee.company.report.total_groups}} </span>
+                        <p class="small text-muted mb-0">{% trans "Total Groups" %}</p>
+                      </div>
+                      <div class="col-auto">
+                        <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+      <div class="card card-success card-outline">
+        <div class="card-body">
+          <button type="button" class="btn btn-primary swalDefaultSuccess" 
+          onClick="window.location.href='{% url 'umrah_visa_group_invoice_add' %}'">
+            {% trans "Add New Voucher" %} (alt + N) 
+          </button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#initial-prices">
+            {% trans "Default Prices" %}
+          </button>
+          {% comment %} <button type="button" class="btn btn-success swalDefaultSuccess" onClick="window.open('add/', title: 'xtf', w: 900, h: 900});">
+            {% trans "Voucher with  Added Details" %} 
+          </button>
+          <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="window.open('add/', title: 'xtf', w: 900, h: 900});">
+            {% trans "Voucher Details not Added" %} 
+          </button> {% endcomment %}
+        </div>
+        <!-- /.card -->
+      </div>
+      <div class="card card-success card-outline">
+      </div>
+
+                <div class="card">
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        {% comment %} <table id="dataTable" class="data-table table table-bordered table-hover table-striped table-sm" >
+                          <thead class="thead-dark">
+                          <tr>
+                            <th>#</th>
+                            <th>{% trans "Voucher" %}</th>
+                            <th>{% trans "PAX" %}</th>
+                            <th>{% trans "Issue Date" %}</th>
+                            <th>{% trans "Amount" %}</th>
+                            <th>{% trans "Group No" %}</th>
+                            <th>{% trans "Agent" %}</th>
+                            <th>{% trans "Agent type" %}</th>
+                            <th>{% trans "Action" %}</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            {% for voucher in vouchers %}
+                            <tr>
+                              <td>{{forloop.counter}}</td>
+                              <td>{{voucher}}</td>
+                              <td><strong>{{voucher.pax}}</strong></td>
+                              <td>{{voucher.date|date:"d/m/Y"}}</td>
+                              <td><strong>{{voucher.voucher_total.sale_price|replace_commas}}</strong></td> 
+                              <td>{{voucher.group_no}}</td>
+                              <td>{{voucher.agent.name}}</td>
+                              <td>{{voucher.agent.get_agent_type_display}}</td>
+                              <td align="center">
+                                <a onClick="popupCenter({url: '{% url 'edit_voucher' 'sub_agent_voucher' voucher.id %}', title: 'xtf', w: 900, h: 900});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a>
+                                <a onClick="popupCenter({url: '{% url 'print_voucher' 'sub_agent_voucher' voucher.id %}', title: 'xtf', w: 900, h: 900});"  class="btn btn-link btn-sm"><i class="fe fe-printer fe-16"></i></a>
+                              </td>                         
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                          </table> {% endcomment %}
+                            <table id="ajax_umrah_visa_group_invoice_list" class="table table-bordered table-hover table-striped ">
+                            </table>
+                        
+                        ...
+                        {% block datatable_script %}
+                        <script language="javascript">
+                        
+                          $(document).ready(function() {
+                              AjaxDatatableViewUtils.initialize_table(
+                                  $('#ajax_umrah_visa_group_invoice_list'),
+                                  "{% url 'ajax_umrah_visa_group_invoice_list' %}",
+                                  {
+                                      // extra_options (example)
+                                      processing: false,
+                                      autoWidth: false,
+                                      full_row_select: true,
+                                      scrollX: true,
+                                      searching: true,
+                                      paging: true,
+                                      dom: 'Blrtip',
+                                      buttons: [
+                                        'excel', 'print'
+                                      ],
+                                      "lengthChange": true,
+                                      
+                                  }, {
+                                      // extra_data
+                                      // ...
+                                  },
+                              );
+                          });
+                      
+                      </script>
+                        {% endblock datatable_script %}
+                        
+                    </div>
+                  </div>
+                </div>
+    <!-- /.content-wrapper -->
+
+    <div class="modal fade" id="initial-prices">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{% trans "Default Prices" %}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-success card-outline">
+              <div class="card-body">
+                <form class"form-group" method="post" action="{% url 'umrah_visa_group_invoice_default_prices' %}">
+                  {% csrf_token %}
+                  {{default_prices_form.as_p}}
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                <button type="submit" class="btn btn-primary">{% trans "Save changes" %}</button>
+              </form>
+              </div>
+            </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          document.addEventListener('keydown', function(event) {
+              if (event.altKey && event.key === 'n') {
+                  event.preventDefault(); // Prevent the default behavior
+                  window.location.href = '{% url 'umrah_visa_group_invoice_add' %}'; // Replace with the URL you want to open
+              }
+          });
+      });
+  </script>
+  <script>
+    // onload focus on date field
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('id_date').focus();
+    });
+  </script>
+ 
+{% endblock %}
+
+

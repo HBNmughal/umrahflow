@@ -1,0 +1,121 @@
+
+{% extends 'print_document_header.html' %}
+{% load static %}
+{% load my_filter %}
+{% load i18n %}
+{% block page_content %}
+
+<style type="text/css">
+    @font-face {
+        font-family: ArialUnicode;
+        src: url("static/Arial Unicode.ttf")
+    }
+    <!-- other stuff here -->
+    body {
+        margin: 0;
+        font-family: "ArialUnicode", sans-serif;
+    }
+    
+    <!-- more css here -->
+</style>
+
+
+
+
+<h4>{% trans "Detailed Voucher" %}</h4>
+        
+        <table class="table table-bordered table-sm" style="width: 100%;">
+            <tr>
+                <h6>{% trans "Voucher Details" %}</h6>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Voucher no" %} </th>
+                <td style="text-align: center;">{{voucher.voucher_no}}</td>
+                <th style="" class="align-middle" >{% trans "PAX" %}</th>
+                <td style="text-align: center;">{{voucher.pax}}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Date" %} </th>
+                <td style="text-align: center;">{{voucher.date|date:'d/m/Y'}}</td>
+                <th style="" class="align-middle" >{% trans "Group no" %}</th>
+                <td style="text-align: center;">{{voucher.group_no}}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Agent" %}</th>
+                <td style="text-align: center;" colspan="3">{{voucher.agent}}</td>
+            </tr>
+            <tr >
+                <th colspan="4">{% trans "Basic Fees" %}</th>
+            </tr>
+
+            <tr>
+                <th style="" class="align-middle" >{% trans "Ground Services Fees" %} </th>
+                <td style="text-align: center;">{{voucher.ground_services_price|replace_commas}}</td>
+                <th style="" class="align-middle" >{% trans "Additional Services Fees" %}</th>
+                <td style="text-align: center;">{{voucher.additional_services_price|replace_commas}}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Processing Fees" %} </th>
+                <td style="text-align: center;">{{voucher.processing_fees|replace_commas}}</td>
+                <th style="" class="align-middle" >{% trans "Visa Fees" %}</th>
+                <td style="text-align: center;">{{voucher.visa_fees|replace_commas}}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Insurance Fees" %} </th>
+                <td style="text-align: center;">{{voucher.insurance_price|replace_commas}}</td>
+                <th style="" class="align-middle" >{% trans "Transport BRN" %} </th>
+                <td style="text-align: center;">{{voucher.transport_brn_price|replace_commas}}</td>
+            </tr>
+            <tr>
+                <th style="" class="align-middle" >{% trans "Makkah BRN" %} </th>
+                <td style="text-align: center;">{{voucher.makkah_brn_price|replace_commas}}</td>
+                <th style="" class="align-middle" >{% trans "Medina BRN" %}</th>
+                <td style="text-align: center;">{{voucher.medina_brn_price|replace_commas}}</td>
+            </tr>
+            <tr>
+                
+                <th style="" class="align-middle" >{% trans "Voucher Total" %}</th>
+                <td style="text-align: center;" colspan="3">{{voucher.amount|replace_commas}}</td>
+            </tr>
+            <tr >
+                <th colspan="4">{% trans "Returns" %}</th>
+            </tr>
+            <tr>
+                
+                <th  class="align-middle" >{% trans "Transport BRN" %}</th>
+                <td style="text-align: center;">{{voucher.voucher_total.transport_brn_return|replace_commas}}</td>
+            </tr>
+            <tr>
+                <th  class="align-middle" >{% trans "Makkah BRN" %}</th>
+                <td style="text-align: center;">{{voucher.voucher_total.makkah_brn_return|replace_commas}}</td>
+                <th  class="align-middle" >{% trans "Medina BRN" %}</th>
+                <td style="text-align: center;">{{voucher.voucher_total.medina_brn_return|replace_commas}}</td>
+            </tr>
+            <tr>
+                <th  class="align-middle" >{% trans "Ground Services Fees" %}</th>
+                <td style="text-align: center;">{{voucher.voucher_total.ground_services_price_return|replace_commas}}</td>
+                <th  class="align-middle" >{% trans "VAT Retrun" %}</th>
+                <td style="text-align: center;">{{voucher.voucher_total.vat_return|replace_commas}}</td>
+            </tr>
+            <tr >
+                <th colspan="4">{% trans "Voucher Summary" %}</th>
+            </tr>
+            <tr>
+                <th  class="align-middle" >{% trans "Cost Price Total" %}</th>
+                <td style="text-align: center;" colspan="3">{{voucher.amount|replace_commas}}</td>
+            <tr>
+                <th  class="align-middle"  >{% trans "Returns Total" %}</th>
+                <td style="text-align: center;" colspan="3">{{voucher.voucher_total.returns|replace_commas}}</td>
+            </tr>
+            <tr>
+                <th  class="align-middle" >{% trans "Sale Price Total" %}</th>
+                <td style="text-align: center;" colspan="3">{{voucher.voucher_total.sale_price|replace_commas}}</td>
+            <tr>
+                <th  class="align-middle"  >{% trans "Profit Total" %}</th>
+                <td style="text-align: center;" colspan="3">{{voucher.voucher_total.profit|replace_commas}}</td>
+            </tr>
+
+
+        </table>
+        <img src="https://barcode.tec-it.com/barcode.ashx?data={{voucher.voucher_no}}&code=Code128&translate-esc=on" height="50px">
+{% endblock page_content %}

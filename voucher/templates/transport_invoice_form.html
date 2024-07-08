@@ -1,0 +1,65 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% block wrapper %}
+{% load my_filter %}
+<div class="card card-default">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Transport Invoice" %}</h4>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+      {% if invoice.id %}
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">{% trans "Delete" %}</button>
+      {% endif %}
+
+          </div>
+    
+      </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+
+
+    {% if invoice.id %}
+    <div class="modal fade" id="modal-danger">
+      <div class="modal-dialog">
+        <div class="modal-content bg-danger">
+          <div class="modal-header">
+            <h4 class="modal-title">{% trans "Delete Voucher" %}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>{% trans "This record will be deleted. Are you sure?" %}</p>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-outline-light" data-dismiss="modal">{% trans "Close" %}</button>
+          <form action="{% url 'delete_transport_invoice' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="{{invoice.id}}" name='invoice' class="btn btn-outline-light">{% trans "Delete" %}</button>
+          </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+   
+    {% endif %}
+
+{% endblock %}

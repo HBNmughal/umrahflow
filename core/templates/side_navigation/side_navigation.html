@@ -1,0 +1,95 @@
+{% load i18n %}
+   {% if not request.user.mandoob %}
+   <ul class="navbar-nav flex-fill w-100 mb-2">
+    <li class="nav-item w-100">
+      <a class="nav-link" href="{% url "dashboard" %}">
+        <i class="fe fe-home fe-16"></i>
+        <span class="ml-3 item-text">{% trans "Dashboard" %}</span>
+      </a>
+    </li>
+  </ul>
+    {% endif %}
+
+{% comment %}     
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <li class="nav-header">{% trans "Operations" %}</li>
+      <li class="nav-item">
+          <a href="" class="nav-link">
+              <i class="nav-icon fas fa-calendar"></i>
+              <p>{% trans "Schedule" %}</p>
+            
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">
+              <i class="nav-icon fas fa-bell"></i>
+            
+          </a>
+        </li> {% endcomment %}
+
+        
+  </ul>
+  {% if user.employee %}
+    {% if request.user.employee.current_app == "accounts" %}
+    {% include 'side_navigation/accounts.html' %}
+    {% endif %}
+
+    {% if request.user.employee.current_app == "hr" %}
+    {% include 'side_navigation/hr.html' %}
+    {% endif %}
+    {% if request.user.employee.current_app == "accounts" %}
+    {% include 'side_navigation/company_settings.html' %}
+    {% endif %}
+    {% if request.user.employee.current_app == "operations" %}
+    {% include 'side_navigation/operations.html' %}
+    {% endif %}
+    {% elif user.agent %}
+    {% include 'side_navigation/agent.html' %}
+    {% elif user.mandoob %}
+    {% include 'side_navigation/mandoob.html' %}
+    {% endif %}
+      
+
+      <ul class="collapse list-unstyled pl-4 w-100" data-widget="treeview" role="menu" data-accordion="false">    
+        <li class="nav-header">---------------------------------------</li>
+        
+        {% if user.employee %}        
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-circle"></i>
+          <p>
+            {% trans "Apps" %}
+          <i class="fas fa-angle-left right"></i>
+          </p>
+          </a>
+          <ul class="nav nav-treeview" style="display: none;">
+          <li class="nav-item">
+            <a href="{% url 'app_select' 'accounts' %}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>{% trans "Finance and Accounts" %}</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'app_select' 'operations' %}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>{% trans "Field Operations" %}</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'app_select' 'hr' %}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>{% trans "Human Resources" %}</p>
+            </a>
+          </li>
+        </li>
+        </ul>
+        {% endif %}
+        
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link">
+              <i class="nav-icon fas fa-right-from-bracket" style="color: red;"></i>
+              <p style="color: red;">{% trans "Log out" %}</p>
+          </a>
+        </li>
+      </ul>
+  <!-- /.sidebar-menu -->

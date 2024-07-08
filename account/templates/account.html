@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% block title %} {% trans "Account" %}: {{account}} {% endblock %}
+{% block content %}
+{% comment %} {% load my_filter %} {% endcomment %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Account" %}: {{account}}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0 {{account.balance_color}}">{{account.balance}}</span>
+                    <span class="small">{{request.user.employee.company.settings.get_default_currency_display}} </span>
+                    <p class="small text-muted mb-0">{% trans "Account Balance" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-dollar-sign text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% comment %} <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span class="h2 mb-0">{{agent.total_visas}}</span>
+                    <p class="small text-muted mb-0">{% trans "Total Visas" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span class="h2 mb-0">{{agent.total_transport_pax}}</span>
+                    <p class="small text-muted mb-0">{% trans "Total Transport" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% endcomment %}
+        
+          
+          
+        </div>
+        <!-- /.row -->
+        <div class="card card-success card-outline">
+          <div class="card-body">
+            <button type="button" class="btn btn-outline-success " onClick="popupCenter({url: '{% url 'account_settlement_credit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Credit" %}
+            </button>
+            <button type="button" class="btn btn-outline-danger " onClick="popupCenter({url: '{% url 'account_settlement_debit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Debit" %}
+            </button>
+            {% comment %} <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#print_account_statement" >
+              {% trans "Print Account Statement" %} 
+            </button> {% endcomment %}
+            <button type="button" class="btn btn-outline-success " onClick="popupCenter({url: '{% url 'print_account_statement' account.id %}', title: 'xtf', w: 900, h: 900});" >
+              {% trans "Print Account Statement" %} 
+            </button>
+            
+            {% comment %} <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="popupCenter({url: '{% url 'account_debit_form' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Withdraw Amount" %} 
+            </button>
+            <button type="button" class="btn btn-warning swalDefaultSuccess" onClick="popupCenter({url: '{% url 'account_transfer_form' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Transfer" %} 
+            </button>
+            <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'account_settlement_credit' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Credit" %}
+            </button>
+            <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="popupCenter({url: '{% url 'account_settlement_debit' account.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Debit" %}
+            </button> {% endcomment %}
+
+            {% comment %}
+            <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#receipt_vouchers_report" >
+              {% trans "Receipt Vouchers Report" %} 
+            </button>
+            <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#print_account_statement" >
+              {% trans "Print Account Statement" %} 
+            </button> {% endcomment %}
+          </div>
+        </div>
+
+        
+  
+          <!-- /.card-header -->
+        <div class="card">
+          <div class="card-body">
+            
+            
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead class="thead-dark">
+                  <tr>
+                    <th>{% trans "Transaction No." %}</th>
+                    <th>{% trans "Entry No." %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th dir="ltr">{% trans "Debit" %}</th>
+                    <th dir="ltr">{% trans "Credit" %}</th>
+                    <th dir="ltr">{% trans "Account Balance" %}</th>
+                    <th>{% trans "Discription" %}</th>
+                    {% comment %} {% if agent %}
+                    <th>{% trans "Group No" %}</th>
+                    {% endif %} {% endcomment %}
+                    <th>{% trans "Reference No" %}</th>
+                    <th>{% trans "Username" %}</th>
+                    <th>{% trans "Print" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for t in journal_entries %}
+                    <tr>
+                      <td>
+                        <a href="{% url "transaction_view" t.entry.transaction.id %}">{{t.entry.transaction.id}}</a>
+                      </td>
+                      <td>{{t.entry.id}}</td>
+                      <td>
+                        <span dir="ltr">
+                        {{t.entry.date}}
+                        </span>
+                      </td>
+                      <td>
+                        <span dir="ltr">
+                        {{t.entry.debit}}</td>
+                        </span>
+                      <td>
+                        <span dir="ltr">
+                        {{t.entry.credit}}
+                        </span>
+                      </td>
+                      <td>
+                        <span dir="ltr">
+                        {{t.balance}}
+                        </span>
+                      </td>
+
+                    <td {% if request.LANGUAGE_CODE == 'ar' %}
+                    style='text-align:right;'
+                    {% elif request.LANGUAGE_CODE == 'en' %}
+                    style='text-align:left;'
+                    {% endif %}>
+                    {{t.entry.transaction.description}}
+                  
+
+                    <td>
+                      {% if t.entry.transaction.reference_no %} 
+                    {{t.entry.transaction.reference_no}}
+                    {% endif %}
+                       
+                      </td>
+                      <td>
+                        {{t.entry.transaction.username}}
+                       
+                      </td>
+                      <td>
+                        {% if t.transaction.receipt_voucher %}
+                        <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'print_receipt_voucher' t.entry.transaction %}', title: 'xtf', w: 900, h: 900});">
+                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Modal -->
+<div class="modal fade" id="receipt_vouchers_report" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Receipt Vouchers Report" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action=''>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="print_account_statement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Print Account Statement" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action='{% url 'print_account_statement' account.id %}'>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

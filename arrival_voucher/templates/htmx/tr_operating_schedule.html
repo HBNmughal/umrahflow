@@ -1,0 +1,165 @@
+{% load i18n %}
+
+{% if movement.status == 'draft' %}
+<tr class="" id="movement-{{movement.id}}">
+{% elif movement.status == 'pending' %}
+<tr class="table-warning" id="movement-{{movement.id}}" >
+{% elif movement.status == 'cancelled' %}
+<tr class="table-dark" id="movement-{{movement.id}}">
+{% elif movement.status == 'on_the_way' %}
+<tr class="table-primary" id="movement-{{movement.id}}">
+{% elif movement.status == 'confirmed' %}
+<tr class="" id="movement-{{movement.id}}">
+{% elif movement.status == 'completed' %}
+<tr class="table-success" id="movement-{{movement.id}}">
+{% elif movement.status == 'delayed' %}
+<tr class="table-danger" id="movement-{{movement.id}}">
+{% else %}
+<tr class="" id="movement-{{movement.id}}">
+{% endif %}
+    <td class="align-middle">{{forloop.counter}}</td>
+    <td class="align-middle">
+    {% if movement.voucher.transport_brn %}
+    {{movement.voucher.transport_brn}}
+    {% endif %}
+    </td>
+    <td class="align-middle">
+    UP-{{movement.voucher.id}}
+    </td>
+    <td class="align-middle">
+    {% if movement.voucher.agent_referance_no %}
+    {{movement.voucher.agent_referance_no}}
+    {% endif %}
+    </td>
+    <td class="align-middle">{{movement.date|date:"d/m/Y"}}</td>
+    <td class="align-middle">{{movement.time|date:"H:i"}}</td>
+
+    <td class="align-middle">{{movement.voucher.agent}} ({{movement.voucher.country}})</td>
+    <td class="align-middle">{{movement.voucher.pax}}</td>
+    <td class="align-middle"><strong>{{movement.route.route_from}}</strong>
+    {% if movement.movement_from_hotel %}
+    <br>
+    {{movement.movement_from_hotel}}
+    {% endif %}
+    {% if movement.route.is_linked_with_arrival_flight %}
+    <br>
+    {{movement.flight_no}} - {{movement.voucher.arrival_time|date:"H:i"}}
+    {% endif %}
+    </td>
+    <td class="align-middle"><strong>{{movement.route.route_to}}</strong>
+    {% if movement.movement_to_hotel %}
+    <br>
+    {{movement.movement_to_hotel}}
+    {% endif %}
+    {% if movement.route.is_linked_with_departure_flight %}
+    <br>
+    {{movement.flight_no}} - {{movement.voucher.departure_time|date:"H:i"}}
+    {% endif %}
+    </td>
+
+    <td class="align-middle">
+    {% if movement.type %}
+    {{movement.type}}
+    {% endif %}
+    </td>
+    <td class="align-middle">
+    {% if movement.voucher.transport_company %}
+    {{movement.voucher.transport_company}}
+    {% endif %}
+    </td>
+    <td class="align-middle">
+    {{movement.voucher.get_transport_status_display}}                     
+    </td>
+
+
+
+
+    <td class="align-middle">
+    
+    {% if not movement.voucher.group_leader %}
+    <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_group_leader' movement.id %}', title: 'xtf', w: 900, h: 900});">
+    <i class="fe fe-plus fe-16"></i>
+    {% trans "Add" %}
+    </a>
+    {% else %}
+    <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_group_leader' movement.id %}', title: 'xtf', w: 900, h: 900});">
+        <strong>{{movement.voucher.group_leader}}</strong><br>{{movement.voucher.group_leader_contact}}
+    </a>
+    {% endif %}
+    </td>
+    <td class="align-middle">
+    <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_driver' movement.id %}', title: 'xtf', w: 900, h: 900});">
+    {% if movement.first_driver_name %}
+    <strong>{{movement.first_driver_name}}</strong><br>{{movement.first_driver_phone}}
+    {% endif %}
+    
+    {% if movement.second_driver_name %}
+    <br>
+    <strong>{{movement.second_driver_name}}</strong><br>{{movement.second_driver_phone}}
+    {% endif %}
+    {% if not movement.first_driver_name and not movement.second_driver_name %}
+    <a href='javascript:;' onclick="popupCenter({url: '{% url 'assign_driver' movement.id %}', title: 'xtf', w: 900, h: 900});">
+    <i class="fe fe-plus fe-16"></i>
+    {% trans "Add" %}
+    </a>
+    {% endif %}
+    </a>
+
+
+    </td>
+    <td class="align-middle">
+    {% if movement.no_plate %}
+    {{movement.no_plate}}
+    {% endif %}
+    </td>
+    <td class="align-middle">
+    
+
+    {% if movement.remarks %}
+    {{movement.remarks}}
+
+    <a href='javascript:;' onclick="popupCenter({url: '{% url 'movement_status_form' movement.id %}', title: 'xtf', w: 900, h: 900});">
+        <i class="fe fe-edit fe-16"></i>
+    </a>
+    {% else %}
+    <a href='javascript:;' onclick="popupCenter({url: '{% url 'movement_status_form' movement.id %}', title: 'xtf', w: 900, h: 900});">
+    <i class="fe fe-plus fe-16"></i>
+    </a>
+    {% endif %}
+    </td>
+
+
+
+
+    <td class="align-middle">
+
+    <form class="form-inline" hx-trigger="change" hx-swap="outerHTML" hx-post="{% url 'movement_status_change_table' movement.id %}" hx-target="#movement-{{movement.id}}">
+    {% csrf_token %}
+    <select name="status" class="form-control input-sm select2" style="border-radius: 0px !important;" >
+    
+        <option value="pending" {% if movement.status == 'pending' %}selected {% endif %}>{% trans "Pending" %}</option>
+    
+        <option value="confirmed"{% if movement.status == 'confirmed' %}selected {% endif %}>{% trans "Confirmed" %}</option>
+    
+        <option value="cancelled"{% if movement.status == 'cancelled' %}selected {% endif %}>{% trans "Rejected" %}</option>
+    
+        <option value="completed"{% if movement.status == 'completed' %}selected {% endif %}>{% trans "Completed" %}</option>
+    
+        <option value="on_the_way"{% if movement.status == 'on_the_way' %}selected {% endif %}>{% trans "On the way" %}</option>
+    
+        <option value="delayed"{% if movement.status == 'delayed' %}selected {% endif %}>{% trans "Delayed" %}</option>
+    
+    </select>
+
+    </form>
+
+    </td>
+    <td class="align-middle">
+    <a href='{% url 'arrival_voucher' movement.voucher.id %}'  class="btn btn-sm"><i class="fe fe-eye fe-16"></i>{% trans "Voucher " %}</a>
+
+    </td>
+    
+
+
+
+</tr>

@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Agents List" %} {% endblock %}
+{% block content %}
+{% load my_filter %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Account" %}: {{agent}}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0 {% if agent.account_balance < 0.00 %}text-danger{% else %}text-success{% endif %}">{{agent.account_balance|replace_commas}} </span>
+                    <span class="small">{{agent.company.settings.get_default_currency_display}} </span>
+                    <span class="small">{{company.settings.get_default_currency_display}} </span>
+                    <p class="small text-muted mb-0">{% trans "Account Balance" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-dollar-sign text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span class="h2 mb-0">{{agent.total_visas}}</span>
+                    <p class="small text-muted mb-0">{% trans "Total Visas" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span class="h2 mb-0">{{agent.total_transport_pax}}</span>
+                    <p class="small text-muted mb-0">{% trans "Total Transport" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card card-success card-outline">
+          <div class="card-body">
+            {% if perms.payment.add_agentpaymenttransaction %}
+            <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'collect_payment' agent_type agent.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Collect Payment" %} 
+            </button>
+            <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="popupCenter({url: '{% url 'withdraw_payment' agent_type agent.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Withdraw Amount" %} 
+            </button>
+            {% endif %}
+
+            <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#receipt_vouchers_report" >
+              {% trans "Receipt Vouchers Report" %} 
+            </button>
+            
+            <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#print_account_statement" >
+              {% trans "Print Account Statement" %} 
+            </button>
+            {% if perms.payment.add_agentpaymenttransaction %}
+            <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'agent_settlement_credit' agent.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Credit" %}
+            </button>
+            <button type="button" class="btn btn-danger swalDefaultSuccess" onClick="popupCenter({url: '{% url 'agent_settlement_debit' agent.id %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settlement" %} - {% trans "Debit" %}
+            </button>
+            {% endif %}
+
+
+            
+            
+          </div>
+        </div>
+
+        
+  
+          <!-- /.card-header -->
+        <div class="card">
+          <div class="card-body">
+            
+            <div class="tab-content" id="custom-content-below-tabContent">
+              <div class="tab-pane fade show active" id="custom-content-below-main" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead class="dark-thead">
+                  <tr>
+                    <th>{% trans "Transaction No." %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Debit" %}</th>
+                    <th>{% trans "Credit" %}</th>
+                    <th>{% trans "Account Balance" %}</th>
+                    <th>{% trans "Payment For" %}</th>
+                    <th>{% trans "PAX" %}</th>
+                    <th>{% trans "Price" %}</th>
+                    <th>{% trans "Group No" %}</th>
+                    <th>{% trans "Voucher no" %}</th>
+                    <th>{% trans "Paid By" %}</th>
+                    <th>{% trans "Reference No" %}</th>
+                    <th>{% trans "Performed By" %}</th>
+                    <th>{% trans "Action" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for t in transactions %}
+                    <tr>
+                      <td>{{t.transaction.id}}</td>
+                      <td>{{t.transaction.date|date:"d/m/Y"}}</td>
+                      
+                      
+                      {% if t.transaction.transaction_type == "d" %}
+                      <td style="color: red;">{{t.transaction.amount|replace_commas}}</td>
+                      {% else %}
+                      <td>0.00</td>
+                      {% endif %}
+                      {% if t.transaction.transaction_type == "c" %}
+                      <td style="color: green;">{{t.transaction.amount|replace_commas}}</td>
+                      {% elif t.transaction.transaction_type == "r" %}
+                      <td style="color: blue;">{{t.transaction.amount|replace_commas}}</td>
+                      {% else %}
+                      <td>0.00</td>
+                      {% endif %}
+                      <td><span dir="ltr">{{t.balance|replace_commas}}</span></td>
+                    <td>
+                      {% if not t.transaction.transport_invoice %}
+                      {% if t.transaction.payment_for is None or t.transaction.payment_for == "" %}
+                      {% if t.transaction.reason == "1" or t.transaction.reason ==  "2" or t.transaction.reason ==  "3" or t.transaction.reason ==  "4" or t.transaction.reason ==  "5"%}{{t.transaction.get_reason_display}}{% else %} {% trans t.transaction.reason %} {{t.voucher.transaction.voucher_no}} {% if t.transaction.voucher.voucher_no %}{% endif %} {% endif %}
+                      {% else %}
+                      
+                      {{t.transaction.payment_for}}
+                      {% endif %}
+                      {% else %}
+                      {% trans "Transport Invoice" %} <br>
+                      {% trans "Invoice No" %}: {{t.transaction.transport_invoice.id}} <br>
+                      {% trans "Transport type" %}: {{t.transaction.transport_invoice.get_transport_type_display}}<br>
+                      {% if t.transaction.transport_invoice.description %}
+                      {% trans "Description" %}: {{t.transaction.transport_invoice.description}}
+                      {% endif %}
+
+                      {% endif %}
+
+                    </td>
+                    <td>{{t.transaction.voucher.pax}} {{t.transaction.transport_invoice.qty}}</td>
+                    <td>{{t.transaction.voucher.sale_price|replace_commas}} {{t.transaction.transport_invoice.total|replace_commas}}</td>
+                    <td>{{t.transaction.voucher.group_no}}</td>
+                    <td>
+                      {% if t.transaction.voucher.voucher_no %}
+                      {{t.transaction.voucher.voucher_no}}
+                      {% endif %}
+                      {% if t.transaction.transport_invoice %}
+                      {{t.transaction.transport_invoice.id}}
+                      {% endif %}
+
+                    </td>
+
+
+                    <td>{{t.transaction.get_payment_by_display}}
+                      {% if t.transaction.is_settlement_transaction %}{% trans "Settlement" %}{% endif %}
+                    </td>
+                    <td>
+                      
+                      {{t.transaction.referance_no}}
+                      {% if t.transaction.transport_invoice.referance_no %}
+                      {{t.transaction.transport_invoice.referance_no}} 
+                      {% endif %}
+                    </td>
+                    <td> {% trans t.performed_by %}</td>
+                    <td>
+                      {% if perms.payment.change_agentpaymenttransaction %}
+                      {% if t.transaction.transaction_type == 'c' and  not t.transaction.is_settlement_transaction%}
+                      <a onClick="popupCenter({url: '{% url 'edit_collect_payment' t.transaction.agent.id t.transaction.id %}', title: 'xtf', w: 900, h: 900});"   class="btn\ btn-sm"><i class="fe fe-edit fe-16"></i></a>
+                      {% endif %}
+                      
+                      {% if t.transaction.is_settlement_transaction %}
+                      <a onClick="popupCenter({url: '{% url 'edit_agent_settlement' t.transaction.agent.id t.transaction.id t.transaction.transaction_type %}', title: 'xtf', w: 900, h: 900});"   class="btn\ btn-sm"><i class="fe fe-edit fe-16"></i></a>
+                      {% endif %}
+                      {% endif %}
+                     
+                      {% if perms.payment.print_receiptvoucher %}
+                      <a href="{% url 'print_receipt_voucher' 'sub_agent' t.transaction.agent.id t.transaction.id %}" target="_blank" class="btn btn-sm"><i class="fe fe-printer fe-16"></i></a>
+                      {% endif %}
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody> 
+                  </table>
+              </div>
+            </div>
+            
+
+          </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+
+        
+</section>
+<!-- /.content -->
+</div>
+    <!-- /.content-wrapper -->
+    <!-- Modal -->
+
+{% if perms.payment.print_agent_account_statement %}
+<div class="modal fade" id="receipt_vouchers_report" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Receipt Vouchers Report" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action='{% url 'print_agent_reciept_voucher_report' agent.id %}'>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if perms.payment.print_agent_account_statement %}
+<div class="modal fade" id="print_account_statement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Print Account Statement" %} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action='{% url 'print_agent_account_statement' agent.id %}'>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_min">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+            <div class="col-sm-10">
+              <input type="date"  class="form-control" name="date_max">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
+

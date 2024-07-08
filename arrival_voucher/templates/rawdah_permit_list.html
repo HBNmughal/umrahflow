@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Rawdah Permit Requests" %}{% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Rawdah Reservation" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        
+        {% comment %} <div class="card card-success card-outline">
+          <div class="card-body">
+            <button type="button" class="btn btn-primary swalDefaultSuccess"
+            onClick="popupCenter({url: 'print', title: 'xtf', w: 900, h: 900});">
+            {% trans "Print" %}
+            </button>
+            <button type="button" class="btn btn-primary swalDefaultSuccess"
+            onClick="popupCenter({url: '{% url "add_rawdah_permit" %}', title: 'xtf', w: 900, h: 900});">
+            {% trans "Add Permit" %}
+            </button>
+          </div>
+          <!-- /.card -->
+        </div> {% endcomment %}
+        <div class="card">
+          <div class="card-body small">
+            <table id="dataTable" class="data-table table table-bordered table-striped table-sm table-hover">
+              <thead class="thead-dark">  
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans "Voucher " %}</th>
+                    <th>{% trans "Agent" %}</th>
+                    <th>{% trans "Group no" %}</th>
+                    <th>{% trans "PAX" %}</th>
+                    <th>{% trans "Men Request Date" %}</th>
+                    <th>{% trans "Men Reservation Date" %} - {% trans "Time" %}</th>
+                    <th>{% trans "Men Status" %}</th>
+
+
+                    <th>{% trans "Women Request Date" %}</th>
+                    <th>{% trans "Women Reservation Date" %} - {% trans "Time" %}</th>
+                    <th>{% trans "Women Status" %}</th>
+                    <th>{% trans "Action" %}</th>
+
+                  </tr>
+                  </thead >
+                  <tbody>
+                {% for r in rawdah_permits %}
+                    {% if r.status == 'draft' %}
+                    <tr class="">
+                    {% elif r.status == 'pending' %}
+                    <tr class="table-warning">
+                    {% elif r.status == 'cancelled' %}
+                    <tr class="table-dark">
+                    {% elif r.status == 'on_the_way' %}
+                    <tr class="table-primary">
+                    {% elif r.status == 'completed' %}
+                    <tr class="">
+                    {% elif r.status == 'reserved' %}
+                    <tr class="table-success">
+                    {% elif r.status == 'delayed' %}
+                    <tr class="table-danger">
+                    {% else %}
+                    <tr class="">
+                    {% endif %}
+                      <td class="align-middle">{{forloop.counter}}</td>
+     
+                      <td class="align-middle">
+                        UP-{{r.id}}
+                      </td>
+                    <td class="align-middle">{{r.agent}} ({{r.country}})</td>
+                    <td class="align-middle">{{r.group_no}}</td>
+                    <td class="align-middle">{{r.pax}}</td>
+
+                    <td class="align-middle">{{r.rawdah_men_request_date|date:"d/m/Y"}}</td>
+                    <td class="align-middle">{{r.rawdah_men_reservation_date|date:"d/m/Y"}} - {{r.rawdah_men_reservation_time|date:"H:i"}}</td>
+                    <td class="align-middle {% if r.rawdah_men_status == 'reserved' %}table-success{% elif r.rawdah_men_status == 'pending' %}table-warning {% elif r.rawdah_men_status == 'not_available' %}table-danger{% endif %}">{{r.get_rawdah_men_status_display}}</td>
+
+                    <td class="align-middle">{{r.rawdah_women_request_date|date:"d/m/Y"}}</td>
+                    <td class="align-middle">{{r.rawdah_women_reservation_date|date:"d/m/Y"}} - {{r.women_reservation_time|date:"H:i"}}</td>
+                    <td class="align-middle {% if r.rawdah_women_status == 'reserved' %}table-success{% elif r.rawdah_women_status == 'pending' %}table-warning {% elif r.rawdah_women_status == 'not_available' %}table-danger{% endif %}">
+                      {{r.get_rawdah_women_status_display}}
+                    </td>
+                    <td>
+                        <a href="javascript:;" onclick="popupCenter({url: '{% url 'edit_rawdah_permit' r.id %}', title: 'xtf', w: 900, h: 900});"  class="btn btn-sm"><i class="fe fe-edit fe-16"></i></a>
+
+                      </td>
+                      
+
+
+
+                    </tr>
+                {% endfor %}
+
+                    </tbody>
+                    
+                  </table>
+              
+              
+              
+            </div>
+
+            
+            </div>
+          </div>
+          
+          <div class="modal fade" id="arrival_voucher_add_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{% trans "Add Arrival Voucher" %}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method='post' action='{% url 'add_arrival_voucher' %}'>
+                        {% csrf_token %}
+                        {{add_voucher_form.as_p}}                       
+                    </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
+                </form>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+{% endblock datatables_script %}
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Arrival Voucher Pending Invoices" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Arrival Voucher Pending Invoices" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="card card-success card-outline">
+          <div class="card-body">
+          </div>
+          <!-- /.card -->
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">{% trans "Arrival Vouchers" %}</h3>
+
+            <div class="card-tools" {% if request.LANGUAGE_CODE == 'ar' %}style="float: left;"{% endif %} >
+              <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="search" name="q" class="form-control float-right" placeholder="{% trans "Search" %}"
+                hx-get="{% url 'pending_arrival_voucher_invoice_list_htmx' %}?status={% if request.GET.status %}{{request.GET.status}}{% endif %}"
+                hx-trigger="input changed delay:500ms, search, load"
+                hx-target="#search-results" 
+                hx-swap="outerHTML"
+                >
+
+                <div class="input-group-append">
+                  <button  class="btn btn-default">
+                    <div class="htmx-indicator spinner-border text-primary spinner-border-sm" role="status"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+          <div class="table-responsive" id="search-results">
+            <table id="dataTable" class="table table-bordered table-striped table-sm table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>{% trans "Voucher " %}</th>
+                  <th>{% trans "Agent" %}</th>
+                  <th>{% trans "Country" %}</th>
+                  <th>{% trans "PAX" %}</th>
+                  <th>{% trans "Group no" %}</th>
+                  <th>{% trans "Transport Company" %}</th>
+                  <th>{% trans "Type" %}</th>
+                  <th>{% trans "Status" %}</th>
+                  <th>{% trans "Starting Date" %}</th>
+                  <th>{% trans "Total Movements" %}</th>
+                  <th>{% trans "Action" %}</th>
+                </tr>
+              </thead>
+              <tbody >
+                    
+
+              </tbody>    
+            </table>
+          </div>
+        </div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+

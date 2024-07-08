@@ -1,0 +1,285 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% trans "Transport Program" %} UP-{{voucher.id}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        
+        .header {
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        .header img {
+            max-width: 150px;
+            vertical-align: middle;
+            {% if request.LANGUAGE_CODE == 'en' %}
+            float: right;
+            {% else %}
+            float: left;
+            {% endif %}
+        }
+        .company-details {
+            {% if request.LANGUAGE_CODE == 'en' %}
+            text-align: left;
+            {% else %}
+            text-align: right;
+            {% endif %}
+        }
+        .company-details p {
+            margin: 2px 0;
+        }
+        .invoice {
+        }
+        .invoice-header {
+            text-align: center;
+        }
+        .invoice-header h1 {
+            font-size: 24px;
+        }
+        .invoice-details {
+            margin-top: 20px;
+        }
+        .invoice-details p {
+            margin: 5px 0;
+        }
+        .invoice-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #ccc;
+            padding: 4px;
+            font-size: 12px;
+
+        }
+        .invoice-table th {
+            background-color: #f2f2f2;
+        }
+        .invoice-total {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .footer img {
+            max-width: 150px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+
+
+
+
+{% if request.LANGUAGE_CODE == 'en' %}
+<body onload="window.print()">
+{% else %}
+<body dir='rtl' onload="window.print()">
+{% endif %}    <div class="page">
+        <div class="header">
+            <table width="100%">
+                <tr>
+
+                    <td>
+                        <div class="company-details">
+                            <p><strong>{{request.user.agent.company}}</strong></p>
+                            <p>{{request.user.agent.company.address}}</p>
+                            <p>{% trans "C.R No." %}: {{request.user.agent.company.cr_no}}</p>
+                            {%if request.user.agent.company.vat_no %}
+                            <p>{% trans "VAT No." %}: {{request.user.agent.company.vat_no}}</p>  
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <img src="{{request.user.agent.company.logo.url}}" width="130px" class='company-logo'>
+                    </td>
+                </tr>
+            </table>
+            
+
+        </div>
+        <div class="invoice">
+            <div class "invoice-header">
+                <h3>{% trans "Transport Program" %}</h3>
+            </div>
+            <div class="invoice-details">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <p><strong>{% trans "Voucher " %}: UP-{{voucher.id}}</strong></p>
+                        <p><strong>{% trans "Agent" %}:</strong> {{voucher.agent}}</p>
+                        <p><strong>{% trans "Country" %}:</strong> {{voucher.country}}</p>
+                        <p><strong>{% trans "PAX" %}: {{voucher.pax}}</strong></p>
+                        <p><strong>{% trans "Group No" %}:</strong> {{voucher.group_no}}</p>
+                        <p><strong>{% trans "Group Leader" %}:</strong> {{voucher.group_leader}} {{voucher.group_leader_contact}}</p>
+                        <p><strong>{% trans "Agent Reference No" %}: </strong>{% if voucher.agent_referance_no %}{{voucher.agent_referance_no}}{%endif%}</p>
+                        <p><strong>{% trans "Status" %}: </strong>{% if voucher.status %}{{voucher.get_status_display}}{%endif%}</p>
+                    </td>
+                    <td>
+                        <p><strong>{% trans "Transport company" %}:</strong> {% if voucher.transport_company %}{{voucher.transport_company}}{% endif %}</p>
+                        <p><strong>{% trans "Transport type" %}:</strong> {% if voucher.transport_type %}{{voucher.transport_type}}{% endif %}</p>
+                        <p><strong>{% trans "Transport BRN" %}:</strong> {% if voucher.transport_brn %}{{voucher.transport_brn}}{% endif %}</p>
+                    </td>
+
+                <tr>
+            </table>
+
+
+
+
+
+
+                
+
+
+
+            </div>
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Time" %}</th>
+                        <th>{% trans "From" %}</th>
+                        <th>{% trans "To" %}</th>
+                        <th>{% trans "Type" %}</th>
+                        <th>{% trans "Status" %}</th>
+                        <th>{% trans "Remarks" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for route in transport_movements %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{route.date|date:"d/m/Y"}}</td>
+                        <td>{{route.time|date:"H:i"}}</td>
+                        <td><strong>{{route.route.route_from}}</strong>
+                            {% if route.movement_from_hotel %}
+                            <br>
+                            {{route.movement_from_hotel}}
+                            {% endif %}
+                            {% if route.route.is_linked_with_arrival_flight %}
+                            <br>
+                            {{route.flight_no}} - {{route.voucher.arrival_time|date:"H:i"}}
+                            {% endif %}
+                          </td>
+                          <td><strong>{{route.route.route_to}}</strong>
+                            {% if route.movement_to_hotel %}
+                            <br>
+                            {{route.movement_to_hotel}}
+                            {% endif %}
+                            {% if route.route.is_linked_with_departure_flight %}
+                            <br>
+                            {{route.flight_no}} - {{route.voucher.departure_time|date:"H:i"}}
+                            {% endif %}
+                          </td>
+                        <td>{{route.type}}</td>
+
+                        <td>
+                            {% if route.status %}
+                            {{route.get_status_display}}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if route.remarks %}
+                            {{route.remarks}}
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            {% if transport_movements_outside_package %}
+            
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <td colspan='8'>{% trans "Outside Package" %}</td>
+                    <tr>
+                        <th>#</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Time" %}</th>
+                        <th>{% trans "From" %}</th>
+                        <th>{% trans "To" %}</th>
+                        <th>{% trans "Type" %}</th>
+                        <th>{% trans "Status" %}</th>
+                        <th>{% trans "Remarks" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for route in transport_movements_outside_package %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{route.date|date:"d/m/Y"}}</td>
+                        <td>{{route.time|date:"H:i"}}</td>
+                        <td><strong>{{route.route.route_from}}</strong>
+                            {% if route.movement_from_hotel %}
+                            <br>
+                            {{route.movement_from_hotel}}
+                            {% endif %}
+                            {% if route.route.is_linked_with_arrival_flight %}
+                            <br>
+                            {{route.flight_no}} - {{route.voucher.arrival_time|date:"H:i"}}
+                            {% endif %}
+                          </td>
+                          <td><strong>{{route.route.route_to}}</strong>
+                            {% if route.movement_to_hotel %}
+                            <br>
+                            {{route.movement_to_hotel}}
+                            {% endif %}
+                            {% if route.route.is_linked_with_departure_flight %}
+                            <br>
+                            {{route.flight_no}} - {{route.voucher.departure_time|date:"H:i"}}
+                            {% endif %}
+                          </td>
+                        <td>{{route.type}}</td>
+
+                        <td>
+                            {% if route.status %}
+                            {{route.get_status_display}}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if route.remarks %}
+                            {{route.remarks}}
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+
+        <footer>
+        <div class="footer">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&amp;data=UP-{{voucher.id}}" alt="">
+            <br>
+            <img width="100px" src="{% static 'assets/images/umrahflow_logo.png'%}" alt="UmrahFlow Logo">
+        </div>
+        </footer>
+        
+
+
+    </div>
+    
+  
+</body>
+</html>

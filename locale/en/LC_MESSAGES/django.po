@@ -1,0 +1,4872 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: .\arrival_voucher\templates\arrival_voucher.html:61
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-09 00:28+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\account\choices.py:6 .\account\templates\print\debit_voucher_test.html:71
+#: .\payment\models.py:17
+msgid "Cash"
+msgstr ""
+
+#: .\account\choices.py:7
+msgid "Cheque"
+msgstr ""
+
+#: .\account\choices.py:8
+msgid "Bank Transfer"
+msgstr ""
+
+#: .\account\choices.py:9
+msgid "Credit Card / Debit Card"
+msgstr ""
+
+#: .\account\choices.py:10 .\payment\models.py:61
+msgid "Other"
+msgstr ""
+
+#: .\account\choices.py:15 .\account\templates\account.html:83
+#: .\account\templates\account.html:86 .\payment\templates\account_view.html:59
+#: .\payment\templates\account_view.html:62
+#: .\payment\templates\agent_account_view.html:95
+#: .\payment\templates\agent_account_view.html:98
+#: .\payment\templates\agent_account_view.html:189
+#: .\payment\templates\popup_forms\account_settlement_form.html:10
+#: .\payment\templates\popup_forms\agent_settlement_form.html:10
+#: .\payment\templates\print\print_agent_account_statement.html:121
+msgid "Settlement"
+msgstr ""
+
+#: .\account\forms.py:25 .\account\forms.py:70 .\account\forms.py:121
+#: .\account\forms.py:165 .\account\forms.py:206 .\agent\forms.py:92
+#: .\agent\forms.py:116 .\agent\models.py:23 .\agent\models.py:252
+#: .\arrival_voucher\forms.py:48 .\arrival_voucher\forms.py:88
+#: .\company\models.py:308 .\invoice\forms.py:27 .\invoice\forms.py:53
+#: .\invoice\forms.py:128 .\mandoob\forms.py:35 .\mandoob\models.py:21
+#: .\service_order\models.py:7 .\supplier\models.py:8 .\visa_group\models.py:18
+#: .\visa_group\models.py:352 .\voucher\models.py:16
+msgid "Company"
+msgstr ""
+
+#: .\account\forms.py:26
+msgid "Account Name (English)"
+msgstr ""
+
+#: .\account\forms.py:27
+msgid "Account Name (Arabic)"
+msgstr ""
+
+#: .\account\forms.py:28
+msgid "Parent Account"
+msgstr ""
+
+#: .\account\forms.py:29 .\account\models.py:73
+msgid "Allow Child Accounts"
+msgstr ""
+
+#: .\account\forms.py:30 .\account\models.py:68
+msgid "Account Type"
+msgstr ""
+
+#: .\account\forms.py:71 .\account\forms.py:122 .\account\forms.py:166
+#: .\account\forms.py:207 .\account\models.py:207 .\account\models.py:266
+#: .\account\models.py:323 .\account\models.py:449 .\account\models.py:571
+#: .\account\models.py:633 .\account\templates\account.html:133
+#: .\account\templates\payment_voucher.html:34
+#: .\account\templates\payment_voucher_list.html:48
+#: .\account\templates\print\debit_voucher_test.html:58
+#: .\account\templates\print\debit_voucher_test.html:92
+#: .\account\templates\print\payment_voucher_print.html:67
+#: .\account\templates\print\payment_voucher_print.html:101
+#: .\account\templates\print\print_account_statement.html:57
+#: .\account\templates\print\receipt_voucher_print.html:58
+#: .\account\templates\print\receipt_voucher_print.html:92
+#: .\account\templates\receipt_voucher.html:20
+#: .\account\templates\receipt_voucher_list.html:48
+#: .\account\templates\transaction.html:67
+#: .\account\templates\transaction_list.html:62
+#: .\agent\templates\agent_operating_schedule.html:46
+#: .\agent\templates\popup_forms\agent_price.html:28
+#: .\agent\templates\print\agent_transport_program.html:155
+#: .\agent\templates\print\agent_transport_program.html:216
+#: .\arrival_voucher\forms.py:362
+#: .\arrival_voucher\templates\arrival_voucher_view.html:94
+#: .\arrival_voucher\templates\arrival_voucher_view.html:199
+#: .\arrival_voucher\templates\operating_schedule.html:59
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:37
+#: .\arrival_voucher\templates\print\operating_schedule.html:113
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:11
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:38
+#: .\arrival_voucher\templates\print\transport_program.html:55
+#: .\arrival_voucher\templates\print\transport_program.html:116
+#: .\arrival_voucher\templates\print\transport_program.html:193
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:54
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:74
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:7
+#: .\arrival_voucher\templates\trips_date_open.html:35
+#: .\core\templates\print_document_header.html:54
+#: .\core\templates\transport_movement_history.html:45
+#: .\core\templates\transport_movement_history.html:48 .\invoice\forms.py:131
+#: .\invoice\models.py:15 .\payment\models.py:77 .\payment\models.py:177
+#: .\payment\models.py:233 .\payment\models.py:305
+#: .\payment\templates\account_view.html:87
+#: .\payment\templates\agent_account_view.html:120
+#: .\payment\templates\office_expense_list.html:82
+#: .\payment\templates\print\print_agent_account_statement.html:52
+#: .\payment\templates\print\print_receipt_vouchers_report.html:49
+#: .\payment\templates\print\print_treasury_report.html:46
+#: .\payment\templates\print\receipt_voucher.html:21
+#: .\payment\templates\treasury.html:87 .\payment\templates\treasury.html:120
+#: .\payment\templates\treasury.html:159 .\transport\models.py:132
+#: .\voucher\models.py:312 .\voucher\models.py:336
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:37
+#: .\voucher\templates\popup_forms\add_voucher.html:107
+#: .\voucher\templates\print\print_detailed_voucher.html:38
+#: .\voucher\templates\print\vouchers_report.html:51
+#: .\voucher\templates\transport_invoice_list.html:98
+msgid "Date"
+msgstr ""
+
+#: .\account\forms.py:72 .\account\forms.py:123 .\account\forms.py:167
+#: .\account\forms.py:208 .\account\templates\payment_voucher.html:41
+#: .\account\templates\payment_voucher_list.html:55
+#: .\account\templates\receipt_voucher_list.html:55
+#: .\account\templates\transaction.html:5
+#: .\account\templates\transaction.html:16
+#: .\visa_group\ajax_datatable_views.py:64 .\visa_group\models.py:39
+msgid "Transaction"
+msgstr ""
+
+#: .\account\forms.py:73 .\account\models.py:326
+msgid "Collected From"
+msgstr ""
+
+#: .\account\forms.py:74
+msgid "Collected From Name"
+msgstr ""
+
+#: .\account\forms.py:75
+msgid "To Account"
+msgstr ""
+
+#: .\account\forms.py:76 .\account\forms.py:127 .\account\forms.py:169
+#: .\account\forms.py:210 .\account\models.py:328 .\account\models.py:454
+#: .\account\models.py:574 .\account\models.py:636
+#: .\account\templates\payment_voucher.html:38
+#: .\account\templates\payment_voucher_list.html:52
+#: .\account\templates\print\debit_voucher_test.html:55
+#: .\account\templates\print\payment_voucher_print.html:64
+#: .\account\templates\print\receipt_voucher_print.html:55
+#: .\account\templates\receipt_voucher.html:20
+#: .\account\templates\receipt_voucher_list.html:52 .\invoice\models.py:17
+#: .\payment\forms.py:208 .\payment\forms.py:230 .\payment\models.py:69
+#: .\payment\models.py:175 .\payment\models.py:227 .\payment\models.py:301
+#: .\payment\templates\office_expense_list.html:83
+#: .\payment\templates\print\print_receipt_vouchers_report.html:50
+#: .\payment\templates\print\print_receipt_vouchers_report.html:88
+#: .\payment\templates\print\receipt_voucher.html:21
+#: .\payment\templates\treasury.html:88 .\payment\templates\treasury.html:121
+#: .\payment\templates\treasury.html:160 .\voucher\models.py:21
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:49
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:48
+msgid "Amount"
+msgstr ""
+
+#: .\account\forms.py:77 .\account\forms.py:128 .\account\forms.py:170
+#: .\account\forms.py:211 .\account\models.py:329 .\account\models.py:455
+#: .\account\models.py:575 .\account\models.py:637
+#: .\account\templates\print\print_account_statement.html:58
+#: .\account\templates\transaction.html:71
+#: .\payment\templates\agent_account_view.html:168
+#: .\payment\templates\print\print_agent_account_statement.html:100
+#: .\voucher\models.py:345 .\voucher\templates\transport_invoice_list.html:102
+msgid "Description"
+msgstr ""
+
+#: .\account\forms.py:78 .\account\forms.py:129 .\account\forms.py:171
+#: .\account\forms.py:212 .\account\templates\account.html:142
+#: .\account\templates\payment_voucher.html:39
+#: .\account\templates\payment_voucher_list.html:53
+#: .\account\templates\print\payment_voucher_print.html:84
+#: .\account\templates\print\print_account_statement.html:59
+#: .\account\templates\print\receipt_voucher_print.html:75
+#: .\account\templates\receipt_voucher_list.html:53
+#: .\account\templates\transaction_list.html:67 .\payment\models.py:93
+#: .\payment\templates\account_view.html:94
+#: .\payment\templates\agent_account_view.html:130
+#: .\payment\templates\print\print_account_transaction.html:163
+#: .\payment\templates\print\print_agent_account_statement.html:62
+#: .\voucher\models.py:347 .\voucher\templates\transport_invoice_list.html:107
+msgid "Reference No"
+msgstr ""
+
+#: .\account\forms.py:79 .\account\forms.py:130 .\account\forms.py:172
+#: .\account\forms.py:213 .\account\models.py:331 .\account\models.py:457
+#: .\account\models.py:577 .\account\models.py:639
+#: .\account\templates\payment_voucher.html:40
+#: .\account\templates\payment_voucher_list.html:54
+#: .\account\templates\print\debit_voucher_test.html:71
+#: .\account\templates\print\payment_voucher_print.html:80
+#: .\account\templates\print\receipt_voucher_print.html:71
+#: .\account\templates\receipt_voucher_list.html:54
+msgid "Payment Method"
+msgstr ""
+
+#: .\account\forms.py:124 .\account\models.py:452
+msgid "Paid To"
+msgstr ""
+
+#: .\account\forms.py:125
+msgid "Paid To Name"
+msgstr ""
+
+#: .\account\forms.py:126
+msgid "From Account"
+msgstr ""
+
+#: .\account\forms.py:168
+msgid "Credit Account"
+msgstr ""
+
+#: .\account\forms.py:209
+msgid "Debit Account"
+msgstr ""
+
+#: .\account\manager.py:21
+#, python-brace-format
+msgid ""
+"Total debits and credits should be equal. Total debits: {total_debits}, "
+"Total credits: {total_credits}"
+msgstr ""
+
+#: .\account\manager.py:24
+msgid "Transaction should have at least 2 entries"
+msgstr ""
+
+#: .\account\models.py:60
+msgid "Account Name English"
+msgstr ""
+
+#: .\account\models.py:61
+msgid "Account Name Arabic"
+msgstr ""
+
+#: .\account\models.py:63
+msgid "Asset"
+msgstr ""
+
+#: .\account\models.py:64
+msgid "Liability"
+msgstr ""
+
+#: .\account\models.py:65
+msgid "Equity"
+msgstr ""
+
+#: .\account\models.py:66
+msgid "Revenue"
+msgstr ""
+
+#: .\account\models.py:67
+msgid "Expense"
+msgstr ""
+
+#: .\account\models.py:70 .\account\templates\print\debit_voucher_test.html:62
+msgid "Account Number"
+msgstr ""
+
+#: .\account\models.py:76
+msgid "Allow Edit"
+msgstr ""
+
+#: .\account\models.py:79
+msgid "Company Account"
+msgstr ""
+
+#: .\account\models.py:80
+msgid "Company Accounts"
+msgstr ""
+
+#: .\account\models.py:113 .\account\templates\account.html:5
+#: .\account\templates\account.html:16 .\account\templates\account_list.html:80
+#: .\account\templates\print\print_account_statement.html:41
+#: .\account\templates\transaction.html:92 .\agent\models.py:40
+#: .\payment\templates\account_view.html:4
+#: .\payment\templates\account_view.html:15
+#: .\payment\templates\account_view.html:111
+#: .\payment\templates\account_view.html:113
+#: .\payment\templates\accounts_list.html:39
+#: .\payment\templates\agent_account_view.html:15
+#: .\payment\templates\popup_forms\account_credit_form.html:23
+#: .\payment\templates\popup_forms\account_debit_form.html:23
+#: .\payment\templates\popup_forms\account_form.html:10
+#: .\payment\templates\popup_forms\account_form_edit.html:10
+#: .\payment\templates\popup_forms\account_transfer_form.html:23
+#: .\payment\templates\popup_forms\withdraw_payment.html:39
+#: .\transport\models.py:19
+msgid "Account"
+msgstr ""
+
+#: .\account\models.py:114 .\core\templates\side_navigation\accounts.html:11
+#: .\payment\templates\accounts_list.html:4
+#: .\payment\templates\accounts_list.html:14
+msgid "Accounts"
+msgstr ""
+
+#: .\account\models.py:208 .\account\models.py:268
+msgid "Description English"
+msgstr ""
+
+#: .\account\models.py:209 .\account\models.py:269
+msgid "Description Arabic"
+msgstr ""
+
+#: .\account\models.py:210
+msgid "Reference"
+msgstr ""
+
+#: .\account\models.py:226 .\account\models.py:440 .\account\models.py:563
+msgid "You are not allowed to delete this transaction"
+msgstr ""
+
+#: .\account\models.py:242 .\account\models.py:312
+msgid "Unknown"
+msgstr ""
+
+#: .\account\models.py:259
+msgid "Debit and Credit are not equal"
+msgstr ""
+
+#: .\account\models.py:271 .\account\templates\account.html:86
+#: .\account\templates\account.html:134
+#: .\account\templates\print\print_account_statement.html:60
+#: .\account\templates\transaction.html:93
+#: .\account\templates\transaction_list.html:64 .\payment\models.py:22
+#: .\payment\models.py:33 .\payment\models.py:71
+#: .\payment\templates\account_view.html:62
+#: .\payment\templates\account_view.html:88
+#: .\payment\templates\agent_account_view.html:98
+#: .\payment\templates\agent_account_view.html:121
+#: .\payment\templates\print\print_agent_account_statement.html:53
+#: .\payment\templates\print\print_treasury_report.html:48
+#: .\payment\views.py:959 .\payment\views.py:1027 .\payment\views.py:1108
+msgid "Debit"
+msgstr ""
+
+#: .\account\models.py:272 .\account\templates\account.html:83
+#: .\account\templates\account.html:135
+#: .\account\templates\print\print_account_statement.html:61
+#: .\account\templates\transaction.html:94
+#: .\account\templates\transaction_list.html:65 .\payment\models.py:21
+#: .\payment\models.py:32 .\payment\models.py:70
+#: .\payment\templates\account_view.html:59
+#: .\payment\templates\account_view.html:89
+#: .\payment\templates\agent_account_view.html:95
+#: .\payment\templates\agent_account_view.html:122
+#: .\payment\templates\print\print_agent_account_statement.html:54
+#: .\payment\templates\print\print_treasury_report.html:47
+#: .\payment\views.py:917 .\payment\views.py:1001 .\payment\views.py:1068
+msgid "Credit"
+msgstr ""
+
+#: .\account\models.py:275
+msgid "Entry For"
+msgstr ""
+
+#: .\account\models.py:283
+msgid "Debit and Credit should be positive numbers"
+msgstr ""
+
+#: .\account\models.py:289
+msgid "Journal Entry"
+msgstr ""
+
+#: .\account\models.py:290 .\account\templates\transaction.html:85
+msgid "Journal Entries"
+msgstr ""
+
+#: .\account\models.py:330 .\account\models.py:456 .\account\models.py:576
+#: .\account\models.py:638 .\account\templates\print\debit_voucher_test.html:75
+msgid "Reference Number"
+msgstr ""
+
+#: .\account\models.py:339 .\account\templates\payment_voucher.html:5
+#: .\account\templates\payment_voucher.html:16
+#: .\account\templates\print\debit_voucher_test.html:9
+#: .\account\templates\print\debit_voucher_test.html:52
+#: .\account\templates\print\payment_voucher_print.html:9
+#: .\account\templates\print\receipt_voucher_print.html:9
+#: .\account\templates\print\receipt_voucher_print.html:52
+#: .\account\templates\receipt_voucher_form.html:6 .\account\views.py:275
+#: .\account\views.py:286 .\account\views.py:298 .\account\views.py:325
+#: .\account\views.py:336 .\account\views.py:352
+msgid "Receipt Voucher"
+msgstr ""
+
+#: .\account\models.py:340 .\core\templates\side_navigation\accounts.html:61
+msgid "Receipt Vouchers"
+msgstr ""
+
+#: .\account\models.py:346 .\account\models.py:472
+msgid "Amount should be a positive number"
+msgstr ""
+
+#: .\account\models.py:423 .\account\models.py:546
+msgid "You are not allowed to edit this transaction"
+msgstr ""
+
+#: .\account\models.py:464 .\account\templates\payment_voucher_form.html:6
+#: .\account\templates\print\payment_voucher_print.html:58
+#: .\account\views.py:376 .\account\views.py:389 .\account\views.py:412
+#: .\account\views.py:431
+msgid "Payment Voucher"
+msgstr ""
+
+#: .\account\models.py:465 .\core\templates\side_navigation\accounts.html:81
+msgid "Payment Vouchers"
+msgstr ""
+
+#: .\account\models.py:580 .\account\views.py:159 .\account\views.py:164
+msgid "Account Settlement Credit"
+msgstr ""
+
+#: .\account\models.py:581
+msgid "Account Settlement Credits"
+msgstr ""
+
+#: .\account\models.py:642 .\account\views.py:181 .\account\views.py:186
+msgid "Account Settlement Debit"
+msgstr ""
+
+#: .\account\models.py:643
+msgid "Account Settlement Debits"
+msgstr ""
+
+#: .\account\templates\account.html:34 .\account\templates\account.html:136
+#: .\payment\templates\account_view.html:31
+#: .\payment\templates\account_view.html:90
+#: .\payment\templates\agent_account_view.html:34
+#: .\payment\templates\agent_account_view.html:123
+#: .\payment\templates\payment_agent_list.html:104
+#: .\payment\templates\print\print_agent_account_statement.html:55
+msgid "Account Balance"
+msgstr ""
+
+#: .\account\templates\account.html:93 .\account\templates\account.html:255
+#: .\payment\templates\account_view.html:191
+#: .\payment\templates\agent_account_view.html:91
+#: .\payment\templates\agent_account_view.html:277
+msgid "Print Account Statement"
+msgstr ""
+
+#: .\account\templates\account.html:131 .\account\templates\transaction.html:65
+#: .\account\templates\transaction_list.html:61
+#: .\payment\templates\account_view.html:86
+#: .\payment\templates\agent_account_view.html:119
+#: .\payment\templates\office_expense_list.html:81
+#: .\payment\templates\print\print_agent_account_statement.html:51
+#: .\payment\templates\print\print_receipt_vouchers_report.html:47
+#: .\payment\templates\print\print_treasury_report.html:45
+#: .\payment\templates\treasury.html:86 .\payment\templates\treasury.html:119
+#: .\payment\templates\treasury.html:158
+msgid "Transaction No."
+msgstr ""
+
+#: .\account\templates\account.html:132 .\account\templates\transaction.html:91
+msgid "Entry No."
+msgstr ""
+
+#: .\account\templates\account.html:137
+#: .\account\templates\payment_voucher.html:37
+#: .\account\templates\payment_voucher_list.html:51
+#: .\account\templates\receipt_voucher_list.html:51
+#: .\account\templates\transaction_list.html:66
+msgid "Discription"
+msgstr ""
+
+#: .\account\templates\account.html:143
+#: .\account\templates\payment_voucher.html:42
+#: .\account\templates\payment_voucher_list.html:56
+#: .\account\templates\print\print_account_statement.html:44
+#: .\account\templates\receipt_voucher_list.html:56
+#: .\account\templates\transaction.html:95
+#: .\account\templates\transaction_list.html:68
+#: .\agent\templates\popup_forms\agent_user.html:27
+#: .\agent\templates\popup_forms\agent_user.html:29
+#: .\company\templates\mandoob_list.html:42 .\core\templates\login.html:16
+#: .\core\templates\login.html:17 .\core\templates\login.html:101
+#: .\core\templates\transport_movement_history.html:59 .\mandoob\forms.py:40
+#: .\mandoob\models.py:26
+msgid "Username"
+msgstr ""
+
+#: .\account\templates\account.html:144
+#: .\account\templates\payment_voucher_form.html:49
+#: .\account\templates\payment_voucher_list.html:108
+#: .\account\templates\receipt_voucher_form.html:50
+#: .\account\templates\receipt_voucher_list.html:107
+#: .\agent\templates\agent_arrival_voucher.html:151
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:173
+#: .\arrival_voucher\templates\operating_schedule.html:40
+#: .\payment\templates\account_view.html:96
+#: .\payment\templates\payroll_view.html:128
+#: .\voucher\templates\transport_invoice_list.html:72
+msgid "Print"
+msgstr ""
+
+#: .\account\templates\account.html:218
+#: .\account\templates\payment_voucher.html:112
+#: .\account\templates\payment_voucher_form.html:64
+#: .\account\templates\payment_voucher_list.html:133
+#: .\account\templates\receipt_voucher_form.html:65
+#: .\account\templates\receipt_voucher_list.html:132
+#: .\account\templates\transaction.html:143
+#: .\account\templates\transaction_list.html:136
+#: .\payment\templates\account_view.html:156
+#: .\payment\templates\agent_account_view.html:87
+#: .\payment\templates\agent_account_view.html:241
+#: .\payment\templates\payment_agent_list.html:145
+#: .\payment\templates\payroll_view.html:161
+#: .\payment\templates\print\print_receipt_vouchers_report.html:25
+msgid "Receipt Vouchers Report"
+msgstr ""
+
+#: .\account\templates\account.html:226 .\account\templates\account.html:263
+#: .\account\templates\payment_voucher.html:120
+#: .\account\templates\payment_voucher_form.html:72
+#: .\account\templates\payment_voucher_list.html:141
+#: .\account\templates\receipt_voucher_form.html:73
+#: .\account\templates\receipt_voucher_list.html:140
+#: .\account\templates\transaction.html:151
+#: .\account\templates\transaction_list.html:144 .\agent\forms.py:47
+#: .\payment\templates\account_view.html:164
+#: .\payment\templates\account_view.html:199
+#: .\payment\templates\agent_account_view.html:249
+#: .\payment\templates\agent_account_view.html:285
+#: .\payment\templates\payment_agent_list.html:153
+#: .\payment\templates\payroll_view.html:169
+#: .\payment\templates\print\print_agent_account_statement.html:34
+#: .\payment\templates\print\print_receipt_vouchers_report.html:31
+#: .\payment\templates\print\print_receipt_vouchers_report.html:78
+#: .\payment\templates\print\print_treasury_report.html:32
+#: .\payment\templates\print\print_treasury_report.html:75
+#: .\payment\templates\treasury.html:213
+#: .\voucher\templates\print\vouchers_report.html:32
+#: .\voucher\templates\print\vouchers_report.html:86
+msgid "From Date"
+msgstr ""
+
+#: .\account\templates\account.html:232 .\account\templates\account.html:269
+#: .\account\templates\payment_voucher.html:126
+#: .\account\templates\payment_voucher_form.html:78
+#: .\account\templates\payment_voucher_list.html:147
+#: .\account\templates\receipt_voucher_form.html:79
+#: .\account\templates\receipt_voucher_list.html:146
+#: .\account\templates\transaction.html:157
+#: .\account\templates\transaction_list.html:150
+#: .\payment\templates\account_view.html:170
+#: .\payment\templates\account_view.html:205
+#: .\payment\templates\agent_account_view.html:255
+#: .\payment\templates\agent_account_view.html:291
+#: .\payment\templates\payment_agent_list.html:159
+#: .\payment\templates\payroll_view.html:175
+#: .\payment\templates\print\print_agent_account_statement.html:36
+#: .\payment\templates\print\print_receipt_vouchers_report.html:33
+#: .\payment\templates\print\print_receipt_vouchers_report.html:80
+#: .\payment\templates\print\print_treasury_report.html:34
+#: .\payment\templates\print\print_treasury_report.html:77
+#: .\payment\templates\treasury.html:219
+#: .\voucher\templates\print\vouchers_report.html:34
+#: .\voucher\templates\print\vouchers_report.html:88
+msgid "To Date"
+msgstr ""
+
+#: .\account\templates\account.html:239 .\account\templates\account.html:276
+#: .\account\templates\payment_voucher.html:133
+#: .\account\templates\payment_voucher_form.html:85
+#: .\account\templates\payment_voucher_list.html:154
+#: .\account\templates\receipt_voucher_form.html:86
+#: .\account\templates\receipt_voucher_list.html:153
+#: .\account\templates\transaction.html:164
+#: .\account\templates\transaction_list.html:157
+#: .\agent\templates\agent_arrival_voucher.html:188
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:121
+#: .\agent\templates\agent_operating_schedule.html:229
+#: .\agent\templates\arrival_voucher_list.html:121
+#: .\arrival_voucher\templates\arrival_voucher.html:234
+#: .\arrival_voucher\templates\arrival_voucher.html:267
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:204
+#: .\arrival_voucher\templates\arrival_voucher_list.html:114
+#: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:68
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:111
+#: .\arrival_voucher\templates\operating_schedule.html:310
+#: .\arrival_voucher\templates\rawdah_permit_list.html:138
+#: .\arrival_voucher\templates\trips_date_open.html:185
+#: .\invoice\templates\arrival_voucher_invoice.html:220
+#: .\invoice\templates\arrival_voucher_invoice.html:253
+#: .\payment\templates\account_view.html:177
+#: .\payment\templates\account_view.html:212
+#: .\payment\templates\agent_account_view.html:262
+#: .\payment\templates\agent_account_view.html:298
+#: .\payment\templates\payment_agent_list.html:166
+#: .\payment\templates\payroll_view.html:182
+#: .\payment\templates\popup_forms\collect_payment.html:49
+#: .\payment\templates\treasury.html:226
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:179
+#: .\voucher\templates\popup_forms\add_voucher.html:277
+#: .\voucher\templates\transport_invoice_form.html:51
+#: .\voucher\templates\transport_invoice_list.html:242
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:216
+msgid "Close"
+msgstr ""
+
+#: .\account\templates\account.html:240 .\account\templates\account.html:277
+#: .\account\templates\payment_voucher.html:134
+#: .\account\templates\payment_voucher_form.html:86
+#: .\account\templates\payment_voucher_list.html:155
+#: .\account\templates\receipt_voucher_form.html:87
+#: .\account\templates\receipt_voucher_list.html:154
+#: .\account\templates\transaction.html:165
+#: .\account\templates\transaction_list.html:158
+#: .\arrival_voucher\templates\arrival_voucher_list.html:138
+#: .\arrival_voucher\templates\operating_schedule.html:285
+#: .\payment\templates\account_view.html:178
+#: .\payment\templates\account_view.html:213
+#: .\payment\templates\agent_account_view.html:263
+#: .\payment\templates\agent_account_view.html:299
+#: .\payment\templates\payment_agent_list.html:167
+#: .\payment\templates\payroll_view.html:183
+#: .\payment\templates\treasury.html:227
+#: .\voucher\templates\transport_invoice_list.html:71
+msgid "Display Records"
+msgstr ""
+
+#: .\account\templates\account_list.html:4
+#: .\account\templates\account_list.html:13
+#: .\core\templates\side_navigation\accounts.html:43
+msgid "Accounts Tree"
+msgstr ""
+
+#: .\account\templates\account_list.html:26
+msgid "Settings"
+msgstr ""
+
+#: .\account\templates\account_list.html:79 .\agent\forms.py:71
+#: .\agent\models.py:25 .\agent\models.py:226
+#: .\agent\templates\agent_list.html:46
+#: .\agent\templates\popup_forms\agent_code.html:10
+msgid "Code"
+msgstr ""
+
+#: .\account\templates\account_list.html:81
+#: .\account\templates\transport_companies_list.html:42
+#: .\payment\templates\popup_forms\account_credit_form.html:25
+#: .\payment\templates\popup_forms\account_debit_form.html:25
+#: .\payment\templates\popup_forms\account_transfer_form.html:25
+#: .\payment\templates\treasury.html:31
+msgid "Balance"
+msgstr ""
+
+#: .\account\templates\account_list.html:82
+#: .\agent\forms\agent_arrival_voucher_form.html:114
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:114
+msgid "Actions"
+msgstr ""
+
+#: .\account\templates\payment_voucher.html:33
+#: .\account\templates\payment_voucher_list.html:47
+#: .\account\templates\receipt_voucher_list.html:47
+msgid "Voucher No."
+msgstr ""
+
+#: .\account\templates\payment_voucher.html:35
+#: .\account\templates\payment_voucher_list.html:49
+#: .\account\templates\print\payment_voucher_print.html:70
+#: .\payment\models.py:180 .\payment\templates\office_expense_list.html:87
+msgid "Paid to"
+msgstr ""
+
+#: .\account\templates\payment_voucher.html:36
+#: .\account\templates\payment_voucher_list.html:50
+msgid "Paid from account"
+msgstr ""
+
+#: .\account\templates\payment_voucher.html:43
+#: .\account\templates\payment_voucher_list.html:57
+#: .\account\templates\receipt_voucher_list.html:57
+#: .\account\templates\transaction_list.html:69
+#: .\account\templates\transport_companies_list.html:44
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:82
+#: .\agent\templates\agent_list.html:49
+#: .\agent\templates\agent_operating_schedule.html:65
+#: .\agent\templates\arrival_voucher_list.html:82
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:30
+#: .\arrival_voucher\templates\arrival_voucher.html:45
+#: .\arrival_voucher\templates\arrival_voucher_list.html:82
+#: .\arrival_voucher\templates\arrival_voucher_view.html:97
+#: .\arrival_voucher\templates\arrival_voucher_view.html:206
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:46
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:22
+#: .\arrival_voucher\templates\operating_schedule.html:78
+#: .\arrival_voucher\templates\rawdah_permit_list.html:57
+#: .\arrival_voucher\templates\trips_date_open.html:46
+#: .\company\templates\designation_list.html:42
+#: .\company\templates\employee_list.html:43
+#: .\company\templates\mandoob_list.html:43
+#: .\core\templates\transport_movement_history.html:57
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:66
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:19
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:19
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:66
+#: .\payment\templates\accounts_list.html:40
+#: .\payment\templates\agent_account_view.html:132
+#: .\payment\templates\office_expense_list.html:89
+#: .\payment\templates\payment_agent_list.html:107
+#: .\payment\templates\payroll_view.html:101
+#: .\payment\templates\payrolls.html:52
+#: .\transport\templates\transport_packages.html:44
+#: .\transport\templates\transport_routes.html:45
+#: .\visa_group\ajax_datatable_views.py:54 .\voucher\ajax_datatable_views.py:65
+#: .\voucher\templates\transport_invoice_list.html:111
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:53
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:55
+msgid "Action"
+msgstr ""
+
+#: .\account\templates\payment_voucher.html:88
+#: .\account\templates\payment_voucher_list.html:107
+#: .\account\templates\receipt_voucher_list.html:106
+#: .\account\templates\transaction_list.html:112
+#: .\payment\templates\payrolls.html:68
+msgid "View"
+msgstr ""
+
+#: .\account\templates\payment_voucher_form.html:46
+#: .\account\templates\receipt_voucher_form.html:47
+#: .\agent\forms\agent_arrival_voucher_form.html:82
+#: .\agent\templates\agent_arrival_voucher.html:145
+#: .\agent\templates\popup_forms\agent_code.html:51
+#: .\arrival_voucher\templates\arrival_voucher.html:183
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:149
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:82
+#: .\transport\templates\add_transport_package.html:33
+#: .\visa_group\templates\umrah_visa_group_invoice_form.html:80
+msgid "Save"
+msgstr ""
+
+#: .\account\templates\payment_voucher_list.html:5
+#: .\account\templates\payment_voucher_list.html:16
+#: .\core\templates\side_navigation\accounts.html:85
+msgid "Payment Voucher List"
+msgstr ""
+
+#: .\account\templates\payment_voucher_list.html:32
+#: .\account\templates\receipt_voucher_list.html:32
+#: .\payment\templates\office_expense_list.html:68
+#: .\transport\templates\transport_packages.html:29
+msgid "Add New"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:54
+#: .\account\templates\print\payment_voucher_print.html:60
+#: .\account\templates\print\receipt_voucher_print.html:54
+msgid "Number"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:61
+#: .\account\templates\print\receipt_voucher_print.html:61
+msgid "Received From"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:65
+#: .\account\templates\print\payment_voucher_print.html:74
+#: .\account\templates\print\receipt_voucher_print.html:65
+msgid "The Sum Of"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:65
+msgid "Only Eight Hundred"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:68
+#: .\account\templates\print\payment_voucher_print.html:77
+#: .\account\templates\print\receipt_voucher_print.html:68
+msgid "Being"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:72
+#: .\account\templates\print\payment_voucher_print.html:81
+#: .\account\templates\print\receipt_voucher_print.html:72
+msgid "Bank Name"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:78
+#: .\account\templates\print\payment_voucher_print.html:87
+#: .\account\templates\print\receipt_voucher_print.html:78
+#: .\company\choices.py:6 .\payment\forms.py:36 .\payment\forms.py:57
+#: .\payment\forms.py:209 .\payment\forms.py:231 .\payment\models.py:181
+#: .\payment\templates\office_expense_list.html:88
+#: .\payment\templates\popup_forms\withdraw_payment.html:63
+#: .\payment\templates\treasury.html:163
+msgid "Accountant"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:79
+#: .\account\templates\print\payment_voucher_print.html:88
+#: .\account\templates\print\receipt_voucher_print.html:79
+msgid "Auditor"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:80
+#: .\account\templates\print\payment_voucher_print.html:89
+#: .\account\templates\print\receipt_voucher_print.html:80
+#: .\payment\models.py:82 .\payment\models.py:237 .\payment\models.py:309
+#: .\payment\templates\print\print_receipt_vouchers_report.html:53
+msgid "Received By"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:81
+msgid "Add By"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:92
+#: .\account\templates\print\payment_voucher_print.html:101
+#: .\account\templates\print\receipt_voucher_print.html:92
+#: .\core\templates\print_document_header.html:54
+msgid "Created with"
+msgstr ""
+
+#: .\account\templates\print\debit_voucher_test.html:92
+#: .\account\templates\print\payment_voucher_print.html:101
+#: .\account\templates\print\receipt_voucher_print.html:92
+#: .\core\templates\print_document_header.html:54
+msgid "Print By"
+msgstr ""
+
+#: .\account\templates\print\payment_voucher_print.html:71
+#: .\account\templates\print\receipt_voucher_print.html:62
+#: .\account\templates\transport_companies_list.html:41 .\voucher\models.py:26
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:49
+msgid "Account No."
+msgstr ""
+
+#: .\account\templates\print\payment_voucher_print.html:90
+#: .\account\templates\print\receipt_voucher_print.html:81
+msgid "Entered By"
+msgstr ""
+
+#: .\account\templates\print\print_account_statement.html:9
+#: .\account\templates\print\print_account_statement.html:28
+#: .\payment\templates\print\print_agent_account_statement.html:9
+#: .\payment\templates\print\print_agent_account_statement.html:28
+msgid "Account Statement"
+msgstr ""
+
+#: .\account\templates\print\print_account_statement.html:43
+#: .\payment\templates\print\agents_current_balance_print.html:29
+#: .\payment\templates\print\print_agent_account_statement.html:42
+#: .\payment\templates\print\print_receipt_vouchers_report.html:101
+#: .\payment\templates\print\print_treasury_report.html:98
+msgid "Print Date"
+msgstr ""
+
+#: .\account\templates\print\print_account_statement.html:99
+#: .\payment\templates\print\agents_current_balance_print.html:40
+#: .\payment\templates\print\print_agent_account_statement.html:152
+msgid "Current Balance"
+msgstr ""
+
+#: .\account\templates\print\print_account_statement.html:109
+#: .\invoice\templates\arrival_voucher_invoice.html:168
+msgid "Note"
+msgstr ""
+
+#: .\account\templates\receipt_voucher.html:20
+#: .\payment\templates\account_view.html:50
+#: .\payment\templates\agent_account_view.html:79
+#: .\payment\templates\popup_forms\account_credit_form.html:10
+#: .\payment\templates\popup_forms\collect_payment.html:10
+#: .\payment\templates\print\receipt_voucher.html:21
+#: .\payment\templates\treasury.html:51
+msgid "Collect Payment"
+msgstr ""
+
+#: .\account\templates\receipt_voucher_list.html:5
+#: .\account\templates\receipt_voucher_list.html:16
+#: .\core\templates\side_navigation\accounts.html:65
+msgid "Receipt Voucher List"
+msgstr ""
+
+#: .\account\templates\receipt_voucher_list.html:49 .\payment\models.py:235
+msgid "Collected from"
+msgstr ""
+
+#: .\account\templates\receipt_voucher_list.html:50
+msgid "Collected to account"
+msgstr ""
+
+#: .\account\templates\transaction.html:55
+msgid "Transaction Details"
+msgstr ""
+
+#: .\account\templates\transaction.html:73
+msgid "Totel Entries"
+msgstr ""
+
+#: .\account\templates\transaction_list.html:5
+#: .\account\templates\transaction_list.html:16
+msgid "Transaction List"
+msgstr ""
+
+#: .\account\templates\transaction_list.html:63
+msgid "Entries Count"
+msgstr ""
+
+#: .\account\templates\transport_companies_list.html:6
+#: .\account\templates\transport_companies_list.html:15
+#: .\core\templates\side_navigation\accounts.html:23
+msgid "Transport Companies"
+msgstr ""
+
+#: .\account\templates\transport_companies_list.html:28
+msgid "Add New Company"
+msgstr ""
+
+#: .\account\templates\transport_companies_list.html:40
+msgid "Company Name"
+msgstr ""
+
+#: .\account\views.py:68
+msgid "Account Created."
+msgstr ""
+
+#: .\account\views.py:93
+msgid "Account Updated."
+msgstr ""
+
+#: .\account\views.py:155
+msgid "Account Settlement Credit has been added."
+msgstr ""
+
+#: .\account\views.py:177
+msgid "Account Settlement Debit has been added."
+msgstr ""
+
+#: .\account\views.py:268
+msgid "Receipt Voucher has been added."
+msgstr ""
+
+#: .\account\views.py:317
+msgid "Receipt Voucher has been updated."
+msgstr ""
+
+#: .\account\views.py:328 .\account\views.py:419
+msgid "Please correct the errors below."
+msgstr ""
+
+#: .\account\views.py:370
+msgid "Payment Voucher has been added."
+msgstr ""
+
+#: .\account\views.py:406
+msgid "Payment Voucher has been updated."
+msgstr ""
+
+#: .\account\views.py:464
+msgid "Accounts settings have been updated successfully."
+msgstr ""
+
+#: .\account\views.py:467
+msgid "Error while updating accounts settings"
+msgstr ""
+
+#: .\account\views.py:470
+msgid "Accounts Settings"
+msgstr ""
+
+#: .\agent\choices.py:5
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:52
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:13
+msgid "External Agent"
+msgstr ""
+
+#: .\agent\choices.py:6
+msgid "Virtual Agent"
+msgstr ""
+
+#: .\agent\forms.py:46 .\agent\forms.py:68 .\agent\forms.py:93
+#: .\agent\forms.py:117 .\agent\forms\agent_arrival_voucher_form.html:36
+#: .\agent\models.py:224 .\agent\models.py:235 .\agent\models.py:253
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:67
+#: .\agent\templates\agent_list.html:41
+#: .\agent\templates\agent_operating_schedule.html:48
+#: .\agent\templates\arrival_voucher_list.html:67
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:14
+#: .\agent\templates\popup_forms\agent_price.html:10
+#: .\agent\templates\popup_forms\agent_user.html:20
+#: .\agent\templates\print\agent_transport_program.html:124
+#: .\arrival_voucher\forms.py:49 .\arrival_voucher\forms.py:363
+#: .\arrival_voucher\forms.py:373
+#: .\arrival_voucher\templates\arrival_voucher_list.html:70
+#: .\arrival_voucher\templates\arrival_voucher_view.html:38
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:40
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:36
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:10
+#: .\arrival_voucher\templates\htmx\results.html:12
+#: .\arrival_voucher\templates\htmx\search.html:42
+#: .\arrival_voucher\templates\operating_schedule.html:61
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:42
+#: .\arrival_voucher\templates\print\operating_schedule.html:115
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:13
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:44
+#: .\arrival_voucher\templates\print\transport_program.html:20
+#: .\arrival_voucher\templates\rawdah_permit_list.html:46
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:57
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:10
+#: .\arrival_voucher\templates\trips_date_open.html:37 .\invoice\forms.py:54
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:57
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:8
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:8
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:57
+#: .\payment\templates\account_view.html:123
+#: .\payment\templates\payment_agent_list.html:102
+#: .\payment\templates\popup_forms\withdraw_payment.html:27
+#: .\payment\templates\print\agents_current_balance_print.html:37
+#: .\payment\templates\print\print_account_transaction.html:117
+#: .\payment\templates\print\print_agent_account_statement.html:40
+#: .\payment\templates\print\print_receipt_vouchers_report.html:37
+#: .\payment\templates\print\print_receipt_vouchers_report.html:48
+#: .\payment\templates\print\print_receipt_vouchers_report.html:84
+#: .\service_order\models.py:8 .\visa_group\models.py:20 .\voucher\models.py:17
+#: .\voucher\models.py:335
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:42
+#: .\voucher\templates\popup_forms\add_voucher.html:97
+#: .\voucher\templates\print\print_detailed_voucher.html:44
+#: .\voucher\templates\print\vouchers_report.html:38
+#: .\voucher\templates\print\vouchers_report.html:52
+#: .\voucher\templates\print\vouchers_report.html:92
+#: .\voucher\templates\transport_invoice_list.html:99
+msgid "Agent"
+msgstr ""
+
+#: .\agent\forms.py:48 .\agent\models.py:237
+#: .\agent\templates\agent_list.html:60
+#: .\agent\templates\popup_forms\agent_price.html:29 .\visa_group\models.py:24
+msgid "Visa Price"
+msgstr ""
+
+#: .\agent\forms.py:49
+msgid "Transport Price"
+msgstr ""
+
+#: .\agent\forms.py:50 .\agent\models.py:239
+msgid "Transport Included By Default"
+msgstr ""
+
+#: .\agent\forms.py:67 .\agent\forms.py:70 .\agent\models.py:24
+#: .\agent\models.py:227
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:68
+#: .\agent\templates\agent_list.html:40
+#: .\agent\templates\arrival_voucher_list.html:68
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:15
+#: .\agent\templates\print\agent_transport_program.html:125
+#: .\arrival_voucher\forms.py:50 .\arrival_voucher\models.py:79
+#: .\arrival_voucher\templates\arrival_voucher_list.html:71
+#: .\arrival_voucher\templates\arrival_voucher_view.html:42
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:41
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:11
+#: .\arrival_voucher\templates\htmx\results.html:13
+#: .\arrival_voucher\templates\htmx\search.html:43
+#: .\arrival_voucher\templates\print\transport_program.html:22
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:58
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:11
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:58
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:9
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:9
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:58
+#: .\payment\templates\payment_agent_list.html:101
+#: .\payment\templates\print\agents_current_balance_print.html:38
+msgid "Country"
+msgstr ""
+
+#: .\agent\forms.py:69 .\agent\models.py:225
+msgid "Platform"
+msgstr ""
+
+#: .\agent\forms.py:94 .\agent\forms.py:118 .\agent\models.py:254
+#: .\agent\templates\agent_list.html:61
+msgid "Comission Holder Account"
+msgstr ""
+
+#: .\agent\forms.py:95 .\agent\forms.py:119 .\agent\models.py:236
+#: .\agent\models.py:255
+msgid "Change Date"
+msgstr ""
+
+#: .\agent\forms.py:96 .\agent\forms.py:120 .\agent\models.py:256
+#: .\agent\templates\agent_list.html:61
+msgid "Commission Per Visa With Transport"
+msgstr ""
+
+#: .\agent\forms.py:97 .\agent\forms.py:121 .\agent\models.py:257
+#: .\agent\templates\agent_list.html:61
+msgid "Commission Per Visa Without Transport"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:4
+#: .\agent\forms\agent_arrival_voucher_form.html:13
+#: .\arrival_voucher\templates\arrival_voucher_view.html:4
+#: .\arrival_voucher\templates\arrival_voucher_view.html:14
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:4
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:13
+#: .\arrival_voucher\templates\print\transport_program.html:9
+msgid "Arrival Voucher"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:29
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:29
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:22
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:29
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:22
+#: .\voucher\templates\popup_forms\add_voucher.html:93
+#: .\voucher\templates\print\print_detailed_voucher.html:29
+msgid "Voucher Details"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:45
+#: .\agent\templates\print\agent_transport_program.html:127
+#: .\arrival_voucher\forms.py:379
+#: .\arrival_voucher\templates\arrival_voucher_view.html:54
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:45
+#: .\arrival_voucher\templates\print\transport_program.html:25
+#: .\payment\templates\agent_account_view.html:127
+#: .\payment\templates\print\print_agent_account_statement.html:59
+#: .\visa_group\models.py:21
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:50
+msgid "Group No"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:53
+#: .\arrival_voucher\forms.py:380
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:53
+#: .\voucher\models.py:25
+msgid "Group Name"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:59
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:69
+#: .\agent\templates\agent_operating_schedule.html:49
+#: .\agent\templates\arrival_voucher_list.html:69
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:16
+#: .\agent\templates\print\agent_transport_program.html:126
+#: .\arrival_voucher\forms.py:53 .\arrival_voucher\forms.py:378
+#: .\arrival_voucher\models.py:83
+#: .\arrival_voucher\templates\arrival_voucher.html:44
+#: .\arrival_voucher\templates\arrival_voucher_list.html:72
+#: .\arrival_voucher\templates\arrival_voucher_view.html:50
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:42
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:59
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:12
+#: .\arrival_voucher\templates\htmx\results.html:14
+#: .\arrival_voucher\templates\htmx\search.html:44
+#: .\arrival_voucher\templates\operating_schedule.html:62
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:30
+#: .\arrival_voucher\templates\print\operating_schedule.html:116
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:14
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:34
+#: .\arrival_voucher\templates\print\transport_program.html:23
+#: .\arrival_voucher\templates\rawdah_permit_list.html:48
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:59
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:12
+#: .\arrival_voucher\templates\trips_date_open.html:38 .\invoice\forms.py:55
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:59
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:10
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:10
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:59
+#: .\payment\templates\agent_account_view.html:125
+#: .\payment\templates\print\print_agent_account_statement.html:57
+#: .\service_order\models.py:10 .\visa_group\models.py:23
+#: .\voucher\models.py:20
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:30
+#: .\voucher\templates\popup_forms\add_voucher.html:131
+#: .\voucher\templates\print\print_detailed_voucher.html:34
+#: .\voucher\templates\print\vouchers_report.html:53
+#: .\voucher\templates\transport_invoice_list.html:105
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:47
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:46
+msgid "PAX"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:67
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:67
+msgid "No of Transport Routes"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:74
+#: .\arrival_voucher\models.py:88
+#: .\arrival_voucher\templates\arrival_voucher_view.html:46
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:74
+msgid "Transportation Type"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:84
+#: .\arrival_voucher\templates\arrival_voucher.html:176
+#: .\arrival_voucher\templates\arrival_voucher.html:220
+#: .\arrival_voucher\templates\arrival_voucher.html:235
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:84
+#: .\invoice\templates\arrival_voucher_invoice.html:206
+#: .\invoice\templates\arrival_voucher_invoice.html:221
+msgid "Approve"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:85
+#: .\arrival_voucher\templates\arrival_voucher.html:179
+#: .\arrival_voucher\templates\arrival_voucher.html:251
+#: .\arrival_voucher\templates\arrival_voucher.html:268
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:85
+#: .\invoice\templates\arrival_voucher_invoice.html:237
+#: .\invoice\templates\arrival_voucher_invoice.html:254
+msgid "Reject"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:104
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:75
+#: .\agent\templates\arrival_voucher_list.html:75
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:22
+#: .\agent\templates\print\agent_transport_program.html:159
+#: .\agent\templates\print\agent_transport_program.html:220
+#: .\arrival_voucher\templates\arrival_voucher_list.html:77
+#: .\arrival_voucher\templates\arrival_voucher_view.html:92
+#: .\arrival_voucher\templates\arrival_voucher_view.html:198
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:38
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:104
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:17
+#: .\arrival_voucher\templates\htmx\results.html:20
+#: .\arrival_voucher\templates\htmx\search.html:50
+#: .\arrival_voucher\templates\print\transport_program.html:59
+#: .\arrival_voucher\templates\print\transport_program.html:120
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:63
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:16
+#: .\core\templates\transport_movement_history.html:53 .\invoice\forms.py:134
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:62
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:15
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:15
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:62
+#: .\transport\models.py:131
+msgid "Type"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:105
+#: .\agent\templates\agent_operating_schedule.html:50
+#: .\agent\templates\popup_forms\agent_price.html:28
+#: .\agent\templates\print\agent_transport_program.html:157
+#: .\agent\templates\print\agent_transport_program.html:218
+#: .\arrival_voucher\templates\arrival_voucher_view.html:95
+#: .\arrival_voucher\templates\arrival_voucher_view.html:201
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:105
+#: .\arrival_voucher\templates\operating_schedule.html:63
+#: .\arrival_voucher\templates\print\operating_schedule.html:117
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:15
+#: .\arrival_voucher\templates\print\transport_program.html:57
+#: .\arrival_voucher\templates\print\transport_program.html:118
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:60
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:13
+#: .\arrival_voucher\templates\trips_date_open.html:39
+#: .\payment\templates\account_view.html:111
+#: .\payment\templates\payroll_view.html:15
+#: .\payment\templates\print\print_account_transaction.html:94
+#: .\payment\templates\print\print_account_transaction.html:97
+#: .\transport\templates\transport_routes.html:42
+msgid "From"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:106
+#: .\agent\templates\agent_operating_schedule.html:51
+#: .\agent\templates\print\agent_transport_program.html:158
+#: .\agent\templates\print\agent_transport_program.html:219
+#: .\arrival_voucher\templates\arrival_voucher_view.html:96
+#: .\arrival_voucher\templates\arrival_voucher_view.html:204
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:106
+#: .\arrival_voucher\templates\operating_schedule.html:64
+#: .\arrival_voucher\templates\print\operating_schedule.html:118
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:16
+#: .\arrival_voucher\templates\print\transport_program.html:58
+#: .\arrival_voucher\templates\print\transport_program.html:119
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:61
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:14
+#: .\arrival_voucher\templates\trips_date_open.html:40
+#: .\payment\templates\account_view.html:113
+#: .\payment\templates\payroll_view.html:15
+#: .\payment\templates\print\print_account_transaction.html:101
+#: .\payment\templates\print\print_account_transaction.html:104
+#: .\transport\templates\transport_routes.html:43
+msgid "To"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:107
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:107
+msgid "Flight no"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:108
+#: .\arrival_voucher\models.py:99
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:108
+#: .\service_order\models.py:24
+msgid "Departure Date"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:109
+#: .\arrival_voucher\models.py:100
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:109
+#: .\service_order\models.py:25
+msgid "Departure Time"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:110
+#: .\arrival_voucher\models.py:93
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:110
+#: .\service_order\models.py:17 .\voucher\models.py:23
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:51
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:51
+msgid "Arrival Date"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:111
+#: .\arrival_voucher\models.py:94
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:111
+#: .\service_order\models.py:18
+msgid "Arrival Time"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:112
+#: .\agent\templates\agent_operating_schedule.html:62
+#: .\agent\templates\print\agent_transport_program.html:161
+#: .\agent\templates\print\agent_transport_program.html:222
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:112
+#: .\arrival_voucher\templates\operating_schedule.html:75
+#: .\arrival_voucher\templates\print\operating_schedule.html:127
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:25
+#: .\arrival_voucher\templates\print\transport_program.html:61
+#: .\arrival_voucher\templates\print\transport_program.html:122
+#: .\arrival_voucher\templates\trips_date_open.html:45
+#: .\core\templates\transport_movement_history.html:52 .\invoice\forms.py:133
+#: .\transport\models.py:164
+msgid "Remarks"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:122
+#: .\arrival_voucher\choices.py:10 .\arrival_voucher\choices.py:24
+#: .\arrival_voucher\templates\arrival_voucher_view.html:102
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:122
+msgid "Arrival"
+msgstr ""
+
+#: .\agent\forms\agent_arrival_voucher_form.html:139
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:139
+msgid "Return"
+msgstr ""
+
+#: .\agent\models.py:26 .\agent\templates\agent_list.html:42
+#: .\payment\templates\payment_agent_list.html:103
+msgid "Agent type"
+msgstr ""
+
+#: .\agent\models.py:27
+msgid "Agent Name English"
+msgstr ""
+
+#: .\agent\models.py:28
+msgid "Agent Name Arabic"
+msgstr ""
+
+#: .\agent\models.py:31
+msgid "Agent Address"
+msgstr ""
+
+#: .\agent\models.py:32
+msgid "Agent contact"
+msgstr ""
+
+#: .\agent\models.py:34 .\agent\templates\agent_list.html:47
+#: .\mandoob\models.py:28
+msgid "User"
+msgstr ""
+
+#: .\agent\models.py:35 .\mandoob\models.py:29
+msgid "Token"
+msgstr ""
+
+#: .\agent\models.py:217
+msgid "Nusuk"
+msgstr ""
+
+#: .\agent\models.py:218
+msgid "Tawaf"
+msgstr ""
+
+#: .\agent\models.py:219
+msgid "Way to Umrah"
+msgstr ""
+
+#: .\agent\models.py:220
+msgid "Baba Al Umrah"
+msgstr ""
+
+#: .\agent\models.py:238
+msgid "Visa Included Transport Price"
+msgstr ""
+
+#: .\agent\models.py:241 .\agent\templates\popup_forms\agent_price.html:32
+msgid "Changed By"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:4
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:4
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:14
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:34
+#: .\agent\templates\arrival_voucher_list.html:4
+#: .\agent\templates\arrival_voucher_list.html:14
+#: .\agent\templates\arrival_voucher_list.html:34
+#: .\arrival_voucher\templates\arrival_voucher.html:4
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:4
+#: .\arrival_voucher\templates\arrival_voucher_list.html:4
+#: .\arrival_voucher\templates\arrival_voucher_list.html:14
+#: .\arrival_voucher\templates\arrival_voucher_list.html:37
+#: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:4
+#: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:14
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:4
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:14
+#: .\core\templates\side_navigation\agent.html:14
+#: .\core\templates\side_navigation\operations.html:11
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:31
+#: .\invoice\templates\arrival_voucher_invoice.html:4
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:31
+msgid "Arrival Vouchers"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:14
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:60
+#: .\agent\templates\agent_operating_schedule.html:42
+#: .\agent\templates\agent_operating_schedule.html:190
+#: .\agent\templates\arrival_voucher_list.html:60
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:7
+#: .\agent\templates\print\agent_transport_program.html:123
+#: .\arrival_voucher\templates\arrival_voucher.html:14
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:14
+#: .\arrival_voucher\templates\arrival_voucher_list.html:67
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:7
+#: .\arrival_voucher\templates\htmx\results.html:5
+#: .\arrival_voucher\templates\htmx\search.html:35
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:158
+#: .\arrival_voucher\templates\operating_schedule.html:55
+#: .\arrival_voucher\templates\print\operating_schedule.html:110
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:8
+#: .\arrival_voucher\templates\print\transport_program.html:18
+#: .\arrival_voucher\templates\rawdah_permit_list.html:45
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:56
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:9
+#: .\arrival_voucher\templates\trips_date_open.html:33
+#: .\arrival_voucher\templates\trips_date_open.html:145
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:56
+#: .\invoice\templates\arrival_voucher_invoice.html:14
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:7
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:7
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:56
+#: .\mandoob\templates\mandoob_operating_schedule.html:49
+msgid "Voucher "
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:34
+#: .\arrival_voucher\templates\arrival_voucher.html:34
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:32
+msgid "Group Details"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:46
+#: .\arrival_voucher\templates\arrival_voucher.html:96
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:47
+msgid "Accommodation Details"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:60
+#: .\arrival_voucher\templates\arrival_voucher.html:87
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:68
+msgid "Flight Details"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:75
+#: .\arrival_voucher\templates\arrival_voucher.html:117
+#: .\invoice\templates\arrival_voucher_invoice.html:64
+#: .\invoice\templates\arrival_voucher_invoice.html:113
+#: .\mandoob\templates\mandoob_operating_schedule.html:30
+msgid "Trips"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:123
+#: .\arrival_voucher\templates\arrival_voucher.html:162
+#: .\invoice\templates\arrival_voucher_invoice.html:102
+#: .\invoice\templates\arrival_voucher_invoice.html:153
+msgid "Trips will be shown when you save voucher first time."
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:156
+msgid "Submit to Company"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:179
+#: .\agent\templates\agent_arrival_voucher.html:191
+#: .\agent\templates\popup_forms\add_agent_popup.html:25
+#: .\agent\templates\popup_forms\agent_price.html:20
+#: .\agent\templates\popup_forms\agent_user.html:54
+#: .\agent\templates\popup_forms\edit_agent_popup.html:25
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:195
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:207
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:148
+#: .\arrival_voucher\templates\popup_forms\add_new_voucher.html:25
+#: .\arrival_voucher\templates\popup_forms\arrival_flight_form.html:20
+#: .\arrival_voucher\templates\popup_forms\departure_flight_form.html:20
+#: .\arrival_voucher\templates\popup_forms\form.html:20
+#: .\arrival_voucher\templates\popup_forms\hotel_form.html:20
+#: .\arrival_voucher\templates\popup_forms\voucher_basic_details.html:20
+#: .\arrival_voucher\templates\popup_forms\voucher_popup_form.html:20
+#: .\company\templates\forms\designation_form.html:20
+#: .\company\templates\forms\employee_form.html:21
+#: .\core\templates\form.html:20
+#: .\payment\templates\popup_forms\account_credit_form.html:36
+#: .\payment\templates\popup_forms\account_debit_form.html:36
+#: .\payment\templates\popup_forms\account_form.html:25
+#: .\payment\templates\popup_forms\account_form_edit.html:25
+#: .\payment\templates\popup_forms\account_settlement_form.html:26
+#: .\payment\templates\popup_forms\account_transfer_form.html:36
+#: .\payment\templates\popup_forms\add_agent_popup.html:25
+#: .\payment\templates\popup_forms\agent_settlement_form.html:26
+#: .\payment\templates\popup_forms\collect_payment.html:23
+#: .\payment\templates\popup_forms\office_expense_form.html:72
+#: .\payment\templates\popup_forms\payroll_form.html:20
+#: .\payment\templates\popup_forms\withdraw_payment.html:69
+#: .\transport\templates\add_transport_route.html:20
+#: .\voucher\templates\forms\add_voucher_b2bw.html:40
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:148
+#: .\voucher\templates\popup_forms\add_voucher.html:251
+#: .\voucher\templates\transport_invoice_edit.html:22
+#: .\voucher\templates\transport_invoice_form.html:22
+msgid "Submit"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_voucher.html:185
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:201
+msgid "This Voucher will be sent to Umrah Company. Are you sure?"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:27
+#: .\agent\templates\arrival_voucher_list.html:27
+#: .\arrival_voucher\templates\arrival_voucher_list.html:28
+#: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:27
+msgid "Add New Arrival Voucher"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:38
+#: .\agent\templates\arrival_voucher_list.html:38
+#: .\arrival_voucher\templates\arrival_voucher_list.html:43
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:35
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:35
+msgid "Search"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:61
+#: .\agent\templates\arrival_voucher_list.html:61
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:8
+#: .\agent\templates\print\agent_transport_program.html:129
+#: .\arrival_voucher\forms.py:374 .\arrival_voucher\models.py:80
+#: .\arrival_voucher\templates\arrival_voucher_list.html:68
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:8
+#: .\arrival_voucher\templates\htmx\results.html:6
+#: .\arrival_voucher\templates\htmx\search.html:36
+#: .\arrival_voucher\templates\print\transport_program.html:27
+msgid "Agent Reference No"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:66
+#: .\agent\templates\agent_operating_schedule.html:41
+#: .\agent\templates\arrival_voucher_list.html:66
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:13
+#: .\arrival_voucher\templates\arrival_voucher_list.html:69
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:39
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:9
+#: .\arrival_voucher\templates\htmx\results.html:11
+#: .\arrival_voucher\templates\htmx\search.html:41
+#: .\arrival_voucher\templates\operating_schedule.html:54
+#: .\arrival_voucher\templates\print\operating_schedule.html:109
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:7
+#: .\arrival_voucher\templates\trips_date_open.html:32
+msgid "BRN"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:70
+#: .\agent\templates\arrival_voucher_list.html:70
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:17
+#: .\arrival_voucher\forms.py:52 .\arrival_voucher\models.py:82
+#: .\arrival_voucher\templates\arrival_voucher_list.html:73
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:44
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:13
+#: .\arrival_voucher\templates\htmx\results.html:15
+#: .\arrival_voucher\templates\htmx\search.html:45
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:40
+#: .\arrival_voucher\templates\rawdah_permit_list.html:47
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:60
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:11
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:11
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:60
+#: .\voucher\models.py:24 .\voucher\templates\popup_forms\add_voucher.html:123
+#: .\voucher\templates\print\print_detailed_voucher.html:40
+#: .\voucher\templates\print\vouchers_report.html:49
+msgid "Group no"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:73
+#: .\agent\templates\agent_operating_schedule.html:54
+#: .\agent\templates\arrival_voucher_list.html:73
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:20
+#: .\arrival_voucher\forms.py:364 .\arrival_voucher\forms.py:375
+#: .\arrival_voucher\templates\arrival_voucher_list.html:76
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:16
+#: .\arrival_voucher\templates\htmx\results.html:18
+#: .\arrival_voucher\templates\htmx\search.html:48
+#: .\arrival_voucher\templates\operating_schedule.html:67
+#: .\arrival_voucher\templates\print\operating_schedule.html:121
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:19
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:62
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:15
+#: .\arrival_voucher\templates\trips_date_open.html:42
+#: .\core\templates\transport_movement_history.html:54 .\invoice\forms.py:28
+#: .\invoice\forms.py:135
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:61
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:14
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:14
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:61
+msgid "Transport Company"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:76
+#: .\agent\templates\agent_operating_schedule.html:64
+#: .\agent\templates\print\agent_transport_program.html:130
+#: .\agent\templates\print\agent_transport_program.html:160
+#: .\agent\templates\print\agent_transport_program.html:221
+#: .\arrival_voucher\forms.py:338 .\arrival_voucher\models.py:109
+#: .\arrival_voucher\templates\arrival_voucher_list.html:78
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:45
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:18
+#: .\arrival_voucher\templates\operating_schedule.html:77
+#: .\arrival_voucher\templates\print\operating_schedule.html:128
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:26
+#: .\arrival_voucher\templates\print\transport_program.html:30
+#: .\arrival_voucher\templates\print\transport_program.html:60
+#: .\arrival_voucher\templates\print\transport_program.html:121
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:64
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:17
+#: .\invoice\forms.py:132
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:63
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:16
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:16
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:63
+#: .\payment\models.py:279 .\payment\templates\payroll_view.html:99
+#: .\service_order\models.py:37 .\transport\models.py:163
+msgid "Status"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:78
+#: .\agent\templates\arrival_voucher_list.html:78
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:25
+#: .\arrival_voucher\templates\arrival_voucher_list.html:79
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:19
+#: .\arrival_voucher\templates\htmx\results.html:23
+#: .\arrival_voucher\templates\htmx\search.html:53
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:64
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:17
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:17
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:64
+msgid "Starting Date"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:80
+#: .\agent\templates\arrival_voucher_list.html:80
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:28
+#: .\arrival_voucher\templates\arrival_voucher_list.html:80
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:20
+#: .\arrival_voucher\templates\htmx\results.html:26
+#: .\arrival_voucher\templates\htmx\search.html:56
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:65
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:18
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:18
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:65
+msgid "Total Movements"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:81
+#: .\agent\templates\arrival_voucher_list.html:81
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:29
+#: .\arrival_voucher\models.py:42
+#: .\arrival_voucher\templates\arrival_voucher_list.html:81
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:21
+#: .\arrival_voucher\templates\htmx\results.html:27
+#: .\arrival_voucher\templates\htmx\search.html:57
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:146
+#: .\arrival_voucher\templates\operating_schedule.html:232
+#: .\transport\models.py:157
+msgid "Completed"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:108
+#: .\agent\templates\agent_operating_schedule.html:216
+#: .\agent\templates\arrival_voucher_list.html:108
+#: .\arrival_voucher\templates\arrival_voucher_list.html:101
+#: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:55
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:98
+#: .\arrival_voucher\templates\operating_schedule.html:297
+#: .\arrival_voucher\templates\rawdah_permit_list.html:125
+#: .\arrival_voucher\templates\trips_date_open.html:172
+msgid "Add Arrival Voucher"
+msgstr ""
+
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:119
+#: .\agent\templates\agent_operating_schedule.html:227
+#: .\agent\templates\arrival_voucher_list.html:119
+#: .\arrival_voucher\templates\arrival_voucher_list.html:112
+#: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:66
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:109
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:82
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:103
+#: .\arrival_voucher\templates\operating_schedule.html:167
+#: .\arrival_voucher\templates\operating_schedule.html:188
+#: .\arrival_voucher\templates\operating_schedule.html:308
+#: .\arrival_voucher\templates\rawdah_permit_list.html:136
+#: .\arrival_voucher\templates\trips_date_open.html:183
+msgid "Add"
+msgstr ""
+
+#: .\agent\templates\agent_dashboard.html:4
+#: .\agent\templates\agent_dashboard.html:13 .\core\templates\dashboard.html:4
+#: .\core\templates\dashboard.html:13 .\core\templates\side_navigation.html:5
+#: .\core\templates\side_navigation.html:9
+#: .\core\templates\side_navigation\side_navigation.html:7
+msgid "Dashboard"
+msgstr ""
+
+#: .\agent\templates\agent_dashboard.html:32 .\core\templates\dashboard.html:30
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:37
+msgid "Total Pilgrims"
+msgstr ""
+
+#: .\agent\templates\agent_dashboard.html:37
+msgid "Season"
+msgstr ""
+
+#: .\agent\templates\agent_list.html:4 .\agent\templates\agent_list.html:14
+#: .\payment\templates\agent_account_view.html:4
+#: .\payment\templates\payrolls.html:4 .\payment\templates\treasury.html:4
+msgid "Agents List"
+msgstr ""
+
+#: .\agent\templates\agent_list.html:27
+#: .\agent\templates\popup_forms\add_agent_popup.html:10
+#: .\agent\templates\popup_forms\edit_agent_popup.html:10
+#: .\payment\templates\popup_forms\add_agent_popup.html:10
+msgid "Add New Agent"
+msgstr ""
+
+#: .\agent\templates\agent_list.html:43
+msgid "Current Price"
+msgstr ""
+
+#: .\agent\templates\agent_list.html:44 .\payment\forms.py:10
+#: .\payment\models.py:25
+#: .\payment\templates\popup_forms\withdraw_payment.html:44
+#: .\voucher\models.py:45 .\voucher\templates\popup_forms\add_voucher.html:206
+msgid "Commission"
+msgstr ""
+
+#: .\agent\templates\agent_list.html:60
+#: .\agent\templates\popup_forms\agent_price.html:30
+msgid "Visa Including Transport Price"
+msgstr ""
+
+#: .\agent\templates\agent_list.html:65
+#: .\payment\templates\print\print_receipt_vouchers_report.html:88
+#: .\payment\templates\print\print_treasury_report.html:86
+#: .\payment\templates\print\print_treasury_report.html:90
+#: .\visa_group\ajax_datatable_views.py:53
+#: .\visa_group\templates\umrah_visa_group_invoice_form.html:93
+#: .\voucher\ajax_datatable_views.py:64
+#: .\voucher\templates\popup_forms\add_voucher.html:191
+#: .\voucher\templates\print\vouchers_report.html:55
+#: .\voucher\templates\transport_invoice_list.html:106
+msgid "Total"
+msgstr ""
+
+#: .\agent\templates\agent_list.html:72
+#: .\payment\templates\popup_forms\account_form.html:10
+msgid "Create"
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:4
+#: .\agent\templates\agent_operating_schedule.html:14
+#: .\arrival_voucher\templates\operating_schedule.html:4
+#: .\arrival_voucher\templates\operating_schedule.html:14
+#: .\arrival_voucher\templates\print\operating_schedule.html:18
+#: .\arrival_voucher\templates\print\operating_schedule.html:101
+#: .\core\templates\side_navigation\agent.html:22
+#: .\core\templates\side_navigation\mandoob.html:7
+#: .\core\templates\side_navigation\operations.html:54
+#: .\mandoob\templates\mandoob_operating_schedule.html:4
+#: .\mandoob\templates\mandoob_operating_schedule.html:14
+msgid "Operating Schedule"
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:43
+#: .\arrival_voucher\templates\operating_schedule.html:56
+#: .\arrival_voucher\templates\print\operating_schedule.html:111
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:9
+#: .\arrival_voucher\templates\trips_date_open.html:34
+msgid "Reference no "
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:47
+#: .\agent\templates\print\agent_transport_program.html:156
+#: .\agent\templates\print\agent_transport_program.html:217
+#: .\arrival_voucher\templates\arrival_voucher_view.html:94
+#: .\arrival_voucher\templates\arrival_voucher_view.html:200
+#: .\arrival_voucher\templates\operating_schedule.html:60
+#: .\arrival_voucher\templates\print\operating_schedule.html:114
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:12
+#: .\arrival_voucher\templates\print\transport_program.html:56
+#: .\arrival_voucher\templates\print\transport_program.html:117
+#: .\arrival_voucher\templates\print\transport_program.html:193
+#: .\arrival_voucher\templates\rawdah_permit_list.html:50
+#: .\arrival_voucher\templates\rawdah_permit_list.html:55
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:55
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:78
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:8
+#: .\arrival_voucher\templates\trips_date_open.html:36
+#: .\core\templates\transport_movement_history.html:45
+#: .\core\templates\transport_movement_history.html:49 .\payment\models.py:78
+#: .\payment\models.py:234 .\payment\models.py:306
+#: .\payment\templates\account_view.html:87
+#: .\payment\templates\print\print_agent_account_statement.html:52
+#: .\payment\templates\print\print_receipt_vouchers_report.html:49
+#: .\payment\templates\print\print_treasury_report.html:46
+#: .\payment\templates\treasury.html:87 .\payment\templates\treasury.html:120
+#: .\payment\templates\treasury.html:159 .\transport\models.py:133
+msgid "Time"
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:53
+#: .\agent\templates\print\agent_transport_program.html:134
+#: .\arrival_voucher\templates\operating_schedule.html:66
+#: .\arrival_voucher\templates\print\operating_schedule.html:120
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:18
+#: .\arrival_voucher\templates\print\transport_program.html:34
+#: .\arrival_voucher\templates\trips_date_open.html:41
+#: .\payment\templates\agent_account_view.html:166
+#: .\payment\templates\print\print_agent_account_statement.html:98
+#: .\voucher\templates\transport_invoice_list.html:100
+msgid "Transport type"
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:55
+#: .\agent\templates\arrival_voucher_list.html:76
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:23
+#: .\arrival_voucher\forms.py:381 .\arrival_voucher\models.py:127
+#: .\arrival_voucher\templates\htmx\results.html:21
+#: .\arrival_voucher\templates\htmx\search.html:51
+#: .\arrival_voucher\templates\operating_schedule.html:68
+#: .\arrival_voucher\templates\trips_date_open.html:43
+msgid "Transport Status"
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:59
+#: .\agent\templates\print\agent_transport_program.html:128
+#: .\arrival_voucher\templates\operating_schedule.html:72
+#: .\arrival_voucher\templates\print\operating_schedule.html:124
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:22
+#: .\arrival_voucher\templates\print\transport_program.html:26
+#: .\arrival_voucher\templates\trips_date_open.html:44
+msgid "Group Leader"
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:60
+#: .\arrival_voucher\templates\operating_schedule.html:73
+#: .\arrival_voucher\templates\print\operating_schedule.html:125
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:23
+#: .\core\templates\transport_movement_history.html:55
+msgid "Driver(s)"
+msgstr ""
+
+#: .\agent\templates\agent_operating_schedule.html:61
+#: .\arrival_voucher\templates\operating_schedule.html:74
+#: .\arrival_voucher\templates\print\operating_schedule.html:126
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:24
+#: .\core\templates\transport_movement_history.html:56
+msgid "Plate no"
+msgstr ""
+
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:26
+#: .\arrival_voucher\templates\htmx\results.html:24
+#: .\arrival_voucher\templates\htmx\search.html:54
+#: .\core\templates\side_navigation\operations.html:76 .\transport\forms.py:203
+#: .\transport\models.py:385
+msgid "Routes"
+msgstr ""
+
+#: .\agent\templates\popup_forms\agent_price.html:10
+msgid "Current Visa Price"
+msgstr ""
+
+#: .\agent\templates\popup_forms\agent_price.html:24
+msgid "Change History"
+msgstr ""
+
+#: .\agent\templates\popup_forms\agent_price.html:43
+#: .\agent\templates\popup_forms\agent_price.html:50
+msgid "Current"
+msgstr ""
+
+#: .\agent\templates\popup_forms\agent_user.html:10
+msgid "Agent User"
+msgstr ""
+
+#: .\agent\templates\popup_forms\agent_user.html:33
+#: .\agent\templates\popup_forms\agent_user.html:35
+#: .\core\templates\login.html:20 .\core\templates\login.html:21
+#: .\core\templates\login.html:109 .\mandoob\models.py:27
+msgid "Password"
+msgstr ""
+
+#: .\agent\templates\popup_forms\agent_user.html:40
+#: .\payment\templates\popup_forms\account_credit_form.html:29
+#: .\payment\templates\popup_forms\account_debit_form.html:29
+#: .\payment\templates\popup_forms\account_settlement_form.html:23
+#: .\payment\templates\popup_forms\account_transfer_form.html:29
+#: .\payment\templates\popup_forms\agent_settlement_form.html:23
+msgid "Google Authenticator Key"
+msgstr ""
+
+#: .\agent\templates\popup_forms\agent_user.html:49 .\company\models.py:276
+#: .\company\templates\employee_list.html:42
+#: .\company\templates\employee_list.html:53
+msgid "Active"
+msgstr ""
+
+#: .\agent\templates\print\agent_transport_program.html:6
+#: .\agent\templates\print\agent_transport_program.html:117
+#: .\core\templates\print\company_header.html:7
+msgid "Transport Program"
+msgstr ""
+
+#: .\agent\templates\print\agent_transport_program.html:101
+#: .\company\models.py:21 .\core\templates\print\company_header.html:102
+msgid "C.R No."
+msgstr ""
+
+#: .\agent\templates\print\agent_transport_program.html:103
+#: .\company\models.py:26 .\core\templates\print\company_header.html:104
+#: .\transport\forms.py:184
+msgid "VAT No."
+msgstr ""
+
+#: .\agent\templates\print\agent_transport_program.html:133
+#: .\arrival_voucher\models.py:86
+#: .\arrival_voucher\templates\print\transport_program.html:33
+msgid "Transport company"
+msgstr ""
+
+#: .\agent\templates\print\agent_transport_program.html:135
+#: .\arrival_voucher\forms.py:377 .\arrival_voucher\models.py:87
+#: .\arrival_voucher\templates\arrival_voucher.html:105
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:82
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:87
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:113
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:66
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:85
+#: .\arrival_voucher\templates\print\transport_program.html:35
+#: .\visa_group\models.py:36 .\visa_group\models.py:357
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:87
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:113
+#: .\voucher\templates\popup_forms\add_voucher.html:175
+#: .\voucher\templates\popup_forms\add_voucher.html:202
+#: .\voucher\templates\print\print_detailed_voucher.html:66
+#: .\voucher\templates\print\print_detailed_voucher.html:85
+#: .\voucher\templates\transport_invoice_list.html:197
+#: .\voucher\templates\transport_invoice_list.html:221
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:171
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:195
+msgid "Transport BRN"
+msgstr ""
+
+#: .\agent\templates\print\agent_transport_program.html:213
+#: .\arrival_voucher\templates\print\transport_program.html:113
+#: .\core\templates\transport_movement_history.html:51
+#: .\invoice\templates\arrival_voucher_invoice.html:113
+#: .\transport\models.py:165
+msgid "Outside Package"
+msgstr ""
+
+#: .\agent\views.py:81 .\agent\views.py:98
+msgid "New Agent Added."
+msgstr ""
+
+#: .\agent\views.py:86 .\agent\views.py:101 .\agent\views.py:118
+#: .\agent\views.py:149 .\company\views.py:40 .\company\views.py:127
+msgid "Something went wrong"
+msgstr ""
+
+#: .\agent\views.py:115
+msgid "Agent Updated."
+msgstr ""
+
+#: .\agent\views.py:146
+msgid "New Price Added."
+msgstr ""
+
+#: .\agent\views.py:177
+msgid "New Agent User Added."
+msgstr ""
+
+#: .\agent\views.py:180 .\agent\views.py:205 .\agent\views.py:224
+msgid "Something went wrong: "
+msgstr ""
+
+#: .\agent\views.py:202 .\agent\views.py:221
+msgid "Agent User Updated."
+msgstr ""
+
+#: .\agent\views.py:325
+msgid ""
+"Arrival voucher has been added successfully, but you have exceeded your "
+"transport limit."
+msgstr ""
+
+#: .\agent\views.py:327
+msgid "Arrival voucher has been added successfully"
+msgstr ""
+
+#: .\agent\views.py:330 .\arrival_voucher\views.py:63
+msgid "Error while creating arrival voucher"
+msgstr ""
+
+#: .\agent\views.py:332 .\agent\views.py:504
+msgid ""
+"Max pax limit is 51 per voucher, if you have more than 51 pax, please create "
+"another voucher"
+msgstr ""
+
+#: .\agent\views.py:500 .\arrival_voucher\views.py:782
+msgid "Arrival voucher updated successfully"
+msgstr ""
+
+#: .\agent\views.py:535 .\arrival_voucher\templates\arrival_voucher.html:259
+#: .\arrival_voucher\views.py:805
+#: .\invoice\templates\arrival_voucher_invoice.html:245
+msgid "Rejection Reason"
+msgstr ""
+
+#: .\agent\views.py:535
+msgid ": "
+msgstr ""
+
+#: .\agent\views.py:577
+msgid "Arrival voucher submitted successfully"
+msgstr ""
+
+#: .\agent\views.py:580
+msgid "Arrival voucher cannot be submitted"
+msgstr ""
+
+#: .\agent\views.py:607
+msgid "Agent codes have been updated successfully."
+msgstr ""
+
+#: .\agent\views.py:628
+msgid "Agent commission has been updated successfully."
+msgstr ""
+
+#: .\agent\views.py:631
+msgid "Error while updating agent commission"
+msgstr ""
+
+#: .\agent\views.py:635
+msgid "Agent Commission"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:5 .\arrival_voucher\choices.py:18
+#: .\arrival_voucher\forms.py:354
+#: .\arrival_voucher\templates\arrival_voucher_view.html:148
+#: .\arrival_voucher\views.py:426 .\mandoob\models.py:10
+msgid "Makkah"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:6 .\arrival_voucher\choices.py:19
+#: .\arrival_voucher\forms.py:355
+#: .\arrival_voucher\templates\arrival_voucher_view.html:152
+#: .\arrival_voucher\views.py:432 .\mandoob\models.py:11
+msgid "Medina"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:11 .\arrival_voucher\choices.py:25
+#: .\arrival_voucher\templates\arrival_voucher_view.html:114
+msgid "Departure"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:16 .\arrival_voucher\choices.py:56
+#: .\arrival_voucher\forms.py:357 .\arrival_voucher\views.py:418
+#: .\mandoob\models.py:13
+msgid "Jeddah Airport"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:17 .\arrival_voucher\choices.py:57
+#: .\arrival_voucher\forms.py:356 .\arrival_voucher\views.py:439
+#: .\mandoob\models.py:12
+msgid "Medina Airport"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:20
+msgid "Land Border"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:26
+msgid "InterCity"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:27
+msgid "City Tour"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:31
+msgid "Prayer in Rawdah - Men"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:32
+msgid "Prayer in Rawdah - Women"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:33
+msgid "Umrah"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:37
+msgid "Under Review"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:38 .\arrival_voucher\forms.py:381
+#: .\arrival_voucher\models.py:13 .\arrival_voucher\models.py:25
+#: .\arrival_voucher\models.py:34 .\arrival_voucher\models.py:50
+#: .\core\templates\side_navigation\accounts.html:130
+#: .\core\templates\side_navigation\operations.html:15
+#: .\service_order\choices.py:7
+msgid "Approved"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:39 .\arrival_voucher\forms.py:381
+#: .\arrival_voucher\models.py:15 .\arrival_voucher\models.py:26
+#: .\arrival_voucher\models.py:35
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:144
+#: .\arrival_voucher\templates\operating_schedule.html:230
+#: .\core\templates\side_navigation\operations.html:33
+#: .\service_order\choices.py:8 .\transport\models.py:156
+msgid "Rejected"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:40 .\arrival_voucher\models.py:16
+#: .\arrival_voucher\models.py:36 .\arrival_voucher\models.py:48
+#: .\service_order\choices.py:5
+msgid "Draft"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:45
+msgid "By Air"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:46
+msgid "By Land"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:47
+msgid "By Sea"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:51
+msgid "3 Routes"
+msgstr ""
+
+#: .\arrival_voucher\choices.py:52
+msgid "4 Routes"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:51 .\arrival_voucher\models.py:81
+msgid "Group name"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:54 .\arrival_voucher\models.py:84
+msgid "Group leader name"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:55 .\arrival_voucher\models.py:85
+msgid "Group leader contact"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:89
+msgid "Arrival flight no"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:90
+msgid "Arrival date"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:91
+msgid "Arrival time"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:92
+msgid "Arrival airport"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:93
+msgid "Departure flight no"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:94
+msgid "Departure date"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:95
+msgid "Departure time"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:96
+msgid "Departure airport"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:339 .\arrival_voucher\models.py:110
+msgid "Rejected Reason"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:353 .\arrival_voucher\forms.py:381
+#: .\core\templates\side_navigation\operations.html:41
+msgid "All"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:365 .\arrival_voucher\forms.py:376
+#: .\arrival_voucher\models.py:89
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:43
+#: .\invoice\forms.py:29 .\transport\models.py:119
+msgid "Transport Type"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:366
+msgid "Schedule For"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:372 .\visa_group\models.py:22
+msgid "Voucher No"
+msgstr ""
+
+#: .\arrival_voucher\forms.py:381 .\arrival_voucher\models.py:11
+#: .\arrival_voucher\models.py:23 .\arrival_voucher\models.py:32
+#: .\arrival_voucher\models.py:40 .\arrival_voucher\models.py:49
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:140
+#: .\arrival_voucher\templates\operating_schedule.html:226
+#: .\core\templates\side_navigation\accounts.html:126
+#: .\core\templates\side_navigation\operations.html:24 .\payment\models.py:51
+#: .\transport\models.py:154
+msgid "Pending"
+msgstr ""
+
+#: .\arrival_voucher\models.py:12 .\arrival_voucher\models.py:33
+msgid "Sent to Transport"
+msgstr ""
+
+#: .\arrival_voucher\models.py:14
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:142
+#: .\arrival_voucher\templates\operating_schedule.html:228
+#: .\transport\models.py:155
+msgid "Confirmed"
+msgstr ""
+
+#: .\arrival_voucher\models.py:17
+msgid "Draft, with agent"
+msgstr ""
+
+#: .\arrival_voucher\models.py:18
+msgid "Rejected, sent back to agent"
+msgstr ""
+
+#: .\arrival_voucher\models.py:24
+msgid "Sent to Accounts"
+msgstr ""
+
+#: .\arrival_voucher\models.py:41
+msgid "Reserved"
+msgstr ""
+
+#: .\arrival_voucher\models.py:43
+msgid "Not Available"
+msgstr ""
+
+#: .\arrival_voucher\models.py:51
+msgid "Query"
+msgstr ""
+
+#: .\arrival_voucher\models.py:52
+msgid "Updated, Pending Approval"
+msgstr ""
+
+#: .\arrival_voucher\models.py:91 .\service_order\models.py:19
+msgid "Arrival Flight No"
+msgstr ""
+
+#: .\arrival_voucher\models.py:92
+msgid "Arrival Airport"
+msgstr ""
+
+#: .\arrival_voucher\models.py:97 .\service_order\models.py:26
+msgid "Departure Flight No"
+msgstr ""
+
+#: .\arrival_voucher\models.py:98
+msgid "Departure Airport"
+msgstr ""
+
+#: .\arrival_voucher\models.py:103 .\service_order\models.py:33
+msgid "Makkah Hotel"
+msgstr ""
+
+#: .\arrival_voucher\models.py:106 .\service_order\models.py:34
+msgid "Medina Hotel"
+msgstr ""
+
+#: .\arrival_voucher\models.py:116
+#: .\arrival_voucher\templates\rawdah_permit_list.html:49
+msgid "Men Request Date"
+msgstr ""
+
+#: .\arrival_voucher\models.py:117
+#: .\arrival_voucher\templates\rawdah_permit_list.html:54
+msgid "Women Request Date"
+msgstr ""
+
+#: .\arrival_voucher\models.py:119
+#: .\arrival_voucher\templates\rawdah_permit_list.html:50
+msgid "Men Reservation Date"
+msgstr ""
+
+#: .\arrival_voucher\models.py:120
+msgid "Men Reservation Time"
+msgstr ""
+
+#: .\arrival_voucher\models.py:121
+#: .\arrival_voucher\templates\rawdah_permit_list.html:51
+msgid "Men Status"
+msgstr ""
+
+#: .\arrival_voucher\models.py:122
+#: .\arrival_voucher\templates\rawdah_permit_list.html:55
+msgid "Women Reservation Date"
+msgstr ""
+
+#: .\arrival_voucher\models.py:123
+msgid "Women Reservation Time"
+msgstr ""
+
+#: .\arrival_voucher\models.py:124
+#: .\arrival_voucher\templates\rawdah_permit_list.html:56
+msgid "Women Status"
+msgstr ""
+
+#: .\arrival_voucher\models.py:131 .\transport\models.py:395
+msgid "Transport Package"
+msgstr ""
+
+#: .\arrival_voucher\models.py:132
+msgid "Purchase Invoice"
+msgstr ""
+
+#: .\arrival_voucher\models.py:133
+msgid "Package Purchase Amount"
+msgstr ""
+
+#: .\arrival_voucher\models.py:134
+msgid "Package Sale Amount"
+msgstr ""
+
+#: .\arrival_voucher\models.py:139 .\arrival_voucher\models.py:149
+msgid "Accounts Status"
+msgstr ""
+
+#: .\arrival_voucher\models.py:141
+#: .\arrival_voucher\templates\print\transport_program.html:175
+msgid "Voucher Remarks"
+msgstr ""
+
+#: .\arrival_voucher\models.py:143
+#: .\arrival_voucher\templates\print\transport_program.html:179
+msgid "Transport Remarks"
+msgstr ""
+
+#: .\arrival_voucher\models.py:146
+msgid "Remarks for Accounts"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher.html:43
+msgid "Group No."
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher.html:74
+msgid "Rawdah Permit"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher.html:121
+#: .\core\templates\transport_movement_history.html:41
+msgid "Trips History"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher.html:190
+msgid "Print Voucher"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher.html:195
+msgid "Print Transport Request"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher.html:230
+#: .\invoice\templates\arrival_voucher_invoice.html:216
+msgid ""
+"This Voucher will be Approved and trips under this voucher will be added to "
+"operating schedule. Are you sure?"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher.html:262
+#: .\invoice\templates\arrival_voucher_invoice.html:248
+msgid ""
+"This Voucher will be Rejected and will be sent back to Agent. Are you sure?"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:40
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:55
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:76
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:90
+#: .\arrival_voucher\templates\arrival_voucher_view.html:71
+#: .\arrival_voucher\templates\arrival_voucher_view.html:164
+#: .\arrival_voucher\templates\popup_forms\arrival_flight_form.html:10
+#: .\arrival_voucher\templates\popup_forms\departure_flight_form.html:10
+#: .\arrival_voucher\templates\popup_forms\hotel_form.html:11
+#: .\arrival_voucher\templates\popup_forms\voucher_basic_details.html:10
+#: .\payment\templates\popup_forms\account_form_edit.html:10
+#: .\transport\tables.py:20 .\transport\tables.py:38
+#: .\visa_group\ajax_datatable_views.py:64
+msgid "Edit"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:104
+#: .\arrival_voucher\templates\arrival_voucher_view.html:177
+msgid "Transport"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_list.html:30
+#: .\arrival_voucher\templates\arrival_voucher_list.html:126
+#: .\arrival_voucher\templates\operating_schedule.html:36
+#: .\arrival_voucher\templates\operating_schedule.html:276
+msgid "Filter"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:31
+#: .\arrival_voucher\templates\popup_forms\voucher_basic_details.html:10
+#: .\visa_group\templates\umrah_visa_group_invoice_form.html:60
+msgid "Basic Details"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:58
+#: .\service_order\models.py:11
+msgid "Group Leader Name"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:62
+msgid "Group Leader Mobile No"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:86
+msgid "Flight"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:93
+#: .\mandoob\templates\mandoob_operating_schedule.html:78
+msgid "Flight No"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:136
+msgid "Accommodation"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:142
+#: .\company\templates\mandoob_list.html:41 .\mandoob\forms.py:38
+#: .\mandoob\models.py:24
+msgid "City"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:143
+#: .\arrival_voucher\templates\arrival_voucher_view.html:202
+#: .\arrival_voucher\templates\arrival_voucher_view.html:205
+#: .\arrival_voucher\templates\popup_forms\hotel_form.html:11
+msgid "Hotel"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:232
+msgid "Add Arrival Transport"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:233
+msgid "Add InterCity Transport"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:234
+msgid "Add City Tour Transport"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_voucher_view.html:236
+msgid "Add Departure Transport"
+msgstr ""
+
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:14
+msgid "Pending Approval"
+msgstr ""
+
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:148
+#: .\arrival_voucher\templates\operating_schedule.html:234
+#: .\transport\models.py:158
+msgid "On the way"
+msgstr ""
+
+#: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:150
+#: .\arrival_voucher\templates\operating_schedule.html:236
+#: .\transport\models.py:159
+msgid "Delayed"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:11
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:25
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:11
+#: .\voucher\templates\print\print_detailed_voucher.html:25
+msgid "Detailed Voucher"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:26
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:32
+#: .\payment\templates\agent_account_view.html:128
+#: .\payment\templates\print\print_agent_account_statement.html:60
+#: .\voucher\models.py:18
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:26
+#: .\voucher\templates\popup_forms\add_voucher.html:117
+#: .\voucher\templates\print\print_detailed_voucher.html:32
+#: .\voucher\templates\print\vouchers_report.html:48
+msgid "Voucher no"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:55
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:48
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:55
+#: .\voucher\templates\popup_forms\add_voucher.html:144
+#: .\voucher\templates\print\print_detailed_voucher.html:48
+#: .\voucher\templates\transport_invoice_list.html:168
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:142
+msgid "Basic Fees"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:59
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:52
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:95
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:59
+#: .\voucher\templates\popup_forms\add_voucher.html:148
+#: .\voucher\templates\print\print_detailed_voucher.html:52
+#: .\voucher\templates\print\print_detailed_voucher.html:95
+#: .\voucher\templates\transport_invoice_list.html:172
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:146
+msgid "Ground Services Fees"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:63
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:54
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:63
+#: .\voucher\templates\popup_forms\add_voucher.html:152
+#: .\voucher\templates\print\print_detailed_voucher.html:54
+#: .\voucher\templates\transport_invoice_list.html:176
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:150
+msgid "Additional Services Fees"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:70
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:58
+#: .\voucher\models.py:31 .\voucher\models.py:285
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:70
+#: .\voucher\templates\popup_forms\add_voucher.html:158
+#: .\voucher\templates\print\print_detailed_voucher.html:58
+#: .\voucher\templates\transport_invoice_list.html:182
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:156
+msgid "Processing Fees"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:75
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:60
+#: .\payment\models.py:41 .\voucher\models.py:32 .\voucher\models.py:286
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:75
+#: .\voucher\templates\popup_forms\add_voucher.html:163
+#: .\voucher\templates\print\print_detailed_voucher.html:60
+#: .\voucher\templates\transport_invoice_list.html:186
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:160
+msgid "Visa Fees"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:82
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:64
+#: .\voucher\models.py:33 .\voucher\models.py:287
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:82
+#: .\voucher\templates\popup_forms\add_voucher.html:170
+#: .\voucher\templates\print\print_detailed_voucher.html:64
+#: .\voucher\templates\transport_invoice_list.html:192
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:166
+msgid "Insurance Fees"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:93
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:119
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:70
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:89
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:93
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:119
+#: .\voucher\templates\popup_forms\add_voucher.html:181
+#: .\voucher\templates\popup_forms\add_voucher.html:212
+#: .\voucher\templates\print\print_detailed_voucher.html:70
+#: .\voucher\templates\print\print_detailed_voucher.html:89
+#: .\voucher\templates\transport_invoice_list.html:203
+#: .\voucher\templates\transport_invoice_list.html:227
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:177
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:201
+msgid "Makkah BRN"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:97
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:123
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:72
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:91
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:97
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:123
+#: .\voucher\templates\popup_forms\add_voucher.html:185
+#: .\voucher\templates\popup_forms\add_voucher.html:216
+#: .\voucher\templates\print\print_detailed_voucher.html:72
+#: .\voucher\templates\print\print_detailed_voucher.html:91
+#: .\voucher\templates\transport_invoice_list.html:207
+#: .\voucher\templates\transport_invoice_list.html:231
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:181
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:205
+msgid "Medina BRN"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:108
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:81
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:108
+#: .\voucher\templates\popup_forms\add_voucher.html:197
+#: .\voucher\templates\print\print_detailed_voucher.html:81
+#: .\voucher\templates\transport_invoice_list.html:216
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:190
+msgid "Returns"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:113
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:119
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:123
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:137
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:113
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:119
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:123
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:137
+#: .\voucher\templates\popup_forms\add_voucher.html:202
+#: .\voucher\templates\popup_forms\add_voucher.html:206
+#: .\voucher\templates\popup_forms\add_voucher.html:212
+#: .\voucher\templates\popup_forms\add_voucher.html:216
+#: .\voucher\templates\popup_forms\add_voucher.html:230
+#: .\voucher\templates\transport_invoice_list.html:221
+#: .\voucher\templates\transport_invoice_list.html:227
+#: .\voucher\templates\transport_invoice_list.html:231
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:195
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:201
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:205
+msgid "per 1 person"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:133
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:137
+#: .\visa_group\ajax_datatable_views.py:51 .\voucher\ajax_datatable_views.py:63
+#: .\voucher\models.py:37 .\voucher\models.py:291
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:133
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:137
+#: .\voucher\templates\popup_forms\add_voucher.html:226
+#: .\voucher\templates\popup_forms\add_voucher.html:230
+msgid "Sale Price"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\add_new_voucher.html:10
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:68
+#: .\voucher\templates\forms\add_voucher_b2bw.html:6
+#: .\voucher\templates\forms\add_voucher_b2bw.html:15
+#: .\voucher\templates\transport_invoice_list.html:31
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:29
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:29
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:32
+msgid "Add New Voucher"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\arrival_flight_form.html:10
+msgid "Arrival Flight"
+msgstr ""
+
+#: .\arrival_voucher\templates\popup_forms\departure_flight_form.html:10
+msgid "Departure Flight"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:77
+#: .\voucher\templates\print\print_detailed_voucher.html:77
+msgid "Voucher Total"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:97
+#: .\voucher\templates\print\print_detailed_voucher.html:97
+msgid "VAT Retrun"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:101
+#: .\voucher\templates\print\print_detailed_voucher.html:101
+msgid "Voucher Summary"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:104
+#: .\voucher\templates\print\print_detailed_voucher.html:104
+msgid "Cost Price Total"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:107
+#: .\voucher\templates\print\print_detailed_voucher.html:107
+msgid "Returns Total"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:111
+#: .\voucher\templates\print\print_detailed_voucher.html:111
+msgid "Sale Price Total"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:114
+#: .\voucher\templates\print\print_detailed_voucher.html:114
+msgid "Profit Total"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\transport_program.html:7
+msgid "Transport Request"
+msgstr ""
+
+#: .\arrival_voucher\templates\print\transport_program.html:193
+msgid "Printed by"
+msgstr ""
+
+#: .\arrival_voucher\templates\rawdah_permit_list.html:4
+msgid "Rawdah Permit Requests"
+msgstr ""
+
+#: .\arrival_voucher\templates\rawdah_permit_list.html:14
+msgid "Rawdah Reservation"
+msgstr ""
+
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:44
+msgid "Live Field Operation Dashboard"
+msgstr ""
+
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:82
+msgid "Last Update"
+msgstr ""
+
+#: .\arrival_voucher\templates\trips_date_open.html:4
+#: .\arrival_voucher\templates\trips_date_open.html:14
+#: .\core\templates\side_navigation\operations.html:92
+msgid "Trips Date Open"
+msgstr ""
+
+#: .\arrival_voucher\test_htmx.py:63 .\arrival_voucher\views.py:521
+#: .\arrival_voucher\views.py:545
+msgid "Status changed successfully"
+msgstr ""
+
+#: .\arrival_voucher\test_htmx.py:67 .\arrival_voucher\views.py:525
+#: .\arrival_voucher\views.py:549 .\arrival_voucher\views.py:905
+msgid "Error changing status"
+msgstr ""
+
+#: .\arrival_voucher\urls.py:22
+msgid "admin/"
+msgstr ""
+
+#: .\arrival_voucher\views.py:55
+msgid ""
+"Arrival voucher created successfully with the following warning: Number of "
+"pax is greater than the number of visas"
+msgstr ""
+
+#: .\arrival_voucher\views.py:58
+msgid "Arrival voucher created successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:143
+msgid "Arrival voucher flight details updated successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:146
+msgid "Error updating arrival voucher flight details"
+msgstr ""
+
+#: .\arrival_voucher\views.py:164
+msgid "Arrival voucher accommodation details updated successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:167
+msgid "Error updating arrival voucher accommodation details"
+msgstr ""
+
+#: .\arrival_voucher\views.py:186
+msgid "Arrival voucher group details updated successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:189
+msgid "Error updating arrival voucher group details"
+msgstr ""
+
+#: .\arrival_voucher\views.py:208
+msgid "Transport BRN updated successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:211
+msgid "Error updating transport BRN"
+msgstr ""
+
+#: .\arrival_voucher\views.py:242 .\arrival_voucher\views.py:270
+msgid "Transport movement added successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:246 .\arrival_voucher\views.py:273
+msgid "Error adding transport movement"
+msgstr ""
+
+#: .\arrival_voucher\views.py:300
+msgid "Arrival voucher submitted for approval successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:303
+msgid "Error submitting arrival voucher for approval"
+msgstr ""
+
+#: .\arrival_voucher\views.py:321 .\arrival_voucher\views.py:895
+msgid "Arrival voucher approved successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:324
+msgid "Error approving arrival voucher"
+msgstr ""
+
+#: .\arrival_voucher\views.py:333 .\arrival_voucher\views.py:901
+msgid "Arrival voucher rejected successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:336
+msgid "Error rejecting arrival voucher"
+msgstr ""
+
+#: .\arrival_voucher\views.py:472
+msgid "Driver assigned successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:476
+msgid "Error assigning driver"
+msgstr ""
+
+#: .\arrival_voucher\views.py:494
+msgid "Group leader assigned successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:500
+msgid "Error assigning group leader"
+msgstr ""
+
+#: .\arrival_voucher\views.py:650
+msgid "Rawdah permit added successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:653
+msgid "Error adding rawdah permit"
+msgstr ""
+
+#: .\arrival_voucher\views.py:679
+msgid "Rawdah permit updated successfully"
+msgstr ""
+
+#: .\arrival_voucher\views.py:682
+msgid "Error updating rawdah permit"
+msgstr ""
+
+#: .\arrival_voucher\views.py:800
+msgid "Error updating arrival voucher"
+msgstr ""
+
+#: .\arrival_voucher\views.py:860
+msgid ""
+"Arrival voucher is pending approval with the following warning: Number of "
+"pax is greater than the number of visas"
+msgstr ""
+
+#: .\arrival_voucher\views.py:892
+msgid ""
+"Arrival voucher approved successfully with the following warning: Number of "
+"pax is greater than the number of visas"
+msgstr ""
+
+#: .\company\choices.py:5
+msgid "Company Admin"
+msgstr ""
+
+#: .\company\choices.py:7
+msgid "Operations Supervisor"
+msgstr ""
+
+#: .\company\models.py:19 .\transport\models.py:13
+msgid "Company Name English"
+msgstr ""
+
+#: .\company\models.py:20 .\transport\models.py:14
+msgid "Company Name Arabic"
+msgstr ""
+
+#: .\company\models.py:22
+msgid "MOH Permit No."
+msgstr ""
+
+#: .\company\models.py:23 .\company\models.py:24
+msgid "Company Address English"
+msgstr ""
+
+#: .\company\models.py:25
+msgid "Company Contact"
+msgstr ""
+
+#: .\company\models.py:35
+msgid "Umrah Season"
+msgstr ""
+
+#: .\company\models.py:254
+msgid "Designation name english"
+msgstr ""
+
+#: .\company\models.py:255
+msgid "Designation name arabic"
+msgstr ""
+
+#: .\company\models.py:270 .\company\templates\employee_list.html:39
+#: .\payment\templates\payroll_view.html:94
+msgid "ID No"
+msgstr ""
+
+#: .\company\models.py:271 .\company\templates\employee_list.html:40
+#: .\company\templates\mandoob_list.html:39 .\mandoob\forms.py:36
+#: .\mandoob\models.py:22 .\payment\templates\payroll_view.html:95
+#: .\supplier\models.py:9 .\supplier\models.py:10
+msgid "Name"
+msgstr ""
+
+#: .\company\models.py:272 .\company\templates\designation_list.html:40
+#: .\company\templates\employee_list.html:41
+#: .\company\templates\forms\designation_form.html:10
+#: .\payment\templates\payroll_view.html:96
+msgid "Designation"
+msgstr ""
+
+#: .\company\models.py:275 .\payment\models.py:277
+#: .\payment\templates\payroll_view.html:97
+msgid "Monthly Salary"
+msgstr ""
+
+#: .\company\models.py:277
+msgid "Current Application"
+msgstr ""
+
+#: .\company\models.py:311
+msgid "Agent Account Tree"
+msgstr ""
+
+#: .\company\models.py:315
+msgid "Transport Company Account Tree"
+msgstr ""
+
+#: .\company\models.py:316
+msgid "Transport Expense Account"
+msgstr ""
+
+#: .\company\models.py:319
+msgid "GIB Main Account"
+msgstr ""
+
+#: .\company\models.py:320
+msgid "GIB Virtual Account"
+msgstr ""
+
+#: .\company\models.py:323
+msgid "Settlement Account"
+msgstr ""
+
+#: .\company\models.py:325
+msgid "Umrah Visa Purchase Account"
+msgstr ""
+
+#: .\company\models.py:326
+msgid "Umrah Visa Sales Account"
+msgstr ""
+
+#: .\company\models.py:328
+msgid "Transport Purchase Account"
+msgstr ""
+
+#: .\company\models.py:329
+msgid "Transport Sales Account"
+msgstr ""
+
+#: .\company\models.py:331
+msgid "VAT Account"
+msgstr ""
+
+#: .\company\models.py:334
+msgid "Agent Commission Account"
+msgstr ""
+
+#: .\company\models.py:336
+msgid "Account Statement Note"
+msgstr ""
+
+#: .\company\models.py:337
+msgid "Edit Hours"
+msgstr ""
+
+#: .\company\models.py:338
+msgid "Delete Hours"
+msgstr ""
+
+#: .\company\templates\designation_list.html:4
+#: .\company\templates\designation_list.html:14
+#: .\core\templates\side_navigation.html:87
+#: .\core\templates\side_navigation\hr.html:20
+msgid "Designations"
+msgstr ""
+
+#: .\company\templates\designation_list.html:27
+msgid "Add New Designations"
+msgstr ""
+
+#: .\company\templates\employee_list.html:4
+#: .\company\templates\employee_list.html:14
+#: .\company\templates\mandoob_list.html:4
+#: .\core\templates\side_navigation.html:80
+#: .\core\templates\side_navigation\hr.html:7
+#: .\payment\templates\payroll_view.html:87
+msgid "Employees"
+msgstr ""
+
+#: .\company\templates\employee_list.html:27
+msgid "Add New Employee"
+msgstr ""
+
+#: .\company\templates\employee_list.html:53
+msgid "In-Active"
+msgstr ""
+
+#: .\company\templates\forms\employee_form.html:10
+msgid "Employee"
+msgstr ""
+
+#: .\company\templates\mandoob_list.html:14
+#: .\core\templates\side_navigation\hr.html:14 .\mandoob\models.py:36
+msgid "Mandoobs"
+msgstr ""
+
+#: .\company\templates\mandoob_list.html:27
+msgid "Add New Mandoob"
+msgstr ""
+
+#: .\company\templates\mandoob_list.html:40
+msgid "Mobile no"
+msgstr ""
+
+#: .\company\templates\mandoob_list.html:41
+msgid "Place"
+msgstr ""
+
+#: .\company\views.py:35
+msgid "New Designation has been Created."
+msgstr ""
+
+#: .\company\views.py:64
+msgid "New employee has been registered."
+msgstr ""
+
+#: .\company\views.py:93
+msgid "Employee record has been updated."
+msgstr ""
+
+#: .\company\views.py:124
+msgid "New Mandoob has been Created."
+msgstr ""
+
+#: .\company\views.py:129
+msgid "Add Mandoob"
+msgstr ""
+
+#: .\company\views.py:145
+msgid "Mandoob record has been updated."
+msgstr ""
+
+#: .\company\views.py:149
+msgid "Edit Mandoob"
+msgstr ""
+
+#: .\core\choices.py:4
+msgid "SAR"
+msgstr ""
+
+#: .\core\choices.py:5
+msgid "USD"
+msgstr ""
+
+#: .\core\choices.py:6
+msgid "EUR"
+msgstr ""
+
+#: .\core\choices.py:7
+msgid "GBP"
+msgstr ""
+
+#: .\core\choices.py:8
+msgid "AED"
+msgstr ""
+
+#: .\core\choices.py:9
+msgid "INR"
+msgstr ""
+
+#: .\core\choices.py:10
+msgid "PKR"
+msgstr ""
+
+#: .\core\choices.py:11
+msgid "EGP"
+msgstr ""
+
+#: .\core\choices.py:12
+msgid "BHD"
+msgstr ""
+
+#: .\core\choices.py:13
+msgid "KWD"
+msgstr ""
+
+#: .\core\choices.py:14
+msgid "QAR"
+msgstr ""
+
+#: .\core\choices.py:15
+msgid "OMR"
+msgstr ""
+
+#: .\core\choices.py:16
+msgid "JOD"
+msgstr ""
+
+#: .\core\choices.py:17
+msgid "CAD"
+msgstr ""
+
+#: .\core\choices.py:18
+msgid "AUD"
+msgstr ""
+
+#: .\core\choices.py:19
+msgid "CHF"
+msgstr ""
+
+#: .\core\choices.py:20
+msgid "MYR"
+msgstr ""
+
+#: .\core\choices.py:21
+msgid "SGD"
+msgstr ""
+
+#: .\core\choices.py:22
+msgid "THB"
+msgstr ""
+
+#: .\core\choices.py:23
+msgid "IDR"
+msgstr ""
+
+#: .\core\choices.py:24
+msgid "PHP"
+msgstr ""
+
+#: .\core\choices.py:25
+msgid "LKR"
+msgstr ""
+
+#: .\core\choices.py:26 .\core\choices.py:55
+msgid "BDT"
+msgstr ""
+
+#: .\core\choices.py:27
+msgid "NPR"
+msgstr ""
+
+#: .\core\choices.py:28
+msgid "JPY"
+msgstr ""
+
+#: .\core\choices.py:29
+msgid "CNY"
+msgstr ""
+
+#: .\core\choices.py:30
+msgid "KRW"
+msgstr ""
+
+#: .\core\choices.py:31
+msgid "TRY"
+msgstr ""
+
+#: .\core\choices.py:32
+msgid "RUB"
+msgstr ""
+
+#: .\core\choices.py:33
+msgid "ZAR"
+msgstr ""
+
+#: .\core\choices.py:34
+msgid "NGN"
+msgstr ""
+
+#: .\core\choices.py:35
+msgid "MXN"
+msgstr ""
+
+#: .\core\choices.py:36
+msgid "BRL"
+msgstr ""
+
+#: .\core\choices.py:37
+msgid "PLN"
+msgstr ""
+
+#: .\core\choices.py:38
+msgid "ILS"
+msgstr ""
+
+#: .\core\choices.py:39
+msgid "NZD"
+msgstr ""
+
+#: .\core\choices.py:40
+msgid "SEK"
+msgstr ""
+
+#: .\core\choices.py:41
+msgid "DKK"
+msgstr ""
+
+#: .\core\choices.py:42
+msgid "NOK"
+msgstr ""
+
+#: .\core\choices.py:43
+msgid "HUF"
+msgstr ""
+
+#: .\core\choices.py:44
+msgid "CZK"
+msgstr ""
+
+#: .\core\choices.py:45
+msgid "RON"
+msgstr ""
+
+#: .\core\choices.py:46
+msgid "COP"
+msgstr ""
+
+#: .\core\choices.py:47
+msgid "CLP"
+msgstr ""
+
+#: .\core\choices.py:48
+msgid "PEN"
+msgstr ""
+
+#: .\core\choices.py:49
+msgid "ARS"
+msgstr ""
+
+#: .\core\choices.py:50
+msgid "VND"
+msgstr ""
+
+#: .\core\choices.py:51
+msgid "UAH"
+msgstr ""
+
+#: .\core\choices.py:52
+msgid "MAD"
+msgstr ""
+
+#: .\core\choices.py:53
+msgid "HKD"
+msgstr ""
+
+#: .\core\choices.py:54
+msgid "TWD"
+msgstr ""
+
+#: .\core\choices.py:56
+msgid "KES"
+msgstr ""
+
+#: .\core\choices.py:57
+msgid "GHS"
+msgstr ""
+
+#: .\core\choices.py:58
+msgid "XAF"
+msgstr ""
+
+#: .\core\choices.py:59
+msgid "XOF"
+msgstr ""
+
+#: .\core\choices.py:60
+msgid "TZS"
+msgstr ""
+
+#: .\core\choices.py:61
+msgid "DZD"
+msgstr ""
+
+#: .\core\models.py:11
+msgid "Country name english"
+msgstr ""
+
+#: .\core\models.py:12
+msgid "Country name arabic"
+msgstr ""
+
+#: .\core\models.py:13
+msgid "Country phone code"
+msgstr ""
+
+#: .\core\templates\apps.html:9 .\core\templates\email\otp.html:5
+#: .\core\templates\email\otp.html:10
+msgid "UmrahFlow"
+msgstr ""
+
+#: .\core\templates\apps.html:49
+msgid "Select Application to continue"
+msgstr ""
+
+#: .\core\templates\apps.html:64 .\core\templates\base.html:194
+#: .\core\templates\side_navigation.html:35
+#: .\core\templates\side_navigation\accounts.html:4
+#: .\core\templates\side_navigation\side_navigation.html:70
+msgid "Finance and Accounts"
+msgstr ""
+
+#: .\core\templates\apps.html:67 .\core\templates\apps.html:83
+#: .\core\templates\apps.html:98
+msgid "Continue"
+msgstr ""
+
+#: .\core\templates\apps.html:78 .\core\templates\base.html:203
+#: .\core\templates\side_navigation\side_navigation.html:76
+msgid "Field Operations"
+msgstr ""
+
+#: .\core\templates\apps.html:95 .\core\templates\base.html:213
+#: .\core\templates\side_navigation.html:76
+#: .\core\templates\side_navigation\hr.html:3
+#: .\core\templates\side_navigation\mandoob.html:3
+#: .\core\templates\side_navigation\side_navigation.html:82
+msgid "Human Resources"
+msgstr ""
+
+#: .\core\templates\base.html:56 .\core\templates\side_navigation.html:97
+#: .\core\templates\side_navigation\side_navigation.html:92
+msgid "Log out"
+msgstr ""
+
+#: .\core\templates\base.html:180
+#: .\core\templates\side_navigation\side_navigation.html:62
+msgid "Apps"
+msgstr ""
+
+#: .\core\templates\core.html:139
+#: .\payment\templates\popup_forms\withdraw_payment.html:41
+msgid "Select"
+msgstr ""
+
+#: .\core\templates\core.html:221
+msgid "Processing..."
+msgstr ""
+
+#: .\core\templates\dashboard.html:45
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:52
+msgid "Total Groups"
+msgstr ""
+
+#: .\core\templates\dashboard.html:60
+msgid "Total Agents"
+msgstr ""
+
+#: .\core\templates\email\otp.html:7
+msgid "Asalam Alaikum"
+msgstr ""
+
+#: .\core\templates\email\otp.html:8
+msgid "Use the following OTP to complete your Sign In procedures."
+msgstr ""
+
+#: .\core\templates\email\otp.html:10
+msgid "Regards"
+msgstr ""
+
+#: .\core\templates\email\otp.html:10
+msgid "Team"
+msgstr ""
+
+#: .\core\templates\email\otp.html:13
+msgid "HBN Solutions"
+msgstr ""
+
+#: .\core\templates\email\otp.html:14
+msgid "Islamabad"
+msgstr ""
+
+#: .\core\templates\email\otp.html:15
+msgid "Pakistan"
+msgstr ""
+
+#: .\core\templates\errors\404.html:9 .\core\templates\errors\500.html:9
+msgid "OOPS!"
+msgstr ""
+
+#: .\core\templates\errors\404.html:10
+msgid "Page not found"
+msgstr ""
+
+#: .\core\templates\errors\404.html:11 .\core\templates\errors\500.html:11
+msgid "Back to Dashboard"
+msgstr ""
+
+#: .\core\templates\errors\500.html:10
+msgid "Something went wrong here"
+msgstr ""
+
+#: .\core\templates\lang.html:42
+msgid "TestDriven.io Courses"
+msgstr ""
+
+#: .\core\templates\lang.html:48
+msgid "Language"
+msgstr ""
+
+#: .\core\templates\login.html:14 .\core\templates\login.html:30
+#: .\core\templates\login.html:96
+msgid "Log In"
+msgstr ""
+
+#: .\core\templates\login.html:24 .\core\templates\login.html:25
+#: .\core\templates\login.html:117
+#: .\payment\templates\popup_forms\collect_payment.html:19
+msgid "Google Authenticator Token"
+msgstr ""
+
+#: .\core\templates\login.html:125
+msgid "Log in"
+msgstr ""
+
+#: .\core\templates\side_navigation.html:39
+#: .\payment\templates\treasury.html:15
+msgid "Treasury"
+msgstr ""
+
+#: .\core\templates\side_navigation.html:47
+msgid "Agent Vouchers"
+msgstr ""
+
+#: .\core\templates\side_navigation.html:54
+msgid "Agent Payments"
+msgstr ""
+
+#: .\core\templates\side_navigation.html:61
+#: .\payment\templates\office_expense_list.html:4
+#: .\payment\templates\office_expense_list.html:15
+#: .\payment\templates\print\print_treasury_report.html:86
+#: .\payment\templates\treasury.html:76
+msgid "Office Expenses"
+msgstr ""
+
+#: .\core\templates\side_navigation.html:68
+#: .\payment\templates\print\print_treasury_report.html:90
+#: .\payment\templates\treasury.html:73
+msgid "Salaries"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:16
+#: .\core\templates\side_navigation\accounts.html:140
+msgid "Agents"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:52
+msgid "Transactions"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:70
+#: .\core\templates\side_navigation\accounts.html:90
+msgid "Add new"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:100
+msgid "Invoices"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:105
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:15
+msgid "Visa Invoices"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:113
+#: .\voucher\templates\transport_invoice_list.html:15
+msgid "Transport Invoices"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:122
+msgid "Arrival Voucher Invoices"
+msgstr ""
+
+#: .\core\templates\side_navigation\agent.html:7
+#: .\core\templates\side_navigation\operations.html:4
+msgid "Operations"
+msgstr ""
+
+#: .\core\templates\side_navigation\agent.html:26
+#: .\core\templates\side_navigation\operations.html:58
+msgid "Tomorrow"
+msgstr ""
+
+#: .\core\templates\side_navigation\agent.html:30
+#: .\core\templates\side_navigation\operations.html:62
+msgid "Today"
+msgstr ""
+
+#: .\core\templates\side_navigation\agent.html:34
+#: .\core\templates\side_navigation\operations.html:66
+msgid "Yesterday"
+msgstr ""
+
+#: .\core\templates\side_navigation\operations.html:84
+#: .\transport\models.py:396
+msgid "Transport Packages"
+msgstr ""
+
+#: .\core\templates\transport_movement_history.html:45
+msgid "Change"
+msgstr ""
+
+#: .\core\templates\transport_movement_history.html:46
+msgid "Movement No"
+msgstr ""
+
+#: .\core\templates\transport_movement_history.html:47 .\invoice\forms.py:130
+#: .\mandoob\templates\mandoob_operating_schedule.html:63
+#: .\transport\models.py:130 .\transport\templates\add_transport_route.html:10
+msgid "Route"
+msgstr ""
+
+#: .\core\templates\transport_movement_history.html:50
+msgid "Stats"
+msgstr ""
+
+#: .\core\views.py:70 .\core\views.py:78 .\core\views.py:86
+msgid "Wrong Google Auth Key."
+msgstr ""
+
+#: .\core\views.py:92
+msgid "Wrong username or password."
+msgstr ""
+
+#: .\invoice\forms.py:30
+msgid "Package Purchase Price"
+msgstr ""
+
+#: .\invoice\forms.py:56
+msgid "Package Sale Price"
+msgstr ""
+
+#: .\invoice\forms.py:129 .\voucher\templates\popup_forms\add_voucher.html:83
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:44
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:44
+msgid "Voucher"
+msgstr ""
+
+#: .\invoice\forms.py:136 .\transport\models.py:149
+msgid "Purchase Amount"
+msgstr ""
+
+#: .\invoice\forms.py:137
+msgid "Sale Amount"
+msgstr ""
+
+#: .\invoice\models.py:16 .\payment\templates\agent_account_view.html:165
+#: .\payment\templates\print\print_agent_account_statement.html:97
+#: .\voucher\models.py:309
+msgid "Invoice No"
+msgstr ""
+
+#: .\invoice\models.py:18 .\supplier\forms.py:11 .\supplier\models.py:13
+#: .\visa_group\models.py:28
+msgid "VAT Percentage"
+msgstr ""
+
+#: .\invoice\models.py:19
+msgid "VAT Amount"
+msgstr ""
+
+#: .\invoice\models.py:21 .\voucher\models.py:348
+msgid "Additional Movement"
+msgstr ""
+
+#: .\invoice\models.py:23
+msgid "Supplier Entry"
+msgstr ""
+
+#: .\invoice\models.py:24
+msgid "Expense Entry"
+msgstr ""
+
+#: .\invoice\models.py:28
+msgid "Transport Purchase Invoice"
+msgstr ""
+
+#: .\invoice\models.py:29
+msgid "Transport Purchase Invoices"
+msgstr ""
+
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:4
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:14
+msgid "Arrival Voucher Approved Invoices"
+msgstr ""
+
+#: .\invoice\templates\arrival_voucher_invoice.html:14
+msgid "Invoice"
+msgstr ""
+
+#: .\invoice\templates\arrival_voucher_invoice.html:35
+msgid "Purhase"
+msgstr ""
+
+#: .\invoice\templates\arrival_voucher_invoice.html:52
+msgid "Sale"
+msgstr ""
+
+#: .\invoice\templates\arrival_voucher_invoice.html:64
+msgid "Included in Package"
+msgstr ""
+
+#: .\invoice\templates\arrival_voucher_invoice.html:165
+msgid "Save and continue to Next"
+msgstr ""
+
+#: .\invoice\templates\arrival_voucher_invoice.html:166
+msgid "Save and go back to List"
+msgstr ""
+
+#: .\invoice\templates\arrival_voucher_invoice.html:168
+msgid "Once saved, It will be marked as Approved"
+msgstr ""
+
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:4
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:14
+msgid "Arrival Voucher Pending Invoices"
+msgstr ""
+
+#: .\invoice\views.py:36 .\visa_group\views.py:39
+msgid "Invoice updated successfully"
+msgstr ""
+
+#: .\mandoob\forms.py:37 .\mandoob\models.py:23 .\supplier\forms.py:13
+#: .\supplier\models.py:15
+msgid "Phone"
+msgstr ""
+
+#: .\mandoob\forms.py:39 .\mandoob\models.py:25 .\supplier\forms.py:14
+#: .\supplier\models.py:16
+msgid "Address"
+msgstr ""
+
+#: .\mandoob\models.py:35
+msgid "Mandoob"
+msgstr ""
+
+#: .\mandoob\models.py:38
+msgid "View Jeddah Airport Schedule"
+msgstr ""
+
+#: .\mandoob\models.py:39
+msgid "View Medina Airport Schedule"
+msgstr ""
+
+#: .\mandoob\models.py:40
+msgid "View Makkah Schedule"
+msgstr ""
+
+#: .\mandoob\models.py:41
+msgid "View Madinah Schedule"
+msgstr ""
+
+#: .\mandoob\models.py:42
+msgid "Can Update Group Leader"
+msgstr ""
+
+#: .\mandoob\models.py:43
+msgid "Can Update Makkah Hotel"
+msgstr ""
+
+#: .\mandoob\models.py:44
+msgid "Can Update Madinah Hotel"
+msgstr ""
+
+#: .\mandoob\models.py:45
+msgid "Can Mark As Completed"
+msgstr ""
+
+#: .\mandoob\models.py:46
+msgid "Can Mark As On The Way"
+msgstr ""
+
+#: .\mandoob\templates\mandoob_operating_schedule.html:75
+msgid "Trip Details"
+msgstr ""
+
+#: .\payment\forms.py:8
+#: .\payment\templates\popup_forms\withdraw_payment.html:42
+msgid "Main Account"
+msgstr ""
+
+#: .\payment\forms.py:9
+msgid "Agent Return"
+msgstr ""
+
+#: .\payment\forms.py:35
+msgid "Received To Account"
+msgstr ""
+
+#: .\payment\models.py:18
+msgid "Bank Account Transfer"
+msgstr ""
+
+#: .\payment\models.py:23
+msgid "Refund"
+msgstr ""
+
+#: .\payment\models.py:24
+msgid "Refund Withdraw"
+msgstr ""
+
+#: .\payment\models.py:26
+msgid "Commission Withdraw"
+msgstr ""
+
+#: .\payment\models.py:42
+msgid "Transport Fees"
+msgstr ""
+
+#: .\payment\models.py:43
+msgid "Accommodation Fees"
+msgstr ""
+
+#: .\payment\models.py:44
+msgid "Fine / Violation Fees"
+msgstr ""
+
+#: .\payment\models.py:45
+msgid "Catering Service Fees"
+msgstr ""
+
+#: .\payment\models.py:52 .\payment\templates\payroll_view.html:132
+msgid "Collected"
+msgstr ""
+
+#: .\payment\models.py:58
+msgid "General"
+msgstr ""
+
+#: .\payment\models.py:59
+msgid "Company Expense"
+msgstr ""
+
+#: .\payment\models.py:60 .\payment\views.py:549
+msgid "Salary"
+msgstr ""
+
+#: .\payment\models.py:73
+msgid "Payment Type"
+msgstr ""
+
+#: .\payment\models.py:74 .\payment\templates\account_view.html:92
+#: .\payment\templates\agent_account_view.html:124
+#: .\payment\templates\print\print_agent_account_statement.html:56
+msgid "Payment For"
+msgstr ""
+
+#: .\payment\models.py:75
+msgid "Manual Receipt No."
+msgstr ""
+
+#: .\payment\models.py:76 .\payment\models.py:232 .\payment\models.py:304
+msgid "Paid by"
+msgstr ""
+
+#: .\payment\models.py:79 .\payment\templates\account_view.html:95
+#: .\payment\templates\agent_account_view.html:131
+#: .\payment\templates\print\print_agent_account_statement.html:63
+#: .\payment\templates\treasury.html:91 .\payment\templates\treasury.html:124
+msgid "Performed By"
+msgstr ""
+
+#: .\payment\models.py:176
+#: .\payment\templates\print\print_receipt_vouchers_report.html:52
+#: .\payment\templates\print\print_treasury_report.html:50
+msgid "Payment method"
+msgstr ""
+
+#: .\payment\models.py:178 .\payment\templates\office_expense_list.html:85
+#: .\payment\templates\print\office_expense_print.html:91
+msgid "Bill No"
+msgstr ""
+
+#: .\payment\models.py:179 .\payment\models.py:231
+#: .\payment\templates\office_expense_list.html:84
+#: .\payment\templates\print\print_receipt_vouchers_report.html:51
+#: .\payment\templates\print\print_treasury_report.html:49
+#: .\payment\templates\treasury.html:89 .\payment\templates\treasury.html:122
+#: .\payment\templates\treasury.html:161
+msgid "Reason"
+msgstr ""
+
+#: .\payment\models.py:244 .\payment\templates\payrolls.html:46
+msgid "Start Date"
+msgstr ""
+
+#: .\payment\models.py:245 .\payment\templates\payrolls.html:47
+msgid "End Date"
+msgstr ""
+
+#: .\payment\models.py:278
+msgid "Absent Days"
+msgstr ""
+
+#: .\payment\models.py:280
+msgid "Collected Amount"
+msgstr ""
+
+#: .\payment\models.py:308
+msgid "Payment from"
+msgstr ""
+
+#: .\payment\templates\account_view.html:53
+#: .\payment\templates\agent_account_view.html:82
+msgid "Withdraw Amount"
+msgstr ""
+
+#: .\payment\templates\account_view.html:56
+msgid "Transfer"
+msgstr ""
+
+#: .\payment\templates\account_view.html:93
+msgid "Payment To / From"
+msgstr ""
+
+#: .\payment\templates\accounts_list.html:27
+msgid "Add New Account"
+msgstr ""
+
+#: .\payment\templates\agent_account_view.html:49
+#: .\payment\templates\payment_agent_list.html:105
+#: .\payment\templates\print\agents_current_balance_print.html:39
+#: .\payment\templates\print\print_receipt_vouchers_report.html:95
+msgid "Total Visas"
+msgstr ""
+
+#: .\payment\templates\agent_account_view.html:64
+msgid "Total Transport"
+msgstr ""
+
+#: .\payment\templates\agent_account_view.html:126
+#: .\payment\templates\print\print_agent_account_statement.html:58
+#: .\voucher\models.py:343 .\voucher\templates\print\vouchers_report.html:54
+#: .\voucher\templates\transport_invoice_list.html:104
+msgid "Price"
+msgstr ""
+
+#: .\payment\templates\agent_account_view.html:129
+#: .\payment\templates\print\print_agent_account_statement.html:61
+#: .\payment\templates\treasury.html:90 .\payment\templates\treasury.html:123
+#: .\payment\templates\treasury.html:162
+msgid "Paid By"
+msgstr ""
+
+#: .\payment\templates\agent_account_view.html:164
+#: .\payment\templates\print\print_agent_account_statement.html:96
+#: .\voucher\templates\transport_invoice_edit.html:11
+#: .\voucher\templates\transport_invoice_form.html:11
+msgid "Transport Invoice"
+msgstr ""
+
+#: .\payment\templates\payment_agent_list.html:4
+#: .\payment\templates\payment_agent_list.html:20
+msgid "Agent Accounts"
+msgstr ""
+
+#: .\payment\templates\payment_agent_list.html:124
+msgid "View Account"
+msgstr ""
+
+#: .\payment\templates\payment_agent_list.html:145
+#: .\voucher\templates\transport_invoice_list.html:55 .\voucher\views.py:190
+msgid "All Agents"
+msgstr ""
+
+#: .\payment\templates\payroll_view.html:4
+#: .\payment\templates\payroll_view.html:15
+#: .\payment\templates\popup_forms\payroll_form.html:10
+msgid "Payroll"
+msgstr ""
+
+#: .\payment\templates\payroll_view.html:31
+#: .\payment\templates\payrolls.html:49
+msgid "Total Amount"
+msgstr ""
+
+#: .\payment\templates\payroll_view.html:45
+#: .\payment\templates\payrolls.html:48
+msgid "Total Employees"
+msgstr ""
+
+#: .\payment\templates\payroll_view.html:98
+msgid "Net Salary"
+msgstr ""
+
+#: .\payment\templates\payrolls.html:15
+msgid "Payrolls"
+msgstr ""
+
+#: .\payment\templates\payrolls.html:31
+msgid "Create Payroll"
+msgstr ""
+
+#: .\payment\templates\popup_forms\account_debit_form.html:10
+#: .\payment\templates\popup_forms\withdraw_payment.html:11
+msgid "Withdraw Payment"
+msgstr ""
+
+#: .\payment\templates\popup_forms\account_transfer_form.html:10
+msgid "Transfer to Account"
+msgstr ""
+
+#: .\payment\templates\popup_forms\collect_payment.html:25
+#: .\payment\templates\popup_forms\collect_payment.html:52
+#: .\voucher\templates\popup_forms\add_voucher.html:254
+#: .\voucher\templates\popup_forms\add_voucher.html:280
+#: .\voucher\templates\transport_invoice_edit.html:26
+#: .\voucher\templates\transport_invoice_form.html:25
+#: .\voucher\templates\transport_invoice_form.html:54
+msgid "Delete"
+msgstr ""
+
+#: .\payment\templates\popup_forms\collect_payment.html:40
+#: .\voucher\templates\popup_forms\add_voucher.html:268
+#: .\voucher\templates\transport_invoice_form.html:42
+msgid "Delete Voucher"
+msgstr ""
+
+#: .\payment\templates\popup_forms\collect_payment.html:46
+#: .\voucher\templates\popup_forms\add_voucher.html:274
+#: .\voucher\templates\transport_invoice_form.html:48
+msgid "This record will be deleted. Are you sure?"
+msgstr ""
+
+#: .\payment\templates\popup_forms\office_expense_form.html:11
+msgid "Office Expense"
+msgstr ""
+
+#: .\payment\templates\popup_forms\withdraw_payment.html:42
+#: .\payment\templates\popup_forms\withdraw_payment.html:43
+#: .\payment\templates\popup_forms\withdraw_payment.html:44
+msgid "Balance:"
+msgstr ""
+
+#: .\payment\templates\popup_forms\withdraw_payment.html:43
+msgid "Due to Agent"
+msgstr ""
+
+#: .\payment\templates\popup_forms\withdraw_payment.html:56
+msgid "Collected By"
+msgstr ""
+
+#: .\payment\templates\print\agents_current_balance_print.html:25
+msgid "Agents Current Balance Sheet"
+msgstr ""
+
+#: .\payment\templates\print\print_agent_account_statement.html:35
+#: .\payment\templates\print\print_agent_account_statement.html:37
+#: .\payment\templates\print\print_receipt_vouchers_report.html:32
+#: .\payment\templates\print\print_receipt_vouchers_report.html:34
+#: .\payment\templates\print\print_receipt_vouchers_report.html:79
+#: .\payment\templates\print\print_receipt_vouchers_report.html:81
+#: .\payment\templates\print\print_treasury_report.html:33
+#: .\payment\templates\print\print_treasury_report.html:35
+#: .\payment\templates\print\print_treasury_report.html:76
+#: .\payment\templates\print\print_treasury_report.html:78
+#: .\voucher\templates\print\vouchers_report.html:33
+#: .\voucher\templates\print\vouchers_report.html:35
+#: .\voucher\templates\print\vouchers_report.html:87
+#: .\voucher\templates\print\vouchers_report.html:89
+msgid "Not Specified"
+msgstr ""
+
+#: .\payment\templates\print\print_receipt_vouchers_report.html:75
+#: .\payment\templates\print\print_treasury_report.html:72
+#: .\voucher\templates\print\vouchers_report.html:83
+msgid "Report Summary"
+msgstr ""
+
+#: .\payment\templates\print\print_receipt_vouchers_report.html:75
+#: .\payment\templates\print\print_treasury_report.html:72
+#: .\voucher\templates\print\vouchers_report.html:83
+msgid "Detailed"
+msgstr ""
+
+#: .\payment\templates\print\print_receipt_vouchers_report.html:93
+msgid "Total purchase amount"
+msgstr ""
+
+#: .\payment\templates\print\print_receipt_vouchers_report.html:99
+msgid "Current Account Balance"
+msgstr ""
+
+#: .\payment\templates\print\print_treasury_report.html:26
+#: .\payment\templates\treasury.html:54 .\payment\templates\treasury.html:205
+msgid "Treasury Transactions Report"
+msgstr ""
+
+#: .\payment\templates\print\print_treasury_report.html:82
+msgid "Total amount deposited"
+msgstr ""
+
+#: .\payment\templates\print\print_treasury_report.html:94
+msgid "Total debit amount"
+msgstr ""
+
+#: .\payment\templates\treasury.html:70
+msgid "Main Transactions"
+msgstr ""
+
+#: .\payment\views.py:125 .\payment\views.py:154
+msgid "Payment Collected Succesfully"
+msgstr ""
+
+#: .\payment\views.py:131 .\payment\views.py:162 .\payment\views.py:314
+#: .\payment\views.py:902 .\payment\views.py:945 .\payment\views.py:986
+#: .\payment\views.py:1022 .\payment\views.py:1053 .\payment\views.py:1093
+msgid "Wrong token"
+msgstr ""
+
+#: .\payment\views.py:177
+msgid "Payment has been deleted succesfully"
+msgstr ""
+
+#: .\payment\views.py:197
+msgid "Withdraw"
+msgstr ""
+
+#: .\payment\views.py:200
+msgid "Withdraw from Account Balance"
+msgstr ""
+
+#: .\payment\views.py:202
+msgid "Commission Withdrawl"
+msgstr ""
+
+#: .\payment\views.py:204
+msgid "Returns Withdrawl"
+msgstr ""
+
+#: .\payment\views.py:209
+msgid "Payment Withdraw has been made succesfully"
+msgstr ""
+
+#: .\payment\views.py:247
+msgid "Office expense record has been created succesfully"
+msgstr ""
+
+#: .\payment\views.py:308
+msgid "Amount has been credited to treasury."
+msgstr ""
+
+#: .\payment\views.py:367 .\payment\views.py:443 .\payment\views.py:470
+#: .\payment\views.py:604
+msgid "Please enter valid dates"
+msgstr ""
+
+#: .\payment\views.py:502
+msgid "New payroll has been created."
+msgstr ""
+
+#: .\payment\views.py:548
+msgid "c"
+msgstr ""
+
+#: .\payment\views.py:559
+msgid "Salary for this employee has been marked as Collected."
+msgstr ""
+
+#: .\payment\views.py:613
+msgid "You cannot delete this transaction as it is linked to a voucher."
+msgstr ""
+
+#: .\payment\views.py:617
+msgid "Transaction has been deleted succesfully"
+msgstr ""
+
+#: .\payment\views.py:620
+msgid "Invalid request"
+msgstr ""
+
+#: .\payment\views.py:651
+msgid "Account has been created succesfully"
+msgstr ""
+
+#: .\payment\views.py:675
+msgid "Account has been updated succesfully"
+msgstr ""
+
+#: .\payment\views.py:895 .\payment\views.py:979
+msgid "Amount has been credited to agent succesfully"
+msgstr ""
+
+#: .\payment\views.py:938 .\payment\views.py:1015
+msgid "Amount has been debited from agent succesfully"
+msgstr ""
+
+#: .\payment\views.py:1046
+msgid "Amount has been credited to account succesfully"
+msgstr ""
+
+#: .\payment\views.py:1086
+msgid "Amount has been debited from account succesfully"
+msgstr ""
+
+#: .\service_order\choices.py:6
+msgid "Waiting for Approval"
+msgstr ""
+
+#: .\service_order\choices.py:13
+msgid "Air"
+msgstr ""
+
+#: .\service_order\choices.py:14
+msgid "Land"
+msgstr ""
+
+#: .\service_order\choices.py:15
+msgid "Sea"
+msgstr ""
+
+#: .\service_order\models.py:9
+msgid "Arrival Type"
+msgstr ""
+
+#: .\service_order\models.py:12
+msgid "Group Leader Mobile"
+msgstr ""
+
+#: .\service_order\models.py:20
+msgid "Arrival Port"
+msgstr ""
+
+#: .\service_order\models.py:21
+msgid "Arrival to"
+msgstr ""
+
+#: .\service_order\models.py:27
+msgid "Departure Port"
+msgstr ""
+
+#: .\service_order\models.py:28
+msgid "Departure from"
+msgstr ""
+
+#: .\service_order\models.py:38
+msgid "Status Remarks"
+msgstr ""
+
+#: .\service_order\models.py:41
+msgid "Service Order"
+msgstr ""
+
+#: .\service_order\models.py:42
+msgid "Service Orders"
+msgstr ""
+
+#: .\supplier\forms.py:7
+msgid "Name (English)"
+msgstr ""
+
+#: .\supplier\forms.py:8
+msgid "Name (Arabic)"
+msgstr ""
+
+#: .\supplier\forms.py:9 .\supplier\models.py:11
+msgid "CR No"
+msgstr ""
+
+#: .\supplier\forms.py:10 .\supplier\models.py:12
+msgid "VAT No"
+msgstr ""
+
+#: .\supplier\forms.py:12 .\supplier\models.py:14
+msgid "Email"
+msgstr ""
+
+#: .\supplier\forms.py:15 .\supplier\models.py:17
+msgid "Is Transport Company"
+msgstr ""
+
+#: .\supplier\forms.py:33
+msgid "Name (English) is required"
+msgstr ""
+
+#: .\supplier\forms.py:35
+msgid "Name (Arabic) is required"
+msgstr ""
+
+#: .\supplier\forms.py:37
+msgid "CR No is required"
+msgstr ""
+
+#: .\supplier\forms.py:39
+msgid "VAT No is required"
+msgstr ""
+
+#: .\supplier\forms.py:41
+msgid "VAT Percentage is required"
+msgstr ""
+
+#: .\supplier\forms.py:43
+msgid "Email is required"
+msgstr ""
+
+#: .\supplier\forms.py:45
+msgid "Phone is required"
+msgstr ""
+
+#: .\supplier\forms.py:48
+msgid "Address is required"
+msgstr ""
+
+#: .\supplier\forms.py:50
+msgid "Is Transport Company is required"
+msgstr ""
+
+#: .\supplier\models.py:28
+msgid "Supplier"
+msgstr ""
+
+#: .\supplier\models.py:29
+msgid "Suppliers"
+msgstr ""
+
+#: .\transport\forms.py:20 .\transport\models.py:48
+msgid "From English"
+msgstr ""
+
+#: .\transport\forms.py:21 .\transport\models.py:49
+msgid "From Arabic"
+msgstr ""
+
+#: .\transport\forms.py:22 .\transport\models.py:50
+msgid "To English"
+msgstr ""
+
+#: .\transport\forms.py:23 .\transport\models.py:51
+msgid "To Arabic"
+msgstr ""
+
+#: .\transport\forms.py:24 .\transport\models.py:52
+msgid "Distance (km)"
+msgstr ""
+
+#: .\transport\forms.py:25 .\transport\models.py:67
+msgid "Mandoob who can Mark as completed"
+msgstr ""
+
+#: .\transport\forms.py:26 .\transport\models.py:68
+msgid "Mandoob who can Mark as on the way"
+msgstr ""
+
+#: .\transport\forms.py:43 .\transport\forms.py:46 .\transport\forms.py:49
+#: .\transport\forms.py:52
+msgid "This city name is too long."
+msgstr ""
+
+#: .\transport\forms.py:55
+msgid "This distance is too long."
+msgstr ""
+
+#: .\transport\forms.py:182
+msgid "Name English"
+msgstr ""
+
+#: .\transport\forms.py:183
+msgid "Name Arabic"
+msgstr ""
+
+#: .\transport\forms.py:201 .\transport\models.py:382
+msgid "Package Name English"
+msgstr ""
+
+#: .\transport\forms.py:202 .\transport\models.py:383
+msgid "Package Name Arabic"
+msgstr ""
+
+#: .\transport\models.py:15
+msgid "VAT Number"
+msgstr ""
+
+#: .\transport\models.py:54
+msgid "Is linked with arrival flight"
+msgstr ""
+
+#: .\transport\models.py:55
+msgid "Is linked with departure flight"
+msgstr ""
+
+#: .\transport\models.py:57
+msgid "From linked with Makkah hotel"
+msgstr ""
+
+#: .\transport\models.py:58
+msgid "To linked with Makkah hotel"
+msgstr ""
+
+#: .\transport\models.py:59
+msgid "From linked with Medina hotel"
+msgstr ""
+
+#: .\transport\models.py:60
+msgid "To linked with Medina hotel"
+msgstr ""
+
+#: .\transport\models.py:97
+msgid "Transport Route"
+msgstr ""
+
+#: .\transport\models.py:98 .\transport\templates\transport_packages.html:6
+#: .\transport\templates\transport_packages.html:16
+#: .\transport\templates\transport_routes.html:6
+#: .\transport\templates\transport_routes.html:16
+msgid "Transport Routes"
+msgstr ""
+
+#: .\transport\models.py:102
+msgid "Type Name English"
+msgstr ""
+
+#: .\transport\models.py:103
+msgid "Type Name Arabic"
+msgstr ""
+
+#: .\transport\models.py:104
+msgid "Capacity"
+msgstr ""
+
+#: .\transport\models.py:105
+msgid "Show in transport report"
+msgstr ""
+
+#: .\transport\models.py:120
+msgid "Transport Types"
+msgstr ""
+
+#: .\transport\models.py:137 .\transport\models.py:139
+msgid "Driver Name"
+msgstr ""
+
+#: .\transport\models.py:138 .\transport\models.py:140
+msgid "Driver Phone"
+msgstr ""
+
+#: .\transport\models.py:143
+msgid "From Hotel"
+msgstr ""
+
+#: .\transport\models.py:144
+msgid "To Hotel"
+msgstr ""
+
+#: .\transport\models.py:145
+msgid "No Plate"
+msgstr ""
+
+#: .\transport\models.py:160
+msgid "Date Open"
+msgstr ""
+
+#: .\transport\models.py:177
+msgid "Transport Movement"
+msgstr ""
+
+#: .\transport\models.py:178
+msgid "Transport Movements"
+msgstr ""
+
+#: .\transport\models.py:384
+msgid "Package Short Code"
+msgstr ""
+
+#: .\transport\tables.py:18 .\transport\templates\transport_packages.html:43
+msgid "Total Routes"
+msgstr ""
+
+#: .\transport\templates\transport_packages.html:42
+msgid "Package Name"
+msgstr ""
+
+#: .\transport\templates\transport_routes.html:29
+msgid "Add New Route"
+msgstr ""
+
+#: .\transport\templates\transport_routes.html:44
+msgid "Distance"
+msgstr ""
+
+#: .\transport\views.py:39
+msgid "Transport route added successfully"
+msgstr ""
+
+#: .\transport\views.py:42
+msgid "Error adding transport route"
+msgstr ""
+
+#: .\transport\views.py:65
+msgid "Transport route edited successfully"
+msgstr ""
+
+#: .\transport\views.py:68
+msgid "Error editing transport route"
+msgstr ""
+
+#: .\transport\views.py:84
+msgid "Transport company added successfully"
+msgstr ""
+
+#: .\transport\views.py:87
+msgid "Error adding transport company"
+msgstr ""
+
+#: .\transport\views.py:92
+msgid "Add Transport Company"
+msgstr ""
+
+#: .\transport\views.py:105
+msgid "Transport company edited successfully"
+msgstr ""
+
+#: .\transport\views.py:108
+msgid "Error editing transport company"
+msgstr ""
+
+#: .\transport\views.py:112
+msgid "Edit Transport Company"
+msgstr ""
+
+#: .\transport\views.py:139
+msgid "Transport package added successfully"
+msgstr ""
+
+#: .\transport\views.py:142
+msgid "Error adding transport package"
+msgstr ""
+
+#: .\transport\views.py:146
+msgid "Add Transport Package"
+msgstr ""
+
+#: .\umrahflow\settings.py:175
+msgid "English"
+msgstr ""
+
+#: .\umrahflow\settings.py:176
+msgid "Arabic"
+msgstr ""
+
+#: .\umrahflow\settings.py:220
+msgid "The session has expired. Please login again to continue."
+msgstr ""
+
+#: .\visa_group\ajax_datatable_views.py:52 .\visa_group\models.py:25
+msgid "Transport Included"
+msgstr ""
+
+#: .\visa_group\ajax_datatable_views.py:77
+msgid "Yes"
+msgstr ""
+
+#: .\visa_group\ajax_datatable_views.py:77
+msgid "No"
+msgstr ""
+
+#: .\visa_group\models.py:19
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:48
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:47
+msgid "Issue Date"
+msgstr ""
+
+#: .\visa_group\models.py:26
+msgid "Comission Rate"
+msgstr ""
+
+#: .\visa_group\models.py:30 .\visa_group\models.py:353
+msgid "Ground Service Price"
+msgstr ""
+
+#: .\visa_group\models.py:31 .\visa_group\models.py:354
+msgid "Visa Fee"
+msgstr ""
+
+#: .\visa_group\models.py:32 .\visa_group\models.py:355
+msgid "Insurance Fee"
+msgstr ""
+
+#: .\visa_group\models.py:33 .\visa_group\models.py:356
+msgid "Electronic Services Fee"
+msgstr ""
+
+#: .\visa_group\models.py:37 .\visa_group\models.py:358
+msgid "Hotel BRN"
+msgstr ""
+
+#: .\visa_group\templates\umrah_visa_group_invoice_form.html:4
+#: .\visa_group\templates\umrah_visa_group_invoice_form.html:23
+msgid "Umrah Visa Group Invoice"
+msgstr ""
+
+#: .\visa_group\templates\umrah_visa_group_invoice_form.html:97
+msgid "Total Paid in Bank"
+msgstr ""
+
+#: .\visa_group\templates\umrah_visa_group_invoice_form.html:103
+msgid "Invoice Total"
+msgstr ""
+
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:4
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:16
+msgid "Umrah Visa Group Invoices"
+msgstr ""
+
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:71
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:167
+msgid "Default Prices"
+msgstr ""
+
+#: .\visa_group\templates\umrah_visa_group_invoice_list.html:180
+#: .\voucher\templates\transport_invoice_list.html:243
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:217
+msgid "Save changes"
+msgstr ""
+
+#: .\visa_group\views.py:42 .\visa_group\views.py:55
+msgid "Please correct the errors below"
+msgstr ""
+
+#: .\visa_group\views.py:52
+msgid "Invoice saved successfully"
+msgstr ""
+
+#: .\visa_group\views.py:79
+msgid "Default prices updated successfully"
+msgstr ""
+
+#: .\voucher\models.py:19
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:46
+msgid "Group ID"
+msgstr ""
+
+#: .\voucher\models.py:22
+msgid "Voucher Date and Time"
+msgstr ""
+
+#: .\voucher\models.py:27
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:53
+msgid "Extra Fees"
+msgstr ""
+
+#: .\voucher\models.py:28
+msgid "Voucher Expiry"
+msgstr ""
+
+#: .\voucher\models.py:29 .\voucher\models.py:283
+msgid "Ground Services Price"
+msgstr ""
+
+#: .\voucher\models.py:30 .\voucher\models.py:284
+msgid "Additional Services Price"
+msgstr ""
+
+#: .\voucher\models.py:34 .\voucher\models.py:288
+msgid "Transport BRN Price"
+msgstr ""
+
+#: .\voucher\models.py:35 .\voucher\models.py:289
+msgid "Makkah BRN Price"
+msgstr ""
+
+#: .\voucher\models.py:36 .\voucher\models.py:290
+msgid "Medina BRN Price"
+msgstr ""
+
+#: .\voucher\models.py:40 .\voucher\models.py:292
+msgid "Transport BRN Return"
+msgstr ""
+
+#: .\voucher\models.py:41 .\voucher\models.py:293
+msgid "Makkah BRN Return"
+msgstr ""
+
+#: .\voucher\models.py:42 .\voucher\models.py:294
+msgid "Medina BRN Return"
+msgstr ""
+
+#: .\voucher\models.py:43
+msgid "Ground Services Fee Return"
+msgstr ""
+
+#: .\voucher\models.py:44
+msgid "VAT Return"
+msgstr ""
+
+#: .\voucher\models.py:46
+msgid "Refund Agent"
+msgstr ""
+
+#: .\voucher\models.py:51
+msgid "Purchase Transaction"
+msgstr ""
+
+#: .\voucher\models.py:52
+msgid "Purchase Credit Entry"
+msgstr ""
+
+#: .\voucher\models.py:53
+msgid "Purchase Debit Entry"
+msgstr ""
+
+#: .\voucher\models.py:55
+msgid "Sale Transaction"
+msgstr ""
+
+#: .\voucher\models.py:56
+msgid "Sale Credit Entry"
+msgstr ""
+
+#: .\voucher\models.py:57
+msgid "Sale Debit Entry"
+msgstr ""
+
+#: .\voucher\models.py:69
+msgid "Can view visa invoice"
+msgstr ""
+
+#: .\voucher\models.py:70
+msgid "Can edit visa invoice"
+msgstr ""
+
+#: .\voucher\models.py:71
+msgid "Can delete visa invoice"
+msgstr ""
+
+#: .\voucher\models.py:72
+msgid "Can view transport invoice"
+msgstr ""
+
+#: .\voucher\models.py:310
+msgid "Item"
+msgstr ""
+
+#: .\voucher\models.py:311 .\voucher\models.py:342
+msgid "Quantity"
+msgstr ""
+
+#: .\voucher\models.py:313
+msgid "Total Cost"
+msgstr ""
+
+#: .\voucher\models.py:314 .\voucher\models.py:344
+msgid "Tax Percentage"
+msgstr ""
+
+#: .\voucher\models.py:325
+msgid "Bus"
+msgstr ""
+
+#: .\voucher\models.py:326
+msgid "Shared Bus"
+msgstr ""
+
+#: .\voucher\models.py:327
+msgid "Private Car"
+msgstr ""
+
+#: .\voucher\models.py:350
+msgid "Allow Edit Manualy"
+msgstr ""
+
+#: .\voucher\models.py:385
+msgid "Transport Invoice. Invoice No: "
+msgstr ""
+
+#: .\voucher\templates\forms\add_voucher_b2bw.html:15
+msgid "B2B without Contract"
+msgstr ""
+
+#: .\voucher\templates\popup_forms\add_voucher.html:100
+msgid "Select Agent"
+msgstr ""
+
+#: .\voucher\templates\print\vouchers_report.html:25
+#: .\voucher\templates\print\vouchers_report.html:29
+msgid "Vouchers Report"
+msgstr ""
+
+#: .\voucher\templates\print\vouchers_report.html:96
+msgid "Total PAX"
+msgstr ""
+
+#: .\voucher\templates\print\vouchers_report.html:99
+msgid "Total Cost Price"
+msgstr ""
+
+#: .\voucher\templates\print\vouchers_report.html:104
+msgid "Total Sale Price"
+msgstr ""
+
+#: .\voucher\templates\transport_invoice_list.html:4
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:4
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:4
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:4
+msgid "vouchers List"
+msgstr ""
+
+#: .\voucher\templates\transport_invoice_list.html:96 .\voucher\views.py:272
+#: .\voucher\views.py:296 .\voucher\views.py:311
+msgid "Invoice No."
+msgstr ""
+
+#: .\voucher\templates\transport_invoice_list.html:158
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:35
+#: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:132
+msgid "Initial Prices"
+msgstr ""
+
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:13
+msgid "B2C"
+msgstr ""
+
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:13
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:13
+msgid "Vouchers"
+msgstr ""
+
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:50
+msgid "Group Code"
+msgstr ""
+
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:45
+msgid "Group ID NIC"
+msgstr ""
+
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:52
+msgid "Sub Agent"
+msgstr ""
+
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:54
+msgid "Expiry Date"
+msgstr ""
+
+#: .\voucher\views.py:53
+msgid "Voucher number already exist."
+msgstr ""
+
+#: .\voucher\views.py:79
+msgid "Voucher added successfully."
+msgstr ""
+
+#: .\voucher\views.py:138
+msgid "Voucher Detailes Updated"
+msgstr ""
+
+#: .\voucher\views.py:163
+msgid "Initial prices saved successfully."
+msgstr ""
+
+#: .\voucher\views.py:239
+msgid "Voucher has been deleted successfully."
+msgstr ""
+
+#: .\voucher\views.py:272
+msgid "Invoice has been added successfully."
+msgstr ""
+
+#: .\voucher\views.py:296
+msgid "Invoice has been updated successfully."
+msgstr ""
+
+#: .\voucher\views.py:311
+msgid "Invoice has been deleted successfully."
+msgstr ""

@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Operating Schedule" %} - {{date|date:"d/m/Y (D)"}} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Operating Schedule" %} - {{date|date:"d/m/Y (l)"}}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        {% comment %} <div class="card card-success card-outline">
+          <div class="card-body">
+            <button type="button" class="btn btn-primary swalDefaultSuccess"
+            onClick="popupCenter({url: 'print', title: 'xtf', w: 900, h: 900});">
+            {% trans "Print" %}
+            </button>
+          </div>
+          <!-- /.card -->
+        </div> {% endcomment %}
+        <div class="card">
+          <div class="card-body small">
+          <div class="table-responsive">
+            <table id="dataTable" class="data-table table table-bordered table-striped table-sm table-hover">
+              <thead class="thead-dark">  
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans "BRN" %}</th>
+                    <th>{% trans "Voucher " %}</th>
+                    <th>{% trans "Reference no " %}</th>
+
+
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Time" %}</th>
+                    <th>{% trans "Agent" %}</th>
+                    <th>{% trans "PAX" %}</th>
+                    <th>{% trans "From" %}</th>
+                    <th>{% trans "To" %}</th>
+
+                    <th>{% trans "Transport type" %}</th>
+                    <th>{% trans "Transport Company" %}</th>
+                    <th>{% trans "Transport Status" %}</th>
+
+
+
+                    <th>{% trans "Group Leader" %}</th>
+                    <th>{% trans "Driver(s)" %}</th>
+                    <th>{% trans "Plate no" %}</th>
+                    <th>{% trans "Remarks" %}</th>
+
+                    <th>{% trans "Status" %}</th>
+                    <th>{% trans "Action" %}</th>
+
+                  </tr>
+                  </thead >
+                  <tbody>
+                    {% for movement in movements %}
+                    {% if movement.status == 'draft' %}
+                    <tr class="">
+                    {% elif movement.status == 'pending' %}
+                    <tr class="table-warning">
+                    {% elif movement.status == 'cancelled' %}
+                    <tr class="table-dark">
+                    {% elif movement.status == 'on_the_way' %}
+                    <tr class="table-primary">
+                    {% elif movement.status == 'confirmed' %}
+                    <tr class="">
+                    {% elif movement.status == 'completed' %}
+                    <tr class="table-success">
+                    {% elif movement.status == 'delayed' %}
+                    <tr class="table-danger">
+                    {% else %}
+                    <tr class="">
+                    {% endif %}
+                      <td class="align-middle">{{forloop.counter}}</td>
+                      <td class="align-middle">
+                        {% if movement.voucher.transport_brn %}
+                        {{movement.voucher.transport_brn}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+                        UP-{{movement.voucher.id}}
+                      </td>
+                      <td class="align-middle">
+                        {% if movement.voucher.agent_referance_no %}
+                        {{movement.voucher.agent_referance_no}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">{{movement.date|date:"d/m/Y"}}</td>
+                      <td class="align-middle">{{movement.time|date:"H:i"}}</td>
+
+                      <td class="align-middle">{{movement.voucher.agent}} ({{movement.voucher.country}})</td>
+                      <td class="align-middle">{{movement.voucher.pax}}</td>
+                      <td class="align-middle"><strong>{{movement.route.route_from}}</strong>
+                        {% if movement.movement_from_hotel %}
+                        <br>
+                        {{movement.movement_from_hotel}}
+                        {% endif %}
+                        {% if movement.route.is_linked_with_arrival_flight %}
+                        <br>
+                        {{movement.flight_no}} - {{movement.voucher.arrival_time|date:"H:i"}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle"><strong>{{movement.route.route_to}}</strong>
+                        {% if movement.movement_to_hotel %}
+                        <br>
+                        {{movement.movement_to_hotel}}
+                        {% endif %}
+                        {% if movement.route.is_linked_with_departure_flight %}
+                        <br>
+                        {{movement.flight_no}} - {{movement.voucher.departure_time|date:"H:i"}}
+                        {% endif %}
+                      </td>
+
+                      <td class="align-middle">
+                        {% if movement.type %}
+                        {{movement.type}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+
+                        {% if movement.transport_company %}
+                        {{movement.transport_company}}
+                        {% elif movement.voucher.transport_company %}
+                        {{movement.voucher.transport_company}}
+                        {% endif %}
+
+                      </td>
+                      <td class="align-middle">
+                        {{movement.voucher.get_transport_status_display}}                     
+                      </td>
+
+              
+
+
+                      <td class="align-middle">
+                        
+                        {% if not movement.voucher.group_leader %}
+                        
+                        {% else %}
+                          <strong>{{movement.voucher.group_leader}}</strong><br>{{movement.voucher.group_leader_contact}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+                        {% if movement.first_driver_name %}
+                        <strong>{{movement.first_driver_name}}</strong><br>{{movement.first_driver_phone}}
+                        {% endif %}
+                        
+                        {% if movement.second_driver_name %}
+                        <br>
+                        <strong>{{movement.second_driver_name}}</strong><br>{{movement.second_driver_phone}}
+                        {% endif %}
+                        
+
+
+                      </td>
+                      <td class="align-middle">
+                        {% if movement.no_plate %}
+                        {{movement.no_plate}}
+                        {% endif %}
+                      </td>
+                      <td class="align-middle">
+                        
+
+                        {% if movement.remarks %}
+                        {{movement.remarks}}
+                        {% endif %}
+                      </td>
+
+
+
+
+                      <td class="align-middle">
+                        {{movement.get_status_display}}
+                      </td>
+                      <td class="align-middle">
+                        <a href='{% url 'agent_arrival_voucher' movement.voucher.id %}'  class="btn btn-sm"><i class="fe fe-eye fe-16"></i>{% trans "Voucher " %}</a>
+                      </td>
+                      
+
+
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    
+                  </table>
+              
+              
+              
+            </div>
+
+            
+            </div>
+          </div>
+          <!-- /.card -->
+          
+          <div class="modal fade" id="arrival_voucher_add_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{% trans "Add Arrival Voucher" %}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method='post' action='{% url 'add_arrival_voucher' %}'>
+                        {% csrf_token %}
+                        {{add_voucher_form.as_p}}                       
+                    </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
+                </form>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+
+
+
+
+

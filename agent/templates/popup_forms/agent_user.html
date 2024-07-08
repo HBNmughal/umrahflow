@@ -1,0 +1,62 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% block wrapper %}
+<div class="card card-default">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Agent User" %}</h4>
+            
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+    <form class"form-group" method="post">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label for="agent" class="col-sm-2 col-form-label">{% trans "Agent" %}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" value="{{agent}}" disabled>
+            </div>
+          </div>
+        
+        <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">{% trans "Username" %}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="username" name='username' placeholder="{% trans "Username" %}" value="{{agent.user.username}}" {% if agent.user.username %}disabled{% endif %}>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label" name='password'>{% trans "Password" %}</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" name="password" placeholder="{% trans "Password" %}" value="">
+            </div>
+          </div>
+          {% if agent.user %}
+          <div class="form-group row">
+            <label for="token" class="col-sm-2 col-form-label" name='token'>{% trans "Google Authenticator Key" %}</label>
+            <div class="col-sm-10">
+              <input class="form-control" value="{{agent.token}}" type="text" name="token" disabled>
+            </div>
+          </div>
+          {% endif %}
+            <div class="form-group row">
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                    <input type="checkbox" class="custom-control-input" id="active" name="active" {% if agent.user %}{% if agent.user.is_active %}checked{% endif %}{% else %}checked{%endif%}>
+                    <label class="custom-control-label" for="active">{% trans "Active" %}</label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+          </div>
+    </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+
+{% endblock %}

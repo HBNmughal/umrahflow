@@ -1,0 +1,36 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% block wrapper %}
+{% load my_filter %}
+<div class="card card-default">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Transport Invoice" %}</h4>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+      {% comment %} {% if voucher.id %} {% endcomment %}
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">{% trans "Delete" %}</button>
+      {% comment %} {% endif %} {% endcomment %}
+
+          </div>
+    
+      </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+
+{% endblock %}

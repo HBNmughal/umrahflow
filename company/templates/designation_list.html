@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Designations" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Designations" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="card card-success card-outline">
+          <div class="card-body">
+            <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'add_designation' %}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Add New Designations" %} 
+            </button>
+          </div>
+          <!-- /.card -->
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    
+                    <th>{% trans "Designation" %}</th>
+
+                    <th>{% trans "Action" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for d in designations %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{d}}</td>
+
+
+                      <td>-</td>
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    
+                  </table>
+              
+              
+              
+            </div>
+
+            
+            </div>
+          </div>
+
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        
+                        </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+

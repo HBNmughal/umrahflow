@@ -1,0 +1,76 @@
+{% extends 'core.html' %}  
+{% load i18n %} 
+{% block wrapper %}
+{% load my_filter %}
+<div class="card card-default">
+    <div class="container-fluid">
+        
+        <div class="row mb-2">
+            {% include "error.html" %}
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark">{% trans "Withdraw Payment" %}</h4>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div> 
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{form.company}}
+        {{form.agent}}
+        {{form.reason}}
+        {{form.reason.errors}}
+
+
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="">{% trans "Agent" %}</label>
+            <input type="text" class="form-control" value="{{agent}}"  disabled>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="">{{form.amount.label}}</label>
+            {{form.amount}}
+            <p style="color: red;">{{form.amount.errors}}</p>
+
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="">{% trans "Account" %}</label>
+            <select name="transaction_type" class="form-control select2" >
+              <option value="">{% trans "Select" %}</option>
+              <option value="d">{% trans "Main Account" %} - {% trans "Balance:" %} {{agent.account_balance|replace_commas}} </option>
+              <option value="rd">{% trans "Due to Agent" %} - {% trans "Balance:" %} {{agent.due_balance|replace_commas}}</option>
+              <option value="cod">{% trans "Commission" %} - {% trans "Balance:" %} {{agent.commission_balance|replace_commas}}</option>
+            </select>
+          <p style="color: red;">{{form.transaction_type.errors}}</p>
+
+          </div>
+          
+          <div class="form-group col-md-6">
+            <label for="">{{form.payment_by.label}}</label>
+            {{form.payment_by}}
+            <p style="color: red;">{{form.payment_by.errors}}</p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="">{% trans "Collected By" %}</label>
+            {{form.received_by}}
+            <p style="color: red;">{{form.received_by.errors}}</p>
+
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="">{% trans "Accountant" %}</label>
+            {{form.performed_by}}
+            <p style="color: red;">{{form.performed_by.errors}}</p>
+
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+      </form>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+
+{% endblock %}

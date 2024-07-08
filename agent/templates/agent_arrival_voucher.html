@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Arrival Vouchers" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Voucher " %} - UP-{{voucher.id}}</h1>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+  
+      
+    
+      <!-- Main content -->
+      <section class="content">
+        <form method="post" >
+          {% csrf_token %}
+        <div class="container-fluid">
+
+    
+          <div class="row">
+            <div class="col-md-6">
+    
+              <div class="card card-dark">
+                <div class="card-header">
+                  <h3 class="card-title">{% trans "Group Details" %}</h3>
+                </div>
+                <div class="card-body">
+                        {{group_details_form.as_p}}
+                </div>
+                
+              </div>
+              <!-- /.card -->
+    
+              
+              <div class="card card-dark">
+                <div class="card-header">
+                  <h3 class="card-title">{% trans "Accommodation Details" %}</h3>
+                </div>
+                <div class="card-body">
+                        {{arrival_voucher_accommodation_details_form.as_p}}
+                </div>
+              </div>
+              <!-- /.card -->
+    
+            </div>
+            <!-- /.col (left) -->
+            <div class="col-md-6">
+              <div class="card card-dark">
+                <div class="card-header">
+
+                    <h3 class="card-title">{% trans "Flight Details" %}</h3>
+                </div>
+                <div class="card-body">
+                        {{arrival_voucher_flight_details_form.as_p}}
+                </div>
+                
+                </div>
+                
+                
+              </div>
+              <!-- /.card -->
+
+            </div>
+            <div class="card card-dark">
+                <div class="card-header">
+                <h3 class="card-title">{% trans "Trips" %}</h3>
+        
+                
+                </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="table-responsive">
+              {% if voucher %}
+                {% csrf_token %}
+                {{ transport_formset.non_form_errors.as_ul }}
+                  <table id="formset" class="table table-bordered table-sm table-hover" >
+                    
+                  {% for form in transport_formset.forms %}
+                    {% if forloop.first %}
+                    <thead><tr>
+                      {% for field in form.visible_fields %}
+                      <th>{{ field.label|capfirst }}</th>
+                      {% endfor %}
+                      {% comment %} <th></th> {% endcomment %}
+                    </tr></thead>
+                    {% endif %}
+                    <tr class="{% cycle row1 row2 %}">
+                    {% for field in form.visible_fields %}
+                      <td>
+                      {# Include the hidden fields in the form #}
+                      {% if forloop.first %}
+                        {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                        {% endfor %}
+                      {% endif %}
+                        {{ field }}
+                        {{ field.errors.as_ul }}
+
+                      </td>
+                    {% endfor %}
+                    {% comment %} <td>
+                      {%if form.instance.id %}
+                      <a href="javascript:;" onclick="popupCenter({url: '{% url "voucher_movement_history" form.instance.id %}', title: 'xtf', w: 900, h: 900});" class="btn btn-sm"><i class="fas fa-history" aria-hidden="true"></i></a>                 </tr>
+                      {% endif %}
+                    </td> {% endcomment %}
+                      {% endfor %}
+                  </table>
+                  {% for hidden in transport_formset.management_form %}
+                    {{ hidden }}
+                  {% endfor %}
+                {% else %}
+                <p>{% trans "Trips will be shown when you save voucher first time." %}</p>
+                {% endif %}
+                </div>
+                
+
+            </div>
+            <div >           
+          </div>
+          <!-- /.card -->
+          </div>
+          <div class="card card-success card-outline">
+            <div class="card-body">
+              {% if voucher.allow_submit %}
+
+
+              {% comment %} <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submit">
+                {% trans "Submit for Approval" %} 
+              </button> {% endcomment %}
+              {% endif %}
+
+              {% if allow_edit %}
+              <button class="btn btn-primary swalDefaultSuccess" type="submit">{% trans "Save" %}</button>
+              {% endif %}
+              
+              {% if voucher %}
+              <button type="button" class="btn btn-primary swalDefaultSuccess"
+                    onClick="popupCenter({url: '{% url 'agent_arrival_voucher_print' voucher.id %}', title: 'xtf', w: 900, h: 900});">
+                    {% trans "Print" %} 
+                </button>
+              {% endif %}
+              {% if allow_submit %}
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submit">
+                  {% trans "Submit to Company" %}
+                </button>
+              {% endif %}
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+          </div>
+          <!-- /.row -->
+        </div>
+      </form>
+        </section>
+
+
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+   {% if allow_submit %}
+    <div class="modal fade" id="submit">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{% trans "Submit" %}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>{% trans "This Voucher will be sent to Umrah Company. Are you sure?" %}</p>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">{% trans "Close" %}</button>
+            <form action="{% url 'agent_submit_arrival_voucher' voucher.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-success">{% trans "Submit" %}</button>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+   {% endif %}
+
+
+
+
+
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+
+
+
+
+

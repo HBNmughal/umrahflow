@@ -1,0 +1,141 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% trans "UmrahFlow" %}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  {% if request.LANGUAGE_CODE == 'ar' %}
+  <!-- Bootstrap 4 RTL -->
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+  <!-- Custom style for RTL -->
+  <link rel="stylesheet" href="{% static 'dist/css/custom.css' %}">
+  
+
+  {% endif %}
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+    .parent {
+        display: inline-block;
+        flex-direction:row;
+
+      }
+      
+      .column {
+        flex: 1 1 0px;
+      }
+  </style>
+</head>
+<body class="hold-transition login-page" background="{% static 'dist/img/login_wallpaper.jpg' %}">
+  
+
+<div class="box">
+  <div class="login-logo">
+    <img width="100px" src="{% static 'assets/images/umrahflow_logo.png'%}">
+    <h3 class="login-box-msg">{% trans "Select Application to continue" %}</h3>
+
+    
+  </div>
+  <!-- /.login-logo -->
+  <div class="card" style="width: 100%;">
+    <div class="card-body ">
+        <div class="row justify-content-center" >
+                <div class="card text-center" style="width: 18rem; margin: 5px;">
+                    <img class="" src="{% static 'dist/img/accounts_icon.png'%}" alt="" 
+                    style="display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;">
+                    <div class="card-body">
+                      <h2>{% trans "Finance and Accounts" %}</h2>
+                      {% comment %} <p class="card-text">{% trans "Keeps records of the goods and services that your company pays for and ensures that all your business expenses get paid on time." %}</p> {% endcomment %}
+                      <a href="{% url 'app_select' 'accounts' %}" class="btn btn-primary">{% trans "Continue" %}</a>
+                    </div>
+                  </div>
+                <div class="card text-center" style="width: 18rem; margin: 5px;">
+                    <img class="card-img-top" src="{% static 'dist/img/operations.png'%}" alt=""
+                    style="display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;"
+                    >
+                    <div class="card-body">
+                      <h2>{% trans "Field Operations" %}</h2>
+                      <div style="hieght: 50px">
+                      {% comment %} <p class="card-text">{% trans "focuses on maintaining the efficiency of the production process and helps teams make smart decisions." %}</p> {% endcomment %}
+                      </div>
+                      <a href="{% url 'app_select' 'operations' %}" class="btn btn-primary">{% trans "Continue" %}</a>
+                    </div>
+                  </div>
+           
+                <div class="card text-center" style="width: 18rem; margin: 5px;">
+                    <img class="card-img-top" src="{% static 'dist/img/hr.png'%}" alt=""
+                    style="display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;"
+                    >
+                    <div class="card-body">
+                      <h2>{% trans "Human Resources" %}</h2>
+                      {% comment %} <p class="card-text">{% trans "Responsible for managing the employee life cycle (i.e., recruiting, hiring, onboarding, training, and firing employees) and administering employee benefits." %}</p> {% endcomment %}
+                      <a href="{% url 'app_select' 'hr' %}" class="btn btn-primary">{% trans "Continue" %}</a>
+                    </div>
+                  </div>
+                </div>
+
+      
+     
+  </div>
+  
+  
+</div>
+      {% get_current_language as CURRENT_LANGUAGE %}
+              {% get_available_languages as AVAILABLE_LANGUAGES %}
+              {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+              <div class="languages login-box-msg">
+               
+                  {% for language in languages %}
+                    
+                        <a href="/{{ language.code }}/{{ request.get_full_path |slice:'4:'}}"{% if language.code == CURRENT_LANGUAGE %} class="btn btn-sm btn-primary"{% endif %}>{{ language.name_local }}</a>
+                      </a>
+                    
+                  {% endfor %}
+      
+              </div>
+{% for message in messages %}
+  <div class="container-fluid p-0">
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="True">&times;</span>
+      </button>
+      {{ message }}
+    </div>
+  </div>
+{% endfor %}
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+{% if request.LANGUAGE_CODE == 'ar' %}
+<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
+
+{% endif %}
+</body>
+</html>

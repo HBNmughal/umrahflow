@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Accounts Tree" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Accounts Tree" %}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="card card-success card-outline">
+          <div class="card-body">
+            <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'accounts_settings_form'%}', title: 'xtf', w: 900, h: 900});">
+              {% trans "Settings" %} 
+            </button>
+          </div>
+          <!-- /.card -->
+        </div>
+        <style>
+          {% if request.LANGUAGE_CODE == 'ar' %}
+              .level_0{
+                  padding-right: 0px;
+
+              }
+              .level_1{
+                  padding-right: 0px;
+              }
+              .level_2{
+                  padding-right: 30px;
+              }
+              .level_3{
+                  padding-right: 60px;
+              }
+              .level_4{
+                  padding-right: 90px;
+              }
+              .level_5{
+                  padding-right: 120px;
+              }
+          {% else %}
+              .level_0{
+                  padding-left: 0px;
+              }
+              .level_1{
+                  padding-left: 0px;
+              }
+              .level_2{
+                  padding-left: 30px;
+              }
+              .level_3{
+                  padding-left: 60px;
+              }
+              .level_4{
+                  padding-left: 90px;
+              }
+              .level_5{
+                  padding-left: 120px;
+              }
+          {% endif %}
+      </style>
+
+        <div class="card">
+          <div class="card-body">
+            <table id="dataTable" class="data-table table table-bordered table-sm table-hover">
+              <thead class="thead-dark">
+                  <tr>
+                    <th>{% trans "Code" %}</th> 
+                    <th>{% trans "Account" %}</th> 
+                    <th>{% trans "Balance" %}</th>
+                    <th>{% trans "Actions" %}</th>
+                </tr>
+              </thead>
+              <tbody class="table-striped">
+          
+            
+                {% include "account_tree_template.html" %}
+              
+              
+              </tbody>
+            </table>
+        </div>
+
+      </div>
+      <!-- /.card -->
+        </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+

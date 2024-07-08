@@ -1,0 +1,96 @@
+{% load i18n %}
+
+    <p class="text-muted nav-heading mt-4 mb-1">
+      <span>{% trans "Operations" %}</span>
+    </p>
+
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item dropdown">
+        <a href="#arrival_vouchers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+          <i class="fe fe-file-text fe-16"></i>
+          <span class="ml-3 item-text">{% trans "Arrival Vouchers" %}</span>
+        </a>
+        <ul class="collapse list-unstyled pl-4 w-100" id="arrival_vouchers">
+          <li class="nav-item">
+            <a class="nav-link pl-3" href="{% url 'arrival_voucher_list' %}?status=approved"><span class="ml-1 item-text">{% trans "Approved" %}</span>
+              {% if request.user.employee.company.arrival_vouchers_approved > 0 %}
+            <span class="badge badge-success right">
+              {{request.user.employee.company.arrival_vouchers_approved}}
+            </span>
+            {% endif %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pl-3" href="{% url 'arrival_voucher_list' %}?status=pending"><span class="ml-1 item-text">{% trans "Pending" %}</span>
+              {% if request.user.employee.company.arrival_vouchers_pending > 0 %}
+              <span class="badge badge-warning right">
+                {{request.user.employee.company.arrival_vouchers_pending}}
+              </span>
+              {% endif %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pl-3" href="{% url 'arrival_voucher_list' %}?status=rejected"><span class="ml-1 item-text">{% trans "Rejected" %}</span>
+              {% if request.user.employee.company.arrival_vouchers_rejected > 0 %}
+              <span class="badge badge-danger right">{{request.user.employee.company.arrival_vouchers_rejected}}</span>
+              {% endif %}
+            
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pl-3" href="{% url 'arrival_voucher_list' %}"><span class="ml-1 item-text">{% trans "All" %}</span>
+              {% if request.user.employee.company.arrival_vouchers_total > 0 %}
+              <span class="badge badge-primary right">{{request.user.employee.company.arrival_vouchers_total}}</span>
+              {% endif %}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item dropdown">
+        <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+          <i class="fe fe-calendar fe-16"></i>
+          <span class="ml-3 item-text">{% trans "Operating Schedule" %}</span>
+        </a>
+        <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+          <li class="nav-item">
+            <a class="nav-link pl-3" href="{% url 'operating_schedule' 'tomorrow' %}"><span class="ml-1 item-text">{% trans "Tomorrow" %}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pl-3" href="{% url 'operating_schedule' 'today' %}"><span class="ml-1 item-text">{% trans "Today" %}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pl-3" href="{% url 'operating_schedule' 'yesterday' %}"><span class="ml-1 item-text">{% trans "Yesterday" %}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="{% url 'transport_routes' %}">
+          <i class="fe fe-map fe-16"></i>
+          <span class="ml-3 item-text">{% trans "Routes" %}</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="{% url 'transport_packages' %}">
+          <i class="fe fe-package fe-16"></i>
+          <span class="ml-3 item-text">{% trans "Transport Packages" %}</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="{% url 'trips_date_open' %}">
+          <i class="fe fe-navigation fe-16"></i>
+          <span class="ml-3 item-text">{% trans "Trips Date Open" %}</span>
+        </a>
+      </li>
+    </ul>
+</ul>

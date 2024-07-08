@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Arrival Vouchers" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Voucher " %} {% trans "Invoice" %} - UP-{{voucher.id}}</h1>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+  
+      
+    
+      <!-- Main content -->
+      <section class="content">
+        <form method="post" >
+          {% csrf_token %}
+        <div class="container-fluid">
+            
+
+    
+          <div class="row">
+            <div class="col-md-6">
+    
+              <div class="card card-dark">
+                <div class="card-header">
+                  <h3 class="card-title">{% trans "Purhase" %}</h3>
+                </div>
+                <div class="card-body">
+                        {{arrival_voucher_purchase_invoice_form.as_p}}
+                </div>
+                
+              </div>
+              <!-- /.card -->
+    
+              
+              
+            </div>
+            <!-- /.col (left) -->
+            <div class="col-md-6">
+              
+                <div class="card card-dark">
+                  <div class="card-header">
+                    <h3 class="card-title">{% trans "Sale" %}</h3>
+                  </div>
+                  <div class="card-body">
+                          {{arrival_voucher_sale_invoice_form.as_p}}
+                  </div>                 
+                </div>
+              </div>
+              <!-- /.card -->
+
+            </div>
+            <div class="card card-dark">
+                <div class="card-header">
+                <h3 class="card-title">{% trans "Trips" %} - {% trans "Included in Package" %}</h3>
+        
+                
+                </div>
+            <!-- /.card-header -->
+              <div class="table-responsive">
+              {% if voucher %}
+                {% csrf_token %}
+                {{ transport_formset.non_form_errors.as_ul }}
+                  <table id="formset" class="table table-bordered table-sm table-hover" >
+                    
+                  {% for form in transport_formset_included_package.forms %}
+                    {% if forloop.first %}
+                    <thead><tr>
+                      {% for field in form.visible_fields %}
+                      <th>{{ field.label|capfirst }}</th>
+                      {% endfor %}
+                    </tr></thead>
+                    {% endif %}
+                    <tr class="{% cycle row1 row2 %}">
+                    {% for field in form.visible_fields %}
+                      <td>
+                      {# Include the hidden fields in the form #}
+                      {% if forloop.first %}
+                        {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                        {% endfor %}
+                      {% endif %}
+                        {{ field }}
+                        {{ field.errors.as_ul }}
+                      </td>
+                    {% endfor %}
+                      {% endfor %}
+                  </table>
+                  {% for hidden in transport_formset.management_form %}
+                    {{ hidden }}
+                  {% endfor %}
+                {% else %}
+                <p>{% trans "Trips will be shown when you save voucher first time." %}</p>
+                {% endif %}
+                </div>
+                
+
+            </div>
+            <div >           
+          </div>
+          <!-- /.card -->
+          <div class="card card-dark">
+            <div class="card-header">
+            <h3 class="card-title">{% trans "Trips" %} - {% trans "Outside Package" %}</h3>
+    
+            
+            </div>
+        <!-- /.card-header -->
+          <div class="table-responsive">
+          {% if voucher %}
+            {% csrf_token %}
+            {{ transport_formset_outside_package.non_form_errors.as_ul }}
+              <table id="formset" class="table table-bordered table-sm table-hover" >
+                
+              {% for form in transport_formset_outside_package.forms %}
+                {% if forloop.first %}
+                <thead><tr>
+                  {% for field in form.visible_fields %}
+                  <th>{{ field.label|capfirst }}</th>
+                  {% endfor %}
+                </tr></thead>
+                {% endif %}
+                <tr class="{% cycle row1 row2 %}">
+                {% for field in form.visible_fields %}
+                  <td>
+                  {# Include the hidden fields in the form #}
+                  {% if forloop.first %}
+                    {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                    {% endfor %}
+                  {% endif %}
+                    
+                    {{ field }}
+                    {{ field.errors.as_ul }}
+
+                  </td>
+                {% endfor %}
+                  {% endfor %}
+              </table>
+              {% for hidden in transport_formset_outside_package.management_form %}
+                {{ hidden }}
+              {% endfor %}
+            {% else %}
+            <p>{% trans "Trips will be shown when you save voucher first time." %}</p>
+            {% endif %}
+            </div>
+            
+
+        </div>
+        <div >           
+      </div>
+      <!-- /.card -->
+          </div>
+          <div class="card card-success card-outline">
+            <div class="card-body">
+               <button class="btn btn-success swalDefaultSuccess" type="submit" name="next">{% trans "Save and continue to Next" %}</button>
+               <button class="btn btn-primary swalDefaultSuccess" type="submit" name="list">{% trans "Save and go back to List" %}</button>
+                <br>
+                <p style="color: red;">{% trans "Note" %}: {% trans "Once saved, It will be marked as Approved" %}</p>
+                
+
+
+              
+              {% comment %} {% if voucher %}
+              <button type="button" class="btn btn-primary swalDefaultSuccess"
+                    onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}', title: 'xtf', w: 900, h: 900});">
+                    {% trans "Print Voucher" %} 
+                </button>
+
+                <button type="button" class="btn btn-success swalDefaultSuccess"
+                    onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}?type=transport_request', title: 'xtf', w: 900, h: 900});">
+                    {% trans "Print Transport Request" %} 
+                </button>
+              {% endif %} {% endcomment %}
+              
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+          </div>
+          <!-- /.row -->
+        </div>
+      </form>
+        </section>
+
+
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+   {% if allow_approval %}
+    <div class="modal fade" id="approve">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{% trans "Approve" %}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form  method="post" action='{% url "voucher_approval_form" voucher.id %}'>
+              {% csrf_token %}
+              <input type="hidden" name="status" value="approve">
+            
+            <p>{% trans "This Voucher will be Approved and trips under this voucher will be added to operating schedule. Are you sure?" %}</p>
+          </div>
+          <div class="modal-footer justify-content-between">
+
+            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">{% trans "Close" %}</button>
+            <button type="submit"  class="btn btn-outline-success">{% trans "Approve" %}</button>
+          </form>
+
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+   {% endif %}
+
+   {% if allow_approval %}
+    <div class="modal fade" id="reject">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{% trans "Reject" %}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form  method="post" action='{% url "voucher_approval_form" voucher.id %}'>
+              {% csrf_token %}
+              <label for="reason">{% trans "Rejection Reason" %}:</label>
+              <textarea class="form-control" rows="5" name="reason" required='required'></textarea>                            
+              <input type="hidden" name="status" value="reject">
+            <p>{% trans "This Voucher will be Rejected and will be sent back to Agent. Are you sure?" %}</p>
+          </div>
+          <div class="modal-footer justify-content-between">
+
+
+            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">{% trans "Close" %}</button>
+            <button type="submit" class="btn btn-outline-danger">{% trans "Reject" %}</button>
+          </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+   {% endif %}
+
+
+
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+
+
+
+
+

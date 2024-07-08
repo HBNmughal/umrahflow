@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {% trans "Operating Schedule" %} {% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% trans "Operating Schedule" %}</h1>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        
+
+        <div class="card">
+          <div class="card-body">
+                <table id="dataTable" class="data-table table table-borderless">
+                  <thead>
+                  <tr>
+                    <th>{% trans "Trips" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for movement in movements %}
+                    <tr>
+                      <td>
+                        <div class="card shadow ">
+                          <div class="card-header">
+                            <strong>Browsers</strong>
+                          </div>
+                          <div class="card-body">
+                            <div class="list-group list-group-flush my-n3">
+                              <div class="list-group-item">
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <span class="fe fe-hash fe-24"></span>
+                                  </div>
+                                  <div class="col">
+                                    <div class="my-0 text-muted small">{% trans "Voucher " %}</div>
+
+                                    <small><strong>UP-{{movement.id}}</strong></small>
+                                  </div>
+                                  <div class="col-auto">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-group-item">
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <span class="fe fe-navigation fe-24"></span>
+                                  </div>
+                                  <div class="col">
+                                    <div class="my-0 text-muted small">{% trans "Route" %}</div>
+                                    <small><strong>{{movement.route}}</strong></small>
+                                  </div>
+                                
+                                </div>
+                              </div>
+                              <div class="list-group-item">
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <span class="fe fe-file-text fe-24"></span>
+                                  </div>
+                                  <div class="col">
+                                    <div class="my-0 text-muted small">{% trans "Trip Details" %}</div>
+                                    <br>
+                                    {% if movement.flight_no %}
+                                    <div class="my-0 text-muted small">{% trans "Flight No" %}</div>
+                                    <small><strong>{{movement.flight_no}}</strong></small>
+
+                                    
+                                    {% endif %}
+                                    
+                                  </div>
+                                  <div class="col-auto">
+                                    <small class="badge badge-pill badge-light text-muted">30m ago</small>
+                                  </div>
+                                </div> <!-- / .row -->
+                              </div>
+                              <div class="list-group-item">
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <span class="fe fe-link fe-24"></span>
+                                  </div>
+                                  <div class="col">
+                                    <small><strong>Link was attached to menu</strong></small>
+                                    <div class="my-0 text-muted small">New layout has been attached to the menu</div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                                  </div>
+                                </div>
+                              </div> <!-- / .row -->
+                            </div> <!-- / .list-group -->
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    
+                  </table>
+              
+              
+              
+            </div>
+
+            
+            </div>
+          </div>
+
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        
+                        </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+    });
+  });
+</script>
+
+
+{% endblock datatables_script %}
+
+

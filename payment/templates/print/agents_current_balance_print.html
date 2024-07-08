@@ -1,0 +1,58 @@
+
+{% extends 'print_document_header.html' %}
+{% load static %}
+{% load my_filter %}
+{% load i18n %}
+{% block page_content %}
+
+<style type="text/css">
+    @font-face {
+        font-family: ArialUnicode;
+        src: url("static/Arial Unicode.ttf")
+    }
+    <!-- other stuff here -->
+    body {
+        margin: 0;
+        font-family: "ArialUnicode", sans-serif;
+    }
+    
+    <!-- more css here -->
+</style>
+
+
+
+
+        <h4>{% trans "Agents Current Balance Sheet" %}</h4>
+        
+        <table class="table table-bordered table-sm" >
+            <tr>
+                <th style="" class="align-middle" >{% trans "Print Date" %}</th>
+                <td style="text-align: center;" colspan="1">{{print_date|date:'d/m/Y -  H:i'}}</td>
+            </tr>            
+        </table>
+        <table class="table table-sm table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>{% trans "Agent" %}</th>
+                    <th>{% trans "Country" %}</th>
+                    <th>{% trans "Total Visas" %}</th>
+                    <th>{% trans "Current Balance" %}</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for a in agents %}
+                    <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{a}}</td>
+                    <td>{{a.country}}</td>
+                    <td>{{a.total_visas}}</td>
+                    <td dir="ltr"><strong>{{a.account_balance}}</strong>
+                      </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+          </table>  
+        
+{% endblock page_content %}
