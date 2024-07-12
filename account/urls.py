@@ -30,8 +30,10 @@ urlpatterns = [
     path('payment_voucher_edit/<pk>/', views.payment_voucher_edit_view, name='payment_voucher_edit_view'),
     path('payment_voucher_print/<pk>/', views.payment_voucher_print, name='payment_voucher_print'),
     path('test/', views.tempelate_test, name='test'),
+    path('create-transaction/', views.create_transaction, name='create_transaction'),
 
 
+    path('agents_accounts_view/<str:agent_type>/', views.agents_accounts_view, name='agents_accounts_view'),
     
 ]
 

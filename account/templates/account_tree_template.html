@@ -5,11 +5,14 @@
 
 
 {% for account in account_tree %}
-<tr>       
+<tr class="{% if account.level == 1 %}table-primary{% elif account.level == 2 %}table-secondary{% elif account.level == 3 %}table-success{% elif account.level == 4 %}table-info{% elif account.level == 5 %}table-warning{% endif %}">       
     <td >
        {{ account.code }} 
         
     </td>
+    <td >
+        {{ account.get_level_display }}
+     </td>
     <td >
         <span class="level_{{account.account_level}}" >{{ account.name }}</span>
     </td>
@@ -20,7 +23,9 @@
         {% comment %} <span class="badge badge-{% if account.balance >= 0 %}success{% else %}danger{% endif %} badge-pill"  >{{ account.balance }}</span> {% endcomment %}
     </td>
     <td>
+        {% if account.level == 5 %}
         <button type="button" class="btn btn-link btn-sm" onClick="window.location.href='{% url "account_view" account.pk %}';"><i class="fe fe-eye fe-16"></i></button>
+        {% endif %}
         {% if account.allow_edit %}
             <button type="button" class="btn btn-link btn-sm" onClick="popupCenter({url: '{% url 'edit_sub_account' account.pk %}', title: 'xtf', w: 900, h: 900});"><i class="fe fe-edit fe-16"></i></button>  
         {% endif %}          

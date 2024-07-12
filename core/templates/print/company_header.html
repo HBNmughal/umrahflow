@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% trans "Transport Program" %} UP-{{voucher.id}}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -99,14 +98,16 @@
                         <div class="company-details">
                             <p><strong>{{request.user.employee.company}}</strong></p>
                             <p>{{request.user.employee.company.address}}</p>
-                            <p>{% trans "C.R No." %}: {{request.user.employee.company.cr_no}}</p>
+                            <p>{% trans "C.R No." %} {{request.user.employee.company.cr_no}}</p>
+                            <p>{% trans "MOH Permit No." %} {{request.user.employee.company.permit_no}}</p>
+
                             {%if request.user.employee.company.vat_no %}
-                            <p>{% trans "VAT No." %}: {{request.user.employee.company.vat_no}}</p>  
+                            <p>{% trans "VAT No." %} {{request.user.employee.company.vat_no}}</p>  
                             {% endif %}
                         </div>
                     </td>
                     <td>
-                        <img src="{{request.user.employee.company.logo.url}}" width="130px" class='company-logo'>
+                        <img src="{{request.user.employee.company.logo.url}}" width="80px" class='company-logo'>
                     </td>
                 </tr>
             </table>

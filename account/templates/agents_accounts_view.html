@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %} {{page_title}}  {% endblock %}
+{% block content %}
+{% load my_filter %}
+<style>
+  .ltr {
+    direction: ltr;
+  }
+  </style>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {% include "error.html" %}
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{{page_title}}</h1>
+            </div><!-- /.col -->
+
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        {% comment %} <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0 {% if company.account_balance < 0.00 %}text-danger{% else %}text-success{% endif %}">{{company.account_balance|replace_commas}} </span>
+                    <span class="small">{{company.settings.get_default_currency_display}} </span>
+                    <p class="small text-muted mb-0">{% trans "Agents Account Balance" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-dollar-sign text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0  text-danger">{{agents_debit|replace_commas}} </span>
+                    <span class="small">{{company.settings.get_default_currency_display}} </span>
+                    <p class="small text-muted mb-0">{% trans "Debit" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-minus text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0 text-success">{{agents_credit|replace_commas}} </span>
+                    <span class="small">{{company.settings.get_default_currency_display}} </span>
+                    <p class="small text-muted mb-0">{% trans "Credit" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-plus text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% endcomment %}
+        {% comment %} <div class="card card-success card-outline">
+          <div class="card-body">
+            <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#receipt_vouchers_report" >
+              {% trans "Receipt Vouchers Report" %} - {% trans "All Agents" %} 
+            </button>
+            <button title="button" class="btn btn-primary swalDefaultSuccess" onclick=" window.open('{% url 'agents_current_balance_print' %}', '_blank'); return false;">{% trans "Print All Agents Current Balance Sheet" %}</button>
+
+
+          </div> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+       
+
+        <div class="card">
+          <div class="card-body">
+                <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans "Country" %}</th>
+                    <th>{% trans "Agent" %}</th>
+                    <th>{% trans "Agent type" %}</th>
+                    <th>{% trans "Account Balance" %}</th>
+                    <th>{% trans "Total Visas" %}</th>
+
+                    <th>{% trans "Action" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for agent in agents %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{agent.country}}</td>  
+                      <td>{{agent.name}}</td>
+                      <td>{{agent.get_agent_type_display}}</td>
+                      <td {% if  agent.account.balance_color == 'text-danger' %}class="table-danger"{% else %}class="table-success"{% endif %}>
+
+                        <strong dir="ltr">{{agent.account.balance}}</strong>
+                      </td>
+                      <td>{{agent.total_visas}}</td>
+
+
+                      <td><a href="{% url 'account_view' agent.account.id %}"  class="btn btn-primary"><i class="fe fe-eye fe-16"></i>{% trans "View Account" %}</a></td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    
+                  </table>
+              </div>
+              
+            
+
+            
+      
+                    </div>
+                    <!-- /.card -->
+                  </div>
+
+                  <div class="modal fade" id="receipt_vouchers_report" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Receipt Vouchers Report" %} - {% trans "All Agents" %}</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form action='{% url 'print_all_agents_reciept_voucher_report' %}'>
+                            <div class="form-group row">
+                              <label  class="col-sm-2 col-form-label">{% trans "From Date" %}</label>
+                              <div class="col-sm-10">
+                                <input type="date"  class="form-control" name="date_min">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label  class="col-sm-2 col-form-label">{% trans "To Date" %}</label>
+                              <div class="col-sm-10">
+                                <input type="date"  class="form-control" name="date_max">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                          <button type="submit" class="btn btn-primary">{% trans "Display Records" %} </button>
+                        </form>
+                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block datatables_script %}
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true  ,
+    });
+  });
+</script>
+
+
+
+
+{% endblock datatables_script %}
+
+

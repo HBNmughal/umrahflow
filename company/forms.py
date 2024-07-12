@@ -41,7 +41,8 @@ class AccountsSettingsForm(forms.ModelForm):
         model = SystemSettings
         fields = ("company",
                     "default_currency",
-                    "agent_account_tree",
+                    "virtual_agents_account",
+                    "external_agents_account",
                     "transport_company_account_tree",
                     "transport_expense_account",
                     "gib_main_account",
@@ -60,7 +61,8 @@ class AccountsSettingsForm(forms.ModelForm):
         widgets = {
             "company": forms.HiddenInput(attrs={}),
             "default_currency": forms.Select(attrs={"class": "form-control"}),
-            "agent_account_tree": forms.Select(attrs={"class": "form-control"}),
+            "virtual_agents_account": forms.Select(attrs={"class": "form-control"}),
+            "external_agents_account": forms.Select(attrs={"class": "form-control"}),
             "transport_company_account_tree": forms.Select(attrs={"class": "form-control"}),
             "transport_expense_account": forms.Select(attrs={"class": "form-control"}),
             "gib_main_account": forms.Select(attrs={"class": "form-control"}),

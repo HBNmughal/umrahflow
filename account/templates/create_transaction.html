@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% block title %}{% trans "Transaction" %}{% endblock %}
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">{% trans "Transaction" %}</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Main content row -->
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Card for transaction details -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{% trans "Transaction Details" %}</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form method="post" id="transaction-form">
+                                    {% csrf_token %}
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td>{{ transaction_form.as_p }}</td>
+                                            {{transaction_form.media}}
+                                        </tr>
+                                    </table>
+                                    <h2>{% trans "Ledger Entries" %}</h2>
+                                    {{ ledger_entry_formset.management_form }}
+                                    {{ ledger_entry_formset.non_form_errors.as_ul }}
+                                    <table id="formset" class="table table-bordered table-sm table-hover">
+                                        {% for form in ledger_entry_formset %}
+                                            {% if forloop.first %}
+                                                <thead>
+                                                    <tr>
+                                                        {% for field in form.visible_fields %}
+                                                            <th>{{ field.label|capfirst }}</th>
+                                                        {% endfor %}
+                                                    </tr>
+                                                </thead>
+                                            {% endif %}
+                                            <tr class="{% cycle row1 row2 %}">
+                                                {% for field in form.visible_fields %}
+                                                    <td>
+                                                        {% if forloop.first %}
+                                                            {% for hidden in form.hidden_fields %}
+                                                                {{ hidden }}
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                        {{ field }}
+                                                        <div class="text-danger">{{ field.errors.as_ul }}</div>
+                                                    </td>
+                                                {% endfor %}
+                                            </tr>
+                                            {{form.media}}
+
+                                        {% endfor %}
+                                        
+                                    </table>
+                                  <br>
+                                    
+                                    <button type="submit" class="btn btn-success" id="submit-button">{% trans "Create Transaction" %}</button>
+                                </form>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}

@@ -1,7 +1,12 @@
 from django import forms
-from .models import Account, ReceiptVoucher, PaymentVoucher, AccountSettlementCredit, AccountSettlementDebit
+from .models import Account, ReceiptVoucher, PaymentVoucher, AccountSettlementCredit, AccountSettlementDebit, JournalEntry
 from django.utils.translation import gettext_lazy as _
 from django import forms
+import calculation
+
+
+
+
 class AccountForm(forms.ModelForm):
     class Meta:
         model = Account
@@ -10,7 +15,6 @@ class AccountForm(forms.ModelForm):
             'account_name_en', 
             'account_name_ar', 
             'parent_account',
-            'allow_child_accounts',
             'account_type',
         ]
         widgets = {
@@ -18,7 +22,6 @@ class AccountForm(forms.ModelForm):
             'account_name_en': forms.TextInput(attrs={'class': 'form-control'}),
             'account_name_ar': forms.TextInput(attrs={'class': 'form-control'}),
             'parent_account': forms.Select(attrs={'class': 'form-control'}),
-            'allow_child_accounts': forms.CheckboxInput(attrs={'class': 'form-control'}),
             'account_type': forms.HiddenInput(attrs={}),
         }
         labels = {
@@ -224,3 +227,17 @@ class AccountSettlementDebitForm(forms.ModelForm):
         }
 
 
+class LedgerEntryForm(forms.Form):
+    account = forms.ModelChoiceField(queryset=Account.objects.all(), widget=forms.Select(attrs={'class': 'form-control select2'}), label=_('Account'))
+    description = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Description'))
+    debit = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control debit_input'}), initial=0.00, label=_('Debit'))
+    credit = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control credit_input'}), initial=0.00, label=_('Credit'))
+    
+
+LedgerEntryFormSet = forms.formset_factory(LedgerEntryForm, extra=50)
+
+class TransactionForm(forms.Form):
+    description = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Description'))
+    reference_no = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), required=False, label=_('Reference No'))
+    total_debit = forms.DecimalField(widget=calculation.SummaryInput(function=calculation.SUM, field='debit',attrs={'readonly': 'readonly', 'class':'form-control'}), initial=0.00, label=_('Total Debit'))
+    total_credit = forms.DecimalField(widget=calculation.SummaryInput(function=calculation.SUM, field='credit',attrs={'readonly': 'readonly', 'class':'form-control'}), initial=0.00, label=_('Total Credit'))

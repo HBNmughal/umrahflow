@@ -37,36 +37,43 @@ class Agent(models.Model):
         user_model='auth.User',
     )
 
-    account = models.ForeignKey('account.Account', on_delete=models.PROTECT, verbose_name=_("Account"), blank=True, null=True)
+    account = models.ForeignKey('account.Account', on_delete=models.PROTECT, verbose_name=_("Account"), blank=True, null=True, limit_choices_to={'level': 5, 'account_type': 'A'})
 
 
 
 
     def save(self, *args, **kwargs):
-        try:
-            if self.account:
-                account = Account.objects.get(pk=self.account.pk)
-                account.account_name_en = self.name_en
-                account.account_name_ar = self.name_ar
-                account.allow_edit = False
-                account.allow_child_accounts = False
-
-
-                account.save()
+        if self.account:
+            account = Account.objects.get(pk=self.account.pk)
+            account.account_name_en = self.name_en
+            account.account_name_ar = self.name_ar
+            account.allow_edit = False
+            if self.agent_type == 'external':
+                account.parent_account = company_models.SystemSettings.objects.get(company=self.company).external_agents_account
             else:
-                parent_account = company_models.SystemSettings.objects.get(company=self.company).agent_account_tree
-                account = Account()
-                account.company = self.company
-                account.account_name_en = self.name_en
-                account.account_name_ar = self.name_ar
-                account.account_type = parent_account.account_type
-                account.parent_account = parent_account
-                account.save()
-                self.account = account
-                self.save() 
-        except:
-            pass
+                account.parent_account = company_models.SystemSettings.objects.get(company=self.company).virtual_agents_account
 
+
+            account.save()
+        else:
+            if self.agent_type == 'external':
+                parent_account = company_models.SystemSettings.objects.get(company=self.company).external_agents_account
+            else:
+                parent_account = company_models.SystemSettings.objects.get(company=self.company).virtual_agents_account
+            
+            account = Account()
+            account.company = self.company
+            account.account_name_en = self.name_en
+            account.account_name_ar = self.name_ar
+            account.account_type = "A"
+            account.level = 5
+            account.parent_account = parent_account
+            allow_edit = False
+            account.save()
+            print("Account Created")
+            self.account = account
+            self.save() 
+        
 
 
         if self.user:
@@ -76,18 +83,20 @@ class Agent(models.Model):
             else:
                 print("token not available")
                 self.token = (base64.b32encode(bytearray('umrahpro'+str(str(self.company.permit_no)+str(self.id)), 'ascii')).decode('utf-8')).replace('=', '')
+        super(Agent, self).save(*args, **kwargs)
 
         # create AgentCommission object
         try:
             agent_commission = AgentCommission.objects.get(agent=self)
+            
         except ObjectDoesNotExist:
             agent_commission = AgentCommission()
             agent_commission.agent = self
             agent_commission.company = self.company
             agent_commission.date = datetime.date.today()
             agent_commission.save()
+        
         super(Agent, self).save(*args, **kwargs)
-
 
 
 
@@ -260,4 +269,3 @@ class AgentCommission(models.Model):
     )
     def __str__(self):
         return f"{self.agent.name()}"
-    

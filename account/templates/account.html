@@ -77,12 +77,6 @@
         <!-- /.row -->
         <div class="card card-success card-outline">
           <div class="card-body">
-            <button type="button" class="btn btn-outline-success " onClick="popupCenter({url: '{% url 'account_settlement_credit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
-              {% trans "Settlement" %} - {% trans "Credit" %}
-            </button>
-            <button type="button" class="btn btn-outline-danger " onClick="popupCenter({url: '{% url 'account_settlement_debit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
-              {% trans "Settlement" %} - {% trans "Debit" %}
-            </button>
             {% comment %} <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#print_account_statement" >
               {% trans "Print Account Statement" %} 
             </button> {% endcomment %}

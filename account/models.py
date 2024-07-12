@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
 from django.db.models import Avg, Count, Min, Sum
-from .choices import payment_method_choices, payment_method_choices_settlement
+from .choices import payment_method_choices, payment_method_choices_settlement, account_level_choices
 from simple_history.models import HistoricalRecords
 from decimal import Decimal
 from django.utils.translation import gettext as _
@@ -12,6 +12,7 @@ from account.manager import TransactionManager
 from num2words import num2words
 from datetime import datetime
 import pytz
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
@@ -52,6 +53,38 @@ def edit_allowed(company, obj):
     
 
 
+class FinancialYear(models.Model):
+    company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
+    start_date = models.DateField(verbose_name=_("Start Date"))
+    end_date = models.DateField(verbose_name=_("End Date"))
+    is_active = models.BooleanField(default=False, verbose_name=_("Is Active"))
+
+    class Meta:
+        verbose_name = _("Financial Year")
+        verbose_name_plural = _("Financial Years")
+    
+    def __str__(self):
+        return f"{self.start_date} - {self.end_date}"
+    
+    def save(self, *args, **kwargs):
+        # check if there is an active financial year
+        active_financial_year = FinancialYear.objects.filter(company=self.company, is_active=True).first()
+        if active_financial_year:
+            # if there is an active financial year, deactivate it
+            active_financial_year.is_active = False
+            active_financial_year.save()
+        
+        super().save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        # check if there is an active financial year
+        active_financial_year = FinancialYear.objects.filter(company=self.company, is_active=True).first()
+        if active_financial_year:
+            # if there is an active financial year, deactivate it
+            active_financial_year.is_active = False
+            active_financial_year.save()
+        
+        super().delete(*args, **kwargs)
 
 
 
@@ -70,10 +103,11 @@ class Account(models.Model):
     account_number = models.CharField(max_length=64, verbose_name=_("Account Number"), null=True, blank=True, editable=False)
     
     parent_account = models.ForeignKey('self', on_delete=models.SET_NULL, null=True,blank=True, related_name='child_accounts', )
-    allow_child_accounts = models.BooleanField(default=False, verbose_name=_("Allow Child Accounts"))
-    
+    # allow_child_accounts = models.BooleanField(default=False, verbose_name=_("Allow Child Accounts"))
+    level = models.IntegerField(choices=account_level_choices, verbose_name=_("Account Level"), default=1)
 
     allow_edit = models.BooleanField(default=True, verbose_name=_("Allow Edit"))
+
 
     class Meta:
         verbose_name = _("Company Account")
@@ -95,6 +129,9 @@ class Account(models.Model):
                 self.account_type = self.parent_account.account_type
             else:
                 self.account_number = str(Account.objects.filter(company=self.company).count()+1)
+        
+        self.level = self.set_account_level()
+        
 
         super(Account, self).save(*args, **kwargs)
 
@@ -104,6 +141,7 @@ class Account(models.Model):
             for i, child_account in enumerate(child_accounts):
                 child_account.account_number = f"{self.account_number}{str(i+1).zfill(3)}"
                 child_account.save()
+
 
     
         
@@ -134,6 +172,11 @@ class Account(models.Model):
             if get_language() == 'ar':
                 return f"{self.account_number} - {self.account_name_ar}"
             return f"{self.account_number} - {self.account_name_en}"
+        
+    def allow_child_accounts(self):
+        if self.level == 5:
+            return False
+        return True
         
     def name(self):
         if get_language() == 'ar':
@@ -196,6 +239,13 @@ class Account(models.Model):
         elif self.balance() < 0.00 and self.account_type in ['L', 'X']:
             return 'text-danger'
         
+    def set_account_level(self):
+        if self.parent_account:
+            if self.parent_account.account_level() == 5:
+                return ValidationError(_("You can't add more child accounts to this account"))
+            return self.parent_account.account_level() + 1
+        return 1
+        
         
         
         
@@ -204,6 +254,7 @@ class Account(models.Model):
 
 class Transaction(models.Model):
     company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
+    financial_year = models.ForeignKey('account.FinancialYear', on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateField(verbose_name=_("Date"), auto_now=True, auto_now_add=False)
     description_en = models.CharField(max_length=256, verbose_name=_("Description English"), null=True, blank=True)
     description_ar = models.CharField(max_length=256, verbose_name=_("Description Arabic"), null=True, blank=True)
@@ -258,6 +309,10 @@ class Transaction(models.Model):
         if self.debit() != self.credit():
             return _("Debit and Credit are not equal")
         return None
+    
+    def save(self, *args, **kwargs):
+        self.financial_year = FinancialYear.objects.filter(company=self.company, is_active=True).first()
+        super().save(*args, **kwargs)
 
 
 
@@ -267,7 +322,7 @@ class JournalEntry(models.Model):
     transaction = models.ForeignKey('account.Transaction', on_delete=models.CASCADE, blank=True, null=True, related_name='entries')
     description_en = models.CharField(max_length=256, verbose_name=_("Description English"), null=True, blank=True)
     description_ar = models.CharField(max_length=256, verbose_name=_("Description Arabic"), null=True, blank=True)
-    account = models.ForeignKey('account.Account', on_delete=models.CASCADE)
+    account = models.ForeignKey('account.Account', on_delete=models.CASCADE, verbose_name=_("Account"), limit_choices_to={'level': 5})
     debit = models.DecimalField(max_digits=16, decimal_places=2, verbose_name=_("Debit"),default=0.00)
     credit = models.DecimalField(max_digits=16, decimal_places=2, verbose_name=_("Credit"),default=0.00)
 
@@ -281,6 +336,15 @@ class JournalEntry(models.Model):
     def clean(self):
         if self.debit < 0.00 or self.credit < 0.00:
             raise ValidationError(_("Debit and Credit should be positive numbers"))
+        
+        # check if the account is of level 5 else raise an error
+        if self.account.account_level() != 5:
+            raise ValidationError(_("You can only select accounts of level 5"))
+        if self.debit == 0.00 and self.credit == 0.00:
+            raise ValidationError(_("Debit or Credit should be greater than 0.00"))
+        if abs(self.debit > 0.00) and abs(self.credit > 0.00):
+            raise ValidationError(_("You can only select either Debit or Credit"))
+        
 
     def save(self, *args, **kwargs):
         self.clean()
@@ -322,9 +386,9 @@ class ReceiptVoucher(models.Model):
     company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
     date = models.DateField(verbose_name=_("Date"), blank=True, null=True)
     transaction = models.ForeignKey('account.Transaction', on_delete=models.CASCADE, blank=True, null=True)
-    collected_from = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='collected_from_account')
-    collected_from_name = models.CharField(max_length=64, verbose_name=_("Collected From"), null=True, blank=True)
-    to_account = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='collected_to_account')
+    collected_from = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='collected_from_account',limit_choices_to={'level': 5})
+    collected_from_name = models.CharField(max_length=64, verbose_name=_("Collected From"), null=True, blank=True, )
+    to_account = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='collected_to_account',limit_choices_to={'level': 5})
     amount = models.DecimalField(max_digits=16, decimal_places=2, verbose_name=_("Amount"))
     description = models.CharField(max_length=256, verbose_name=_("Description"))
     reference_no = models.CharField(max_length=64, verbose_name=_("Reference Number"), null=True, blank=True)
@@ -448,9 +512,9 @@ class PaymentVoucher(models.Model):
     company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
     date = models.DateField(verbose_name=_("Date"), blank=True, null=True)
     transaction = models.ForeignKey('account.Transaction', on_delete=models.CASCADE, blank=True, null=True)
-    paid_to = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='paid_to_account')
+    paid_to = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='paid_to_account', limit_choices_to={'level': 5})
     paid_to_name = models.CharField(max_length=64, verbose_name=_("Paid To"), null=True, blank=True)
-    from_account = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='paid_from_account')
+    from_account = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='paid_from_account', limit_choices_to={'level': 5})
     amount = models.DecimalField(max_digits=16, decimal_places=2, verbose_name=_("Amount"))
     description = models.CharField(max_length=256, verbose_name=_("Description"))
     reference_no = models.CharField(max_length=64, verbose_name=_("Reference Number"), null=True, blank=True)

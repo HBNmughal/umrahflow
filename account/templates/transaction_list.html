@@ -26,25 +26,14 @@
           
         </div>
         <!-- /.row -->
-         {% comment %}
         <div class="card card-success card-outline">
           <div class="card-body">
-             <button type="button" class="btn btn-outline-success " onClick="popupCenter({url: '{% url 'account_settlement_credit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
-              {% trans "Settlement" %} - {% trans "Credit" %}
+            <button type="button" class="btn btn-primary " onClick="window.location.href='{% url 'create_transaction' %}'">
+              {% trans "Create new Transaction" %}
             </button>
-            <button type="button" class="btn btn-outline-danger " onClick="popupCenter({url: '{% url 'account_settlement_debit_add_view' account.id %}', title: 'xtf', w: 900, h: 900});">
-              {% trans "Settlement" %} - {% trans "Debit" %}
-            </button>
-            {% comment %} <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#print_account_statement" >
-              {% trans "Print Account Statement" %} 
-            </button>
-            <button type="button" class="btn btn-outline-success " onClick="popupCenter({url: '{% url 'print_account_statement' account.id %}', title: 'xtf', w: 900, h: 900});" >
-              {% trans "Print Account Statement" %} 
-            </button> 
+            </div>
           </div>
-        </div>
-        {% endcomment %}
-
+          
         
   
           <!-- /.card-header -->
@@ -63,7 +52,6 @@
                     <th>{% trans "Credit" %}</th>
                     <th>{% trans "Discription" %}</th>
                     <th>{% trans "Reference No" %}</th>
-                    <th>{% trans "Username" %}</th>
                     <th>{% trans "Action" %}</th>
                   </tr>
                   </thead>
@@ -101,9 +89,6 @@
                     {% if t.entry.transaction.reference_no %} 
                         {{t.reference_no}}
                     {% endif %}
-                    </td>
-                    <td>
-                        {{t.entry.transaction.username}}
                     </td>
                       <td>
                         {% if t %}

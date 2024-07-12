@@ -1,114 +1,171 @@
-
-{% extends 'print_document_header.html' %}
-{% load static %}
-{% load my_filter %}
 {% load i18n %}
-{% block page_content %}
+{% load static %}
+{% include 'print/company_header.html' %}
+        <div class="invoice">
+          <title> {% block document_title %}{% trans "Account Statement" %} {{account}} {% endblock document_title %}</title>
+            
+            <div class "invoice-header">
+                <h3>{% trans "Account Statement" %}</h3>
+            </div>
+            <div class="invoice-details">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                      <p><strong>{% trans "Account" %} </strong>{{account}}</p>
+                        
+                    </td>
 
-
-<title>{% block title %}{% trans "Account Statement" %} {{account}}{% endblock title %}</title>
-
-<style type="text/css">
-    @font-face {
-        font-family: ArialUnicode;
-        src: url("static/Arial Unicode.ttf")
-    }
-    <!-- other stuff here -->
-    body {
-        margin: 0;
-        font-family: "ArialUnicode", sans-serif;
-    }
-    
-    <!-- more css here -->
-</style>
-
-
-
-
-        <h4>{% trans "Account Statement" %} - {{account}}</h4>
-        
-        <table class="table table-bordered table-sm" >
-            <tr>
-            </tr>
-            {% comment %} <tr>
-                <th style="" class="align-middle" >{% trans "From Date" %} </th>
-                <td style="">{% if request.GET.date_min %}{{request.GET.date_min}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
-                <th style="" class="align-middle" >{% trans "To Date" %}</th>
-                <td style="text-align: center;"> {% if request.GET.date_max %}{{request.GET.date_max}}{% else %}{% trans "Not Specified" %}{% endif %}</td>
-            </tr> {% endcomment %}
-            <tr>
-                <th style="" class="align-middle" >{% trans "Account" %}</th>
-                <td style="text-align: center;">{{account}}</td>
-                <th style="" class="align-middle" >{% trans "Print Date" %}</th>
-                <td style="text-align: center;" colspan="1">{% now "d/m/Y H:i" %} {% trans "Username" %} {{request.user}}</td>
-                </td>
-            </tr>
-            <tr >
-            </tr>
-        </table>
-        <table id="dataTable" class="data-table table table-bordered table-striped table-sm">
-            <thead class="dark-thead">
-            <tr>
-              <th>
-                {% if request.LANGUAGE_CODE == 'ar' %}ع / ق
-                {% else %}T / E                {% endif %}
-              </th>
-              <th>{% trans "Date" %}</th>
-              <th>{% trans "Description" %}</th>
-              <th> {% trans "Reference No" %}</th>
-              <th>{% trans "Debit" %}</th>
-              <th>{% trans "Credit" %}</th>
-              
-            </tr>
-            </thead>
-            <tbody>
-              {% for t in entries %}
-              <tr>
-                <td>{{t.id}} / {{t.transaction.id}}</td>
-                <td>{{t.date|date:"d/m/Y"}}</td>
-                <td {% if request.LANGUAGE_CODE == 'ar' %}
-                    style='text-align:right;'
-                    {% elif request.LANGUAGE_CODE == 'en' %}
-                    style='text-align:left;'
-                    {% endif %}>{{t.transaction.description}}
-
-                  </td>
-                <td>
-                  {% if t.transaction.reference_no %} 
-                  {{t.transaction.reference_no}}
-                  {% endif %}
-                </td>
-
-                <td>{% if t.debit %}{{t.debit|replace_commas}}{% endif %}</td>
-                <td>{% if t.credit %}{{t.credit|replace_commas}}{% endif %}</td>
-              </tr>
-              {% endfor %}
-              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-
-                <th style="color: red;">{{account.balance_debit|replace_commas}}</th>
-                <th style="color: green;">{{account.balance_credit|replace_commas}}</th>
-            </tr>
-            <tr>
-              <th></th>
-              <th></th>
-              <th colspan="2">{% trans "Current Balance" %}</th>
-              <th {% if balance >= 0.00 %} style="color: green;" {% else %} style="color: red;" {% endif %}  dir='ltr' colspan="2">{{account.balance|replace_commas}}</th>
-              
-            </tr>
-              </tbody> 
+                <tr>
             </table>
 
-            <br>
-            {% if request.user.employee.company.settings.account_statement_note %}
-            <p class="text-danger">
+
+
+
+
+
+                
+
+
+
+            </div>
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                      <th>{% trans "Date" %}</th>
+                      <th>{% trans "Transaction No." %}</th>
+                      <th>{% trans "Entry No." %}</th>
+                      <th>{% trans "Description" %}</th>
+                      <th>{% trans "Reference No" %}</th>
+
+                      <th>{% trans "Debit" %}</th>
+                      <th>{% trans "Credit" %}</th>
+                      <th>{% trans "Balance" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in entries %}
+                    <tr>
+                        <td>{{e.entry.date}}</td>
+                        <td>{{e.entry.transaction.id}}</td>
+                        <td>{{e.entry.id}}</td>
+                        <td>{{e.entry.transaction.description}}</td>
+                        <td>{{e.entry.transaction.reference_no}}</td>
+                        <td>{% if e.entry.debit > 0.00 %}{{e.entry.debit}}{% endif %}</td>
+                        <td>{% if e.entry.credit > 0.00 %}{{e.entry.credit}}{% endif %}</td>
+                        <td><span dir="ltr">{{e.balance}}</span></td>
+                      
+                        
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="5"></th>
+                        <th><strong>{{total_debit}}</strong></th>
+                        <th><strong>{{total_credit}}</strong></th>
+                        <th>{% trans "Current Balance" %}: <span dir="ltr">{{account.balance}}<span></th>
+                    </tr>
+            </table>
+            
+            {% if transport_movements_outside_package %}
+            
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <td colspan='8'>{% trans "Outside Package" %}</td>
+                    <tr>
+                        <th>#</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Time" %}</th>
+                        <th>{% trans "From" %}</th>
+                        <th>{% trans "To" %}</th>
+                        <th>{% trans "Type" %}</th>
+                        <th>{% trans "Status" %}</th>
+                        <th>{% trans "Remarks" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for route in transport_movements_outside_package %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{route.date|date:"d/m/Y"}}</td>
+                        <td>{{route.time|date:"H:i"}}</td>
+                        <td><strong>{{route.route.route_from}}</strong>
+                            {% if route.movement_from_hotel %}
+                            <br>
+                            {{route.movement_from_hotel}}
+                            {% endif %}
+                            {% if route.route.is_linked_with_arrival_flight %}
+                            <br>
+                            {{route.flight_no}} - {{route.voucher.arrival_time|date:"H:i"}} {% if route.flight_date_differance %}<sup> {{route.flight_date_differance}}</sup>{% endif %}
+                            {% endif %}
+                          </td>
+                          <td><strong>{{route.route.route_to}}</strong>
+                            {% if route.movement_to_hotel %}
+                            <br>
+                            {{route.movement_to_hotel}}
+                            {% endif %}
+                            {% if route.route.is_linked_with_departure_flight %}
+                            <br>
+                            {{route.flight_no}} - {{route.voucher.departure_time|date:"H:i"}} {% if route.flight_date_differance %}<sup> {{route.flight_date_differance}}</sup>{% endif %}
+                            {% endif %}
+                          </td>
+                        <td>{{route.type}}</td>
+
+                        <td>
+                            {% if route.status %}
+                            {{route.get_status_display}}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if route.remarks %}
+                            {{route.remarks}}
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    {%if request.GET.type != 'transport_request'%}
+                    {% if voucher.voucher_remarks %}
+                    <p><strong>{% trans "Voucher Remarks" %}:</strong> {{voucher.voucher_remarks}}</p>
+                    {% endif %}
+                    {% endif %}
+                    {% if voucher.transport_remarks %}
+                    <p><strong>{% trans "Transport Remarks" %}:</strong> {{voucher.transport_remarks}}</p>
+                    {% endif %}
+                </td>
+                
+
+            <tr>
+        </table>
+        {% if request.user.employee.company.settings.account_statement_note %}
+            <p style="color: red;">
               <strong>{% trans "Note" %}: </strong>
               {{request.user.employee.company.settings.account_statement_note|safe}}
             </p>
-            {% endif %}
+          {% endif %}
 
-       
-{% endblock page_content %}
+        <footer>
+        <div class="footer">
+            <img width="100px" src="{% static 'assets/images/umrahflow_logo.png'%}" alt="UmrahFlow Logo">
+            <br>
+            <small>{% trans "Printed by" %}: {{request.user.employee.name}} {% trans "Date" %}: {% now "d/m/Y " %} {% trans "Time" %}: {% now "H:i" %}</small>
+
+        </div>
+        </footer>
+        
+
+
+    </div>
+    
+  
+</body>
+</html>

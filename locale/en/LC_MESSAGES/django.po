@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 00:28+0300\n"
+"POT-Creation-Date: 2024-07-13 01:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,8 +40,7 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: .\account\choices.py:15 .\account\templates\account.html:83
-#: .\account\templates\account.html:86 .\payment\templates\account_view.html:59
+#: .\account\choices.py:15 .\payment\templates\account_view.html:59
 #: .\payment\templates\account_view.html:62
 #: .\payment\templates\agent_account_view.html:95
 #: .\payment\templates\agent_account_view.html:98
@@ -52,41 +51,61 @@ msgstr ""
 msgid "Settlement"
 msgstr ""
 
-#: .\account\forms.py:25 .\account\forms.py:70 .\account\forms.py:121
-#: .\account\forms.py:165 .\account\forms.py:206 .\agent\forms.py:92
-#: .\agent\forms.py:116 .\agent\models.py:23 .\agent\models.py:252
+#: .\account\choices.py:19
+msgid "Level 1"
+msgstr ""
+
+#: .\account\choices.py:20
+msgid "Level 2"
+msgstr ""
+
+#: .\account\choices.py:21
+msgid "Level 3"
+msgstr ""
+
+#: .\account\choices.py:22
+msgid "Level 4"
+msgstr ""
+
+#: .\account\choices.py:23
+msgid "Level 5"
+msgstr ""
+
+#: .\account\forms.py:28 .\account\forms.py:73 .\account\forms.py:124
+#: .\account\forms.py:168 .\account\forms.py:209 .\agent\forms.py:92
+#: .\agent\forms.py:116 .\agent\models.py:23 .\agent\models.py:261
 #: .\arrival_voucher\forms.py:48 .\arrival_voucher\forms.py:88
-#: .\company\models.py:308 .\invoice\forms.py:27 .\invoice\forms.py:53
+#: .\company\models.py:305 .\invoice\forms.py:27 .\invoice\forms.py:53
 #: .\invoice\forms.py:128 .\mandoob\forms.py:35 .\mandoob\models.py:21
 #: .\service_order\models.py:7 .\supplier\models.py:8 .\visa_group\models.py:18
 #: .\visa_group\models.py:352 .\voucher\models.py:16
 msgid "Company"
 msgstr ""
 
-#: .\account\forms.py:26
+#: .\account\forms.py:29
 msgid "Account Name (English)"
 msgstr ""
 
-#: .\account\forms.py:27
+#: .\account\forms.py:30
 msgid "Account Name (Arabic)"
 msgstr ""
 
-#: .\account\forms.py:28
+#: .\account\forms.py:31
 msgid "Parent Account"
 msgstr ""
 
-#: .\account\forms.py:29 .\account\models.py:73
+#: .\account\forms.py:32
 msgid "Allow Child Accounts"
 msgstr ""
 
-#: .\account\forms.py:30 .\account\models.py:68
+#: .\account\forms.py:33 .\account\models.py:101
 msgid "Account Type"
 msgstr ""
 
-#: .\account\forms.py:71 .\account\forms.py:122 .\account\forms.py:166
-#: .\account\forms.py:207 .\account\models.py:207 .\account\models.py:266
-#: .\account\models.py:323 .\account\models.py:449 .\account\models.py:571
-#: .\account\models.py:633 .\account\templates\account.html:133
+#: .\account\forms.py:74 .\account\forms.py:125 .\account\forms.py:169
+#: .\account\forms.py:210 .\account\models.py:258 .\account\models.py:321
+#: .\account\models.py:387 .\account\models.py:513 .\account\models.py:635
+#: .\account\models.py:697 .\account\templates\account.html:127
 #: .\account\templates\payment_voucher.html:34
 #: .\account\templates\payment_voucher_list.html:48
 #: .\account\templates\print\debit_voucher_test.html:58
@@ -99,7 +118,7 @@ msgstr ""
 #: .\account\templates\receipt_voucher.html:20
 #: .\account\templates\receipt_voucher_list.html:48
 #: .\account\templates\transaction.html:67
-#: .\account\templates\transaction_list.html:62
+#: .\account\templates\transaction_list.html:50
 #: .\agent\templates\agent_operating_schedule.html:46
 #: .\agent\templates\popup_forms\agent_price.html:28
 #: .\agent\templates\print\agent_transport_program.html:155
@@ -142,8 +161,10 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: .\account\forms.py:72 .\account\forms.py:123 .\account\forms.py:167
-#: .\account\forms.py:208 .\account\templates\payment_voucher.html:41
+#: .\account\forms.py:75 .\account\forms.py:126 .\account\forms.py:170
+#: .\account\forms.py:211 .\account\templates\create_transaction.html:5
+#: .\account\templates\create_transaction.html:14
+#: .\account\templates\payment_voucher.html:41
 #: .\account\templates\payment_voucher_list.html:55
 #: .\account\templates\receipt_voucher_list.html:55
 #: .\account\templates\transaction.html:5
@@ -152,21 +173,21 @@ msgstr ""
 msgid "Transaction"
 msgstr ""
 
-#: .\account\forms.py:73 .\account\models.py:326
+#: .\account\forms.py:76 .\account\models.py:390
 msgid "Collected From"
 msgstr ""
 
-#: .\account\forms.py:74
+#: .\account\forms.py:77
 msgid "Collected From Name"
 msgstr ""
 
-#: .\account\forms.py:75
+#: .\account\forms.py:78
 msgid "To Account"
 msgstr ""
 
-#: .\account\forms.py:76 .\account\forms.py:127 .\account\forms.py:169
-#: .\account\forms.py:210 .\account\models.py:328 .\account\models.py:454
-#: .\account\models.py:574 .\account\models.py:636
+#: .\account\forms.py:79 .\account\forms.py:130 .\account\forms.py:172
+#: .\account\forms.py:213 .\account\models.py:392 .\account\models.py:518
+#: .\account\models.py:638 .\account\models.py:700
 #: .\account\templates\payment_voucher.html:38
 #: .\account\templates\payment_voucher_list.html:52
 #: .\account\templates\print\debit_voucher_test.html:55
@@ -187,9 +208,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
-#: .\account\forms.py:77 .\account\forms.py:128 .\account\forms.py:170
-#: .\account\forms.py:211 .\account\models.py:329 .\account\models.py:455
-#: .\account\models.py:575 .\account\models.py:637
+#: .\account\forms.py:80 .\account\forms.py:131 .\account\forms.py:173
+#: .\account\forms.py:214 .\account\forms.py:232 .\account\forms.py:240
+#: .\account\models.py:393 .\account\models.py:519 .\account\models.py:639
+#: .\account\models.py:701
 #: .\account\templates\print\print_account_statement.html:58
 #: .\account\templates\transaction.html:71
 #: .\payment\templates\agent_account_view.html:168
@@ -198,15 +220,16 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: .\account\forms.py:78 .\account\forms.py:129 .\account\forms.py:171
-#: .\account\forms.py:212 .\account\templates\account.html:142
+#: .\account\forms.py:81 .\account\forms.py:132 .\account\forms.py:174
+#: .\account\forms.py:215 .\account\forms.py:241
+#: .\account\templates\account.html:136
 #: .\account\templates\payment_voucher.html:39
 #: .\account\templates\payment_voucher_list.html:53
 #: .\account\templates\print\payment_voucher_print.html:84
 #: .\account\templates\print\print_account_statement.html:59
 #: .\account\templates\print\receipt_voucher_print.html:75
 #: .\account\templates\receipt_voucher_list.html:53
-#: .\account\templates\transaction_list.html:67 .\payment\models.py:93
+#: .\account\templates\transaction_list.html:55 .\payment\models.py:93
 #: .\payment\templates\account_view.html:94
 #: .\payment\templates\agent_account_view.html:130
 #: .\payment\templates\print\print_account_transaction.html:163
@@ -215,9 +238,9 @@ msgstr ""
 msgid "Reference No"
 msgstr ""
 
-#: .\account\forms.py:79 .\account\forms.py:130 .\account\forms.py:172
-#: .\account\forms.py:213 .\account\models.py:331 .\account\models.py:457
-#: .\account\models.py:577 .\account\models.py:639
+#: .\account\forms.py:82 .\account\forms.py:133 .\account\forms.py:175
+#: .\account\forms.py:216 .\account\models.py:395 .\account\models.py:521
+#: .\account\models.py:641 .\account\models.py:703
 #: .\account\templates\payment_voucher.html:40
 #: .\account\templates\payment_voucher_list.html:54
 #: .\account\templates\print\debit_voucher_test.html:71
@@ -227,83 +250,29 @@ msgstr ""
 msgid "Payment Method"
 msgstr ""
 
-#: .\account\forms.py:124 .\account\models.py:452
+#: .\account\forms.py:127 .\account\models.py:516
 msgid "Paid To"
 msgstr ""
 
-#: .\account\forms.py:125
+#: .\account\forms.py:128
 msgid "Paid To Name"
 msgstr ""
 
-#: .\account\forms.py:126
+#: .\account\forms.py:129
 msgid "From Account"
 msgstr ""
 
-#: .\account\forms.py:168
+#: .\account\forms.py:171
 msgid "Credit Account"
 msgstr ""
 
-#: .\account\forms.py:209
+#: .\account\forms.py:212
 msgid "Debit Account"
 msgstr ""
 
-#: .\account\manager.py:21
-#, python-brace-format
-msgid ""
-"Total debits and credits should be equal. Total debits: {total_debits}, "
-"Total credits: {total_credits}"
-msgstr ""
-
-#: .\account\manager.py:24
-msgid "Transaction should have at least 2 entries"
-msgstr ""
-
-#: .\account\models.py:60
-msgid "Account Name English"
-msgstr ""
-
-#: .\account\models.py:61
-msgid "Account Name Arabic"
-msgstr ""
-
-#: .\account\models.py:63
-msgid "Asset"
-msgstr ""
-
-#: .\account\models.py:64
-msgid "Liability"
-msgstr ""
-
-#: .\account\models.py:65
-msgid "Equity"
-msgstr ""
-
-#: .\account\models.py:66
-msgid "Revenue"
-msgstr ""
-
-#: .\account\models.py:67
-msgid "Expense"
-msgstr ""
-
-#: .\account\models.py:70 .\account\templates\print\debit_voucher_test.html:62
-msgid "Account Number"
-msgstr ""
-
-#: .\account\models.py:76
-msgid "Allow Edit"
-msgstr ""
-
-#: .\account\models.py:79
-msgid "Company Account"
-msgstr ""
-
-#: .\account\models.py:80
-msgid "Company Accounts"
-msgstr ""
-
-#: .\account\models.py:113 .\account\templates\account.html:5
-#: .\account\templates\account.html:16 .\account\templates\account_list.html:80
+#: .\account\forms.py:231 .\account\models.py:151 .\account\models.py:325
+#: .\account\templates\account.html:5 .\account\templates\account.html:16
+#: .\account\templates\account_list.html:81
 #: .\account\templates\print\print_account_statement.html:41
 #: .\account\templates\transaction.html:92 .\agent\models.py:40
 #: .\payment\templates\account_view.html:4
@@ -322,41 +291,11 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: .\account\models.py:114 .\core\templates\side_navigation\accounts.html:11
-#: .\payment\templates\accounts_list.html:4
-#: .\payment\templates\accounts_list.html:14
-msgid "Accounts"
-msgstr ""
-
-#: .\account\models.py:208 .\account\models.py:268
-msgid "Description English"
-msgstr ""
-
-#: .\account\models.py:209 .\account\models.py:269
-msgid "Description Arabic"
-msgstr ""
-
-#: .\account\models.py:210
-msgid "Reference"
-msgstr ""
-
-#: .\account\models.py:226 .\account\models.py:440 .\account\models.py:563
-msgid "You are not allowed to delete this transaction"
-msgstr ""
-
-#: .\account\models.py:242 .\account\models.py:312
-msgid "Unknown"
-msgstr ""
-
-#: .\account\models.py:259
-msgid "Debit and Credit are not equal"
-msgstr ""
-
-#: .\account\models.py:271 .\account\templates\account.html:86
-#: .\account\templates\account.html:134
+#: .\account\forms.py:233 .\account\models.py:326
+#: .\account\templates\account.html:128
 #: .\account\templates\print\print_account_statement.html:60
 #: .\account\templates\transaction.html:93
-#: .\account\templates\transaction_list.html:64 .\payment\models.py:22
+#: .\account\templates\transaction_list.html:52 .\payment\models.py:22
 #: .\payment\models.py:33 .\payment\models.py:71
 #: .\payment\templates\account_view.html:62
 #: .\payment\templates\account_view.html:88
@@ -368,11 +307,11 @@ msgstr ""
 msgid "Debit"
 msgstr ""
 
-#: .\account\models.py:272 .\account\templates\account.html:83
-#: .\account\templates\account.html:135
+#: .\account\forms.py:234 .\account\models.py:327
+#: .\account\templates\account.html:129
 #: .\account\templates\print\print_account_statement.html:61
 #: .\account\templates\transaction.html:94
-#: .\account\templates\transaction_list.html:65 .\payment\models.py:21
+#: .\account\templates\transaction_list.html:53 .\payment\models.py:21
 #: .\payment\models.py:32 .\payment\models.py:70
 #: .\payment\templates\account_view.html:59
 #: .\payment\templates\account_view.html:89
@@ -384,80 +323,214 @@ msgstr ""
 msgid "Credit"
 msgstr ""
 
-#: .\account\models.py:275
+#: .\account\forms.py:242
+msgid "Total Debit"
+msgstr ""
+
+#: .\account\forms.py:243
+msgid "Total Credit"
+msgstr ""
+
+#: .\account\manager.py:21
+#, python-brace-format
+msgid ""
+"Total debits and credits should be equal. Total debits: {total_debits}, "
+"Total credits: {total_credits}"
+msgstr ""
+
+#: .\account\manager.py:24
+msgid "Transaction should have at least 2 entries"
+msgstr ""
+
+#: .\account\models.py:58 .\payment\models.py:244
+#: .\payment\templates\payrolls.html:46
+msgid "Start Date"
+msgstr ""
+
+#: .\account\models.py:59 .\payment\models.py:245
+#: .\payment\templates\payrolls.html:47
+msgid "End Date"
+msgstr ""
+
+#: .\account\models.py:60
+msgid "Is Active"
+msgstr ""
+
+#: .\account\models.py:63
+msgid "Financial Year"
+msgstr ""
+
+#: .\account\models.py:64
+msgid "Financial Years"
+msgstr ""
+
+#: .\account\models.py:93
+msgid "Account Name English"
+msgstr ""
+
+#: .\account\models.py:94
+msgid "Account Name Arabic"
+msgstr ""
+
+#: .\account\models.py:96
+msgid "Asset"
+msgstr ""
+
+#: .\account\models.py:97
+msgid "Liability"
+msgstr ""
+
+#: .\account\models.py:98
+msgid "Equity"
+msgstr ""
+
+#: .\account\models.py:99
+msgid "Revenue"
+msgstr ""
+
+#: .\account\models.py:100
+msgid "Expense"
+msgstr ""
+
+#: .\account\models.py:103 .\account\templates\print\debit_voucher_test.html:62
+msgid "Account Number"
+msgstr ""
+
+#: .\account\models.py:107
+msgid "Account Level"
+msgstr ""
+
+#: .\account\models.py:109
+msgid "Allow Edit"
+msgstr ""
+
+#: .\account\models.py:113
+msgid "Company Account"
+msgstr ""
+
+#: .\account\models.py:114
+msgid "Company Accounts"
+msgstr ""
+
+#: .\account\models.py:152 .\payment\templates\accounts_list.html:4
+#: .\payment\templates\accounts_list.html:14
+msgid "Accounts"
+msgstr ""
+
+#: .\account\models.py:245
+msgid "You can't add more child accounts to this account"
+msgstr ""
+
+#: .\account\models.py:259 .\account\models.py:323
+msgid "Description English"
+msgstr ""
+
+#: .\account\models.py:260 .\account\models.py:324
+msgid "Description Arabic"
+msgstr ""
+
+#: .\account\models.py:261
+msgid "Reference"
+msgstr ""
+
+#: .\account\models.py:277 .\account\models.py:504 .\account\models.py:627
+msgid "You are not allowed to delete this transaction"
+msgstr ""
+
+#: .\account\models.py:293 .\account\models.py:376
+msgid "Unknown"
+msgstr ""
+
+#: .\account\models.py:310
+msgid "Debit and Credit are not equal"
+msgstr ""
+
+#: .\account\models.py:330
 msgid "Entry For"
 msgstr ""
 
-#: .\account\models.py:283
+#: .\account\models.py:338
 msgid "Debit and Credit should be positive numbers"
 msgstr ""
 
-#: .\account\models.py:289
+#: .\account\models.py:342
+msgid "You can only select accounts of level 5"
+msgstr ""
+
+#: .\account\models.py:344
+msgid "Debit or Credit should be greater than 0.00"
+msgstr ""
+
+#: .\account\models.py:346
+msgid "You can only select either Debit or Credit"
+msgstr ""
+
+#: .\account\models.py:353
 msgid "Journal Entry"
 msgstr ""
 
-#: .\account\models.py:290 .\account\templates\transaction.html:85
+#: .\account\models.py:354 .\account\templates\transaction.html:85
 msgid "Journal Entries"
 msgstr ""
 
-#: .\account\models.py:330 .\account\models.py:456 .\account\models.py:576
-#: .\account\models.py:638 .\account\templates\print\debit_voucher_test.html:75
+#: .\account\models.py:394 .\account\models.py:520 .\account\models.py:640
+#: .\account\models.py:702 .\account\templates\print\debit_voucher_test.html:75
 msgid "Reference Number"
 msgstr ""
 
-#: .\account\models.py:339 .\account\templates\payment_voucher.html:5
+#: .\account\models.py:403 .\account\templates\payment_voucher.html:5
 #: .\account\templates\payment_voucher.html:16
 #: .\account\templates\print\debit_voucher_test.html:9
 #: .\account\templates\print\debit_voucher_test.html:52
 #: .\account\templates\print\payment_voucher_print.html:9
 #: .\account\templates\print\receipt_voucher_print.html:9
 #: .\account\templates\print\receipt_voucher_print.html:52
-#: .\account\templates\receipt_voucher_form.html:6 .\account\views.py:275
-#: .\account\views.py:286 .\account\views.py:298 .\account\views.py:325
-#: .\account\views.py:336 .\account\views.py:352
+#: .\account\templates\receipt_voucher_form.html:6 .\account\views.py:273
+#: .\account\views.py:284 .\account\views.py:296 .\account\views.py:323
+#: .\account\views.py:334 .\account\views.py:350
 msgid "Receipt Voucher"
 msgstr ""
 
-#: .\account\models.py:340 .\core\templates\side_navigation\accounts.html:61
+#: .\account\models.py:404 .\core\templates\side_navigation\accounts.html:32
 msgid "Receipt Vouchers"
 msgstr ""
 
-#: .\account\models.py:346 .\account\models.py:472
+#: .\account\models.py:410 .\account\models.py:536
 msgid "Amount should be a positive number"
 msgstr ""
 
-#: .\account\models.py:423 .\account\models.py:546
+#: .\account\models.py:487 .\account\models.py:610
 msgid "You are not allowed to edit this transaction"
 msgstr ""
 
-#: .\account\models.py:464 .\account\templates\payment_voucher_form.html:6
+#: .\account\models.py:528 .\account\templates\payment_voucher_form.html:6
 #: .\account\templates\print\payment_voucher_print.html:58
-#: .\account\views.py:376 .\account\views.py:389 .\account\views.py:412
-#: .\account\views.py:431
+#: .\account\views.py:374 .\account\views.py:387 .\account\views.py:410
+#: .\account\views.py:429
 msgid "Payment Voucher"
 msgstr ""
 
-#: .\account\models.py:465 .\core\templates\side_navigation\accounts.html:81
+#: .\account\models.py:529 .\core\templates\side_navigation\accounts.html:52
 msgid "Payment Vouchers"
 msgstr ""
 
-#: .\account\models.py:580 .\account\views.py:159 .\account\views.py:164
+#: .\account\models.py:644 .\account\views.py:157 .\account\views.py:162
 msgid "Account Settlement Credit"
 msgstr ""
 
-#: .\account\models.py:581
+#: .\account\models.py:645
 msgid "Account Settlement Credits"
 msgstr ""
 
-#: .\account\models.py:642 .\account\views.py:181 .\account\views.py:186
+#: .\account\models.py:706 .\account\views.py:179 .\account\views.py:184
 msgid "Account Settlement Debit"
 msgstr ""
 
-#: .\account\models.py:643
+#: .\account\models.py:707
 msgid "Account Settlement Debits"
 msgstr ""
 
-#: .\account\templates\account.html:34 .\account\templates\account.html:136
+#: .\account\templates\account.html:34 .\account\templates\account.html:130
 #: .\payment\templates\account_view.html:31
 #: .\payment\templates\account_view.html:90
 #: .\payment\templates\agent_account_view.html:34
@@ -467,15 +540,15 @@ msgstr ""
 msgid "Account Balance"
 msgstr ""
 
-#: .\account\templates\account.html:93 .\account\templates\account.html:255
+#: .\account\templates\account.html:87 .\account\templates\account.html:249
 #: .\payment\templates\account_view.html:191
 #: .\payment\templates\agent_account_view.html:91
 #: .\payment\templates\agent_account_view.html:277
 msgid "Print Account Statement"
 msgstr ""
 
-#: .\account\templates\account.html:131 .\account\templates\transaction.html:65
-#: .\account\templates\transaction_list.html:61
+#: .\account\templates\account.html:125 .\account\templates\transaction.html:65
+#: .\account\templates\transaction_list.html:49
 #: .\payment\templates\account_view.html:86
 #: .\payment\templates\agent_account_view.html:119
 #: .\payment\templates\office_expense_list.html:81
@@ -487,35 +560,35 @@ msgstr ""
 msgid "Transaction No."
 msgstr ""
 
-#: .\account\templates\account.html:132 .\account\templates\transaction.html:91
+#: .\account\templates\account.html:126 .\account\templates\transaction.html:91
 msgid "Entry No."
 msgstr ""
 
-#: .\account\templates\account.html:137
+#: .\account\templates\account.html:131
 #: .\account\templates\payment_voucher.html:37
 #: .\account\templates\payment_voucher_list.html:51
 #: .\account\templates\receipt_voucher_list.html:51
-#: .\account\templates\transaction_list.html:66
+#: .\account\templates\transaction_list.html:54
 msgid "Discription"
 msgstr ""
 
-#: .\account\templates\account.html:143
+#: .\account\templates\account.html:137
 #: .\account\templates\payment_voucher.html:42
 #: .\account\templates\payment_voucher_list.html:56
 #: .\account\templates\print\print_account_statement.html:44
 #: .\account\templates\receipt_voucher_list.html:56
 #: .\account\templates\transaction.html:95
-#: .\account\templates\transaction_list.html:68
 #: .\agent\templates\popup_forms\agent_user.html:27
 #: .\agent\templates\popup_forms\agent_user.html:29
-#: .\company\templates\mandoob_list.html:42 .\core\templates\login.html:16
-#: .\core\templates\login.html:17 .\core\templates\login.html:101
+#: .\company\templates\mandoob_list.html:42 .\core\templates\login.html:17
+#: .\core\templates\login.html:18 .\core\templates\login.html:102
+#: .\core\templates\otp.html:93
 #: .\core\templates\transport_movement_history.html:59 .\mandoob\forms.py:40
 #: .\mandoob\models.py:26
 msgid "Username"
 msgstr ""
 
-#: .\account\templates\account.html:144
+#: .\account\templates\account.html:138
 #: .\account\templates\payment_voucher_form.html:49
 #: .\account\templates\payment_voucher_list.html:108
 #: .\account\templates\receipt_voucher_form.html:50
@@ -529,14 +602,14 @@ msgstr ""
 msgid "Print"
 msgstr ""
 
-#: .\account\templates\account.html:218
+#: .\account\templates\account.html:212
 #: .\account\templates\payment_voucher.html:112
 #: .\account\templates\payment_voucher_form.html:64
 #: .\account\templates\payment_voucher_list.html:133
 #: .\account\templates\receipt_voucher_form.html:65
 #: .\account\templates\receipt_voucher_list.html:132
 #: .\account\templates\transaction.html:143
-#: .\account\templates\transaction_list.html:136
+#: .\account\templates\transaction_list.html:120
 #: .\payment\templates\account_view.html:156
 #: .\payment\templates\agent_account_view.html:87
 #: .\payment\templates\agent_account_view.html:241
@@ -546,14 +619,14 @@ msgstr ""
 msgid "Receipt Vouchers Report"
 msgstr ""
 
-#: .\account\templates\account.html:226 .\account\templates\account.html:263
+#: .\account\templates\account.html:220 .\account\templates\account.html:257
 #: .\account\templates\payment_voucher.html:120
 #: .\account\templates\payment_voucher_form.html:72
 #: .\account\templates\payment_voucher_list.html:141
 #: .\account\templates\receipt_voucher_form.html:73
 #: .\account\templates\receipt_voucher_list.html:140
 #: .\account\templates\transaction.html:151
-#: .\account\templates\transaction_list.html:144 .\agent\forms.py:47
+#: .\account\templates\transaction_list.html:128 .\agent\forms.py:47
 #: .\payment\templates\account_view.html:164
 #: .\payment\templates\account_view.html:199
 #: .\payment\templates\agent_account_view.html:249
@@ -571,14 +644,14 @@ msgstr ""
 msgid "From Date"
 msgstr ""
 
-#: .\account\templates\account.html:232 .\account\templates\account.html:269
+#: .\account\templates\account.html:226 .\account\templates\account.html:263
 #: .\account\templates\payment_voucher.html:126
 #: .\account\templates\payment_voucher_form.html:78
 #: .\account\templates\payment_voucher_list.html:147
 #: .\account\templates\receipt_voucher_form.html:79
 #: .\account\templates\receipt_voucher_list.html:146
 #: .\account\templates\transaction.html:157
-#: .\account\templates\transaction_list.html:150
+#: .\account\templates\transaction_list.html:134
 #: .\payment\templates\account_view.html:170
 #: .\payment\templates\account_view.html:205
 #: .\payment\templates\agent_account_view.html:255
@@ -596,14 +669,14 @@ msgstr ""
 msgid "To Date"
 msgstr ""
 
-#: .\account\templates\account.html:239 .\account\templates\account.html:276
+#: .\account\templates\account.html:233 .\account\templates\account.html:270
 #: .\account\templates\payment_voucher.html:133
 #: .\account\templates\payment_voucher_form.html:85
 #: .\account\templates\payment_voucher_list.html:154
 #: .\account\templates\receipt_voucher_form.html:86
 #: .\account\templates\receipt_voucher_list.html:153
 #: .\account\templates\transaction.html:164
-#: .\account\templates\transaction_list.html:157
+#: .\account\templates\transaction_list.html:141
 #: .\agent\templates\agent_arrival_voucher.html:188
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:121
 #: .\agent\templates\agent_operating_schedule.html:229
@@ -635,14 +708,14 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: .\account\templates\account.html:240 .\account\templates\account.html:277
+#: .\account\templates\account.html:234 .\account\templates\account.html:271
 #: .\account\templates\payment_voucher.html:134
 #: .\account\templates\payment_voucher_form.html:86
 #: .\account\templates\payment_voucher_list.html:155
 #: .\account\templates\receipt_voucher_form.html:87
 #: .\account\templates\receipt_voucher_list.html:154
 #: .\account\templates\transaction.html:165
-#: .\account\templates\transaction_list.html:158
+#: .\account\templates\transaction_list.html:142
 #: .\arrival_voucher\templates\arrival_voucher_list.html:138
 #: .\arrival_voucher\templates\operating_schedule.html:285
 #: .\payment\templates\account_view.html:178
@@ -658,7 +731,7 @@ msgstr ""
 
 #: .\account\templates\account_list.html:4
 #: .\account\templates\account_list.html:13
-#: .\core\templates\side_navigation\accounts.html:43
+#: .\core\templates\side_navigation\accounts.html:71
 msgid "Accounts Tree"
 msgstr ""
 
@@ -667,13 +740,17 @@ msgid "Settings"
 msgstr ""
 
 #: .\account\templates\account_list.html:79 .\agent\forms.py:71
-#: .\agent\models.py:25 .\agent\models.py:226
+#: .\agent\models.py:25 .\agent\models.py:235
 #: .\agent\templates\agent_list.html:46
 #: .\agent\templates\popup_forms\agent_code.html:10
 msgid "Code"
 msgstr ""
 
-#: .\account\templates\account_list.html:81
+#: .\account\templates\account_list.html:80
+msgid "Level"
+msgstr ""
+
+#: .\account\templates\account_list.html:82
 #: .\account\templates\transport_companies_list.html:42
 #: .\payment\templates\popup_forms\account_credit_form.html:25
 #: .\payment\templates\popup_forms\account_debit_form.html:25
@@ -682,10 +759,23 @@ msgstr ""
 msgid "Balance"
 msgstr ""
 
-#: .\account\templates\account_list.html:82
+#: .\account\templates\account_list.html:83
 #: .\agent\forms\agent_arrival_voucher_form.html:114
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:114
 msgid "Actions"
+msgstr ""
+
+#: .\account\templates\create_transaction.html:30
+#: .\account\templates\transaction.html:55
+msgid "Transaction Details"
+msgstr ""
+
+#: .\account\templates\create_transaction.html:42
+msgid "Ledger Entries"
+msgstr ""
+
+#: .\account\templates\create_transaction.html:76
+msgid "Create Transaction"
 msgstr ""
 
 #: .\account\templates\payment_voucher.html:33
@@ -709,7 +799,7 @@ msgstr ""
 #: .\account\templates\payment_voucher.html:43
 #: .\account\templates\payment_voucher_list.html:57
 #: .\account\templates\receipt_voucher_list.html:57
-#: .\account\templates\transaction_list.html:69
+#: .\account\templates\transaction_list.html:56
 #: .\account\templates\transport_companies_list.html:44
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:82
 #: .\agent\templates\agent_list.html:49
@@ -751,7 +841,7 @@ msgstr ""
 #: .\account\templates\payment_voucher.html:88
 #: .\account\templates\payment_voucher_list.html:107
 #: .\account\templates\receipt_voucher_list.html:106
-#: .\account\templates\transaction_list.html:112
+#: .\account\templates\transaction_list.html:96
 #: .\payment\templates\payrolls.html:68
 msgid "View"
 msgstr ""
@@ -771,7 +861,7 @@ msgstr ""
 
 #: .\account\templates\payment_voucher_list.html:5
 #: .\account\templates\payment_voucher_list.html:16
-#: .\core\templates\side_navigation\accounts.html:85
+#: .\core\templates\side_navigation\accounts.html:56
 msgid "Payment Voucher List"
 msgstr ""
 
@@ -908,7 +998,7 @@ msgstr ""
 
 #: .\account\templates\receipt_voucher_list.html:5
 #: .\account\templates\receipt_voucher_list.html:16
-#: .\core\templates\side_navigation\accounts.html:65
+#: .\core\templates\side_navigation\accounts.html:36
 msgid "Receipt Voucher List"
 msgstr ""
 
@@ -920,10 +1010,6 @@ msgstr ""
 msgid "Collected to account"
 msgstr ""
 
-#: .\account\templates\transaction.html:55
-msgid "Transaction Details"
-msgstr ""
-
 #: .\account\templates\transaction.html:73
 msgid "Totel Entries"
 msgstr ""
@@ -933,13 +1019,16 @@ msgstr ""
 msgid "Transaction List"
 msgstr ""
 
-#: .\account\templates\transaction_list.html:63
+#: .\account\templates\transaction_list.html:33
+msgid "Create new Transaction"
+msgstr ""
+
+#: .\account\templates\transaction_list.html:51
 msgid "Entries Count"
 msgstr ""
 
 #: .\account\templates\transport_companies_list.html:6
 #: .\account\templates\transport_companies_list.html:15
-#: .\core\templates\side_navigation\accounts.html:23
 msgid "Transport Companies"
 msgstr ""
 
@@ -955,47 +1044,47 @@ msgstr ""
 msgid "Account Created."
 msgstr ""
 
-#: .\account\views.py:93
+#: .\account\views.py:92
 msgid "Account Updated."
 msgstr ""
 
-#: .\account\views.py:155
+#: .\account\views.py:153
 msgid "Account Settlement Credit has been added."
 msgstr ""
 
-#: .\account\views.py:177
+#: .\account\views.py:175
 msgid "Account Settlement Debit has been added."
 msgstr ""
 
-#: .\account\views.py:268
+#: .\account\views.py:266
 msgid "Receipt Voucher has been added."
 msgstr ""
 
-#: .\account\views.py:317
+#: .\account\views.py:315
 msgid "Receipt Voucher has been updated."
 msgstr ""
 
-#: .\account\views.py:328 .\account\views.py:419
+#: .\account\views.py:326 .\account\views.py:417
 msgid "Please correct the errors below."
 msgstr ""
 
-#: .\account\views.py:370
+#: .\account\views.py:368
 msgid "Payment Voucher has been added."
 msgstr ""
 
-#: .\account\views.py:406
+#: .\account\views.py:404
 msgid "Payment Voucher has been updated."
 msgstr ""
 
-#: .\account\views.py:464
+#: .\account\views.py:462
 msgid "Accounts settings have been updated successfully."
 msgstr ""
 
-#: .\account\views.py:467
+#: .\account\views.py:465
 msgid "Error while updating accounts settings"
 msgstr ""
 
-#: .\account\views.py:470
+#: .\account\views.py:468
 msgid "Accounts Settings"
 msgstr ""
 
@@ -1011,7 +1100,7 @@ msgstr ""
 
 #: .\agent\forms.py:46 .\agent\forms.py:68 .\agent\forms.py:93
 #: .\agent\forms.py:117 .\agent\forms\agent_arrival_voucher_form.html:36
-#: .\agent\models.py:224 .\agent\models.py:235 .\agent\models.py:253
+#: .\agent\models.py:233 .\agent\models.py:244 .\agent\models.py:262
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:67
 #: .\agent\templates\agent_list.html:41
 #: .\agent\templates\agent_operating_schedule.html:48
@@ -1064,7 +1153,7 @@ msgstr ""
 msgid "Agent"
 msgstr ""
 
-#: .\agent\forms.py:48 .\agent\models.py:237
+#: .\agent\forms.py:48 .\agent\models.py:246
 #: .\agent\templates\agent_list.html:60
 #: .\agent\templates\popup_forms\agent_price.html:29 .\visa_group\models.py:24
 msgid "Visa Price"
@@ -1074,12 +1163,12 @@ msgstr ""
 msgid "Transport Price"
 msgstr ""
 
-#: .\agent\forms.py:50 .\agent\models.py:239
+#: .\agent\forms.py:50 .\agent\models.py:248
 msgid "Transport Included By Default"
 msgstr ""
 
 #: .\agent\forms.py:67 .\agent\forms.py:70 .\agent\models.py:24
-#: .\agent\models.py:227
+#: .\agent\models.py:236
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:68
 #: .\agent\templates\agent_list.html:40
 #: .\agent\templates\arrival_voucher_list.html:68
@@ -1104,26 +1193,26 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: .\agent\forms.py:69 .\agent\models.py:225
+#: .\agent\forms.py:69 .\agent\models.py:234
 msgid "Platform"
 msgstr ""
 
-#: .\agent\forms.py:94 .\agent\forms.py:118 .\agent\models.py:254
+#: .\agent\forms.py:94 .\agent\forms.py:118 .\agent\models.py:263
 #: .\agent\templates\agent_list.html:61
 msgid "Comission Holder Account"
 msgstr ""
 
-#: .\agent\forms.py:95 .\agent\forms.py:119 .\agent\models.py:236
-#: .\agent\models.py:255
+#: .\agent\forms.py:95 .\agent\forms.py:119 .\agent\models.py:245
+#: .\agent\models.py:264
 msgid "Change Date"
 msgstr ""
 
-#: .\agent\forms.py:96 .\agent\forms.py:120 .\agent\models.py:256
+#: .\agent\forms.py:96 .\agent\forms.py:120 .\agent\models.py:265
 #: .\agent\templates\agent_list.html:61
 msgid "Commission Per Visa With Transport"
 msgstr ""
 
-#: .\agent\forms.py:97 .\agent\forms.py:121 .\agent\models.py:257
+#: .\agent\forms.py:97 .\agent\forms.py:121 .\agent\models.py:266
 #: .\agent\templates\agent_list.html:61
 msgid "Commission Per Visa Without Transport"
 msgstr ""
@@ -1411,27 +1500,27 @@ msgstr ""
 msgid "Token"
 msgstr ""
 
-#: .\agent\models.py:217
+#: .\agent\models.py:226
 msgid "Nusuk"
 msgstr ""
 
-#: .\agent\models.py:218
+#: .\agent\models.py:227
 msgid "Tawaf"
 msgstr ""
 
-#: .\agent\models.py:219
+#: .\agent\models.py:228
 msgid "Way to Umrah"
 msgstr ""
 
-#: .\agent\models.py:220
+#: .\agent\models.py:229
 msgid "Baba Al Umrah"
 msgstr ""
 
-#: .\agent\models.py:238
+#: .\agent\models.py:247
 msgid "Visa Included Transport Price"
 msgstr ""
 
-#: .\agent\models.py:241 .\agent\templates\popup_forms\agent_price.html:32
+#: .\agent\models.py:250 .\agent\templates\popup_forms\agent_price.html:32
 msgid "Changed By"
 msgstr ""
 
@@ -1951,8 +2040,9 @@ msgstr ""
 
 #: .\agent\templates\popup_forms\agent_user.html:33
 #: .\agent\templates\popup_forms\agent_user.html:35
-#: .\core\templates\login.html:20 .\core\templates\login.html:21
-#: .\core\templates\login.html:109 .\mandoob\models.py:27
+#: .\core\templates\login.html:21 .\core\templates\login.html:22
+#: .\core\templates\login.html:110 .\core\templates\otp.html:101
+#: .\mandoob\models.py:27
 msgid "Password"
 msgstr ""
 
@@ -1965,7 +2055,7 @@ msgstr ""
 msgid "Google Authenticator Key"
 msgstr ""
 
-#: .\agent\templates\popup_forms\agent_user.html:49 .\company\models.py:276
+#: .\agent\templates\popup_forms\agent_user.html:49 .\company\models.py:273
 #: .\company\templates\employee_list.html:42
 #: .\company\templates\employee_list.html:53
 msgid "Active"
@@ -2174,7 +2264,7 @@ msgstr ""
 #: .\arrival_voucher\choices.py:38 .\arrival_voucher\forms.py:381
 #: .\arrival_voucher\models.py:13 .\arrival_voucher\models.py:25
 #: .\arrival_voucher\models.py:34 .\arrival_voucher\models.py:50
-#: .\core\templates\side_navigation\accounts.html:130
+#: .\core\templates\side_navigation\accounts.html:107
 #: .\core\templates\side_navigation\operations.html:15
 #: .\service_order\choices.py:7
 msgid "Approved"
@@ -2289,7 +2379,7 @@ msgstr ""
 #: .\arrival_voucher\models.py:40 .\arrival_voucher\models.py:49
 #: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:140
 #: .\arrival_voucher\templates\operating_schedule.html:226
-#: .\core\templates\side_navigation\accounts.html:126
+#: .\core\templates\side_navigation\accounts.html:103
 #: .\core\templates\side_navigation\operations.html:24 .\payment\models.py:51
 #: .\transport\models.py:154
 msgid "Pending"
@@ -2978,99 +3068,103 @@ msgstr ""
 msgid "Umrah Season"
 msgstr ""
 
-#: .\company\models.py:254
+#: .\company\models.py:251
 msgid "Designation name english"
 msgstr ""
 
-#: .\company\models.py:255
+#: .\company\models.py:252
 msgid "Designation name arabic"
 msgstr ""
 
-#: .\company\models.py:270 .\company\templates\employee_list.html:39
+#: .\company\models.py:267 .\company\templates\employee_list.html:39
 #: .\payment\templates\payroll_view.html:94
 msgid "ID No"
 msgstr ""
 
-#: .\company\models.py:271 .\company\templates\employee_list.html:40
+#: .\company\models.py:268 .\company\templates\employee_list.html:40
 #: .\company\templates\mandoob_list.html:39 .\mandoob\forms.py:36
 #: .\mandoob\models.py:22 .\payment\templates\payroll_view.html:95
 #: .\supplier\models.py:9 .\supplier\models.py:10
 msgid "Name"
 msgstr ""
 
-#: .\company\models.py:272 .\company\templates\designation_list.html:40
+#: .\company\models.py:269 .\company\templates\designation_list.html:40
 #: .\company\templates\employee_list.html:41
 #: .\company\templates\forms\designation_form.html:10
 #: .\payment\templates\payroll_view.html:96
 msgid "Designation"
 msgstr ""
 
-#: .\company\models.py:275 .\payment\models.py:277
+#: .\company\models.py:272 .\payment\models.py:277
 #: .\payment\templates\payroll_view.html:97
 msgid "Monthly Salary"
 msgstr ""
 
-#: .\company\models.py:277
+#: .\company\models.py:274
 msgid "Current Application"
 msgstr ""
 
-#: .\company\models.py:311
-msgid "Agent Account Tree"
+#: .\company\models.py:308
+msgid "Virtual Agents Account"
 msgstr ""
 
-#: .\company\models.py:315
+#: .\company\models.py:309
+msgid "External Agents Account"
+msgstr ""
+
+#: .\company\models.py:312
 msgid "Transport Company Account Tree"
 msgstr ""
 
-#: .\company\models.py:316
+#: .\company\models.py:313
 msgid "Transport Expense Account"
 msgstr ""
 
-#: .\company\models.py:319
+#: .\company\models.py:316
 msgid "GIB Main Account"
 msgstr ""
 
-#: .\company\models.py:320
+#: .\company\models.py:317
 msgid "GIB Virtual Account"
 msgstr ""
 
-#: .\company\models.py:323
+#: .\company\models.py:320
 msgid "Settlement Account"
 msgstr ""
 
-#: .\company\models.py:325
+#: .\company\models.py:322
 msgid "Umrah Visa Purchase Account"
 msgstr ""
 
-#: .\company\models.py:326
+#: .\company\models.py:323
 msgid "Umrah Visa Sales Account"
 msgstr ""
 
-#: .\company\models.py:328
+#: .\company\models.py:325
 msgid "Transport Purchase Account"
 msgstr ""
 
-#: .\company\models.py:329
+#: .\company\models.py:326
 msgid "Transport Sales Account"
 msgstr ""
 
-#: .\company\models.py:331
+#: .\company\models.py:328
 msgid "VAT Account"
 msgstr ""
 
-#: .\company\models.py:334
+#: .\company\models.py:331
 msgid "Agent Commission Account"
 msgstr ""
 
-#: .\company\models.py:336
+#: .\company\models.py:333
 msgid "Account Statement Note"
 msgstr ""
 
-#: .\company\models.py:337
+#: .\company\models.py:334
 msgid "Edit Hours"
 msgstr ""
 
-#: .\company\models.py:338
+#: .\company\models.py:335
 msgid "Delete Hours"
 msgstr ""
 
@@ -3379,20 +3473,20 @@ msgstr ""
 msgid "DZD"
 msgstr ""
 
-#: .\core\models.py:11
+#: .\core\models.py:9
 msgid "Country name english"
 msgstr ""
 
-#: .\core\models.py:12
+#: .\core\models.py:10
 msgid "Country name arabic"
 msgstr ""
 
-#: .\core\models.py:13
+#: .\core\models.py:11
 msgid "Country phone code"
 msgstr ""
 
 #: .\core\templates\apps.html:9 .\core\templates\email\otp.html:5
-#: .\core\templates\email\otp.html:10
+#: .\core\templates\email\otp.html:10 .\core\templates\login.html:5
 msgid "UmrahFlow"
 msgstr ""
 
@@ -3505,19 +3599,32 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: .\core\templates\login.html:14 .\core\templates\login.html:30
-#: .\core\templates\login.html:96
+#: .\core\templates\login.html:5
+msgid "Login"
+msgstr ""
+
+#: .\core\templates\login.html:15 .\core\templates\login.html:31
+#: .\core\templates\login.html:97 .\core\templates\otp.html:22
+#: .\core\templates\otp.html:88
 msgid "Log In"
 msgstr ""
 
-#: .\core\templates\login.html:24 .\core\templates\login.html:25
-#: .\core\templates\login.html:117
+#: .\core\templates\login.html:25 .\core\templates\login.html:26
+#: .\core\templates\login.html:118 .\core\templates\otp.html:109
 #: .\payment\templates\popup_forms\collect_payment.html:19
 msgid "Google Authenticator Token"
 msgstr ""
 
-#: .\core\templates\login.html:125
+#: .\core\templates\login.html:126 .\core\templates\otp.html:117
 msgid "Log in"
+msgstr ""
+
+#: .\core\templates\otp.html:14
+msgid "OTP Verification"
+msgstr ""
+
+#: .\core\templates\otp.html:16 .\core\templates\otp.html:17
+msgid "One time Password"
 msgstr ""
 
 #: .\core\templates\side_navigation.html:39
@@ -3547,36 +3654,43 @@ msgstr ""
 msgid "Salaries"
 msgstr ""
 
-#: .\core\templates\side_navigation\accounts.html:16
-#: .\core\templates\side_navigation\accounts.html:140
-msgid "Agents"
+#: .\core\templates\side_navigation\accounts.html:11
+msgid "Virtual Agent Accounts"
 msgstr ""
 
-#: .\core\templates\side_navigation\accounts.html:52
+#: .\core\templates\side_navigation\accounts.html:17
+msgid "External Agent Accounts"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:23
 msgid "Transactions"
 msgstr ""
 
-#: .\core\templates\side_navigation\accounts.html:70
-#: .\core\templates\side_navigation\accounts.html:90
+#: .\core\templates\side_navigation\accounts.html:41
+#: .\core\templates\side_navigation\accounts.html:61
 msgid "Add new"
 msgstr ""
 
-#: .\core\templates\side_navigation\accounts.html:100
+#: .\core\templates\side_navigation\accounts.html:77
 msgid "Invoices"
 msgstr ""
 
-#: .\core\templates\side_navigation\accounts.html:105
+#: .\core\templates\side_navigation\accounts.html:82
 #: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:15
 msgid "Visa Invoices"
 msgstr ""
 
-#: .\core\templates\side_navigation\accounts.html:113
+#: .\core\templates\side_navigation\accounts.html:90
 #: .\voucher\templates\transport_invoice_list.html:15
 msgid "Transport Invoices"
 msgstr ""
 
-#: .\core\templates\side_navigation\accounts.html:122
+#: .\core\templates\side_navigation\accounts.html:99
 msgid "Arrival Voucher Invoices"
+msgstr ""
+
+#: .\core\templates\side_navigation\accounts.html:117
+msgid "Agents"
 msgstr ""
 
 #: .\core\templates\side_navigation\agent.html:7
@@ -3887,14 +4001,6 @@ msgstr ""
 #: .\payment\templates\treasury.html:89 .\payment\templates\treasury.html:122
 #: .\payment\templates\treasury.html:161
 msgid "Reason"
-msgstr ""
-
-#: .\payment\models.py:244 .\payment\templates\payrolls.html:46
-msgid "Start Date"
-msgstr ""
-
-#: .\payment\models.py:245 .\payment\templates\payrolls.html:47
-msgid "End Date"
 msgstr ""
 
 #: .\payment\models.py:278
@@ -4538,15 +4644,15 @@ msgstr ""
 msgid "Add Transport Package"
 msgstr ""
 
-#: .\umrahflow\settings.py:175
+#: .\umrahflow\settings.py:176
 msgid "English"
 msgstr ""
 
-#: .\umrahflow\settings.py:176
+#: .\umrahflow\settings.py:177
 msgid "Arabic"
 msgstr ""
 
-#: .\umrahflow\settings.py:220
+#: .\umrahflow\settings.py:221
 msgid "The session has expired. Please login again to continue."
 msgstr ""
 

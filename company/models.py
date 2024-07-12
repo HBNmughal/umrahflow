@@ -52,13 +52,10 @@ class Company(models.Model ):
             Account.objects.create(account_name_en="Expenses", account_name_ar="مصروفات",  company=self, allow_child_accounts=True, allow_edit=False, account_type="X")
         if not UmrahVisaGroupInvoiceDefaultPrices.objects.filter(company=self).exists():
             UmrahVisaGroupInvoiceDefaultPrices.objects.create(company=self)
+        if not SystemSettings.objects.filter(company=self).exists():
+            SystemSettings.objects.create(company=self)
 
-        # 
-        from voucher.models import UmrahVisaGroupInvoice
 
-        vouchers = UmrahVisaGroupInvoice.objects.filter(company = self)
-        for voucher in vouchers:
-            voucher.save()
         
         super().save(*args, **kwargs) 
 
@@ -308,30 +305,30 @@ class SystemSettings(models.Model):
     company = models.OneToOneField('company.Company', on_delete=models.PROTECT, unique=True, verbose_name=_("Company"), related_name='company')
     default_currency = models.CharField(max_length=3, choices=currency_choices, default='SAR')
     # Agent Settings
-    agent_account_tree = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='agent_account_tree',verbose_name=_("Agent Account Tree"), null=True, blank=True)
-    
+    virtual_agents_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='virtual_agents_account', verbose_name=_('Virtual Agents Account'), null=True, blank=True, limit_choices_to={'account_type': 'A', 'level': 4})
+    external_agents_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='external_agents_account', verbose_name=_('External Agents Account'), null=True, blank=True, limit_choices_to={'account_type': 'A', 'level': 4})    
     
     # Transport Company Settings
-    transport_company_account_tree = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_company_account_tree', verbose_name=_('Transport Company Account Tree') , null=True, blank=True)
-    transport_expense_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_expense_account', verbose_name=_('Transport Expense Account'), null=True, blank=True)
+    transport_company_account_tree = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_company_account_tree', verbose_name=_('Transport Company Account Tree') , null=True, blank=True, limit_choices_to={'account_type': 'L', 'level': 4})
+    transport_expense_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_expense_account', verbose_name=_('Transport Expense Account'), null=True, blank=True, limit_choices_to={'account_type': 'X', 'level': 5})
 
     # GIB Accounts
-    gib_main_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='gib_main_account', verbose_name=_('GIB Main Account'), null=True, blank=True)
-    gib_virtual_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='gib_virtual_account', verbose_name=_('GIB Virtual Account'), null=True, blank=True)
+    gib_main_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='gib_main_account', verbose_name=(_('GIB Main Account')), null=True, blank=True, limit_choices_to={'account_type': 'A', 'level': 5})
+    gib_virtual_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='gib_virtual_account', verbose_name=_('GIB Virtual Account'), null=True, blank=True, limit_choices_to={'account_type': 'A', 'level': 5})
 
     # Settlement Account Settings
     settlement_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='settlement_account', verbose_name=_('Settlement Account'), null=True, blank=True)
 
-    umrah_visa_purchase_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='umrah_visa_purchase_account', verbose_name=_('Umrah Visa Purchase Account'), null=True, blank=True)
-    umrah_visa_sales_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='umrah_visa_sales_account', verbose_name=_('Umrah Visa Sales Account'), null=True, blank=True)
+    umrah_visa_purchase_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='umrah_visa_purchase_account', verbose_name=_('Umrah Visa Purchase Account'), null=True, blank=True, limit_choices_to={'account_type': 'X', 'level': 5})
+    umrah_visa_sales_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='umrah_visa_sales_account', verbose_name=_('Umrah Visa Sales Account'), null=True, blank=True, limit_choices_to={'account_type': 'R', 'level': 4})
 
-    transport_purchase_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_purchase_account', verbose_name=_('Transport Purchase Account'), null=True, blank=True)
-    transport_sales_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_sales_account', verbose_name=_('Transport Sales Account'), null=True, blank=True)
+    transport_purchase_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_purchase_account', verbose_name=_('Transport Purchase Account'), null=True, blank=True, limit_choices_to={'account_type': 'X', 'level': 5})
+    transport_sales_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_sales_account', verbose_name=_('Transport Sales Account'), null=True, blank=True, limit_choices_to={'account_type': 'R', 'level': 5})
 
-    vat_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='vat_account', verbose_name=_('VAT Account'), null=True, blank=True)
+    vat_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='vat_account', verbose_name=_('VAT Account'), null=True, blank=True, limit_choices_to={'account_type': 'L', 'level': 5})
 
     # Agent Commission Account Settings
-    agent_commission_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='agent_commission_account', verbose_name=_('Agent Commission Account'), null=True, blank=True)
+    agent_commission_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='agent_commission_account', verbose_name=_('Agent Commission Account'), null=True, blank=True, limit_choices_to={'account_type': 'L', 'level': 4})
 
     account_statement_note = models.TextField(verbose_name=_('Account Statement Note'), null=True, blank=True)
     edit_hours = models.PositiveIntegerField(verbose_name=_("Edit Hours"), default=24)
