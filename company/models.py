@@ -41,15 +41,15 @@ class Company(models.Model ):
         
         super().save(*args, **kwargs)
         if not Account.objects.filter(account_type="A", company=self).exists():
-            Account.objects.create(account_name_en="Assets", account_name_ar="أصول",  company=self, allow_child_accounts=True, allow_edit=False, account_type="A")
+            Account.objects.create(account_name_en="Assets", account_name_ar="أصول",  company=self,  allow_edit=False, account_type="A")
         if not Account.objects.filter(account_type="L", company=self).exists():
-            Account.objects.create(account_name_en="Liabilities", account_name_ar="خصوم",  company=self, allow_child_accounts=True, allow_edit=False, account_type="L")
+            Account.objects.create(account_name_en="Liabilities", account_name_ar="خصوم",  company=self,  allow_edit=False, account_type="L")
         if not Account.objects.filter(account_type="E", company=self).exists():
-            Account.objects.create(account_name_en="Equity", account_name_ar="حقوق ملكية",  company=self, allow_child_accounts=True, allow_edit=False, account_type="E")
+            Account.objects.create(account_name_en="Equity", account_name_ar="حقوق ملكية",  company=self,  allow_edit=False, account_type="E")
         if not Account.objects.filter(account_type="R", company=self).exists():
-            Account.objects.create(account_name_en="Revenue", account_name_ar="إيرادات",  company=self, allow_child_accounts=True, allow_edit=False, account_type="R")
+            Account.objects.create(account_name_en="Revenue", account_name_ar="إيرادات",  company=self,  allow_edit=False, account_type="R")
         if not Account.objects.filter(account_type="X", company=self).exists():
-            Account.objects.create(account_name_en="Expenses", account_name_ar="مصروفات",  company=self, allow_child_accounts=True, allow_edit=False, account_type="X")
+            Account.objects.create(account_name_en="Expenses", account_name_ar="مصروفات",  company=self,  allow_edit=False, account_type="X")
         if not UmrahVisaGroupInvoiceDefaultPrices.objects.filter(company=self).exists():
             UmrahVisaGroupInvoiceDefaultPrices.objects.create(company=self)
         if not SystemSettings.objects.filter(company=self).exists():
