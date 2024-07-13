@@ -785,6 +785,8 @@ def arrival_voucher(request, pk):
             allow_edit = True
             group_details_form.fields['agent'].queryset = Agent.objects.filter(company=request.user.employee.company)
             transport_brn_form.fields['transport_type'].queryset = TransportType.objects.filter(company=request.user.employee.company)
+            transport_brn_form.fields['transport_company'].queryset = TransportCompany.objects.filter(company=request.user.employee.company)
+            
 
 
             context = {
