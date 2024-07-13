@@ -21,7 +21,7 @@
     
       <!-- Main content -->
       <section class="content">
-        <form method="post" >
+        <form method="post" id="arrival_voucher_form" class="form" >
           {% csrf_token %}
         <div class="container-fluid">
 
@@ -36,7 +36,7 @@
                 <div class="card-body">
                         {{group_details_form.as_p}}
 
-                        <table class="table table-bordered table-sm">
+                        {% comment %} <table class="table table-bordered table-sm">
                           <thead>
                             <tr>
                               <th>#</th>
@@ -62,7 +62,7 @@
                               </td>
                             </tr>
                           </tfoot>
-                        </table>
+                        </table> {% endcomment %}
                 </div>
                 
               </div>
@@ -180,18 +180,18 @@
               </button>
               {% endif %}
               {% if allow_edit %}
-              <button class="btn btn-primary swalDefaultSuccess" type="submit">{% trans "Save" %}</button>
+              <button class="btn btn-primary swalDefaultSuccess" type="submit" id="saveButton" disabled>{% trans "Save" %}</button>
               {% endif %}
 
               
               {% if voucher %}
-              <button type="button" class="btn btn-primary swalDefaultSuccess"
-                    onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}', title: 'xtf', w: 900, h: 900});">
+              <button type="button" class="btn btn-primary printButton swalDefaultSuccess"
+                    onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}', title: 'xtf', w: 900, h: 900});" id="printVoucher" >
                     {% trans "Print Voucher" %} 
                 </button>
 
-                <button type="button" class="btn btn-success swalDefaultSuccess"
-                    onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}?type=transport_request', title: 'xtf', w: 900, h: 900});">
+                <button type="button" class="btn btn-success printButton swalDefaultSuccess"
+                    onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}?type=transport_request', title: 'xtf', w: 900, h: 900});" id="printTransportRequest" >
                     {% trans "Print Transport Request" %} 
                 </button>
               {% endif %}
@@ -274,6 +274,46 @@
       <!-- /.modal-dialog -->
     </div>
    {% endif %}
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+   <script>
+    $(document).ready(function(){
+      const originalData = $('#arrival_voucher_form').serialize();
+      let isFormChanged = false;
+      let isFormSubmitting = false;
+
+      $('#arrival_voucher_form').on('input change', function() {
+          const currentData = $(this).serialize();
+          if (originalData !== currentData) {
+              isFormChanged = true;
+              $('#saveButton').prop('disabled', false);
+              $('#printTransportRequest').prop('disabled', true);
+              $('#printVoucher').prop('disabled', true);
+          } else {
+              isFormChanged = false;
+              $('#saveButton').prop('disabled', true);
+              $('#printTransportRequest').prop('disabled', false);
+              $('#printVoucher').prop('disabled', false);
+
+
+          }
+      });
+
+      $('#arrival_voucher_form').on('submit', function() {
+          isFormSubmitting = true;
+      });
+
+      window.addEventListener('beforeunload', function (e) {
+          if (isFormChanged && !isFormSubmitting) {
+              // Show a confirmation dialog
+              const confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
+              (e || window.event).returnValue = confirmationMessage; // Gecko + IE
+              return confirmationMessage; // Webkit, Safari, Chrome etc.
+          }
+      });
+  });
+</script>
 
 
 
