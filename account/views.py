@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Account, JournalEntry, ReceiptVoucher, PaymentVoucher, AccountSettlementCredit, AccountSettlementDebit, Transaction, delete_allowed, edit_allowed
-from .forms import AccountForm, ReceiptVoucherForm,  AccountSettlementCreditForm, AccountSettlementDebitForm, PaymentVoucherForm, TransactionForm, LedgerEntryFormSet
+from .models import Account, JournalEntry, ReceiptVoucher, PaymentVoucher, Transaction, delete_allowed, edit_allowed
+from .forms import AccountForm, ReceiptVoucherForm,  TransactionForm, LedgerEntryFormSet, PaymentVoucherForm
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib import messages
@@ -138,50 +138,6 @@ def account_view(request, pk):
 
     context = {'account': account, 'journal_entries': entries, 'agent':agent}
     return render(request, 'account.html', context)
-
-
-@login_required
-def account_settlement_credit_add_view(request, pk):
-    if request.method == 'POST':
-        form = AccountSettlementCreditForm(request.POST)
-        if form.is_valid():
-            voucher = form.save(commit=False)
-            voucher.company = request.user.employee.company
-            voucher.user = request.user
-            voucher.save()
-            voucher_id = voucher.pk
-            messages.success(request, _('Account Settlement Credit has been added.'))
-            return render(request, "close_popup.html")
-        else:
-            form = AccountSettlementCreditForm(request.POST)
-            return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Credit')})
-    else:
-        form = AccountSettlementCreditForm()
-        form.fields['company'].initial = request.user.employee.company
-        form.fields['credit_account'].initial = Account.objects.get(pk=pk).pk
-        return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Credit')})
-
-@login_required
-def account_settlement_debit_add_view(request, pk):
-    if request.method == 'POST':
-        form = AccountSettlementDebitForm(request.POST)
-        if form.is_valid():
-            voucher = form.save(commit=False)
-            voucher.company = request.user.employee.company
-            voucher.user = request.user
-            voucher.save()
-            voucher_id = voucher.pk
-            
-            messages.success(request, _('Account Settlement Debit has been added.'))
-            return render(request, "close_popup.html")
-        else:
-            form = AccountSettlementDebitForm(request.POST)
-            return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Debit')})
-    else:
-        form = AccountSettlementDebitForm()
-        form.fields['company'].initial = request.user.employee.company
-        form.fields['debit_account'].initial = Account.objects.get(pk=pk).pk
-        return render(request, 'form.html', {'form': form, 'title': _('Account Settlement' + ' ' + 'Debit')})
 
 
 
@@ -485,7 +441,6 @@ def create_transaction(request):
             description_en = transaction_form.cleaned_data['description']
             description_ar = transaction_form.cleaned_data['description']
             reference_no = transaction_form.cleaned_data['reference_no']
-            
             ledger_entries = []
             for form in ledger_entry_formset:
                 if form.cleaned_data:
@@ -503,7 +458,8 @@ def create_transaction(request):
                     description_en=description_en,
                     description_ar=description_ar,
                     reference_no=reference_no,
-                    ledger_entries=ledger_entries
+                    ledger_entries=ledger_entries,
+                    date = transaction_form.cleaned_data['date']
                 )
                 messages.success(request, 'Transaction created successfully!')
                 return redirect('transaction_view', pk=transaction.pk)

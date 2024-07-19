@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account, ReceiptVoucher, PaymentVoucher, AccountSettlementCredit, AccountSettlementDebit, JournalEntry
+from .models import Account, ReceiptVoucher, PaymentVoucher, JournalEntry
 from django.utils.translation import gettext_lazy as _
 from django import forms
 import calculation
@@ -145,88 +145,6 @@ class PaymentVoucherForm(forms.ModelForm):
             'payment_method': (''),
         }
 
-class AccountSettlementCreditForm(forms.ModelForm):
-    class Meta:
-        model = AccountSettlementCredit
-        fields = [
-            'company',
-            'date',
-            'credit_account',
-            'amount',
-            'description',
-            'reference_no',
-            
-        ]
-        widgets = {
-            'company': forms.HiddenInput(attrs={'class': ''}),
-            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'credit_account': forms.HiddenInput(attrs={'class': 'form-control'}),
-            'amount': forms.NumberInput(attrs={'class': 'form-control'}),
-            'description': forms.TextInput(attrs={'class': 'form-control'}),
-            'reference_no': forms.TextInput(attrs={'class': 'form-control'}),        }
-        labels = {
-            'company': _('Company'),
-            'date': _('Date'),
-            'transaction': _('Transaction'),
-            'credit_account': _('Credit Account'),
-            'amount': _('Amount'),
-            'description': _('Description'),
-            'reference_no': _('Reference No'),
-            'payment_method': _('Payment Method'),
-        }
-        help_texts = {
-            'company': (''),
-            'date': (''),
-            'transaction': (''),
-            'credit_account': (''),
-            'amount': (''),
-            'description': (''),
-            'reference_no': (''),
-            'payment_method': (''),
-        }
-
-
-class AccountSettlementDebitForm(forms.ModelForm):
-    class Meta:
-        model = AccountSettlementDebit
-        fields = [
-            'company',
-            'date',
-            'debit_account',
-            'amount',
-            'description',
-            'reference_no',
-            
-        ]
-        widgets = {
-            'company': forms.HiddenInput(attrs={'class': ''}),
-            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'debit_account': forms.HiddenInput(attrs={'class': 'form-control'}),
-            'amount': forms.NumberInput(attrs={'class': 'form-control'}),
-            'description': forms.TextInput(attrs={'class': 'form-control'}),
-            'reference_no': forms.TextInput(attrs={'class': 'form-control'}),        }
-        labels = {
-            'company': _('Company'),
-            'date': _('Date'),
-            'transaction': _('Transaction'),
-            'debit_account': _('Debit Account'),
-            'amount': _('Amount'),
-            'description': _('Description'),
-            'reference_no': _('Reference No'),
-            'payment_method': _('Payment Method'),
-        }
-        help_texts = {
-            'company': (''),
-            'date': (''),
-            'transaction': (''),
-            'debit_account': (''),
-            'amount': (''),
-            'description': (''),
-            'reference_no': (''),
-            'payment_method': (''),
-        }
-
-
 class LedgerEntryForm(forms.Form):
     account = forms.ModelChoiceField(queryset=Account.objects.all(), widget=forms.Select(attrs={'class': 'form-control select2'}), label=_('Account'))
     description = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Description'))
@@ -237,6 +155,7 @@ class LedgerEntryForm(forms.Form):
 LedgerEntryFormSet = forms.formset_factory(LedgerEntryForm, extra=50)
 
 class TransactionForm(forms.Form):
+    date = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}), label=_('Date'))
     description = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Description'))
     reference_no = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), required=False, label=_('Reference No'))
     total_debit = forms.DecimalField(widget=calculation.SummaryInput(function=calculation.SUM, field='debit',attrs={'readonly': 'readonly', 'class':'form-control'}), initial=0.00, label=_('Total Debit'))

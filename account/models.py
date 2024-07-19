@@ -255,7 +255,7 @@ class Account(models.Model):
 class Transaction(models.Model):
     company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
     financial_year = models.ForeignKey('account.FinancialYear', on_delete=models.CASCADE, null=True, blank=True)
-    date = models.DateField(verbose_name=_("Date"), auto_now=True, auto_now_add=False)
+    date = models.DateField(verbose_name=_("Date"))
     description_en = models.CharField(max_length=256, verbose_name=_("Description English"), null=True, blank=True)
     description_ar = models.CharField(max_length=256, verbose_name=_("Description Arabic"), null=True, blank=True)
     reference_no = models.CharField(max_length=256, verbose_name=_("Reference"), null=True, blank=True)
@@ -318,7 +318,7 @@ class Transaction(models.Model):
 
 class JournalEntry(models.Model):
     company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
-    date = models.DateField(verbose_name=_("Date"), auto_now=True, auto_now_add=False)
+    date = models.DateField(verbose_name=_("Date"))
     transaction = models.ForeignKey('account.Transaction', on_delete=models.CASCADE, blank=True, null=True, related_name='entries')
     description_en = models.CharField(max_length=256, verbose_name=_("Description English"), null=True, blank=True)
     description_ar = models.CharField(max_length=256, verbose_name=_("Description Arabic"), null=True, blank=True)
@@ -347,6 +347,7 @@ class JournalEntry(models.Model):
         
 
     def save(self, *args, **kwargs):
+        self.date = self.transaction.date
         self.clean()
         super().save(*args, **kwargs)
     class Meta:
@@ -630,127 +631,4 @@ class PaymentVoucher(models.Model):
 
         
 
-class AccountSettlementCredit(models.Model):
-    company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
-    date = models.DateField(verbose_name=_("Date"))
-    transaction = models.ForeignKey('account.Transaction', on_delete=models.CASCADE, blank=True, null=True)
-    credit_account = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='credit_account_settlement_credit')
-    amount = models.DecimalField(max_digits=16, decimal_places=2, verbose_name=_("Amount"))
-    description = models.CharField(max_length=256, verbose_name=_("Description"))
-    reference_no = models.CharField(max_length=64, verbose_name=_("Reference Number"), null=True, blank=True)
-    payment_method = models.CharField(max_length=16, choices=payment_method_choices_settlement, default='settlement' , verbose_name=_("Payment Method"), null=True, blank=True)
 
-    class Meta:
-        verbose_name = _("Account Settlement Credit")
-        verbose_name_plural = _("Account Settlement Credits")
-    
-    def __str__(self):
-        return f"{self.credit_account} - Settlement - {self.amount}"
-    
-
-    
-    def save(self, *args, **kwargs):
-        from company.models import SystemSettings
-
-        super().save(*args, **kwargs)
-        if not self.transaction:
-            transaction = Transaction.objects.create_transaction_with_entries(
-            company=self.company,
-            description_en=self.description,
-            description_ar=self.description,
-            reference_no=self.reference_no,
-            ledger_entries=[
-                {
-                'account': self.credit_account.id,
-                'transaction_type': 'credit',
-                'amount': self.amount
-                },
-                {
-                'account': SystemSettings.objects.get(company=self.company).settlement_account.id,
-                'transaction_type': 'debit',
-                'amount': self.amount
-                }
-            ]
-            )
-
-            self.transaction = transaction
-            super().save(*args, **kwargs)
-
-        else:
-            transaction = Transaction.objects.get(pk=self.transaction.pk)
-            transaction.company = self.company
-            transaction.date = self.date
-            transaction.description_en = self.description
-            transaction.description_ar = self.description
-            transaction.reference_no = self.reference_no
-            transaction.save()
-    def delete(self, *args, **kwargs):
-        transaction = Transaction.objects.get(pk=self.transaction.pk)
-        transaction.delete()
-        super().delete(*args, **kwargs)
-
-
-
-
-class AccountSettlementDebit(models.Model):
-    company = models.ForeignKey('company.Company', on_delete=models.CASCADE)
-    date = models.DateField(verbose_name=_("Date"))
-    transaction = models.ForeignKey('account.Transaction', on_delete=models.CASCADE, blank=True, null=True)
-    debit_account = models.ForeignKey('account.Account', on_delete=models.CASCADE, related_name='debit_account_settlement_debit')
-    amount = models.DecimalField(max_digits=16, decimal_places=2, verbose_name=_("Amount"))
-    description = models.CharField(max_length=256, verbose_name=_("Description"))
-    reference_no = models.CharField(max_length=64, verbose_name=_("Reference Number"), null=True, blank=True)
-    payment_method = models.CharField(max_length=16, choices=payment_method_choices_settlement, default='settlement' , verbose_name=_("Payment Method"), null=True, blank=True)
-
-    class Meta:
-        verbose_name = _("Account Settlement Debit")
-        verbose_name_plural = _("Account Settlement Debits")
-    
-    def __str__(self):
-        return f"{self.debit_account} - Settlement - {self.amount}"
-    
-    def save(self, *args, **kwargs):
-        from company.models import SystemSettings
-
-        super().save(*args, **kwargs)
-        if not self.transaction:
-            transaction = Transaction()
-            transaction.company = self.company
-            transaction.date = self.date
-            transaction.description_en = self.description
-            transaction.description_ar = self.description
-            transaction.reference_no = self.reference_no
-
-            transaction.save()
-            self.transaction = transaction
-
-            jounral_endry_debit = JournalEntry()
-            jounral_endry_debit.company = self.company
-            jounral_endry_debit.date = self.date
-            jounral_endry_debit.transaction = transaction
-            jounral_endry_debit.account = self.debit_account
-            jounral_endry_debit.debit = self.amount
-            jounral_endry_debit.credit = 0.00
-            jounral_endry_debit.save()
-
-            journal_entry_credit = JournalEntry()
-            journal_entry_credit.company = self.company
-            journal_entry_credit.date = self.date
-            journal_entry_credit.transaction = transaction
-            journal_entry_credit.account = SystemSettings.objects.get(company=self.company).settlement_account
-            journal_entry_credit.debit = 0.00
-            journal_entry_credit.credit = self.amount
-            journal_entry_credit.save()
-
-            super().save(*args, **kwargs)
-
-        else:
-            transaction = Transaction.objects.get(pk=self.transaction.pk)
-            transaction.company = self.company
-            transaction.date = self
-
-
-    def delete(self, *args, **kwargs):
-        transaction = Transaction.objects.get(pk=self.transaction.pk)
-        transaction.delete()
-        super().delete(*args, **kwargs)

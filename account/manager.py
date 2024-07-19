@@ -3,10 +3,10 @@ from django.db import transaction as db_transaction
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from decimal import Decimal
-
+import datetime
 class TransactionManager(models.Manager):
 
-    def create_transaction_with_entries(self, company, description_en, description_ar, reference_no, ledger_entries):
+    def create_transaction_with_entries(self, company, description_en, description_ar, reference_no, ledger_entries, date=None):
         # Validate total debits and credits
         total_debits = Decimal(0.00)
         total_credits = Decimal(0.00)
@@ -28,7 +28,7 @@ class TransactionManager(models.Manager):
 
             # Create the transaction
             
-            transaction = self.create(company=company, description_en=description_en, description_ar=description_ar, reference_no=reference_no)
+            transaction = self.create(company=company, description_en=description_en, description_ar=description_ar, reference_no=reference_no, date=date if date is not None else datetime.date.today())
             # Create the journal entries
             for entry in ledger_entries:
                 from account.models import Account, JournalEntry
