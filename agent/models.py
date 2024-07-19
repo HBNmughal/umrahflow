@@ -13,6 +13,7 @@ import company.models as company_models
 from account.models import Account  
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
+from visa_group.models import UmrahVisaGroupInvoice
 
 # Create your models here.
 
@@ -122,53 +123,13 @@ class Agent(models.Model):
             hidden_name += n[0] + '*'*(len(n)-1) + ' '
         return hidden_name.strip()
     
-    
-    def account_balance(self):
-        credit_transactions = AgentPaymentTransaction.objects.filter(agent=self, transaction_type='c').aggregate(Sum('amount'))
-        if credit_transactions['amount__sum'] is None:
-            credit_transactions = 0.00
-        else:
-            credit_transactions = credit_transactions['amount__sum']
-        debit_transactions = AgentPaymentTransaction.objects.filter(agent=self, transaction_type='d').aggregate(Sum('amount'))
-        if debit_transactions['amount__sum'] is None:
-            debit_transactions = 0.00
-        else:
-            debit_transactions = debit_transactions['amount__sum']
-        balance = float(credit_transactions) - float(debit_transactions)
-        return round(balance, 2)
-    def due_balance(self):
-        credit_transactions = AgentPaymentTransaction.objects.filter(agent=self, transaction_type='r').aggregate(Sum('amount'))
-        if credit_transactions['amount__sum'] is None:
-            credit_transactions = 0.00
-        else:
-            credit_transactions = credit_transactions['amount__sum']
-        debit_transactions = AgentPaymentTransaction.objects.filter(agent=self, transaction_type='rd').aggregate(Sum('amount'))
-        if debit_transactions['amount__sum'] is None:
-            debit_transactions = 0.00
-        else:
-            debit_transactions = debit_transactions['amount__sum']
-        balance = float(credit_transactions) - float(debit_transactions)
-        return round(balance, 2)
 
-    def commission_balance(self):
-        credit_transactions = AgentPaymentTransaction.objects.filter(agent=self, transaction_type='co').aggregate(Sum('amount'))
-        if credit_transactions['amount__sum'] is None:
-            credit_transactions = 0.00
-        else:
-            credit_transactions = credit_transactions['amount__sum']
-        debit_transactions = AgentPaymentTransaction.objects.filter(agent=self, transaction_type='cod').aggregate(Sum('amount'))
-        if debit_transactions['amount__sum'] is None:
-            debit_transactions = 0.00
-        else:
-            debit_transactions = debit_transactions['amount__sum']
-        balance = float(credit_transactions) - float(debit_transactions)
-        return round(balance, 2)
 
     def visa_sale_price(self):
         return self.sale_price
     
     def total_visas(self):
-        t = AgentVoucher.objects.filter(agent=self).aggregate(Sum('pax'))
+        t = UmrahVisaGroupInvoice.objects.filter(agent=self).aggregate(Sum('pax'))
         # return value without point 0.00
         if t['pax__sum'] is None:
             t = 0

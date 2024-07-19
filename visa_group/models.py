@@ -148,8 +148,8 @@ class UmrahVisaGroupInvoice(models.Model):
             if self.pk is None:
                 visa_sale_transaction = Transaction.objects.create_transaction_with_entries(
                 company=self.company,
-                description_en= f'Visa Group Invoice {self.group_no}',
-                description_ar= f'فاتورة مجموعة تأشيرات {self.group_no}',
+                description_en= f'Visa Group Invoice No. {self.voucher_no}, Group No. {self.group_no}, PAX: {self.pax}',
+                description_ar= f'فاتورة مجموعة تأشيرات رقم {self.voucher_no}, رقم المجموعة {self.group_no}, عدد التاشيرات: {self.pax}',
                 reference_no= self.group_no,
                 ledger_entries=[
                     # Debit Entry for Agent Account
@@ -251,8 +251,8 @@ class UmrahVisaGroupInvoice(models.Model):
             if self.pk is None:
                 visa_sale_transaction = Transaction.objects.create_transaction_with_entries(
                 company=self.company,
-                description_en= f'Visa Group Invoice {self.group_no}',
-                description_ar= f'فاتورة مجموعة تأشيرات {self.group_no}',
+                description_en= f'Visa Group Invoice No. {self.voucher_no}, Group No. {self.group_no}, PAX: {self.pax}',
+                description_ar= f'فاتورة مجموعة تأشيرات رقم {self.voucher_no}, رقم المجموعة {self.group_no}, عدد التاشيرات: {self.pax}',
                 reference_no= self.group_no,
                 ledger_entries=[
                     # Entry for Agent Account
@@ -299,8 +299,8 @@ class UmrahVisaGroupInvoice(models.Model):
             else:
                 # Update Transaction
                 visa_sale_transaction = self.transaction
-                visa_sale_transaction.description_en = f'Visa Group Invoice {self.group_no}'
-                visa_sale_transaction.description_ar = f'فاتورة مجموعة تأشيرات {self.group_no}'
+                visa_sale_transaction.description_en = f'Visa Group Invoice No. {self.voucher_no}, Group No. {self.group_no}, PAX: {self.pax}'
+                visa_sale_transaction.description_ar = f'فاتورة مجموعة تأشيرات رقم {self.voucher_no}, رقم المجموعة {self.group_no}, عدد التاشيرات: {self.pax}'
                 visa_sale_transaction.reference_no = self.group_no
                 visa_sale_transaction.save()
 
