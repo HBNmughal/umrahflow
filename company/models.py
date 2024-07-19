@@ -303,7 +303,7 @@ class CompanyEmail(models.Model):
 
 class SystemSettings(models.Model):
     company = models.OneToOneField('company.Company', on_delete=models.PROTECT, unique=True, verbose_name=_("Company"), related_name='company')
-    default_currency = models.CharField(max_length=3, choices=currency_choices, default='SAR')
+    default_currency = models.CharField(max_length=3, choices=currency_choices, default='SAR', verbose_name=_("Default Currency"))
     # Agent Settings
     virtual_agents_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='virtual_agents_account', verbose_name=_('Virtual Agents Account'), null=True, blank=True, limit_choices_to={'account_type': 'A', 'level': 4})
     external_agents_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='external_agents_account', verbose_name=_('External Agents Account'), null=True, blank=True, limit_choices_to={'account_type': 'A', 'level': 4})    
@@ -320,7 +320,7 @@ class SystemSettings(models.Model):
     settlement_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='settlement_account', verbose_name=_('Settlement Account'), null=True, blank=True)
 
     umrah_visa_purchase_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='umrah_visa_purchase_account', verbose_name=_('Umrah Visa Purchase Account'), null=True, blank=True, limit_choices_to={'account_type': 'X', 'level': 5})
-    umrah_visa_sales_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='umrah_visa_sales_account', verbose_name=_('Umrah Visa Sales Account'), null=True, blank=True, limit_choices_to={'account_type': 'R', 'level': 4})
+    umrah_visa_sales_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='umrah_visa_sales_account', verbose_name=_('Umrah Visa Sales Account'), null=True, blank=True, limit_choices_to={'account_type': 'R', 'level': 5})
 
     transport_purchase_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_purchase_account', verbose_name=_('Transport Purchase Account'), null=True, blank=True, limit_choices_to={'account_type': 'X', 'level': 5})
     transport_sales_account = models.ForeignKey('account.Account', on_delete=models.PROTECT, related_name='transport_sales_account', verbose_name=_('Transport Sales Account'), null=True, blank=True, limit_choices_to={'account_type': 'R', 'level': 5})
