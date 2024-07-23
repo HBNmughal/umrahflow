@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Receipt Voucher" %}</title>
+    <title>{% trans "Payment Voucher" %} {{voucher.id}} - {{voucher.paid_to.name}} - {% trans "Amount" %} {{voucher.amount}} {{request.user.employee.company.settings.get_default_currency_display}}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .voucher {

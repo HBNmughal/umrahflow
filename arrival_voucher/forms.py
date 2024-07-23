@@ -21,7 +21,6 @@ class ArrivalVoucherGroupDetailsForm(forms.ModelForm):
     class Meta:
         model = ArrivalVoucher
         fields = [
-            'company',
             'agent',
             'country',
             'group_name',
@@ -30,11 +29,12 @@ class ArrivalVoucherGroupDetailsForm(forms.ModelForm):
             'group_leader',
             'group_leader_contact',
             'agent_referance_no',
-            'voucher_remarks'
+            'voucher_remarks',
+            'company',
+
         ]
         widgets = {
             'company': forms.HiddenInput(),
-            'agent': forms.Select(attrs={'class': 'form-control select2'}),
             'country': forms.Select(attrs={'class': 'form-control select2'}),
             'group_name': forms.TextInput(attrs={'class': 'form-control'}),
             'group_no': forms.TextInput(attrs={'class': 'form-control'}),
@@ -42,7 +42,8 @@ class ArrivalVoucherGroupDetailsForm(forms.ModelForm):
             'group_leader': forms.TextInput(attrs={'class': 'form-control'}),
             'group_leader_contact': forms.TextInput(attrs={'class': 'form-control'}),
             'agent_referance_no': forms.TextInput(attrs={'class': 'form-control'}),
-            'voucher_remarks': forms.Textarea(attrs={'class': 'form-control'}),
+            'voucher_remarks': forms.Textarea(attrs={'class': 'form-control', 'rows': 1}),
+            'agent': forms.Select(attrs={'class': 'form-control select2'}),
         }
         labels = {
             'company': _('Company'),
@@ -61,7 +62,6 @@ class ArrivalVoucherFlightDetailsForm(forms.ModelForm):
     class Meta:
         model = ArrivalVoucher
         fields = [
-            'company',
             'arrival_flight_no',
             'arrival_date',
             'arrival_time',
@@ -70,6 +70,7 @@ class ArrivalVoucherFlightDetailsForm(forms.ModelForm):
             'departure_date',
             'departure_time',
             'departure_airport',
+            'company',
 
         ]
         widgets = {
@@ -100,9 +101,9 @@ class ArrivalVoucherAccommodationDetailsForm(forms.ModelForm):
     class Meta:
         model = ArrivalVoucher
         fields = [
-            'company',
             'makkah_hotel',
-            'medina_hotel'
+            'medina_hotel',
+            'company',
         ]
         widgets = {
             'company': forms.HiddenInput(),
@@ -128,13 +129,13 @@ class TransportBrnForm(forms.ModelForm):
     class Meta:
         model = ArrivalVoucher
         fields = [
-            'company',
-            'transport_package',
+            # 'transport_package',
             'transport_type',
             'transport_company',
             'transport_brn',
             'transport_status',
             'transport_remarks',
+            'company',
 
         ]
         widgets = {
@@ -144,7 +145,7 @@ class TransportBrnForm(forms.ModelForm):
             'transport_brn': forms.TextInput(attrs={'class': 'form-control'}),
             'transport_status': forms.Select(attrs={'class': 'form-control select2'}),
             'package_purchase_amount': forms.NumberInput(attrs={'class': 'form-control'}),
-            'transport_remarks': forms.Textarea(attrs={'class': 'form-control'}),
+            'transport_remarks': forms.Textarea(attrs={'class': 'form-control', 'rows': 1}),
             'transport_package': forms.Select(attrs={'class': 'form-control select2'}),
         }
 

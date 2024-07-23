@@ -3,175 +3,19 @@
 {% load static %}
 {% block title %} {% trans "Arrival Vouchers" %} {% endblock %}
 {% block content %}
+{% load crispy_forms_tags %}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       {% include "error.html" %}
       <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 text-dark">{% trans "Voucher " %} - UP-{{voucher.id}}</h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-  
       
-    
-      <!-- Main content -->
-      <section class="content">
-        <form method="post" id="arrival_voucher_form" class="form" >
-          {% csrf_token %}
-        <div class="container-fluid">
 
-    
-          <div class="row">
-            <div class="col-md-6">
-    
-              <div class="card card-dark">
-                <div class="card-header">
-                  <h3 class="card-title">{% trans "Group Details" %}</h3>
-                </div>
-                <div class="card-body">
-                        {{group_details_form.as_p}}
-
-                        {% comment %} <table class="table table-bordered table-sm">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>{% trans "Group No." %}</th>
-                              <th>{% trans "PAX" %}</th>
-                              <th>{% trans "Action"%}</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>1</td>
-                              <td>1</td>
-                              <td><a href="javascript:;" onclick="popupCenter({url: '', title: 'xtf', w: 900, h: 900});" class="btn btn-sm"><i class="fe fe-edit" aria-hidden="true"></i></a></td>
-                            </tr>
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                              <td colspan="2"></td>
-                              <td><strong>10</strong></td>
-                              <td>
-                                <a href="javascript:;" onclick="popupCenter({url: '', title: 'xtf', w: 900, h: 900});" class="btn btn-sm btn-primary"><i class="fe fe-plus" aria-hidden="true"></i>{% trans "" %}</a>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table> {% endcomment %}
-                </div>
-                
-              </div>
-              <!-- /.card -->
-    
-              
-              <div class="card card-dark">
-                <div class="card-header">
-                  <h3 class="card-title">{% trans "Rawdah Permit" %}</h3>
-                </div>
-                <div class="card-body">
-                        {{rawdah_form.as_p}}
-                </div>
-              </div>
-              <!-- /.card -->
-            </div>
-            <!-- /.col (left) -->
-            <div class="col-md-6">
-              <div class="card shadow">
-                <div class="card-header">
-
-                    <h3 class="card-title">{% trans "Flight Details" %}</h3>
-                </div>
-                <div class="card-body">
-                        {{arrival_voucher_flight_details_form.as_p}}
-                </div>
-                
-                </div>
-                <div class="card card-dark">
-                  <div class="card-header">
-                    <h3 class="card-title">{% trans "Accommodation Details" %}</h3>
-                  </div>
-                  <div class="card-body">
-                          {{arrival_voucher_accommodation_details_form.as_p}}
-                  </div>
-                </div>
-                <!-- /.card -->
-                <div class="card card-dark">
-                  <div class="card-header">
-                    <h3 class="card-title">{% trans "Transport BRN" %}</h3>
-                  </div>
-                  <div class="card-body">
-                          {{transport_brn_form.as_p}}
-                  </div>                 
-                </div>
-              </div>
-              <!-- /.card -->
-
-            </div>
-            <div class="card card-dark">
-                <div class="card-header">
-                <h3 class="card-title">{% trans "Trips" %}</h3>
-
-                <div class="card-tools" {% if request.LANGUAGE_CODE == 'ar' %}style="float: left;"{% endif %} >
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <a href="javascript:;" onclick="popupCenter({url: '{% url "voucher_movement_history" voucher.id %}', title: 'xtf', w: 900, h: 900});" class="btn btn-sm"><i class="fas fa-history" aria-hidden="true"></i> {% trans "Trips History" %}</a>
-                    
-                </div>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="table-responsive">
-              {% if voucher %}
-                {% csrf_token %}
-                {{ transport_formset.non_form_errors.as_ul }}
-                  <table id="formset" class="table table-bordered table-sm table-hover" >
-                    
-                  {% for form in transport_formset.forms %}
-                    {% if forloop.first %}
-                    <thead><tr>
-                      {% for field in form.visible_fields %}
-                      <th>{{ field.label|capfirst }}</th>
-                      {% endfor %}
-                    </tr></thead>
-                    {% endif %}
-                    <tr class="{% cycle row1 row2 %}">
-                    {% for field in form.visible_fields %}
-                      <td>
-                      {# Include the hidden fields in the form #}
-                      {% if forloop.first %}
-                        {% for hidden in form.hidden_fields %}
-                        {{ hidden }}
-                        {% endfor %}
-                      {% endif %}
-                        {{ field }}
-                        <div class="text-danger">{{ field.errors.as_ul }}</div>
-                      </td>
-                    {% endfor %}
-                      
-                      {% endfor %}
-                  </table>
-                  {% for hidden in transport_formset.management_form %}
-                    {{ hidden }}
-                  {% endfor %}
-                {% else %}
-                <p>{% trans "Trips will be shown when you save voucher first time." %}</p>
-                {% endif %}
-                </div>
-                
-
-            </div>
-            <div >           
-          </div>
-          <!-- /.card -->
-          </div>
-          <div class="card card-success card-outline">
-            <div class="card-body">
-              {% if allow_approval %}
+      <div class="row align-items-center my-3">
+        <div class="col">
+          <h2 class="page-title">{% trans "Voucher " %} - UP-{{voucher.id}}</h2>
+        </div>
+        <div class="col-auto">
+          {% if allow_approval %}
               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#approve">
                 {% trans "Approve" %}
               </button>
@@ -179,9 +23,7 @@
                 {% trans "Reject" %}
               </button>
               {% endif %}
-              {% if allow_edit %}
-              <button class="btn btn-primary swalDefaultSuccess" type="submit" id="saveButton" disabled>{% trans "Save" %}</button>
-              {% endif %}
+              
 
               
               {% if voucher %}
@@ -190,21 +32,176 @@
                     {% trans "Print Voucher" %} 
                 </button>
 
-                <button type="button" class="btn btn-success printButton swalDefaultSuccess"
+                <button type="button" class="btn btn-warning printButton swalDefaultSuccess"
                     onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}?type=transport_request', title: 'xtf', w: 900, h: 900});" id="printTransportRequest" >
                     {% trans "Print Transport Request" %} 
                 </button>
               {% endif %}
-                
-              
+              {% if allow_edit %}
+              <button class="btn btn-success swalDefaultSuccess" type="submit" id="saveButton" onClick="document.getElementById('arrival_voucher_form').submit();" 
+              >{% trans "Save" %}</button>
+              {% endif %}
+        </div>
+      </div>
+  
+      
+    
+      <!-- Main content -->
+      <section class="content">
+        <form method="post" id="arrival_voucher_form" class="form">
+          {% csrf_token %}
+        <div class="container-fluid">
+            <div class="card shadow">
+              <div class="card-body">
+                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="group-details-tab" data-toggle="tab" href="#group_details" role="tab" aria-controls="group-details" aria-selected="false">{% trans "Group Details" %}</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" id="flight-details-tab" data-toggle="tab" href="#flight_details" role="tab" aria-controls="flight-details" aria-selected="false">{% trans "Flight Details" %}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="accommodation-tab" data-toggle="tab" href="#accommodation_details" role="tab" aria-controls="accommodation" aria-selected="false">{% trans "Accommodation" %}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="transport-tab" data-toggle="tab" href="#transport_details" role="tab" aria-controls="transport" aria-selected="false">{% trans "Transport" %}</a>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  
+                  <div class="tab-pane fade show active" id="group_details" role="tabpanel" aria-labelledby="group-details-tab"> 
+ 
+                  {% for field in group_details_form %}
+                    {% if forloop.counter0|divisibleby:3 %}
+                        <div class="row">
+                    {% endif %}
+                    
+                            <div class="form-group col-md-4">
+                                {{ field|as_crispy_field }}
+                            </div>
+                    
+                    {% if forloop.counter|divisibleby:3 or forloop.last %}
+                        </div>
+                    {% endif %}
+                  {% endfor %}
+                  </div>
+                  <div class="tab-pane fade" id="flight_details" role="tabpanel" aria-labelledby="flight-details-tab"> 
+                    {% for field in arrival_voucher_flight_details_form %}
+                    {% if forloop.counter0|divisibleby:3 %}
+                        <div class="row">
+                    {% endif %}
+                    
+                            <div class="form-group col-md-4">
+                                {{ field|as_crispy_field }}
+                            </div>
+                    
+                    {% if forloop.counter|divisibleby:3 or forloop.last %}
+                        </div>
+                    {% endif %}
+                  {% endfor %}
+
+                  </div>
+                  <div class="tab-pane fade" id="accommodation_details" role="tabpanel" aria-labelledby="accommodation-details-tab"> 
+                    {% for field in arrival_voucher_accommodation_details_form %}
+                    {% if forloop.counter0|divisibleby:3 %}
+                        <div class="row">
+                    {% endif %}
+                    
+                            <div class="form-group col-md-4">
+                                {{ field|as_crispy_field }}
+                            </div>
+                    
+                    {% if forloop.counter|divisibleby:3 or forloop.last %}
+                        </div>
+                    {% endif %}
+                  {% endfor %}
+                  </div>
+                  <div class="tab-pane fade" id="transport_details" role="tabpanel" aria-labelledby="transport-details-tab"> 
+                    {% for field in transport_brn_form %}
+                    {% if forloop.counter0|divisibleby:3 %}
+                        <div class="row">
+                    {% endif %}
+                    
+                            <div class="form-group col-md-4">
+                                {{ field|as_crispy_field }}
+                            </div>
+                    
+                    {% if forloop.counter|divisibleby:3 or forloop.last %}
+                        </div>
+                    {% endif %}
+                  {% endfor %}
+                    <div class="card card-dark">
+                      <div class="card-header">
+                      <h3 class="card-title">{% trans "Trips" %}</h3>
+      
+                      <div class="card-tools" {% if request.LANGUAGE_CODE == 'ar' %}style="float: left;"{% endif %} >
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                          <a href="javascript:;" onclick="popupCenter({url: '{% url "voucher_movement_history" voucher.id %}', title: 'xtf', w: 900, h: 900});" class="btn btn-sm"><i class="fas fa-history" aria-hidden="true"></i> {% trans "Trips History" %}</a>
+                          
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="table-responsive">
+                    {% if voucher %}
+                      {% csrf_token %}
+                      {{ transport_formset.non_form_errors.as_ul }}
+                        <table id="formset" class="table table-bordered table-sm table-hover" >
+                          
+                        {% for form in transport_formset.forms %}
+                          {% if forloop.first %}
+                          <thead><tr>
+                            {% for field in form.visible_fields %}
+                            <th>{{ field.label|capfirst }}</th>
+                            {% endfor %}
+                          </tr></thead>
+                          {% endif %}
+                          <tr class="{% cycle row1 row2 %}">
+                          {% for field in form.visible_fields %}
+                            <td>
+                            {# Include the hidden fields in the form #}
+                            {% if forloop.first %}
+                              {% for hidden in form.hidden_fields %}
+                              {{ hidden }}
+                              {% endfor %}
+                            {% endif %}
+                              {{ field }}
+                              <div class="text-danger">{{ field.errors.as_ul }}</div>
+                            </td>
+                          {% endfor %}
+                            
+                            {% endfor %}
+                        </table>
+                        {% for hidden in transport_formset.management_form %}
+                          {{ hidden }}
+                        {% endfor %}
+                      {% else %}
+                      <p>{% trans "Trips will be shown when you save voucher first time." %}</p>
+                      {% endif %}
+                      </div>
+                      
+      
+                  </div>
+                  <div >           
+                </div>
+                <!-- /.card -->
+                </div>
+              </div>
             </div>
+          </form>
+
+    
+
+            </div>
+            
+          </div>
             <!-- /.card -->
           </div>
         </div>
           </div>
           <!-- /.row -->
         </div>
-      </form>
         </section>
 
 
@@ -276,7 +273,7 @@
    {% endif %}
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+{% comment %} 
    <script>
     $(document).ready(function(){
       const originalData = $('#arrival_voucher_form').serialize();
@@ -313,7 +310,7 @@
           }
       });
   });
-</script>
+</script> {% endcomment %}
 
 
 

@@ -75,7 +75,7 @@ accounts_status_choices = (
 
 class ArrivalVoucher(models.Model):
     company = models.ForeignKey('company.Company', on_delete=models.PROTECT)
-    agent = models.ForeignKey('agent.Agent', on_delete=models.PROTECT)
+    agent = models.ForeignKey('agent.Agent', on_delete=models.PROTECT, verbose_name=_('Agent'), null=True, blank=False)
     country = models.ForeignKey('core.Country', on_delete=models.PROTECT, verbose_name=_('Country'),null=True, blank=False)
     agent_referance_no = models.CharField(verbose_name=_('Agent Reference No'), max_length=256, null=True, blank=True)
     group_name = models.CharField(verbose_name=_('Group name'), max_length=32,null=True, blank=True)

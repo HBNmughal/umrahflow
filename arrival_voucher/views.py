@@ -33,6 +33,7 @@ def arrival_voucher_list(request):
     # get all arrival vouchers for the company order by date
     arrival_vouchers = ArrivalVoucher.objects.filter(company=request.user.employee.company).order_by('-id')
     add_voucher_form.fields['company'].initial = request.user.employee.company
+    
     arrival_voucher_filter_form = ArrivalVoucherFilterForm(request.GET or None)
     context = {
         'arrival_vouchers': arrival_vouchers,
@@ -729,9 +730,13 @@ def arrival_vouchers_list_htmx(request):
 def arrival_voucher(request, pk):
     voucher = get_object_or_404(ArrivalVoucher, pk=pk, company=request.user.employee.company)
     group_details_form = ArrivalVoucherGroupDetailsForm(instance=voucher)
+    group_details_form.fields['agent'].queryset = Agent.objects.filter(company=request.user.employee.company)
     arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(instance=voucher)
     arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(instance=voucher)
     transport_brn_form = TransportBrnForm(instance=voucher)
+    transport_brn_form.fields['transport_type'].queryset = TransportType.objects.filter(company=request.user.employee.company)
+    transport_brn_form.fields['transport_company'].queryset = TransportCompany.objects.filter(company=request.user.employee.company)
+    
     transport_movement_formset = TransportMovementFormset(instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
     rawdah_form = RawdahPermitForm(instance=voucher)
     if request.method == "POST":
@@ -743,7 +748,7 @@ def arrival_voucher(request, pk):
         transport_movement_formset = TransportMovementFormset(request.POST, instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
         rawdah_form = RawdahPermitForm(request.POST, instance=voucher)
 
-        if group_details_form.is_valid() and arrival_voucher_flight_details_form.is_valid() and arrival_voucher_accommodation_details_form.is_valid() and transport_brn_form.is_valid() and transport_movement_formset.is_valid() and rawdah_form.is_valid():
+        if group_details_form.is_valid() and arrival_voucher_flight_details_form.is_valid() and arrival_voucher_accommodation_details_form.is_valid() and transport_brn_form.is_valid() and transport_movement_formset.is_valid():
             if group_details_form.has_changed():
                 group_details_form.save()
             if arrival_voucher_flight_details_form.has_changed():
@@ -752,8 +757,6 @@ def arrival_voucher(request, pk):
                 arrival_voucher_accommodation_details_form.save()
             if transport_brn_form.has_changed():
                 transport_brn_form.save()
-            if rawdah_form.has_changed():
-                rawdah_form.save()
             if transport_movement_formset.has_changed():
                 for form in transport_movement_formset:
                     # check if detele
@@ -786,9 +789,8 @@ def arrival_voucher(request, pk):
             group_details_form.fields['agent'].queryset = Agent.objects.filter(company=request.user.employee.company)
             transport_brn_form.fields['transport_type'].queryset = TransportType.objects.filter(company=request.user.employee.company)
             transport_brn_form.fields['transport_company'].queryset = TransportCompany.objects.filter(company=request.user.employee.company)
-            
 
-
+     
             context = {
                 'group_details_form': group_details_form,
                 'arrival_voucher_flight_details_form': arrival_voucher_flight_details_form,
