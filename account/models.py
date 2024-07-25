@@ -540,14 +540,7 @@ class PaymentVoucher(models.Model):
         self.date = datetime.now()
         super().save(*args, **kwargs)
         
-        credit_account = None
-        debit_account = None
-        if self.paid_to.account_type in ['A', 'E', 'R']:
-            credit_account = self.paid_to
-            debit_account = self.from_account
-        elif self.paid_to.account_type in ['L', 'X']:
-            credit_account = self.from_account
-            debit_account = self.paid_to
+
         
         
 
@@ -559,14 +552,14 @@ class PaymentVoucher(models.Model):
             reference_no=self.reference_no,
             ledger_entries=[
                 {
-                'account': credit_account.id,
-                'transaction_type': 'credit',
+                'account': self.paid_to.id,
+                'transaction_type': 'debit',
                 'amount': self.amount,
                 'entry_for': 'payment_voucher_paid_to'
                 },
                 {
-                'account': debit_account.id,
-                'transaction_type': 'debit',
+                'account': self.from_account.id,
+                'transaction_type': 'credit',
                 'amount': self.amount,
                 'entry_for': 'payment_voucher_from_account'
                 }

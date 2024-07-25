@@ -25,6 +25,7 @@
           <i class="fe fe-file-text fe-16"></i>
           <span class="ml-3 item-text">{% trans "Arrival Vouchers" %}
           </span>
+          {% if request.user.employee.company.arrival_vouchers_pending > 0 %}
             <div class="row">
               {% if request.user.employee.company.arrival_vouchers_pending > 0 %}
                   <span class="badge badge-warning blink">
@@ -32,12 +33,13 @@
                   </span>
               {% endif %}
             </div>
+          {% endif %}
       </a>
 
         <ul class="collapse list-unstyled pl-4 w-100" id="arrival_vouchers">
           <li class="nav-item">
             <a class="nav-link pl-3" href="{% url 'arrival_voucher_list' %}?status=approved"><span class="ml-1 item-text">{% trans "Approved" %}</span>
-              {% if request.user.employee.company.arrival_vouchers_approved > 0 %}
+            {% if request.user.employee.company.arrival_vouchers_approved > 0 %}
             <span class="badge badge-success right">
               {{request.user.employee.company.arrival_vouchers_approved}}
             </span>
@@ -45,9 +47,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link pl-3 blink" href="{% url 'arrival_voucher_list' %}?status=pending"><span class="ml-1 item-text">{% trans "Pending" %}</span>
+            <a class="nav-link pl-3 " href="{% url 'arrival_voucher_list' %}?status=pending"><span class="ml-1 item-text">{% trans "Pending" %}</span>
               {% if request.user.employee.company.arrival_vouchers_pending > 0 %}
-              <span class="badge badge-warning  right">
+              <span class="badge badge-warning blink right">
                 {{request.user.employee.company.arrival_vouchers_pending}}
               </span>
               {% endif %}
