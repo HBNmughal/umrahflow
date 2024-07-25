@@ -1,5 +1,20 @@
 {% load i18n %}
 
+{% comment %} <p class="text-muted nav-heading mt-4 mb-1">
+  <span>{% trans "Notifications" %}</span>
+</p>
+<ul class="navbar-nav flex-fill w-100 mb-2">
+  <li class="nav-item w-100 blink">
+    <a class="nav-link" href="#arrival_vouchers">
+      <i class="fe fe-bell fe-16"></i>
+      <span class="ml-3 item-text">{% trans "Arrival Vouchers" %}</span>
+    </a>
+  </li>
+</ul>
+
+
+ {% endcomment %}
+
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>{% trans "Operations" %}</span>
     </p>
@@ -8,8 +23,17 @@
       <li class="nav-item dropdown">
         <a href="#arrival_vouchers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
           <i class="fe fe-file-text fe-16"></i>
-          <span class="ml-3 item-text">{% trans "Arrival Vouchers" %}</span>
-        </a>
+          <span class="ml-3 item-text">{% trans "Arrival Vouchers" %}
+          </span>
+            <div class="row">
+              {% if request.user.employee.company.arrival_vouchers_pending > 0 %}
+                  <span class="badge badge-warning blink">
+                    {%   trans "Pending" %}: {{request.user.employee.company.arrival_vouchers_pending}}
+                  </span>
+              {% endif %}
+            </div>
+      </a>
+
         <ul class="collapse list-unstyled pl-4 w-100" id="arrival_vouchers">
           <li class="nav-item">
             <a class="nav-link pl-3" href="{% url 'arrival_voucher_list' %}?status=approved"><span class="ml-1 item-text">{% trans "Approved" %}</span>
@@ -21,9 +45,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link pl-3" href="{% url 'arrival_voucher_list' %}?status=pending"><span class="ml-1 item-text">{% trans "Pending" %}</span>
+            <a class="nav-link pl-3 blink" href="{% url 'arrival_voucher_list' %}?status=pending"><span class="ml-1 item-text">{% trans "Pending" %}</span>
               {% if request.user.employee.company.arrival_vouchers_pending > 0 %}
-              <span class="badge badge-warning right">
+              <span class="badge badge-warning  right">
                 {{request.user.employee.company.arrival_vouchers_pending}}
               </span>
               {% endif %}

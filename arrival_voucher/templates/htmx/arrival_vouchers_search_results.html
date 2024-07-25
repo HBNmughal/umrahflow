@@ -44,7 +44,15 @@
                         {% endif %}
                       </td>
                       <td class="align-middle">
-                        {{v.get_status_display}}                     
+                        {% if v.status == 'pending' %}
+                          <span class="badge badge-warning blink">
+                            {{v.get_status_display}}
+                          </span>
+                        {% else %}
+                          <span class="badge badge-success">
+                            {{v.get_status_display}}
+                          </span>
+                        {% endif %}
                       </td>
                       <td>
                         {% if v.starting_date %}
