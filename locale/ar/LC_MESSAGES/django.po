@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: .\arrival_voucher\templates\arrival_voucher.html:61
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-13 01:22+0300\n"
-"PO-Revision-Date: 2024-07-13 02:19+0300\n"
+"POT-Creation-Date: 2024-07-26 17:30+0300\n"
+"PO-Revision-Date: 2024-07-26 17:48+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -18,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: .\account\choices.py:6 .\account\templates\print\debit_voucher_test.html:71
 #: .\payment\models.py:17
@@ -73,13 +72,12 @@ msgid "Level 5"
 msgstr "مستوي الخامس"
 
 #: .\account\forms.py:28 .\account\forms.py:73 .\account\forms.py:124
-#: .\account\forms.py:168 .\account\forms.py:209 .\agent\forms.py:92
-#: .\agent\forms.py:116 .\agent\models.py:23 .\agent\models.py:261
-#: .\arrival_voucher\forms.py:48 .\arrival_voucher\forms.py:88
-#: .\company\models.py:305 .\invoice\forms.py:27 .\invoice\forms.py:53
-#: .\invoice\forms.py:128 .\mandoob\forms.py:35 .\mandoob\models.py:21
-#: .\service_order\models.py:7 .\supplier\models.py:8 .\visa_group\models.py:18
-#: .\visa_group\models.py:352 .\voucher\models.py:16
+#: .\agent\forms.py:93 .\agent\forms.py:117 .\agent\models.py:24
+#: .\agent\models.py:219 .\arrival_voucher\forms.py:49
+#: .\arrival_voucher\forms.py:104 .\company\models.py:305 .\invoice\forms.py:27
+#: .\invoice\forms.py:53 .\invoice\forms.py:128 .\mandoob\forms.py:35
+#: .\mandoob\models.py:21 .\service_order\models.py:7 .\supplier\models.py:8
+#: .\visa_group\models.py:18 .\visa_group\models.py:352 .\voucher\models.py:16
 msgid "Company"
 msgstr "الشركة"
 
@@ -103,17 +101,18 @@ msgstr "السماح بحسابات الفرعي"
 msgid "Account Type"
 msgstr "نوع الحساب"
 
-#: .\account\forms.py:74 .\account\forms.py:125 .\account\forms.py:169
-#: .\account\forms.py:210 .\account\models.py:258 .\account\models.py:321
-#: .\account\models.py:387 .\account\models.py:513 .\account\models.py:635
-#: .\account\models.py:697 .\account\templates\account.html:127
+#: .\account\forms.py:74 .\account\forms.py:125 .\account\forms.py:158
+#: .\account\models.py:260 .\account\models.py:323 .\account\models.py:390
+#: .\account\models.py:511 .\account\templates\account.html:131
 #: .\account\templates\payment_voucher.html:34
 #: .\account\templates\payment_voucher_list.html:48
 #: .\account\templates\print\debit_voucher_test.html:58
 #: .\account\templates\print\debit_voucher_test.html:92
 #: .\account\templates\print\payment_voucher_print.html:67
 #: .\account\templates\print\payment_voucher_print.html:101
-#: .\account\templates\print\print_account_statement.html:57
+#: .\account\templates\print\print_account_statement.html:34
+#: .\account\templates\print\print_account_statement.html:79
+#: .\account\templates\print\print_account_statement.html:160
 #: .\account\templates\print\receipt_voucher_print.html:58
 #: .\account\templates\print\receipt_voucher_print.html:92
 #: .\account\templates\receipt_voucher.html:20
@@ -124,7 +123,7 @@ msgstr "نوع الحساب"
 #: .\agent\templates\popup_forms\agent_price.html:28
 #: .\agent\templates\print\agent_transport_program.html:155
 #: .\agent\templates\print\agent_transport_program.html:216
-#: .\arrival_voucher\forms.py:362
+#: .\arrival_voucher\forms.py:440
 #: .\arrival_voucher\templates\arrival_voucher_view.html:94
 #: .\arrival_voucher\templates\arrival_voucher_view.html:199
 #: .\arrival_voucher\templates\operating_schedule.html:59
@@ -162,8 +161,8 @@ msgstr "نوع الحساب"
 msgid "Date"
 msgstr "التاريخ"
 
-#: .\account\forms.py:75 .\account\forms.py:126 .\account\forms.py:170
-#: .\account\forms.py:211 .\account\templates\create_transaction.html:5
+#: .\account\forms.py:75 .\account\forms.py:126
+#: .\account\templates\create_transaction.html:5
 #: .\account\templates\create_transaction.html:14
 #: .\account\templates\payment_voucher.html:41
 #: .\account\templates\payment_voucher_list.html:55
@@ -174,7 +173,7 @@ msgstr "التاريخ"
 msgid "Transaction"
 msgstr "العملية"
 
-#: .\account\forms.py:76 .\account\models.py:390
+#: .\account\forms.py:76 .\account\models.py:393
 msgid "Collected From"
 msgstr "استلمت من"
 
@@ -186,13 +185,13 @@ msgstr "استلمت من (الاسم)"
 msgid "To Account"
 msgstr "الى حساب"
 
-#: .\account\forms.py:79 .\account\forms.py:130 .\account\forms.py:172
-#: .\account\forms.py:213 .\account\models.py:392 .\account\models.py:518
-#: .\account\models.py:638 .\account\models.py:700
-#: .\account\templates\payment_voucher.html:38
+#: .\account\forms.py:79 .\account\forms.py:130 .\account\models.py:395
+#: .\account\models.py:516 .\account\templates\payment_voucher.html:38
 #: .\account\templates\payment_voucher_list.html:52
 #: .\account\templates\print\debit_voucher_test.html:55
+#: .\account\templates\print\payment_voucher_print.html:9
 #: .\account\templates\print\payment_voucher_print.html:64
+#: .\account\templates\print\receipt_voucher_print.html:9
 #: .\account\templates\print\receipt_voucher_print.html:55
 #: .\account\templates\receipt_voucher.html:20
 #: .\account\templates\receipt_voucher_list.html:52 .\invoice\models.py:17
@@ -209,11 +208,9 @@ msgstr "الى حساب"
 msgid "Amount"
 msgstr "المبلغ"
 
-#: .\account\forms.py:80 .\account\forms.py:131 .\account\forms.py:173
-#: .\account\forms.py:214 .\account\forms.py:232 .\account\forms.py:240
-#: .\account\models.py:393 .\account\models.py:519 .\account\models.py:639
-#: .\account\models.py:701
-#: .\account\templates\print\print_account_statement.html:58
+#: .\account\forms.py:80 .\account\forms.py:131 .\account\forms.py:150
+#: .\account\forms.py:159 .\account\models.py:396 .\account\models.py:517
+#: .\account\templates\print\print_account_statement.html:37
 #: .\account\templates\transaction.html:71
 #: .\payment\templates\agent_account_view.html:168
 #: .\payment\templates\print\print_agent_account_statement.html:100
@@ -221,13 +218,12 @@ msgstr "المبلغ"
 msgid "Description"
 msgstr "البيان"
 
-#: .\account\forms.py:81 .\account\forms.py:132 .\account\forms.py:174
-#: .\account\forms.py:215 .\account\forms.py:241
-#: .\account\templates\account.html:136
+#: .\account\forms.py:81 .\account\forms.py:132 .\account\forms.py:160
+#: .\account\templates\account.html:140
 #: .\account\templates\payment_voucher.html:39
 #: .\account\templates\payment_voucher_list.html:53
 #: .\account\templates\print\payment_voucher_print.html:84
-#: .\account\templates\print\print_account_statement.html:59
+#: .\account\templates\print\print_account_statement.html:38
 #: .\account\templates\print\receipt_voucher_print.html:75
 #: .\account\templates\receipt_voucher_list.html:53
 #: .\account\templates\transaction_list.html:55 .\payment\models.py:93
@@ -239,10 +235,8 @@ msgstr "البيان"
 msgid "Reference No"
 msgstr "رقم المرجع"
 
-#: .\account\forms.py:82 .\account\forms.py:133 .\account\forms.py:175
-#: .\account\forms.py:216 .\account\models.py:395 .\account\models.py:521
-#: .\account\models.py:641 .\account\models.py:703
-#: .\account\templates\payment_voucher.html:40
+#: .\account\forms.py:82 .\account\forms.py:133 .\account\models.py:398
+#: .\account\models.py:519 .\account\templates\payment_voucher.html:40
 #: .\account\templates\payment_voucher_list.html:54
 #: .\account\templates\print\debit_voucher_test.html:71
 #: .\account\templates\print\payment_voucher_print.html:80
@@ -251,7 +245,7 @@ msgstr "رقم المرجع"
 msgid "Payment Method"
 msgstr "طريقة الدفع"
 
-#: .\account\forms.py:127 .\account\models.py:516
+#: .\account\forms.py:127 .\account\models.py:514
 msgid "Paid To"
 msgstr "المستلم"
 
@@ -263,18 +257,10 @@ msgstr "صرفنا الى (الاسم)"
 msgid "From Account"
 msgstr "من حساب"
 
-#: .\account\forms.py:171
-msgid "Credit Account"
-msgstr "حساب دائن"
-
-#: .\account\forms.py:212
-msgid "Debit Account"
-msgstr "حساب مدين"
-
-#: .\account\forms.py:231 .\account\models.py:151 .\account\models.py:325
+#: .\account\forms.py:149 .\account\models.py:151 .\account\models.py:327
 #: .\account\templates\account.html:5 .\account\templates\account.html:16
 #: .\account\templates\account_list.html:81
-#: .\account\templates\print\print_account_statement.html:41
+#: .\account\templates\print\print_account_statement.html:14
 #: .\account\templates\transaction.html:92 .\agent\models.py:40
 #: .\payment\templates\account_view.html:4
 #: .\payment\templates\account_view.html:15
@@ -292,9 +278,9 @@ msgstr "حساب مدين"
 msgid "Account"
 msgstr "حساب"
 
-#: .\account\forms.py:233 .\account\models.py:326
-#: .\account\templates\account.html:128
-#: .\account\templates\print\print_account_statement.html:60
+#: .\account\forms.py:151 .\account\models.py:328
+#: .\account\templates\account.html:132
+#: .\account\templates\print\print_account_statement.html:40
 #: .\account\templates\transaction.html:93
 #: .\account\templates\transaction_list.html:52 .\payment\models.py:22
 #: .\payment\models.py:33 .\payment\models.py:71
@@ -308,9 +294,9 @@ msgstr "حساب"
 msgid "Debit"
 msgstr "مدين"
 
-#: .\account\forms.py:234 .\account\models.py:327
-#: .\account\templates\account.html:129
-#: .\account\templates\print\print_account_statement.html:61
+#: .\account\forms.py:152 .\account\models.py:329
+#: .\account\templates\account.html:133
+#: .\account\templates\print\print_account_statement.html:41
 #: .\account\templates\transaction.html:94
 #: .\account\templates\transaction_list.html:53 .\payment\models.py:21
 #: .\payment\models.py:32 .\payment\models.py:70
@@ -324,11 +310,11 @@ msgstr "مدين"
 msgid "Credit"
 msgstr "دائن"
 
-#: .\account\forms.py:242
+#: .\account\forms.py:161
 msgid "Total Debit"
 msgstr "اجمالي المدين"
 
-#: .\account\forms.py:243
+#: .\account\forms.py:162
 msgid "Total Credit"
 msgstr "اجمالي الدائن"
 
@@ -413,125 +399,112 @@ msgstr "حساب الشركة"
 msgid "Company Accounts"
 msgstr "حسابات الشركة"
 
-#: .\account\models.py:152 .\payment\templates\accounts_list.html:4
+#: .\account\models.py:152 .\core\templates\side_navigation\agent.html:8
+#: .\payment\templates\accounts_list.html:4
 #: .\payment\templates\accounts_list.html:14
 msgid "Accounts"
 msgstr "الحسابات"
 
-#: .\account\models.py:245
+#: .\account\models.py:247
 msgid "You can't add more child accounts to this account"
 msgstr "لا يمكنك إضافة المزيد من حسابات الفرعي إلى هذا الحساب"
 
-#: .\account\models.py:259 .\account\models.py:323
+#: .\account\models.py:261 .\account\models.py:325
 msgid "Description English"
 msgstr "البيان بالانجليزي"
 
-#: .\account\models.py:260 .\account\models.py:324
+#: .\account\models.py:262 .\account\models.py:326
 msgid "Description Arabic"
 msgstr "البيان بالعربي"
 
-#: .\account\models.py:261
+#: .\account\models.py:263
 msgid "Reference"
 msgstr "المرجع"
 
-#: .\account\models.py:277 .\account\models.py:504 .\account\models.py:627
+#: .\account\models.py:279 .\account\models.py:502 .\account\models.py:618
 msgid "You are not allowed to delete this transaction"
 msgstr "لا يسمح لك بحذف هذه المعاملة"
 
-#: .\account\models.py:293 .\account\models.py:376
+#: .\account\models.py:295 .\account\models.py:379
 msgid "Unknown"
 msgstr "مجهول"
 
-#: .\account\models.py:310
+#: .\account\models.py:312
 msgid "Debit and Credit are not equal"
 msgstr "مدين و دائن ليسا متساويين"
 
-#: .\account\models.py:330
+#: .\account\models.py:332
 msgid "Entry For"
 msgstr "الدخول ل"
 
-#: .\account\models.py:338
+#: .\account\models.py:340
 msgid "Debit and Credit should be positive numbers"
 msgstr "يجب أن يكون مدين و دائن أرقامًا موجبة"
 
-#: .\account\models.py:342
+#: .\account\models.py:344
 msgid "You can only select accounts of level 5"
 msgstr "يمكنك فقط تحديد حسابات المستوى 5"
 
-#: .\account\models.py:344
+#: .\account\models.py:346
 msgid "Debit or Credit should be greater than 0.00"
 msgstr "يجب أن يكون مدين او دائن أكبر من 0.00"
 
-#: .\account\models.py:346
+#: .\account\models.py:348
 msgid "You can only select either Debit or Credit"
 msgstr "يمكنك فقط اختيار إما مدين أو دائن"
 
-#: .\account\models.py:353
+#: .\account\models.py:356
 msgid "Journal Entry"
 msgstr "قيد"
 
-#: .\account\models.py:354 .\account\templates\transaction.html:85
+#: .\account\models.py:357 .\account\templates\transaction.html:85
 msgid "Journal Entries"
 msgstr "قيود"
 
-#: .\account\models.py:394 .\account\models.py:520 .\account\models.py:640
-#: .\account\models.py:702 .\account\templates\print\debit_voucher_test.html:75
+#: .\account\models.py:397 .\account\models.py:518
+#: .\account\templates\print\debit_voucher_test.html:75
 msgid "Reference Number"
 msgstr "رقم المرجع"
 
-#: .\account\models.py:403 .\account\templates\payment_voucher.html:5
+#: .\account\models.py:406 .\account\templates\payment_voucher.html:5
 #: .\account\templates\payment_voucher.html:16
 #: .\account\templates\print\debit_voucher_test.html:9
 #: .\account\templates\print\debit_voucher_test.html:52
-#: .\account\templates\print\payment_voucher_print.html:9
 #: .\account\templates\print\receipt_voucher_print.html:9
 #: .\account\templates\print\receipt_voucher_print.html:52
-#: .\account\templates\receipt_voucher_form.html:6 .\account\views.py:273
-#: .\account\views.py:284 .\account\views.py:296 .\account\views.py:323
-#: .\account\views.py:334 .\account\views.py:350
+#: .\account\templates\receipt_voucher_form.html:6 .\account\views.py:234
+#: .\account\views.py:245 .\account\views.py:257 .\account\views.py:284
+#: .\account\views.py:295 .\account\views.py:311
 msgid "Receipt Voucher"
 msgstr "سند قبض"
 
-#: .\account\models.py:404 .\core\templates\side_navigation\accounts.html:32
+#: .\account\models.py:407 .\core\templates\side_navigation\accounts.html:38
 msgid "Receipt Vouchers"
 msgstr "سندات قبض"
 
-#: .\account\models.py:410 .\account\models.py:536
+#: .\account\models.py:413 .\account\models.py:534
 msgid "Amount should be a positive number"
 msgstr "يجب أن يكون المبلغ رقمًا موجبًا"
 
-#: .\account\models.py:487 .\account\models.py:610
+#: .\account\models.py:485 .\account\models.py:601
 msgid "You are not allowed to edit this transaction"
 msgstr "غير مسموح لك بتعديل هذه المعاملة"
 
-#: .\account\models.py:528 .\account\templates\payment_voucher_form.html:6
+#: .\account\models.py:526 .\account\templates\payment_voucher_form.html:6
+#: .\account\templates\print\payment_voucher_print.html:9
 #: .\account\templates\print\payment_voucher_print.html:58
-#: .\account\views.py:374 .\account\views.py:387 .\account\views.py:410
-#: .\account\views.py:429
+#: .\account\views.py:335 .\account\views.py:348 .\account\views.py:371
+#: .\account\views.py:390
 msgid "Payment Voucher"
 msgstr "سند صرف"
 
-#: .\account\models.py:529 .\core\templates\side_navigation\accounts.html:52
+#: .\account\models.py:527 .\core\templates\side_navigation\accounts.html:58
 msgid "Payment Vouchers"
 msgstr "سندات صرف"
 
-#: .\account\models.py:644 .\account\views.py:157 .\account\views.py:162
-msgid "Account Settlement Credit"
-msgstr "تسوية حساب دائن"
-
-#: .\account\models.py:645
-msgid "Account Settlement Credits"
-msgstr "تسوية حساب دائن"
-
-#: .\account\models.py:706 .\account\views.py:179 .\account\views.py:184
-msgid "Account Settlement Debit"
-msgstr "تسوية حساب مدين"
-
-#: .\account\models.py:707
-msgid "Account Settlement Debits"
-msgstr "تسوية حساب مدين"
-
-#: .\account\templates\account.html:34 .\account\templates\account.html:130
+#: .\account\templates\account.html:37
+#: .\account\templates\agents_accounts_view.html:104
+#: .\agent\templates\agent_dashboard.html:49
 #: .\payment\templates\account_view.html:31
 #: .\payment\templates\account_view.html:90
 #: .\payment\templates\agent_account_view.html:34
@@ -541,14 +514,16 @@ msgstr "تسوية حساب مدين"
 msgid "Account Balance"
 msgstr "الرصيد الحساب"
 
-#: .\account\templates\account.html:87 .\account\templates\account.html:249
+#: .\account\templates\account.html:91 .\account\templates\account.html:262
 #: .\payment\templates\account_view.html:191
 #: .\payment\templates\agent_account_view.html:91
 #: .\payment\templates\agent_account_view.html:277
 msgid "Print Account Statement"
 msgstr "طباعة كشف الحساب"
 
-#: .\account\templates\account.html:125 .\account\templates\transaction.html:65
+#: .\account\templates\account.html:129
+#: .\account\templates\print\print_account_statement.html:35
+#: .\account\templates\transaction.html:65
 #: .\account\templates\transaction_list.html:49
 #: .\payment\templates\account_view.html:86
 #: .\payment\templates\agent_account_view.html:119
@@ -561,11 +536,24 @@ msgstr "طباعة كشف الحساب"
 msgid "Transaction No."
 msgstr "رقم العملية."
 
-#: .\account\templates\account.html:126 .\account\templates\transaction.html:91
+#: .\account\templates\account.html:130
+#: .\account\templates\print\print_account_statement.html:36
+#: .\account\templates\transaction.html:91
 msgid "Entry No."
 msgstr "رقم القيد."
 
-#: .\account\templates\account.html:131
+#: .\account\templates\account.html:134
+#: .\account\templates\account_list.html:82
+#: .\account\templates\print\print_account_statement.html:42
+#: .\account\templates\transport_companies_list.html:42
+#: .\payment\templates\popup_forms\account_credit_form.html:25
+#: .\payment\templates\popup_forms\account_debit_form.html:25
+#: .\payment\templates\popup_forms\account_transfer_form.html:25
+#: .\payment\templates\treasury.html:31
+msgid "Balance"
+msgstr "الرصيد"
+
+#: .\account\templates\account.html:135
 #: .\account\templates\payment_voucher.html:37
 #: .\account\templates\payment_voucher_list.html:51
 #: .\account\templates\receipt_voucher_list.html:51
@@ -573,10 +561,9 @@ msgstr "رقم القيد."
 msgid "Discription"
 msgstr "البيان"
 
-#: .\account\templates\account.html:137
+#: .\account\templates\account.html:142
 #: .\account\templates\payment_voucher.html:42
 #: .\account\templates\payment_voucher_list.html:56
-#: .\account\templates\print\print_account_statement.html:44
 #: .\account\templates\receipt_voucher_list.html:56
 #: .\account\templates\transaction.html:95
 #: .\agent\templates\popup_forms\agent_user.html:27
@@ -589,12 +576,11 @@ msgstr "البيان"
 msgid "Username"
 msgstr "اسم المستخدم"
 
-#: .\account\templates\account.html:138
+#: .\account\templates\account.html:143
 #: .\account\templates\payment_voucher_form.html:49
 #: .\account\templates\payment_voucher_list.html:108
 #: .\account\templates\receipt_voucher_form.html:50
 #: .\account\templates\receipt_voucher_list.html:107
-#: .\agent\templates\agent_arrival_voucher.html:151
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:173
 #: .\arrival_voucher\templates\operating_schedule.html:40
 #: .\payment\templates\account_view.html:96
@@ -603,7 +589,8 @@ msgstr "اسم المستخدم"
 msgid "Print"
 msgstr "طباعة"
 
-#: .\account\templates\account.html:212
+#: .\account\templates\account.html:225
+#: .\account\templates\agents_accounts_view.html:145
 #: .\account\templates\payment_voucher.html:112
 #: .\account\templates\payment_voucher_form.html:64
 #: .\account\templates\payment_voucher_list.html:133
@@ -620,14 +607,15 @@ msgstr "طباعة"
 msgid "Receipt Vouchers Report"
 msgstr "تقرير سندات قبض"
 
-#: .\account\templates\account.html:220 .\account\templates\account.html:257
+#: .\account\templates\account.html:233 .\account\templates\account.html:270
+#: .\account\templates\agents_accounts_view.html:153
 #: .\account\templates\payment_voucher.html:120
 #: .\account\templates\payment_voucher_form.html:72
 #: .\account\templates\payment_voucher_list.html:141
 #: .\account\templates\receipt_voucher_form.html:73
 #: .\account\templates\receipt_voucher_list.html:140
 #: .\account\templates\transaction.html:151
-#: .\account\templates\transaction_list.html:128 .\agent\forms.py:47
+#: .\account\templates\transaction_list.html:128 .\agent\forms.py:48
 #: .\payment\templates\account_view.html:164
 #: .\payment\templates\account_view.html:199
 #: .\payment\templates\agent_account_view.html:249
@@ -645,7 +633,8 @@ msgstr "تقرير سندات قبض"
 msgid "From Date"
 msgstr "من التاريخ"
 
-#: .\account\templates\account.html:226 .\account\templates\account.html:263
+#: .\account\templates\account.html:239 .\account\templates\account.html:276
+#: .\account\templates\agents_accounts_view.html:159
 #: .\account\templates\payment_voucher.html:126
 #: .\account\templates\payment_voucher_form.html:78
 #: .\account\templates\payment_voucher_list.html:147
@@ -670,7 +659,8 @@ msgstr "من التاريخ"
 msgid "To Date"
 msgstr "الي تاريخ"
 
-#: .\account\templates\account.html:233 .\account\templates\account.html:270
+#: .\account\templates\account.html:246 .\account\templates\account.html:283
+#: .\account\templates\agents_accounts_view.html:166
 #: .\account\templates\payment_voucher.html:133
 #: .\account\templates\payment_voucher_form.html:85
 #: .\account\templates\payment_voucher_list.html:154
@@ -678,12 +668,12 @@ msgstr "الي تاريخ"
 #: .\account\templates\receipt_voucher_list.html:153
 #: .\account\templates\transaction.html:164
 #: .\account\templates\transaction_list.html:141
-#: .\agent\templates\agent_arrival_voucher.html:188
+#: .\agent\templates\agent_arrival_voucher.html:218
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:121
 #: .\agent\templates\agent_operating_schedule.html:229
 #: .\agent\templates\arrival_voucher_list.html:121
-#: .\arrival_voucher\templates\arrival_voucher.html:234
-#: .\arrival_voucher\templates\arrival_voucher.html:267
+#: .\arrival_voucher\templates\arrival_voucher.html:231
+#: .\arrival_voucher\templates\arrival_voucher.html:264
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:204
 #: .\arrival_voucher\templates\arrival_voucher_list.html:114
 #: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:68
@@ -709,7 +699,8 @@ msgstr "الي تاريخ"
 msgid "Close"
 msgstr "إغلاق"
 
-#: .\account\templates\account.html:234 .\account\templates\account.html:271
+#: .\account\templates\account.html:247 .\account\templates\account.html:284
+#: .\account\templates\agents_accounts_view.html:167
 #: .\account\templates\payment_voucher.html:134
 #: .\account\templates\payment_voucher_form.html:86
 #: .\account\templates\payment_voucher_list.html:155
@@ -732,7 +723,7 @@ msgstr "عرض السجلات"
 
 #: .\account\templates\account_list.html:4
 #: .\account\templates\account_list.html:13
-#: .\core\templates\side_navigation\accounts.html:71
+#: .\core\templates\side_navigation\accounts.html:77
 msgid "Accounts Tree"
 msgstr "شجرة الحسابات"
 
@@ -740,31 +731,171 @@ msgstr "شجرة الحسابات"
 msgid "Settings"
 msgstr "إعدادات"
 
-#: .\account\templates\account_list.html:79 .\agent\forms.py:71
-#: .\agent\models.py:25 .\agent\models.py:235
-#: .\agent\templates\agent_list.html:46
+#: .\account\templates\account_list.html:79 .\agent\forms.py:72
+#: .\agent\models.py:26 .\agent\models.py:193
+#: .\agent\templates\agent_list.html:48
 #: .\agent\templates\popup_forms\agent_code.html:10
 msgid "Code"
-msgstr "كود الوكيل"
+msgstr "كود"
 
 #: .\account\templates\account_list.html:80
 msgid "Level"
 msgstr "مستوي"
-
-#: .\account\templates\account_list.html:82
-#: .\account\templates\transport_companies_list.html:42
-#: .\payment\templates\popup_forms\account_credit_form.html:25
-#: .\payment\templates\popup_forms\account_debit_form.html:25
-#: .\payment\templates\popup_forms\account_transfer_form.html:25
-#: .\payment\templates\treasury.html:31
-msgid "Balance"
-msgstr "الرصيد"
 
 #: .\account\templates\account_list.html:83
 #: .\agent\forms\agent_arrival_voucher_form.html:114
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:114
 msgid "Actions"
 msgstr "الإجرات"
+
+#: .\account\templates\agents_accounts_view.html:101 .\agent\forms.py:68
+#: .\agent\forms.py:71 .\agent\models.py:25 .\agent\models.py:194
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:68
+#: .\agent\templates\agent_list.html:40
+#: .\agent\templates\arrival_voucher_list.html:68
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:15
+#: .\agent\templates\print\agent_transport_program.html:125
+#: .\arrival_voucher\forms.py:51 .\arrival_voucher\models.py:79
+#: .\arrival_voucher\templates\arrival_voucher_list.html:71
+#: .\arrival_voucher\templates\arrival_voucher_view.html:42
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:41
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:11
+#: .\arrival_voucher\templates\htmx\results.html:13
+#: .\arrival_voucher\templates\htmx\search.html:43
+#: .\arrival_voucher\templates\print\transport_program.html:22
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:58
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:11
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:58
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:9
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:9
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:58
+#: .\payment\templates\payment_agent_list.html:101
+#: .\payment\templates\print\agents_current_balance_print.html:38
+msgid "Country"
+msgstr "الدولة"
+
+#: .\account\templates\agents_accounts_view.html:102 .\agent\forms.py:47
+#: .\agent\forms.py:69 .\agent\forms.py:94 .\agent\forms.py:118
+#: .\agent\forms\agent_arrival_voucher_form.html:36 .\agent\models.py:191
+#: .\agent\models.py:202 .\agent\models.py:220
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:67
+#: .\agent\templates\agent_list.html:41
+#: .\agent\templates\agent_operating_schedule.html:48
+#: .\agent\templates\arrival_voucher_list.html:67
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:14
+#: .\agent\templates\popup_forms\agent_price.html:10
+#: .\agent\templates\popup_forms\agent_user.html:20
+#: .\agent\templates\print\agent_transport_program.html:124
+#: .\arrival_voucher\forms.py:50 .\arrival_voucher\forms.py:441
+#: .\arrival_voucher\forms.py:452 .\arrival_voucher\models.py:78
+#: .\arrival_voucher\templates\arrival_voucher_list.html:70
+#: .\arrival_voucher\templates\arrival_voucher_view.html:38
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:40
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:36
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:10
+#: .\arrival_voucher\templates\htmx\results.html:12
+#: .\arrival_voucher\templates\htmx\search.html:42
+#: .\arrival_voucher\templates\operating_schedule.html:61
+#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:42
+#: .\arrival_voucher\templates\print\operating_schedule.html:115
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:13
+#: .\arrival_voucher\templates\print\print_detailed_voucher.html:44
+#: .\arrival_voucher\templates\print\transport_program.html:20
+#: .\arrival_voucher\templates\rawdah_permit_list.html:46
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:57
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:10
+#: .\arrival_voucher\templates\trips_date_open.html:37 .\invoice\forms.py:54
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:57
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:8
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:8
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:57
+#: .\payment\templates\account_view.html:123
+#: .\payment\templates\payment_agent_list.html:102
+#: .\payment\templates\popup_forms\withdraw_payment.html:27
+#: .\payment\templates\print\agents_current_balance_print.html:37
+#: .\payment\templates\print\print_account_transaction.html:117
+#: .\payment\templates\print\print_agent_account_statement.html:40
+#: .\payment\templates\print\print_receipt_vouchers_report.html:37
+#: .\payment\templates\print\print_receipt_vouchers_report.html:48
+#: .\payment\templates\print\print_receipt_vouchers_report.html:84
+#: .\service_order\models.py:8 .\visa_group\models.py:20 .\voucher\models.py:17
+#: .\voucher\models.py:335
+#: .\voucher\templates\popup_forms\add_detailed_voucher.html:42
+#: .\voucher\templates\popup_forms\add_voucher.html:97
+#: .\voucher\templates\print\print_detailed_voucher.html:44
+#: .\voucher\templates\print\vouchers_report.html:38
+#: .\voucher\templates\print\vouchers_report.html:52
+#: .\voucher\templates\print\vouchers_report.html:92
+#: .\voucher\templates\transport_invoice_list.html:99
+msgid "Agent"
+msgstr "الوكيل"
+
+#: .\account\templates\agents_accounts_view.html:103 .\agent\models.py:27
+#: .\agent\templates\agent_list.html:42
+#: .\payment\templates\payment_agent_list.html:103
+msgid "Agent type"
+msgstr "نوع الوكيل"
+
+#: .\account\templates\agents_accounts_view.html:105
+#: .\payment\templates\agent_account_view.html:49
+#: .\payment\templates\payment_agent_list.html:105
+#: .\payment\templates\print\agents_current_balance_print.html:39
+#: .\payment\templates\print\print_receipt_vouchers_report.html:95
+msgid "Total Visas"
+msgstr "إجمالي عدد التأشيرات"
+
+#: .\account\templates\agents_accounts_view.html:107
+#: .\account\templates\payment_voucher.html:43
+#: .\account\templates\payment_voucher_list.html:57
+#: .\account\templates\receipt_voucher_list.html:57
+#: .\account\templates\transaction_list.html:56
+#: .\account\templates\transport_companies_list.html:44
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:82
+#: .\agent\templates\agent_list.html:51
+#: .\agent\templates\agent_operating_schedule.html:65
+#: .\agent\templates\arrival_voucher_list.html:82
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:30
+#: .\arrival_voucher\templates\arrival_voucher_list.html:82
+#: .\arrival_voucher\templates\arrival_voucher_view.html:97
+#: .\arrival_voucher\templates\arrival_voucher_view.html:206
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:46
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:22
+#: .\arrival_voucher\templates\operating_schedule.html:78
+#: .\arrival_voucher\templates\rawdah_permit_list.html:57
+#: .\arrival_voucher\templates\trips_date_open.html:46
+#: .\company\templates\designation_list.html:42
+#: .\company\templates\employee_list.html:43
+#: .\company\templates\mandoob_list.html:43
+#: .\core\templates\transport_movement_history.html:57
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:66
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:19
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:19
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:66
+#: .\payment\templates\accounts_list.html:40
+#: .\payment\templates\agent_account_view.html:132
+#: .\payment\templates\office_expense_list.html:89
+#: .\payment\templates\payment_agent_list.html:107
+#: .\payment\templates\payroll_view.html:101
+#: .\payment\templates\payrolls.html:52
+#: .\transport\templates\transport_packages.html:44
+#: .\transport\templates\transport_routes.html:45
+#: .\visa_group\ajax_datatable_views.py:54 .\voucher\ajax_datatable_views.py:65
+#: .\voucher\templates\transport_invoice_list.html:111
+#: .\voucher\templates\voucher_list\b2c_voucher_list.html:53
+#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:55
+msgid "Action"
+msgstr "الإجراء"
+
+#: .\account\templates\agents_accounts_view.html:124
+#: .\payment\templates\payment_agent_list.html:124
+msgid "View Account"
+msgstr "عرض الحساب"
+
+#: .\account\templates\agents_accounts_view.html:145
+#: .\payment\templates\payment_agent_list.html:145
+#: .\voucher\templates\transport_invoice_list.html:55 .\voucher\views.py:190
+msgid "All Agents"
+msgstr "كل الوكلاء"
 
 #: .\account\templates\create_transaction.html:30
 #: .\account\templates\transaction.html:55
@@ -797,48 +928,6 @@ msgstr "صرف الى حساب"
 msgid "Paid from account"
 msgstr "صرف من حساب"
 
-#: .\account\templates\payment_voucher.html:43
-#: .\account\templates\payment_voucher_list.html:57
-#: .\account\templates\receipt_voucher_list.html:57
-#: .\account\templates\transaction_list.html:56
-#: .\account\templates\transport_companies_list.html:44
-#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:82
-#: .\agent\templates\agent_list.html:49
-#: .\agent\templates\agent_operating_schedule.html:65
-#: .\agent\templates\arrival_voucher_list.html:82
-#: .\agent\templates\arrival_voucher_list_htmx_1.html:30
-#: .\arrival_voucher\templates\arrival_voucher.html:45
-#: .\arrival_voucher\templates\arrival_voucher_list.html:82
-#: .\arrival_voucher\templates\arrival_voucher_view.html:97
-#: .\arrival_voucher\templates\arrival_voucher_view.html:206
-#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:46
-#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:22
-#: .\arrival_voucher\templates\operating_schedule.html:78
-#: .\arrival_voucher\templates\rawdah_permit_list.html:57
-#: .\arrival_voucher\templates\trips_date_open.html:46
-#: .\company\templates\designation_list.html:42
-#: .\company\templates\employee_list.html:43
-#: .\company\templates\mandoob_list.html:43
-#: .\core\templates\transport_movement_history.html:57
-#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:66
-#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:19
-#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:19
-#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:66
-#: .\payment\templates\accounts_list.html:40
-#: .\payment\templates\agent_account_view.html:132
-#: .\payment\templates\office_expense_list.html:89
-#: .\payment\templates\payment_agent_list.html:107
-#: .\payment\templates\payroll_view.html:101
-#: .\payment\templates\payrolls.html:52
-#: .\transport\templates\transport_packages.html:44
-#: .\transport\templates\transport_routes.html:45
-#: .\visa_group\ajax_datatable_views.py:54 .\voucher\ajax_datatable_views.py:65
-#: .\voucher\templates\transport_invoice_list.html:111
-#: .\voucher\templates\voucher_list\b2c_voucher_list.html:53
-#: .\voucher\templates\voucher_list\external_agent_voucher_list.html:55
-msgid "Action"
-msgstr "الإجراء"
-
 #: .\account\templates\payment_voucher.html:88
 #: .\account\templates\payment_voucher_list.html:107
 #: .\account\templates\receipt_voucher_list.html:106
@@ -850,9 +939,9 @@ msgstr "عرض"
 #: .\account\templates\payment_voucher_form.html:46
 #: .\account\templates\receipt_voucher_form.html:47
 #: .\agent\forms\agent_arrival_voucher_form.html:82
-#: .\agent\templates\agent_arrival_voucher.html:145
+#: .\agent\templates\agent_arrival_voucher.html:34
 #: .\agent\templates\popup_forms\agent_code.html:51
-#: .\arrival_voucher\templates\arrival_voucher.html:183
+#: .\arrival_voucher\templates\arrival_voucher.html:42
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:149
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:82
 #: .\transport\templates\add_transport_package.html:33
@@ -862,7 +951,7 @@ msgstr "حفظ"
 
 #: .\account\templates\payment_voucher_list.html:5
 #: .\account\templates\payment_voucher_list.html:16
-#: .\core\templates\side_navigation\accounts.html:56
+#: .\core\templates\side_navigation\accounts.html:62
 msgid "Payment Voucher List"
 msgstr "سندات صرف"
 
@@ -961,31 +1050,203 @@ msgstr "رقم الحساب."
 msgid "Entered By"
 msgstr "مدخل"
 
-#: .\account\templates\print\print_account_statement.html:9
-#: .\account\templates\print\print_account_statement.html:28
+#: .\account\templates\print\print_account_statement.html:5
+#: .\account\templates\print\print_account_statement.html:8
+#: .\core\templates\side_navigation\agent.html:15
 #: .\payment\templates\print\print_agent_account_statement.html:9
 #: .\payment\templates\print\print_agent_account_statement.html:28
 msgid "Account Statement"
 msgstr "كشف الحساب"
 
-#: .\account\templates\print\print_account_statement.html:43
-#: .\payment\templates\print\agents_current_balance_print.html:29
-#: .\payment\templates\print\print_agent_account_statement.html:42
-#: .\payment\templates\print\print_receipt_vouchers_report.html:101
-#: .\payment\templates\print\print_treasury_report.html:98
-msgid "Print Date"
-msgstr "تاريخ الطباعة"
-
-#: .\account\templates\print\print_account_statement.html:99
+#: .\account\templates\print\print_account_statement.html:67
 #: .\payment\templates\print\agents_current_balance_print.html:40
 #: .\payment\templates\print\print_agent_account_statement.html:152
 msgid "Current Balance"
 msgstr "الرصيد الحالي"
 
-#: .\account\templates\print\print_account_statement.html:109
+#: .\account\templates\print\print_account_statement.html:76
+#: .\agent\templates\print\agent_transport_program.html:213
+#: .\arrival_voucher\templates\print\transport_program.html:113
+#: .\core\templates\transport_movement_history.html:51
+#: .\invoice\templates\arrival_voucher_invoice.html:113
+#: .\transport\models.py:165
+msgid "Outside Package"
+msgstr "خارج البرنامج"
+
+#: .\account\templates\print\print_account_statement.html:80
+#: .\account\templates\print\print_account_statement.html:160
+#: .\agent\templates\agent_operating_schedule.html:47
+#: .\agent\templates\print\agent_transport_program.html:156
+#: .\agent\templates\print\agent_transport_program.html:217
+#: .\arrival_voucher\templates\arrival_voucher_view.html:94
+#: .\arrival_voucher\templates\arrival_voucher_view.html:200
+#: .\arrival_voucher\templates\operating_schedule.html:60
+#: .\arrival_voucher\templates\print\operating_schedule.html:114
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:12
+#: .\arrival_voucher\templates\print\transport_program.html:56
+#: .\arrival_voucher\templates\print\transport_program.html:117
+#: .\arrival_voucher\templates\print\transport_program.html:193
+#: .\arrival_voucher\templates\rawdah_permit_list.html:50
+#: .\arrival_voucher\templates\rawdah_permit_list.html:55
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:55
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:78
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:8
+#: .\arrival_voucher\templates\trips_date_open.html:36
+#: .\core\templates\transport_movement_history.html:45
+#: .\core\templates\transport_movement_history.html:49 .\payment\models.py:78
+#: .\payment\models.py:234 .\payment\models.py:306
+#: .\payment\templates\account_view.html:87
+#: .\payment\templates\print\print_agent_account_statement.html:52
+#: .\payment\templates\print\print_receipt_vouchers_report.html:49
+#: .\payment\templates\print\print_treasury_report.html:46
+#: .\payment\templates\treasury.html:87 .\payment\templates\treasury.html:120
+#: .\payment\templates\treasury.html:159 .\transport\models.py:133
+msgid "Time"
+msgstr "الوقت"
+
+#: .\account\templates\print\print_account_statement.html:81
+#: .\agent\forms\agent_arrival_voucher_form.html:105
+#: .\agent\templates\agent_operating_schedule.html:50
+#: .\agent\templates\popup_forms\agent_price.html:28
+#: .\agent\templates\print\agent_transport_program.html:157
+#: .\agent\templates\print\agent_transport_program.html:218
+#: .\arrival_voucher\templates\arrival_voucher_view.html:95
+#: .\arrival_voucher\templates\arrival_voucher_view.html:201
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:105
+#: .\arrival_voucher\templates\operating_schedule.html:63
+#: .\arrival_voucher\templates\print\operating_schedule.html:117
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:15
+#: .\arrival_voucher\templates\print\transport_program.html:57
+#: .\arrival_voucher\templates\print\transport_program.html:118
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:60
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:13
+#: .\arrival_voucher\templates\trips_date_open.html:39
+#: .\payment\templates\account_view.html:111
+#: .\payment\templates\payroll_view.html:15
+#: .\payment\templates\print\print_account_transaction.html:94
+#: .\payment\templates\print\print_account_transaction.html:97
+#: .\transport\templates\transport_routes.html:42
+msgid "From"
+msgstr "من"
+
+#: .\account\templates\print\print_account_statement.html:82
+#: .\agent\forms\agent_arrival_voucher_form.html:106
+#: .\agent\templates\agent_operating_schedule.html:51
+#: .\agent\templates\print\agent_transport_program.html:158
+#: .\agent\templates\print\agent_transport_program.html:219
+#: .\arrival_voucher\templates\arrival_voucher_view.html:96
+#: .\arrival_voucher\templates\arrival_voucher_view.html:204
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:106
+#: .\arrival_voucher\templates\operating_schedule.html:64
+#: .\arrival_voucher\templates\print\operating_schedule.html:118
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:16
+#: .\arrival_voucher\templates\print\transport_program.html:58
+#: .\arrival_voucher\templates\print\transport_program.html:119
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:61
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:14
+#: .\arrival_voucher\templates\trips_date_open.html:40
+#: .\payment\templates\account_view.html:113
+#: .\payment\templates\payroll_view.html:15
+#: .\payment\templates\print\print_account_transaction.html:101
+#: .\payment\templates\print\print_account_transaction.html:104
+#: .\transport\templates\transport_routes.html:43
+msgid "To"
+msgstr "الى"
+
+#: .\account\templates\print\print_account_statement.html:83
+#: .\agent\forms\agent_arrival_voucher_form.html:104
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:75
+#: .\agent\templates\arrival_voucher_list.html:75
+#: .\agent\templates\arrival_voucher_list_htmx_1.html:22
+#: .\agent\templates\print\agent_transport_program.html:159
+#: .\agent\templates\print\agent_transport_program.html:220
+#: .\arrival_voucher\templates\arrival_voucher_list.html:77
+#: .\arrival_voucher\templates\arrival_voucher_view.html:92
+#: .\arrival_voucher\templates\arrival_voucher_view.html:198
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:38
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:104
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:17
+#: .\arrival_voucher\templates\htmx\results.html:20
+#: .\arrival_voucher\templates\htmx\search.html:50
+#: .\arrival_voucher\templates\print\transport_program.html:59
+#: .\arrival_voucher\templates\print\transport_program.html:120
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:63
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:16
+#: .\core\templates\transport_movement_history.html:53 .\invoice\forms.py:134
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:62
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:15
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:15
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:62
+#: .\transport\models.py:131
+msgid "Type"
+msgstr "نوع"
+
+#: .\account\templates\print\print_account_statement.html:84
+#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:76
+#: .\agent\templates\agent_operating_schedule.html:64
+#: .\agent\templates\print\agent_transport_program.html:130
+#: .\agent\templates\print\agent_transport_program.html:160
+#: .\agent\templates\print\agent_transport_program.html:221
+#: .\arrival_voucher\forms.py:416 .\arrival_voucher\models.py:109
+#: .\arrival_voucher\templates\arrival_voucher_list.html:78
+#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:45
+#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:18
+#: .\arrival_voucher\templates\operating_schedule.html:77
+#: .\arrival_voucher\templates\print\operating_schedule.html:128
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:26
+#: .\arrival_voucher\templates\print\transport_program.html:30
+#: .\arrival_voucher\templates\print\transport_program.html:60
+#: .\arrival_voucher\templates\print\transport_program.html:121
+#: .\arrival_voucher\templates\schedule_tracking_screen.html:64
+#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:17
+#: .\invoice\forms.py:132
+#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:63
+#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:16
+#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:16
+#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:63
+#: .\payment\models.py:279 .\payment\templates\payroll_view.html:99
+#: .\service_order\models.py:37 .\transport\models.py:163
+msgid "Status"
+msgstr "الحالة"
+
+#: .\account\templates\print\print_account_statement.html:85
+#: .\agent\forms\agent_arrival_voucher_form.html:112
+#: .\agent\templates\agent_operating_schedule.html:62
+#: .\agent\templates\print\agent_transport_program.html:161
+#: .\agent\templates\print\agent_transport_program.html:222
+#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:112
+#: .\arrival_voucher\templates\operating_schedule.html:75
+#: .\arrival_voucher\templates\print\operating_schedule.html:127
+#: .\arrival_voucher\templates\print\operating_schedule_movements.html:25
+#: .\arrival_voucher\templates\print\transport_program.html:61
+#: .\arrival_voucher\templates\print\transport_program.html:122
+#: .\arrival_voucher\templates\trips_date_open.html:45
+#: .\core\templates\transport_movement_history.html:52 .\invoice\forms.py:133
+#: .\transport\models.py:164
+msgid "Remarks"
+msgstr "ملاحظات"
+
+#: .\account\templates\print\print_account_statement.html:138
+#: .\arrival_voucher\models.py:141
+#: .\arrival_voucher\templates\print\transport_program.html:175
+msgid "Voucher Remarks"
+msgstr "ملاحظات اشعار الوصول"
+
+#: .\account\templates\print\print_account_statement.html:142
+#: .\arrival_voucher\models.py:143
+#: .\arrival_voucher\templates\print\transport_program.html:179
+msgid "Transport Remarks"
+msgstr "ملاحظات النقل"
+
+#: .\account\templates\print\print_account_statement.html:151
 #: .\invoice\templates\arrival_voucher_invoice.html:168
 msgid "Note"
 msgstr "ملاحظة"
+
+#: .\account\templates\print\print_account_statement.html:160
+#: .\arrival_voucher\templates\print\transport_program.html:193
+msgid "Printed by"
+msgstr "طباعة من قبل"
 
 #: .\account\templates\receipt_voucher.html:20
 #: .\payment\templates\account_view.html:50
@@ -999,7 +1260,7 @@ msgstr "سند قبض"
 
 #: .\account\templates\receipt_voucher_list.html:5
 #: .\account\templates\receipt_voucher_list.html:16
-#: .\core\templates\side_navigation\accounts.html:36
+#: .\core\templates\side_navigation\accounts.html:42
 msgid "Receipt Voucher List"
 msgstr "سندات قبض"
 
@@ -1030,6 +1291,7 @@ msgstr "عدد القيود"
 
 #: .\account\templates\transport_companies_list.html:6
 #: .\account\templates\transport_companies_list.html:15
+#: .\core\templates\side_navigation\accounts.html:23
 msgid "Transport Companies"
 msgstr "شركات النقل"
 
@@ -1042,62 +1304,52 @@ msgid "Company Name"
 msgstr "اسم الشركة"
 
 #: .\account\views.py:68
-#, fuzzy
-#| msgid "Accounts Tree"
 msgid "Account Created."
-msgstr "شجرة الحسابات"
+msgstr "تم إنشاء الحساب."
 
 #: .\account\views.py:92
-#, fuzzy
-#| msgid "Agent Updated."
 msgid "Account Updated."
-msgstr "تم تحديث الوكيل"
+msgstr "تم تحديث الحساب."
 
-#: .\account\views.py:153
-msgid "Account Settlement Credit has been added."
-msgstr ""
-
-#: .\account\views.py:175
-#, fuzzy
-#| msgid "Receipt Vouchers Report"
-msgid "Account Settlement Debit has been added."
-msgstr "تقرير سندات قبض"
-
-#: .\account\views.py:266
+#: .\account\views.py:227
 msgid "Receipt Voucher has been added."
 msgstr "تمت إضافة سند قبض بنجاح"
 
-#: .\account\views.py:315
+#: .\account\views.py:276
 msgid "Receipt Voucher has been updated."
 msgstr "تمت تعديل سند قبض بنجاح"
 
-#: .\account\views.py:326 .\account\views.py:417
+#: .\account\views.py:287 .\account\views.py:378
 msgid "Please correct the errors below."
-msgstr ""
+msgstr "الرجاء تصحيح الاخطاء الواردة أدناه."
 
-#: .\account\views.py:368
-#, fuzzy
-#| msgid "Receipt Vouchers Report"
+#: .\account\views.py:329
 msgid "Payment Voucher has been added."
-msgstr "تقرير سندات قبض"
+msgstr "تمت إضافة سند صرف."
 
-#: .\account\views.py:404
-#, fuzzy
-#| msgid "Receipt Vouchers Report"
+#: .\account\views.py:365
 msgid "Payment Voucher has been updated."
-msgstr "تقرير سندات قبض"
+msgstr "تم تحديث سند صرف"
 
-#: .\account\views.py:462
+#: .\account\views.py:423
 msgid "Accounts settings have been updated successfully."
 msgstr "تم تحديث إعدادات الحسابات بنجاح."
 
-#: .\account\views.py:465
+#: .\account\views.py:426
 msgid "Error while updating accounts settings"
 msgstr "حدث خطأ أثناء تحديث إعدادات الحسابات"
 
-#: .\account\views.py:468
+#: .\account\views.py:429
 msgid "Accounts Settings"
 msgstr "اعدادات حسابات"
+
+#: .\account\views.py:492 .\core\templates\side_navigation\accounts.html:17
+msgid "External Agent Accounts"
+msgstr "حسابات وكلاء الخارجي"
+
+#: .\account\views.py:494 .\core\templates\side_navigation\accounts.html:11
+msgid "Virtual Agent Accounts"
+msgstr "حسابات وكلاء الافتراضي"
 
 #: .\agent\choices.py:5
 #: .\voucher\templates\voucher_list\b2c_voucher_list.html:52
@@ -1109,122 +1361,41 @@ msgstr "الوكيل الخارجي"
 msgid "Virtual Agent"
 msgstr "وكيل الافتراضي"
 
-#: .\agent\forms.py:46 .\agent\forms.py:68 .\agent\forms.py:93
-#: .\agent\forms.py:117 .\agent\forms\agent_arrival_voucher_form.html:36
-#: .\agent\models.py:233 .\agent\models.py:244 .\agent\models.py:262
-#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:67
-#: .\agent\templates\agent_list.html:41
-#: .\agent\templates\agent_operating_schedule.html:48
-#: .\agent\templates\arrival_voucher_list.html:67
-#: .\agent\templates\arrival_voucher_list_htmx_1.html:14
-#: .\agent\templates\popup_forms\agent_price.html:10
-#: .\agent\templates\popup_forms\agent_user.html:20
-#: .\agent\templates\print\agent_transport_program.html:124
-#: .\arrival_voucher\forms.py:49 .\arrival_voucher\forms.py:363
-#: .\arrival_voucher\forms.py:373
-#: .\arrival_voucher\templates\arrival_voucher_list.html:70
-#: .\arrival_voucher\templates\arrival_voucher_view.html:38
-#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:40
-#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:36
-#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:10
-#: .\arrival_voucher\templates\htmx\results.html:12
-#: .\arrival_voucher\templates\htmx\search.html:42
-#: .\arrival_voucher\templates\operating_schedule.html:61
-#: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:42
-#: .\arrival_voucher\templates\print\operating_schedule.html:115
-#: .\arrival_voucher\templates\print\operating_schedule_movements.html:13
-#: .\arrival_voucher\templates\print\print_detailed_voucher.html:44
-#: .\arrival_voucher\templates\print\transport_program.html:20
-#: .\arrival_voucher\templates\rawdah_permit_list.html:46
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:57
-#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:10
-#: .\arrival_voucher\templates\trips_date_open.html:37 .\invoice\forms.py:54
-#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:57
-#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:8
-#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:8
-#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:57
-#: .\payment\templates\account_view.html:123
-#: .\payment\templates\payment_agent_list.html:102
-#: .\payment\templates\popup_forms\withdraw_payment.html:27
-#: .\payment\templates\print\agents_current_balance_print.html:37
-#: .\payment\templates\print\print_account_transaction.html:117
-#: .\payment\templates\print\print_agent_account_statement.html:40
-#: .\payment\templates\print\print_receipt_vouchers_report.html:37
-#: .\payment\templates\print\print_receipt_vouchers_report.html:48
-#: .\payment\templates\print\print_receipt_vouchers_report.html:84
-#: .\service_order\models.py:8 .\visa_group\models.py:20 .\voucher\models.py:17
-#: .\voucher\models.py:335
-#: .\voucher\templates\popup_forms\add_detailed_voucher.html:42
-#: .\voucher\templates\popup_forms\add_voucher.html:97
-#: .\voucher\templates\print\print_detailed_voucher.html:44
-#: .\voucher\templates\print\vouchers_report.html:38
-#: .\voucher\templates\print\vouchers_report.html:52
-#: .\voucher\templates\print\vouchers_report.html:92
-#: .\voucher\templates\transport_invoice_list.html:99
-msgid "Agent"
-msgstr "الوكيل"
-
-#: .\agent\forms.py:48 .\agent\models.py:246
-#: .\agent\templates\agent_list.html:60
+#: .\agent\forms.py:49 .\agent\models.py:204
+#: .\agent\templates\agent_list.html:62
 #: .\agent\templates\popup_forms\agent_price.html:29 .\visa_group\models.py:24
 msgid "Visa Price"
 msgstr "سعر التاشيرة"
 
-#: .\agent\forms.py:49
+#: .\agent\forms.py:50
 msgid "Transport Price"
 msgstr "سعر النقل"
 
-#: .\agent\forms.py:50 .\agent\models.py:248
+#: .\agent\forms.py:51 .\agent\models.py:206
 msgid "Transport Included By Default"
 msgstr "النقل متضمن بشكل افتراضي"
 
-#: .\agent\forms.py:67 .\agent\forms.py:70 .\agent\models.py:24
-#: .\agent\models.py:236
-#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:68
-#: .\agent\templates\agent_list.html:40
-#: .\agent\templates\arrival_voucher_list.html:68
-#: .\agent\templates\arrival_voucher_list_htmx_1.html:15
-#: .\agent\templates\print\agent_transport_program.html:125
-#: .\arrival_voucher\forms.py:50 .\arrival_voucher\models.py:79
-#: .\arrival_voucher\templates\arrival_voucher_list.html:71
-#: .\arrival_voucher\templates\arrival_voucher_view.html:42
-#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:41
-#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:11
-#: .\arrival_voucher\templates\htmx\results.html:13
-#: .\arrival_voucher\templates\htmx\search.html:43
-#: .\arrival_voucher\templates\print\transport_program.html:22
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:58
-#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:11
-#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:58
-#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:9
-#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:9
-#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:58
-#: .\payment\templates\payment_agent_list.html:101
-#: .\payment\templates\print\agents_current_balance_print.html:38
-msgid "Country"
-msgstr "الدولة"
-
-#: .\agent\forms.py:69 .\agent\models.py:234
+#: .\agent\forms.py:70 .\agent\models.py:192
 msgid "Platform"
 msgstr "منصة"
 
-#: .\agent\forms.py:94 .\agent\forms.py:118 .\agent\models.py:263
-#: .\agent\templates\agent_list.html:61
+#: .\agent\forms.py:95 .\agent\forms.py:119 .\agent\models.py:221
+#: .\agent\templates\agent_list.html:64
 msgid "Comission Holder Account"
 msgstr "حساب صاحب العمولة"
 
-#: .\agent\forms.py:95 .\agent\forms.py:119 .\agent\models.py:245
-#: .\agent\models.py:264
+#: .\agent\forms.py:96 .\agent\forms.py:120 .\agent\models.py:203
+#: .\agent\models.py:222
 msgid "Change Date"
 msgstr "تاريخ"
 
-#: .\agent\forms.py:96 .\agent\forms.py:120 .\agent\models.py:265
-#: .\agent\templates\agent_list.html:61
+#: .\agent\forms.py:97 .\agent\forms.py:121 .\agent\models.py:223
+#: .\agent\templates\agent_list.html:64
 msgid "Commission Per Visa With Transport"
 msgstr "العمولة لكل تأشيرة مع النقل"
 
-#: .\agent\forms.py:97 .\agent\forms.py:121 .\agent\models.py:266
-#: .\agent\templates\agent_list.html:61
+#: .\agent\forms.py:98 .\agent\forms.py:122 .\agent\models.py:224
+#: .\agent\templates\agent_list.html:64
 msgid "Commission Per Visa Without Transport"
 msgstr "العمولة لكل تأشيرة بدون النقل"
 
@@ -1250,7 +1421,7 @@ msgstr "تفاصيل الفاتورة"
 
 #: .\agent\forms\agent_arrival_voucher_form.html:45
 #: .\agent\templates\print\agent_transport_program.html:127
-#: .\arrival_voucher\forms.py:379
+#: .\arrival_voucher\forms.py:458
 #: .\arrival_voucher\templates\arrival_voucher_view.html:54
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:45
 #: .\arrival_voucher\templates\print\transport_program.html:25
@@ -1262,7 +1433,7 @@ msgid "Group No"
 msgstr "رقم المجموعة"
 
 #: .\agent\forms\agent_arrival_voucher_form.html:53
-#: .\arrival_voucher\forms.py:380
+#: .\arrival_voucher\forms.py:459
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:53
 #: .\voucher\models.py:25
 msgid "Group Name"
@@ -1274,9 +1445,8 @@ msgstr "اسم المجموعة"
 #: .\agent\templates\arrival_voucher_list.html:69
 #: .\agent\templates\arrival_voucher_list_htmx_1.html:16
 #: .\agent\templates\print\agent_transport_program.html:126
-#: .\arrival_voucher\forms.py:53 .\arrival_voucher\forms.py:378
+#: .\arrival_voucher\forms.py:54 .\arrival_voucher\forms.py:457
 #: .\arrival_voucher\models.py:83
-#: .\arrival_voucher\templates\arrival_voucher.html:44
 #: .\arrival_voucher\templates\arrival_voucher_list.html:72
 #: .\arrival_voucher\templates\arrival_voucher_view.html:50
 #: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:42
@@ -1325,98 +1495,24 @@ msgid "Transportation Type"
 msgstr "نوع الوصول"
 
 #: .\agent\forms\agent_arrival_voucher_form.html:84
-#: .\arrival_voucher\templates\arrival_voucher.html:176
-#: .\arrival_voucher\templates\arrival_voucher.html:220
-#: .\arrival_voucher\templates\arrival_voucher.html:235
+#: .\arrival_voucher\templates\arrival_voucher.html:20
+#: .\arrival_voucher\templates\arrival_voucher.html:217
+#: .\arrival_voucher\templates\arrival_voucher.html:232
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:84
 #: .\invoice\templates\arrival_voucher_invoice.html:206
 #: .\invoice\templates\arrival_voucher_invoice.html:221
 msgid "Approve"
-msgstr ""
+msgstr "موافق"
 
 #: .\agent\forms\agent_arrival_voucher_form.html:85
-#: .\arrival_voucher\templates\arrival_voucher.html:179
-#: .\arrival_voucher\templates\arrival_voucher.html:251
-#: .\arrival_voucher\templates\arrival_voucher.html:268
+#: .\arrival_voucher\templates\arrival_voucher.html:23
+#: .\arrival_voucher\templates\arrival_voucher.html:248
+#: .\arrival_voucher\templates\arrival_voucher.html:265
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:85
 #: .\invoice\templates\arrival_voucher_invoice.html:237
 #: .\invoice\templates\arrival_voucher_invoice.html:254
 msgid "Reject"
-msgstr ""
-
-#: .\agent\forms\agent_arrival_voucher_form.html:104
-#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:75
-#: .\agent\templates\arrival_voucher_list.html:75
-#: .\agent\templates\arrival_voucher_list_htmx_1.html:22
-#: .\agent\templates\print\agent_transport_program.html:159
-#: .\agent\templates\print\agent_transport_program.html:220
-#: .\arrival_voucher\templates\arrival_voucher_list.html:77
-#: .\arrival_voucher\templates\arrival_voucher_view.html:92
-#: .\arrival_voucher\templates\arrival_voucher_view.html:198
-#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:38
-#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:104
-#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:17
-#: .\arrival_voucher\templates\htmx\results.html:20
-#: .\arrival_voucher\templates\htmx\search.html:50
-#: .\arrival_voucher\templates\print\transport_program.html:59
-#: .\arrival_voucher\templates\print\transport_program.html:120
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:63
-#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:16
-#: .\core\templates\transport_movement_history.html:53 .\invoice\forms.py:134
-#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:62
-#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:15
-#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:15
-#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:62
-#: .\transport\models.py:131
-msgid "Type"
-msgstr "نوع"
-
-#: .\agent\forms\agent_arrival_voucher_form.html:105
-#: .\agent\templates\agent_operating_schedule.html:50
-#: .\agent\templates\popup_forms\agent_price.html:28
-#: .\agent\templates\print\agent_transport_program.html:157
-#: .\agent\templates\print\agent_transport_program.html:218
-#: .\arrival_voucher\templates\arrival_voucher_view.html:95
-#: .\arrival_voucher\templates\arrival_voucher_view.html:201
-#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:105
-#: .\arrival_voucher\templates\operating_schedule.html:63
-#: .\arrival_voucher\templates\print\operating_schedule.html:117
-#: .\arrival_voucher\templates\print\operating_schedule_movements.html:15
-#: .\arrival_voucher\templates\print\transport_program.html:57
-#: .\arrival_voucher\templates\print\transport_program.html:118
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:60
-#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:13
-#: .\arrival_voucher\templates\trips_date_open.html:39
-#: .\payment\templates\account_view.html:111
-#: .\payment\templates\payroll_view.html:15
-#: .\payment\templates\print\print_account_transaction.html:94
-#: .\payment\templates\print\print_account_transaction.html:97
-#: .\transport\templates\transport_routes.html:42
-msgid "From"
-msgstr "من"
-
-#: .\agent\forms\agent_arrival_voucher_form.html:106
-#: .\agent\templates\agent_operating_schedule.html:51
-#: .\agent\templates\print\agent_transport_program.html:158
-#: .\agent\templates\print\agent_transport_program.html:219
-#: .\arrival_voucher\templates\arrival_voucher_view.html:96
-#: .\arrival_voucher\templates\arrival_voucher_view.html:204
-#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:106
-#: .\arrival_voucher\templates\operating_schedule.html:64
-#: .\arrival_voucher\templates\print\operating_schedule.html:118
-#: .\arrival_voucher\templates\print\operating_schedule_movements.html:16
-#: .\arrival_voucher\templates\print\transport_program.html:58
-#: .\arrival_voucher\templates\print\transport_program.html:119
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:61
-#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:14
-#: .\arrival_voucher\templates\trips_date_open.html:40
-#: .\payment\templates\account_view.html:113
-#: .\payment\templates\payroll_view.html:15
-#: .\payment\templates\print\print_account_transaction.html:101
-#: .\payment\templates\print\print_account_transaction.html:104
-#: .\transport\templates\transport_routes.html:43
-msgid "To"
-msgstr "الى"
+msgstr "مرفوض"
 
 #: .\agent\forms\agent_arrival_voucher_form.html:107
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:107
@@ -1453,22 +1549,6 @@ msgstr "تاريخ القدوم"
 msgid "Arrival Time"
 msgstr "وقت  القدوم"
 
-#: .\agent\forms\agent_arrival_voucher_form.html:112
-#: .\agent\templates\agent_operating_schedule.html:62
-#: .\agent\templates\print\agent_transport_program.html:161
-#: .\agent\templates\print\agent_transport_program.html:222
-#: .\arrival_voucher\templates\forms\arrival_voucher_form.html:112
-#: .\arrival_voucher\templates\operating_schedule.html:75
-#: .\arrival_voucher\templates\print\operating_schedule.html:127
-#: .\arrival_voucher\templates\print\operating_schedule_movements.html:25
-#: .\arrival_voucher\templates\print\transport_program.html:61
-#: .\arrival_voucher\templates\print\transport_program.html:122
-#: .\arrival_voucher\templates\trips_date_open.html:45
-#: .\core\templates\transport_movement_history.html:52 .\invoice\forms.py:133
-#: .\transport\models.py:164
-msgid "Remarks"
-msgstr "ملاحظات"
-
 #: .\agent\forms\agent_arrival_voucher_form.html:122
 #: .\arrival_voucher\choices.py:10 .\arrival_voucher\choices.py:24
 #: .\arrival_voucher\templates\arrival_voucher_view.html:102
@@ -1478,62 +1558,59 @@ msgstr "القدوم"
 
 #: .\agent\forms\agent_arrival_voucher_form.html:139
 #: .\arrival_voucher\templates\forms\arrival_voucher_form.html:139
-#, fuzzy
-#| msgid "Returns"
 msgid "Return"
-msgstr "رجيع"
+msgstr "عودة"
 
-#: .\agent\models.py:26 .\agent\templates\agent_list.html:42
-#: .\payment\templates\payment_agent_list.html:103
-msgid "Agent type"
-msgstr "نوع الوكيل"
-
-#: .\agent\models.py:27
+#: .\agent\models.py:28
 msgid "Agent Name English"
 msgstr "اسم الوكيل بالانجليزي"
 
-#: .\agent\models.py:28
+#: .\agent\models.py:29
 msgid "Agent Name Arabic"
 msgstr "اسم الوكيل بالعربي"
 
-#: .\agent\models.py:31
+#: .\agent\models.py:32
 msgid "Agent Address"
 msgstr "العنوان الوكيل"
 
-#: .\agent\models.py:32
+#: .\agent\models.py:33
 msgid "Agent contact"
 msgstr "تواصل الوكيل"
 
-#: .\agent\models.py:34 .\agent\templates\agent_list.html:47
+#: .\agent\models.py:35 .\agent\templates\agent_list.html:49
 #: .\mandoob\models.py:28
 msgid "User"
 msgstr "اسم المستخدم"
 
-#: .\agent\models.py:35 .\mandoob\models.py:29
+#: .\agent\models.py:36 .\mandoob\models.py:29
 msgid "Token"
 msgstr ""
 
-#: .\agent\models.py:226
+#: .\agent\models.py:42 .\agent\templates\agent_list.html:44
+msgid "Can View Account Statement"
+msgstr "إمكانية عرض كشف الحساب"
+
+#: .\agent\models.py:184
 msgid "Nusuk"
 msgstr "نسك"
 
-#: .\agent\models.py:227
+#: .\agent\models.py:185
 msgid "Tawaf"
 msgstr "طواف"
 
-#: .\agent\models.py:228
+#: .\agent\models.py:186
 msgid "Way to Umrah"
 msgstr "طريق العمرة"
 
-#: .\agent\models.py:229
+#: .\agent\models.py:187
 msgid "Baba Al Umrah"
 msgstr "باب العمرة"
 
-#: .\agent\models.py:247
+#: .\agent\models.py:205
 msgid "Visa Included Transport Price"
 msgstr "التأشيرة شاملة سعر النقل"
 
-#: .\agent\models.py:250 .\agent\templates\popup_forms\agent_price.html:32
+#: .\agent\models.py:208 .\agent\templates\popup_forms\agent_price.html:32
 msgid "Changed By"
 msgstr "اسم المستخدم"
 
@@ -1553,22 +1630,22 @@ msgstr "اسم المستخدم"
 #: .\arrival_voucher\templates\arrival_vouchers_list_htmx.html:14
 #: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:4
 #: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:14
-#: .\core\templates\side_navigation\agent.html:14
-#: .\core\templates\side_navigation\operations.html:11
+#: .\core\templates\side_navigation\agent.html:31
+#: .\core\templates\side_navigation\operations.html:27
 #: .\invoice\templates\approved_arrival_voucher_invoice_list.html:31
 #: .\invoice\templates\arrival_voucher_invoice.html:4
 #: .\invoice\templates\pending_arrival_voucher_invoice_list.html:31
 msgid "Arrival Vouchers"
 msgstr "اشعارات الوصول"
 
-#: .\agent\templates\agent_arrival_voucher.html:14
+#: .\agent\templates\agent_arrival_voucher.html:15
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:60
 #: .\agent\templates\agent_operating_schedule.html:42
 #: .\agent\templates\agent_operating_schedule.html:190
 #: .\agent\templates\arrival_voucher_list.html:60
 #: .\agent\templates\arrival_voucher_list_htmx_1.html:7
 #: .\agent\templates\print\agent_transport_program.html:123
-#: .\arrival_voucher\templates\arrival_voucher.html:14
+#: .\arrival_voucher\templates\arrival_voucher.html:15
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:14
 #: .\arrival_voucher\templates\arrival_voucher_list.html:67
 #: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:7
@@ -1593,45 +1670,64 @@ msgstr "اشعارات الوصول"
 msgid "Voucher "
 msgstr "فوتشر "
 
-#: .\agent\templates\agent_arrival_voucher.html:34
-#: .\arrival_voucher\templates\arrival_voucher.html:34
+#: .\agent\templates\agent_arrival_voucher.html:24
+#: .\arrival_voucher\templates\arrival_voucher.html:32
+msgid "Print Voucher"
+msgstr "طباعة اشعار الوصول"
+
+#: .\agent\templates\agent_arrival_voucher.html:29
+#: .\arrival_voucher\templates\arrival_voucher.html:37
+msgid "Print Transport Request"
+msgstr "طباعة طلب النقل"
+
+#: .\agent\templates\agent_arrival_voucher.html:50
+#: .\arrival_voucher\templates\arrival_voucher.html:58
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:32
 msgid "Group Details"
 msgstr "تفاصيل المجموعة"
 
-#: .\agent\templates\agent_arrival_voucher.html:46
-#: .\arrival_voucher\templates\arrival_voucher.html:96
-#: .\arrival_voucher\templates\arrival_voucher_htmx.html:47
-msgid "Accommodation Details"
-msgstr "تفاصيل السكن"
-
-#: .\agent\templates\agent_arrival_voucher.html:60
-#: .\arrival_voucher\templates\arrival_voucher.html:87
+#: .\agent\templates\agent_arrival_voucher.html:54
+#: .\arrival_voucher\templates\arrival_voucher.html:62
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:68
 msgid "Flight Details"
 msgstr "تفاصيل الرحلة"
 
-#: .\agent\templates\agent_arrival_voucher.html:75
-#: .\arrival_voucher\templates\arrival_voucher.html:117
+#: .\agent\templates\agent_arrival_voucher.html:57
+#: .\arrival_voucher\templates\arrival_voucher.html:65
+#: .\arrival_voucher\templates\arrival_voucher_view.html:136
+msgid "Accommodation"
+msgstr "السكن"
+
+#: .\agent\templates\agent_arrival_voucher.html:60
+#: .\arrival_voucher\templates\arrival_voucher.html:68
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:104
+#: .\arrival_voucher\templates\arrival_voucher_view.html:177
+msgid "Transport"
+msgstr "النقل"
+
+#: .\agent\templates\agent_arrival_voucher.html:127
+#: .\arrival_voucher\templates\arrival_voucher.html:135
 #: .\invoice\templates\arrival_voucher_invoice.html:64
 #: .\invoice\templates\arrival_voucher_invoice.html:113
 #: .\mandoob\templates\mandoob_operating_schedule.html:30
 msgid "Trips"
 msgstr "رحلات"
 
-#: .\agent\templates\agent_arrival_voucher.html:123
-#: .\arrival_voucher\templates\arrival_voucher.html:162
+#: .\agent\templates\agent_arrival_voucher.html:131
+#: .\arrival_voucher\templates\arrival_voucher.html:139
+#: .\core\templates\transport_movement_history.html:41
+msgid "Trips History"
+msgstr "السجل الزمني"
+
+#: .\agent\templates\agent_arrival_voucher.html:172
+#: .\arrival_voucher\templates\arrival_voucher.html:180
 #: .\invoice\templates\arrival_voucher_invoice.html:102
 #: .\invoice\templates\arrival_voucher_invoice.html:153
 msgid "Trips will be shown when you save voucher first time."
-msgstr ""
+msgstr "سيتم عرض الرحلات عند قيامك بحفظ القسيمة لأول مرة."
 
-#: .\agent\templates\agent_arrival_voucher.html:156
-msgid "Submit to Company"
-msgstr "ارسال الى شركة"
-
-#: .\agent\templates\agent_arrival_voucher.html:179
-#: .\agent\templates\agent_arrival_voucher.html:191
+#: .\agent\templates\agent_arrival_voucher.html:209
+#: .\agent\templates\agent_arrival_voucher.html:221
 #: .\agent\templates\popup_forms\add_agent_popup.html:25
 #: .\agent\templates\popup_forms\agent_price.html:20
 #: .\agent\templates\popup_forms\agent_user.html:54
@@ -1670,7 +1766,7 @@ msgstr "ارسال الى شركة"
 msgid "Submit"
 msgstr "ارسال"
 
-#: .\agent\templates\agent_arrival_voucher.html:185
+#: .\agent\templates\agent_arrival_voucher.html:215
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:201
 msgid "This Voucher will be sent to Umrah Company. Are you sure?"
 msgstr "سيتم ارسال هذا الفاوتشر الى شركة. هل أنت واثق؟"
@@ -1694,7 +1790,7 @@ msgstr "بحث"
 #: .\agent\templates\arrival_voucher_list.html:61
 #: .\agent\templates\arrival_voucher_list_htmx_1.html:8
 #: .\agent\templates\print\agent_transport_program.html:129
-#: .\arrival_voucher\forms.py:374 .\arrival_voucher\models.py:80
+#: .\arrival_voucher\forms.py:453 .\arrival_voucher\models.py:80
 #: .\arrival_voucher\templates\arrival_voucher_list.html:68
 #: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:8
 #: .\arrival_voucher\templates\htmx\results.html:6
@@ -1722,7 +1818,7 @@ msgstr ""
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:70
 #: .\agent\templates\arrival_voucher_list.html:70
 #: .\agent\templates\arrival_voucher_list_htmx_1.html:17
-#: .\arrival_voucher\forms.py:52 .\arrival_voucher\models.py:82
+#: .\arrival_voucher\forms.py:53 .\arrival_voucher\models.py:82
 #: .\arrival_voucher\templates\arrival_voucher_list.html:73
 #: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:44
 #: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:13
@@ -1744,7 +1840,7 @@ msgstr "رقم المجموعة"
 #: .\agent\templates\agent_operating_schedule.html:54
 #: .\agent\templates\arrival_voucher_list.html:73
 #: .\agent\templates\arrival_voucher_list_htmx_1.html:20
-#: .\arrival_voucher\forms.py:364 .\arrival_voucher\forms.py:375
+#: .\arrival_voucher\forms.py:442 .\arrival_voucher\forms.py:454
 #: .\arrival_voucher\templates\arrival_voucher_list.html:76
 #: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:16
 #: .\arrival_voucher\templates\htmx\results.html:18
@@ -1763,33 +1859,6 @@ msgstr "رقم المجموعة"
 #: .\invoice\templates\pending_arrival_voucher_invoice_list.html:61
 msgid "Transport Company"
 msgstr "شركة النقل"
-
-#: .\agent\templates\agent_arrival_vouchers_list_htmx.html:76
-#: .\agent\templates\agent_operating_schedule.html:64
-#: .\agent\templates\print\agent_transport_program.html:130
-#: .\agent\templates\print\agent_transport_program.html:160
-#: .\agent\templates\print\agent_transport_program.html:221
-#: .\arrival_voucher\forms.py:338 .\arrival_voucher\models.py:109
-#: .\arrival_voucher\templates\arrival_voucher_list.html:78
-#: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:45
-#: .\arrival_voucher\templates\htmx\arrival_vouchers_search_results.html:18
-#: .\arrival_voucher\templates\operating_schedule.html:77
-#: .\arrival_voucher\templates\print\operating_schedule.html:128
-#: .\arrival_voucher\templates\print\operating_schedule_movements.html:26
-#: .\arrival_voucher\templates\print\transport_program.html:30
-#: .\arrival_voucher\templates\print\transport_program.html:60
-#: .\arrival_voucher\templates\print\transport_program.html:121
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:64
-#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:17
-#: .\invoice\forms.py:132
-#: .\invoice\templates\approved_arrival_voucher_invoice_list.html:63
-#: .\invoice\templates\htmx\approved_arrival_voucher_invoice_list_htmx.html:16
-#: .\invoice\templates\htmx\pending_arrival_voucher_invoice_list_htmx.html:16
-#: .\invoice\templates\pending_arrival_voucher_invoice_list.html:63
-#: .\payment\models.py:279 .\payment\templates\payroll_view.html:99
-#: .\service_order\models.py:37 .\transport\models.py:163
-msgid "Status"
-msgstr "الحالة"
 
 #: .\agent\templates\agent_arrival_vouchers_list_htmx.html:78
 #: .\agent\templates\arrival_voucher_list.html:78
@@ -1861,22 +1930,18 @@ msgstr "إضافة اشعار الوصول جديد"
 msgid "Add"
 msgstr "اضافة"
 
-#: .\agent\templates\agent_dashboard.html:4
-#: .\agent\templates\agent_dashboard.html:13 .\core\templates\dashboard.html:4
+#: .\agent\templates\agent_dashboard.html:5
+#: .\agent\templates\agent_dashboard.html:14 .\core\templates\dashboard.html:4
 #: .\core\templates\dashboard.html:13 .\core\templates\side_navigation.html:5
 #: .\core\templates\side_navigation.html:9
 #: .\core\templates\side_navigation\side_navigation.html:7
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: .\agent\templates\agent_dashboard.html:32 .\core\templates\dashboard.html:30
+#: .\agent\templates\agent_dashboard.html:31 .\core\templates\dashboard.html:30
 #: .\visa_group\templates\umrah_visa_group_invoice_list.html:37
 msgid "Total Pilgrims"
 msgstr "إجمالي المعتمرين"
-
-#: .\agent\templates\agent_dashboard.html:37
-msgid "Season"
-msgstr "الموسم"
 
 #: .\agent\templates\agent_list.html:4 .\agent\templates\agent_list.html:14
 #: .\payment\templates\agent_account_view.html:4
@@ -1895,19 +1960,27 @@ msgstr "إضافة وكيل"
 msgid "Current Price"
 msgstr "سعر الحالي"
 
-#: .\agent\templates\agent_list.html:44 .\payment\forms.py:10
+#: .\agent\templates\agent_list.html:46 .\payment\forms.py:10
 #: .\payment\models.py:25
 #: .\payment\templates\popup_forms\withdraw_payment.html:44
 #: .\voucher\models.py:45 .\voucher\templates\popup_forms\add_voucher.html:206
 msgid "Commission"
 msgstr "العمولة"
 
-#: .\agent\templates\agent_list.html:60
+#: .\agent\templates\agent_list.html:62
 #: .\agent\templates\popup_forms\agent_price.html:30
 msgid "Visa Including Transport Price"
 msgstr "سعر التاشيرة شامل النقل"
 
-#: .\agent\templates\agent_list.html:65
+#: .\agent\templates\agent_list.html:63 .\visa_group\ajax_datatable_views.py:77
+msgid "Yes"
+msgstr "نعم"
+
+#: .\agent\templates\agent_list.html:63 .\visa_group\ajax_datatable_views.py:77
+msgid "No"
+msgstr "لا"
+
+#: .\agent\templates\agent_list.html:68
 #: .\payment\templates\print\print_receipt_vouchers_report.html:88
 #: .\payment\templates\print\print_treasury_report.html:86
 #: .\payment\templates\print\print_treasury_report.html:90
@@ -1920,7 +1993,7 @@ msgstr "سعر التاشيرة شامل النقل"
 msgid "Total"
 msgstr "الاجمالي"
 
-#: .\agent\templates\agent_list.html:72
+#: .\agent\templates\agent_list.html:75
 #: .\payment\templates\popup_forms\account_form.html:10
 msgid "Create"
 msgstr "إنشاء"
@@ -1931,9 +2004,9 @@ msgstr "إنشاء"
 #: .\arrival_voucher\templates\operating_schedule.html:14
 #: .\arrival_voucher\templates\print\operating_schedule.html:18
 #: .\arrival_voucher\templates\print\operating_schedule.html:101
-#: .\core\templates\side_navigation\agent.html:22
+#: .\core\templates\side_navigation\agent.html:39
 #: .\core\templates\side_navigation\mandoob.html:7
-#: .\core\templates\side_navigation\operations.html:54
+#: .\core\templates\side_navigation\operations.html:81
 #: .\mandoob\templates\mandoob_operating_schedule.html:4
 #: .\mandoob\templates\mandoob_operating_schedule.html:14
 msgid "Operating Schedule"
@@ -1946,35 +2019,6 @@ msgstr "جدول التشغيل"
 #: .\arrival_voucher\templates\trips_date_open.html:34
 msgid "Reference no "
 msgstr "رقم المرجع "
-
-#: .\agent\templates\agent_operating_schedule.html:47
-#: .\agent\templates\print\agent_transport_program.html:156
-#: .\agent\templates\print\agent_transport_program.html:217
-#: .\arrival_voucher\templates\arrival_voucher_view.html:94
-#: .\arrival_voucher\templates\arrival_voucher_view.html:200
-#: .\arrival_voucher\templates\operating_schedule.html:60
-#: .\arrival_voucher\templates\print\operating_schedule.html:114
-#: .\arrival_voucher\templates\print\operating_schedule_movements.html:12
-#: .\arrival_voucher\templates\print\transport_program.html:56
-#: .\arrival_voucher\templates\print\transport_program.html:117
-#: .\arrival_voucher\templates\print\transport_program.html:193
-#: .\arrival_voucher\templates\rawdah_permit_list.html:50
-#: .\arrival_voucher\templates\rawdah_permit_list.html:55
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:55
-#: .\arrival_voucher\templates\schedule_tracking_screen.html:78
-#: .\arrival_voucher\templates\schedule_tracking_screen_content.html:8
-#: .\arrival_voucher\templates\trips_date_open.html:36
-#: .\core\templates\transport_movement_history.html:45
-#: .\core\templates\transport_movement_history.html:49 .\payment\models.py:78
-#: .\payment\models.py:234 .\payment\models.py:306
-#: .\payment\templates\account_view.html:87
-#: .\payment\templates\print\print_agent_account_statement.html:52
-#: .\payment\templates\print\print_receipt_vouchers_report.html:49
-#: .\payment\templates\print\print_treasury_report.html:46
-#: .\payment\templates\treasury.html:87 .\payment\templates\treasury.html:120
-#: .\payment\templates\treasury.html:159 .\transport\models.py:133
-msgid "Time"
-msgstr "الوقت"
 
 #: .\agent\templates\agent_operating_schedule.html:53
 #: .\agent\templates\print\agent_transport_program.html:134
@@ -1992,7 +2036,7 @@ msgstr "نوع النقل"
 #: .\agent\templates\agent_operating_schedule.html:55
 #: .\agent\templates\arrival_voucher_list.html:76
 #: .\agent\templates\arrival_voucher_list_htmx_1.html:23
-#: .\arrival_voucher\forms.py:381 .\arrival_voucher\models.py:127
+#: .\arrival_voucher\forms.py:460 .\arrival_voucher\models.py:127
 #: .\arrival_voucher\templates\htmx\results.html:21
 #: .\arrival_voucher\templates\htmx\search.html:51
 #: .\arrival_voucher\templates\operating_schedule.html:68
@@ -2029,8 +2073,8 @@ msgstr "رقم اللوحة"
 #: .\agent\templates\arrival_voucher_list_htmx_1.html:26
 #: .\arrival_voucher\templates\htmx\results.html:24
 #: .\arrival_voucher\templates\htmx\search.html:54
-#: .\core\templates\side_navigation\operations.html:76 .\transport\forms.py:203
-#: .\transport\models.py:385
+#: .\core\templates\side_navigation\operations.html:103
+#: .\transport\forms.py:271 .\transport\models.py:385
 msgid "Routes"
 msgstr "مسارات"
 
@@ -2057,7 +2101,7 @@ msgstr "مستخدم الوكيل"
 #: .\core\templates\login.html:110 .\core\templates\otp.html:101
 #: .\mandoob\models.py:27
 msgid "Password"
-msgstr ""
+msgstr "كلمة المرور"
 
 #: .\agent\templates\popup_forms\agent_user.html:40
 #: .\payment\templates\popup_forms\account_credit_form.html:29
@@ -2076,18 +2120,17 @@ msgstr "فعال"
 
 #: .\agent\templates\print\agent_transport_program.html:6
 #: .\agent\templates\print\agent_transport_program.html:117
-#: .\core\templates\print\company_header.html:7
 msgid "Transport Program"
 msgstr "برنامج النقل"
 
 #: .\agent\templates\print\agent_transport_program.html:101
-#: .\company\models.py:21 .\core\templates\print\company_header.html:102
+#: .\company\models.py:21 .\core\templates\print\company_header.html:101
 msgid "C.R No."
 msgstr "رقم السجل التجاري."
 
 #: .\agent\templates\print\agent_transport_program.html:103
-#: .\company\models.py:26 .\core\templates\print\company_header.html:104
-#: .\transport\forms.py:184
+#: .\company\models.py:26 .\core\templates\print\company_header.html:105
+#: .\transport\forms.py:252
 msgid "VAT No."
 msgstr "الرقم الضريبي."
 
@@ -2098,8 +2141,7 @@ msgid "Transport company"
 msgstr "شركة النقل"
 
 #: .\agent\templates\print\agent_transport_program.html:135
-#: .\arrival_voucher\forms.py:377 .\arrival_voucher\models.py:87
-#: .\arrival_voucher\templates\arrival_voucher.html:105
+#: .\arrival_voucher\forms.py:456 .\arrival_voucher\models.py:87
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:82
 #: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:87
 #: .\arrival_voucher\templates\popup_forms\add_detailed_voucher.html:113
@@ -2120,125 +2162,106 @@ msgstr "شركة النقل"
 msgid "Transport BRN"
 msgstr "النقل BRN"
 
-#: .\agent\templates\print\agent_transport_program.html:213
-#: .\arrival_voucher\templates\print\transport_program.html:113
-#: .\core\templates\transport_movement_history.html:51
-#: .\invoice\templates\arrival_voucher_invoice.html:113
-#: .\transport\models.py:165
-msgid "Outside Package"
-msgstr "خارج البرنامج"
-
-#: .\agent\views.py:81 .\agent\views.py:98
+#: .\agent\views.py:82 .\agent\views.py:99
 msgid "New Agent Added."
 msgstr "تمت إضافة وكيل جديد."
 
-#: .\agent\views.py:86 .\agent\views.py:101 .\agent\views.py:118
-#: .\agent\views.py:149 .\company\views.py:40 .\company\views.py:127
+#: .\agent\views.py:87 .\agent\views.py:102 .\agent\views.py:119
+#: .\agent\views.py:150 .\company\views.py:40 .\company\views.py:127
 msgid "Something went wrong"
 msgstr "حدث خطأ ما"
 
-#: .\agent\views.py:115
+#: .\agent\views.py:116
 msgid "Agent Updated."
 msgstr "تم تحديث الوكيل."
 
-#: .\agent\views.py:146
+#: .\agent\views.py:147
 msgid "New Price Added."
 msgstr "تمت الإضافة سعر الجديد."
 
-#: .\agent\views.py:177
+#: .\agent\views.py:178
 msgid "New Agent User Added."
 msgstr "تمت إضافة وكيل جديد"
 
-#: .\agent\views.py:180 .\agent\views.py:205 .\agent\views.py:224
+#: .\agent\views.py:181 .\agent\views.py:206 .\agent\views.py:225
 msgid "Something went wrong: "
 msgstr "حدث خطأ"
 
-#: .\agent\views.py:202 .\agent\views.py:221
+#: .\agent\views.py:203 .\agent\views.py:222
 msgid "Agent User Updated."
 msgstr "تم تحديث بيانات مستخدم الوكيل"
 
-#: .\agent\views.py:325
-#, fuzzy
+#: .\agent\views.py:323
 msgid ""
 "Arrival voucher has been added successfully, but you have exceeded your "
 "transport limit."
-msgstr "تمت الإضافة فاوتشر "
+msgstr "تمت إضافة قسيمة الوصول بنجاح، ولكنك تجاوزت حد النقل الخاص بك."
 
-#: .\agent\views.py:327
-#, fuzzy
-#| msgid "Voucher added successfully."
+#: .\agent\views.py:325
 msgid "Arrival voucher has been added successfully"
-msgstr "تمت الإضافة الفاتورة الجديد"
+msgstr "تمت إضافة قسيمة الوصول بنجاح"
 
-#: .\agent\views.py:330 .\arrival_voucher\views.py:63
-#, fuzzy
-#| msgid "Arrival Date"
+#: .\agent\views.py:328 .\arrival_voucher\views.py:64
 msgid "Error while creating arrival voucher"
-msgstr "تاريخ القدوم"
+msgstr "حدث خطأ أثناء إنشاء قسيمة الوصول"
 
-#: .\agent\views.py:332 .\agent\views.py:504
+#: .\agent\views.py:330 .\agent\views.py:394
 msgid ""
 "Max pax limit is 51 per voucher, if you have more than 51 pax, please create "
 "another voucher"
 msgstr ""
+"الحد الأقصى للأشخاص هو 51 شخصًا لكل قسيمة، إذا كان لديك أكثر من 51 شخصًا، يرجى "
+"إنشاء قسيمة أخرى"
 
-#: .\agent\views.py:500 .\arrival_voucher\views.py:782
-#, fuzzy
-#| msgid "Voucher added successfully."
+#: .\agent\views.py:390 .\arrival_voucher\views.py:773
 msgid "Arrival voucher updated successfully"
-msgstr "تمت الإضافة الفاتورة الجديد"
+msgstr "تم تحديث قسيمة الوصول بنجاح"
 
-#: .\agent\views.py:535 .\arrival_voucher\templates\arrival_voucher.html:259
-#: .\arrival_voucher\views.py:805
+#: .\agent\views.py:427 .\arrival_voucher\templates\arrival_voucher.html:256
+#: .\arrival_voucher\views.py:793
 #: .\invoice\templates\arrival_voucher_invoice.html:245
 msgid "Rejection Reason"
 msgstr "سبب الرفض"
 
-#: .\agent\views.py:535
+#: .\agent\views.py:427
 msgid ": "
-msgstr ""
+msgstr ":"
 
-#: .\agent\views.py:577
+#: .\agent\views.py:469
 msgid "Arrival voucher submitted successfully"
 msgstr "تمت ارسال اشعار الوصول بنجاح"
 
-#: .\agent\views.py:580
+#: .\agent\views.py:472
 msgid "Arrival voucher cannot be submitted"
 msgstr "لا يمكن ارسال اشعار الوصول"
 
-#: .\agent\views.py:607
+#: .\agent\views.py:499
 msgid "Agent codes have been updated successfully."
 msgstr "تم تعديل كود الوكيل بنجاح."
 
-#: .\agent\views.py:628
-#, fuzzy
-#| msgid "Agent codes have been updated successfully."
+#: .\agent\views.py:520
 msgid "Agent commission has been updated successfully."
-msgstr "تم تعديل كود الوكيل بنجاح."
+msgstr "تم تحديث عمولة الوكيل بنجاح."
 
-#: .\agent\views.py:631
-#, fuzzy
-#| msgid "Arrival Date"
+#: .\agent\views.py:523
 msgid "Error while updating agent commission"
-msgstr "تاريخ القدوم"
+msgstr "حدث خطأ أثناء تحديث عمولة الوكيل"
 
-#: .\agent\views.py:635
-#, fuzzy
-#| msgid "Agent Payments Account"
+#: .\agent\views.py:527
 msgid "Agent Commission"
-msgstr "حساب مدفوعات الوكيل"
+msgstr "عمولة الوكيل"
 
 #: .\arrival_voucher\choices.py:5 .\arrival_voucher\choices.py:18
-#: .\arrival_voucher\forms.py:354
+#: .\arrival_voucher\forms.py:432
 #: .\arrival_voucher\templates\arrival_voucher_view.html:148
-#: .\arrival_voucher\views.py:426 .\mandoob\models.py:10
+#: .\arrival_voucher\views.py:419 .\mandoob\models.py:10
 msgid "Makkah"
 msgstr "مكة المكرمة"
 
 #: .\arrival_voucher\choices.py:6 .\arrival_voucher\choices.py:19
-#: .\arrival_voucher\forms.py:355
+#: .\arrival_voucher\forms.py:433
 #: .\arrival_voucher\templates\arrival_voucher_view.html:152
-#: .\arrival_voucher\views.py:432 .\mandoob\models.py:11
+#: .\arrival_voucher\views.py:425 .\mandoob\models.py:11
 msgid "Medina"
 msgstr "المدينة المنورة"
 
@@ -2248,13 +2271,13 @@ msgid "Departure"
 msgstr "المغادرة"
 
 #: .\arrival_voucher\choices.py:16 .\arrival_voucher\choices.py:56
-#: .\arrival_voucher\forms.py:357 .\arrival_voucher\views.py:418
+#: .\arrival_voucher\forms.py:435 .\arrival_voucher\views.py:411
 #: .\mandoob\models.py:13
 msgid "Jeddah Airport"
 msgstr "مطار جدة"
 
 #: .\arrival_voucher\choices.py:17 .\arrival_voucher\choices.py:57
-#: .\arrival_voucher\forms.py:356 .\arrival_voucher\views.py:439
+#: .\arrival_voucher\forms.py:434 .\arrival_voucher\views.py:432
 #: .\mandoob\models.py:12
 msgid "Medina Airport"
 msgstr "مطار المدينة المنورة"
@@ -2287,21 +2310,21 @@ msgstr "العمرة"
 msgid "Under Review"
 msgstr "تحت الاجراء"
 
-#: .\arrival_voucher\choices.py:38 .\arrival_voucher\forms.py:381
+#: .\arrival_voucher\choices.py:38 .\arrival_voucher\forms.py:460
 #: .\arrival_voucher\models.py:13 .\arrival_voucher\models.py:25
 #: .\arrival_voucher\models.py:34 .\arrival_voucher\models.py:50
-#: .\core\templates\side_navigation\accounts.html:107
-#: .\core\templates\side_navigation\operations.html:15
+#: .\core\templates\side_navigation\accounts.html:113
+#: .\core\templates\side_navigation\operations.html:42
 #: .\service_order\choices.py:7
 msgid "Approved"
 msgstr "موافق عليه"
 
-#: .\arrival_voucher\choices.py:39 .\arrival_voucher\forms.py:381
+#: .\arrival_voucher\choices.py:39 .\arrival_voucher\forms.py:460
 #: .\arrival_voucher\models.py:15 .\arrival_voucher\models.py:26
 #: .\arrival_voucher\models.py:35
 #: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:144
 #: .\arrival_voucher\templates\operating_schedule.html:230
-#: .\core\templates\side_navigation\operations.html:33
+#: .\core\templates\side_navigation\operations.html:60
 #: .\service_order\choices.py:8 .\transport\models.py:156
 msgid "Rejected"
 msgstr "مرفوض"
@@ -2332,81 +2355,82 @@ msgstr ""
 msgid "4 Routes"
 msgstr ""
 
-#: .\arrival_voucher\forms.py:51 .\arrival_voucher\models.py:81
+#: .\arrival_voucher\forms.py:52 .\arrival_voucher\models.py:81
 msgid "Group name"
 msgstr "اسم المجموعة"
 
-#: .\arrival_voucher\forms.py:54 .\arrival_voucher\models.py:84
+#: .\arrival_voucher\forms.py:55 .\arrival_voucher\models.py:84
 msgid "Group leader name"
 msgstr "اسم المشرف"
 
-#: .\arrival_voucher\forms.py:55 .\arrival_voucher\models.py:85
+#: .\arrival_voucher\forms.py:56 .\arrival_voucher\models.py:85
 msgid "Group leader contact"
 msgstr "رقم جوال المشرف"
 
-#: .\arrival_voucher\forms.py:89
+#: .\arrival_voucher\forms.py:105
 msgid "Arrival flight no"
-msgstr "تاريخ الرحلة القدوم"
+msgstr "رقم رحلة الوصول"
 
-#: .\arrival_voucher\forms.py:90
+#: .\arrival_voucher\forms.py:106
 msgid "Arrival date"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\forms.py:91
+#: .\arrival_voucher\forms.py:107
 msgid "Arrival time"
 msgstr "وقت  القدوم"
 
-#: .\arrival_voucher\forms.py:92
+#: .\arrival_voucher\forms.py:108
 msgid "Arrival airport"
 msgstr "مطار القدوم"
 
-#: .\arrival_voucher\forms.py:93
+#: .\arrival_voucher\forms.py:109
 msgid "Departure flight no"
 msgstr "رقم الرحلة المغادرة"
 
-#: .\arrival_voucher\forms.py:94
+#: .\arrival_voucher\forms.py:110
 msgid "Departure date"
 msgstr "تاريخ المغادرة"
 
-#: .\arrival_voucher\forms.py:95
+#: .\arrival_voucher\forms.py:111
 msgid "Departure time"
 msgstr "وقت المغادرة"
 
-#: .\arrival_voucher\forms.py:96
+#: .\arrival_voucher\forms.py:112
 msgid "Departure airport"
 msgstr "مطار المغادرة"
 
-#: .\arrival_voucher\forms.py:339 .\arrival_voucher\models.py:110
+#: .\arrival_voucher\forms.py:417 .\arrival_voucher\models.py:110
 msgid "Rejected Reason"
 msgstr "سبب الرفض"
 
-#: .\arrival_voucher\forms.py:353 .\arrival_voucher\forms.py:381
-#: .\core\templates\side_navigation\operations.html:41
+#: .\arrival_voucher\forms.py:431 .\arrival_voucher\forms.py:460
+#: .\core\templates\side_navigation\operations.html:68
 msgid "All"
-msgstr ""
+msgstr "الكل"
 
-#: .\arrival_voucher\forms.py:365 .\arrival_voucher\forms.py:376
+#: .\arrival_voucher\forms.py:443 .\arrival_voucher\forms.py:455
 #: .\arrival_voucher\models.py:89
 #: .\arrival_voucher\templates\arrival_vouchers_waiting_approval.html:43
 #: .\invoice\forms.py:29 .\transport\models.py:119
 msgid "Transport Type"
 msgstr "نوع النقل"
 
-#: .\arrival_voucher\forms.py:366
+#: .\arrival_voucher\forms.py:444
 msgid "Schedule For"
 msgstr "الجدول"
 
-#: .\arrival_voucher\forms.py:372 .\visa_group\models.py:22
+#: .\arrival_voucher\forms.py:451 .\visa_group\models.py:22
 msgid "Voucher No"
 msgstr "رقم الفاتورة"
 
-#: .\arrival_voucher\forms.py:381 .\arrival_voucher\models.py:11
+#: .\arrival_voucher\forms.py:460 .\arrival_voucher\models.py:11
 #: .\arrival_voucher\models.py:23 .\arrival_voucher\models.py:32
 #: .\arrival_voucher\models.py:40 .\arrival_voucher\models.py:49
 #: .\arrival_voucher\templates\htmx\tr_operating_schedule.html:140
 #: .\arrival_voucher\templates\operating_schedule.html:226
-#: .\core\templates\side_navigation\accounts.html:103
-#: .\core\templates\side_navigation\operations.html:24 .\payment\models.py:51
+#: .\core\templates\side_navigation\accounts.html:109
+#: .\core\templates\side_navigation\operations.html:33
+#: .\core\templates\side_navigation\operations.html:51 .\payment\models.py:51
 #: .\transport\models.py:154
 msgid "Pending"
 msgstr "قيد الانتظار"
@@ -2431,10 +2455,8 @@ msgid "Rejected, sent back to agent"
 msgstr "تم الرفض وتم ارجاعه للوكيل"
 
 #: .\arrival_voucher\models.py:24
-#, fuzzy
-#| msgid "Transfer to Account"
 msgid "Sent to Accounts"
-msgstr "تحويل الى الحساب"
+msgstr "تم ارسال الى الحسابات"
 
 #: .\arrival_voucher\models.py:41
 msgid "Reserved"
@@ -2449,14 +2471,12 @@ msgid "Query"
 msgstr ""
 
 #: .\arrival_voucher\models.py:52
-#, fuzzy
-#| msgid "Pending Approval"
 msgid "Updated, Pending Approval"
-msgstr "بانتظار الموافقة"
+msgstr "بانتظار الموافقة بعد التعديل"
 
 #: .\arrival_voucher\models.py:91 .\service_order\models.py:19
 msgid "Arrival Flight No"
-msgstr "تاريخ الرحلة القدوم"
+msgstr "رقم الرحلة القدوم"
 
 #: .\arrival_voucher\models.py:92
 msgid "Arrival Airport"
@@ -2517,10 +2537,8 @@ msgid "Women Status"
 msgstr "حالة التصريح نساء"
 
 #: .\arrival_voucher\models.py:131 .\transport\models.py:395
-#, fuzzy
-#| msgid "Transport Price"
 msgid "Transport Package"
-msgstr "سعر النقل"
+msgstr "برنامج نقل"
 
 #: .\arrival_voucher\models.py:132
 msgid "Purchase Invoice"
@@ -2535,64 +2553,27 @@ msgid "Package Sale Amount"
 msgstr "مبلغ بيع البرنامج"
 
 #: .\arrival_voucher\models.py:139 .\arrival_voucher\models.py:149
-#, fuzzy
-#| msgid "Account Statement"
 msgid "Accounts Status"
 msgstr "كشف الحساب"
 
-#: .\arrival_voucher\models.py:141
-#: .\arrival_voucher\templates\print\transport_program.html:175
-msgid "Voucher Remarks"
-msgstr "ملاحظات اشعار الوصول"
-
-#: .\arrival_voucher\models.py:143
-#: .\arrival_voucher\templates\print\transport_program.html:179
-msgid "Transport Remarks"
-msgstr "ملاحظات النقل"
-
 #: .\arrival_voucher\models.py:146
-#, fuzzy
-#| msgid "Transfer to Account"
 msgid "Remarks for Accounts"
 msgstr "تحويل الى الحساب"
 
-#: .\arrival_voucher\templates\arrival_voucher.html:43
-#, fuzzy
-#| msgid "Group No"
-msgid "Group No."
-msgstr "رقم المجموعة"
-
-#: .\arrival_voucher\templates\arrival_voucher.html:74
-msgid "Rawdah Permit"
-msgstr "تصريح الروضة"
-
-#: .\arrival_voucher\templates\arrival_voucher.html:121
-#: .\core\templates\transport_movement_history.html:41
-msgid "Trips History"
-msgstr ""
-
-#: .\arrival_voucher\templates\arrival_voucher.html:190
-msgid "Print Voucher"
-msgstr "طباعة اشعار الوصول"
-
-#: .\arrival_voucher\templates\arrival_voucher.html:195
-msgid "Print Transport Request"
-msgstr "طباعة طلب النقل"
-
-#: .\arrival_voucher\templates\arrival_voucher.html:230
+#: .\arrival_voucher\templates\arrival_voucher.html:227
 #: .\invoice\templates\arrival_voucher_invoice.html:216
 msgid ""
 "This Voucher will be Approved and trips under this voucher will be added to "
 "operating schedule. Are you sure?"
 msgstr ""
+"ستتم الموافقة على هذه الاشعار وستتم إضافة الرحلات بموجب هذه الاشعار إلى جدول "
+"التشغيل. هل أنت متأكد؟"
 
-#: .\arrival_voucher\templates\arrival_voucher.html:262
+#: .\arrival_voucher\templates\arrival_voucher.html:259
 #: .\invoice\templates\arrival_voucher_invoice.html:248
-#, fuzzy
-#| msgid "This record will be deleted. Are you sure?"
 msgid ""
 "This Voucher will be Rejected and will be sent back to Agent. Are you sure?"
-msgstr "سيتم حذف هذا السجل. هل أنت واثق؟"
+msgstr "سيتم رفض هذه الاشعار وسيتم إعادتها إلى الوكيل. هل أنت متأكد؟"
 
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:40
 #: .\arrival_voucher\templates\arrival_voucher_htmx.html:55
@@ -2610,10 +2591,9 @@ msgstr "سيتم حذف هذا السجل. هل أنت واثق؟"
 msgid "Edit"
 msgstr "تعديل"
 
-#: .\arrival_voucher\templates\arrival_voucher_htmx.html:104
-#: .\arrival_voucher\templates\arrival_voucher_view.html:177
-msgid "Transport"
-msgstr "النقل"
+#: .\arrival_voucher\templates\arrival_voucher_htmx.html:47
+msgid "Accommodation Details"
+msgstr "تفاصيل السكن"
 
 #: .\arrival_voucher\templates\arrival_voucher_list.html:30
 #: .\arrival_voucher\templates\arrival_voucher_list.html:126
@@ -2645,10 +2625,6 @@ msgstr "الرحلة"
 #: .\mandoob\templates\mandoob_operating_schedule.html:78
 msgid "Flight No"
 msgstr "رقم الرحلة"
-
-#: .\arrival_voucher\templates\arrival_voucher_view.html:136
-msgid "Accommodation"
-msgstr "السكن"
 
 #: .\arrival_voucher\templates\arrival_voucher_view.html:142
 #: .\company\templates\mandoob_list.html:41 .\mandoob\forms.py:38
@@ -2914,10 +2890,6 @@ msgstr "إجمالي الربح"
 msgid "Transport Request"
 msgstr "طلب النقل"
 
-#: .\arrival_voucher\templates\print\transport_program.html:193
-msgid "Printed by"
-msgstr "طباعة من قبل"
-
 #: .\arrival_voucher\templates\rawdah_permit_list.html:4
 msgid "Rawdah Permit Requests"
 msgstr "طلبات حجز الروضة"
@@ -2927,212 +2899,200 @@ msgid "Rawdah Reservation"
 msgstr "حجوزات الروضة"
 
 #: .\arrival_voucher\templates\schedule_tracking_screen.html:44
-#, fuzzy
-#| msgid "Field Operations"
 msgid "Live Field Operation Dashboard"
-msgstr "عمليات ميدانية"
+msgstr "لوحة العمليات المباشرة"
 
 #: .\arrival_voucher\templates\schedule_tracking_screen.html:82
-#, fuzzy
-#| msgid "Agent Updated."
 msgid "Last Update"
-msgstr "تم تحديث الوكيل."
+msgstr "اخر تحديث"
 
 #: .\arrival_voucher\templates\trips_date_open.html:4
 #: .\arrival_voucher\templates\trips_date_open.html:14
-#: .\core\templates\side_navigation\operations.html:92
+#: .\core\templates\side_navigation\operations.html:119
 msgid "Trips Date Open"
 msgstr "رحلات تاريخ مفتوح"
 
-#: .\arrival_voucher\test_htmx.py:63 .\arrival_voucher\views.py:521
-#: .\arrival_voucher\views.py:545
-#, fuzzy
-#| msgid "Voucher added successfully."
+#: .\arrival_voucher\test_htmx.py:63 .\arrival_voucher\views.py:514
+#: .\arrival_voucher\views.py:538
 msgid "Status changed successfully"
-msgstr "تمت الإضافة الفاتورة الجديد"
+msgstr "تم تغيير الحالة بنجاح"
 
-#: .\arrival_voucher\test_htmx.py:67 .\arrival_voucher\views.py:525
-#: .\arrival_voucher\views.py:549 .\arrival_voucher\views.py:905
-#, fuzzy
-#| msgid "Arrival Date"
+#: .\arrival_voucher\test_htmx.py:67 .\arrival_voucher\views.py:518
+#: .\arrival_voucher\views.py:542 .\arrival_voucher\views.py:893
 msgid "Error changing status"
-msgstr "تاريخ القدوم"
+msgstr "حدث خطأ أثناء تغيير الحالة"
 
 #: .\arrival_voucher\urls.py:22
 msgid "admin/"
 msgstr ""
 
-#: .\arrival_voucher\views.py:55
+#: .\arrival_voucher\views.py:56
 msgid ""
 "Arrival voucher created successfully with the following warning: Number of "
 "pax is greater than the number of visas"
 msgstr ""
+"تم إنشاء قسيمة الوصول بنجاح مع التحذير التالي: عدد الأشخاص أكبر من عدد "
+"التأشيرات"
 
-#: .\arrival_voucher\views.py:58
-#, fuzzy
-#| msgid "Voucher added successfully."
+#: .\arrival_voucher\views.py:59
 msgid "Arrival voucher created successfully"
-msgstr "تمت الإضافة الفاتورة الجديد"
+msgstr "تم إنشاء قسيمة الوصول بنجاح"
 
-#: .\arrival_voucher\views.py:143
-#, fuzzy
-#| msgid "Voucher added successfully."
+#: .\arrival_voucher\views.py:142
 msgid "Arrival voucher flight details updated successfully"
-msgstr "تمت الإضافة الفاتورة الجديد"
+msgstr "تم تحديث تفاصيل رحلة قسيمة الوصول بنجاح"
 
-#: .\arrival_voucher\views.py:146
-#, fuzzy
-#| msgid "Arrival Date"
+#: .\arrival_voucher\views.py:145
 msgid "Error updating arrival voucher flight details"
-msgstr "تاريخ القدوم"
+msgstr "حدث خطأ أثناء تحديث تفاصيل رحلة قسيمة الوصول"
 
-#: .\arrival_voucher\views.py:164
-#, fuzzy
-#| msgid "Voucher added successfully."
+#: .\arrival_voucher\views.py:163
 msgid "Arrival voucher accommodation details updated successfully"
-msgstr "تمت الإضافة الفاتورة الجديد"
+msgstr "تم تحديث تفاصيل الإقامة في قسيمة الوصول بنجاح"
 
-#: .\arrival_voucher\views.py:167
-#, fuzzy
-#| msgid "Arrival Date"
+#: .\arrival_voucher\views.py:166
 msgid "Error updating arrival voucher accommodation details"
-msgstr "تاريخ القدوم"
+msgstr "حدث خطأ أثناء تحديث تفاصيل إقامة قسيمة الوصول"
 
-#: .\arrival_voucher\views.py:186
+#: .\arrival_voucher\views.py:184
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Arrival voucher group details updated successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:189
+#: .\arrival_voucher\views.py:187
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error updating arrival voucher group details"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:208
+#: .\arrival_voucher\views.py:204
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Transport BRN updated successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:211
+#: .\arrival_voucher\views.py:207
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error updating transport BRN"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:242 .\arrival_voucher\views.py:270
+#: .\arrival_voucher\views.py:235 .\arrival_voucher\views.py:263
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Transport movement added successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:246 .\arrival_voucher\views.py:273
+#: .\arrival_voucher\views.py:239 .\arrival_voucher\views.py:266
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error adding transport movement"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:300
+#: .\arrival_voucher\views.py:293
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Arrival voucher submitted for approval successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:303
+#: .\arrival_voucher\views.py:296
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error submitting arrival voucher for approval"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:321 .\arrival_voucher\views.py:895
+#: .\arrival_voucher\views.py:314 .\arrival_voucher\views.py:883
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Arrival voucher approved successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:324
+#: .\arrival_voucher\views.py:317
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error approving arrival voucher"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:333 .\arrival_voucher\views.py:901
+#: .\arrival_voucher\views.py:326 .\arrival_voucher\views.py:889
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Arrival voucher rejected successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:336
+#: .\arrival_voucher\views.py:329
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error rejecting arrival voucher"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:472
+#: .\arrival_voucher\views.py:465
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Driver assigned successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:476
+#: .\arrival_voucher\views.py:469
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error assigning driver"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:494
+#: .\arrival_voucher\views.py:487
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Group leader assigned successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:500
+#: .\arrival_voucher\views.py:493
 msgid "Error assigning group leader"
 msgstr ""
 
-#: .\arrival_voucher\views.py:650
+#: .\arrival_voucher\views.py:643
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Rawdah permit added successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:653
+#: .\arrival_voucher\views.py:646
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error adding rawdah permit"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:679
+#: .\arrival_voucher\views.py:672
 #, fuzzy
 #| msgid "Voucher added successfully."
 msgid "Rawdah permit updated successfully"
 msgstr "تمت الإضافة الفاتورة الجديد"
 
-#: .\arrival_voucher\views.py:682
+#: .\arrival_voucher\views.py:675
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error updating rawdah permit"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:800
+#: .\arrival_voucher\views.py:788
 #, fuzzy
 #| msgid "Arrival Date"
 msgid "Error updating arrival voucher"
 msgstr "تاريخ القدوم"
 
-#: .\arrival_voucher\views.py:860
+#: .\arrival_voucher\views.py:848
 msgid ""
 "Arrival voucher is pending approval with the following warning: Number of "
 "pax is greater than the number of visas"
 msgstr ""
+"قسيمة الوصول في انتظار الموافقة مع التحذير التالي: عدد الأشخاص أكبر من عدد "
+"التأشيرات"
 
-#: .\arrival_voucher\views.py:892
+#: .\arrival_voucher\views.py:880
 msgid ""
 "Arrival voucher approved successfully with the following warning: Number of "
 "pax is greater than the number of visas"
 msgstr ""
+"تمت الموافقة على قسيمة الوصول بنجاح مع التحذير التالي: عدد الأشخاص أكبر من "
+"عدد التأشيرات"
 
 #: .\company\choices.py:5
 msgid "Company Admin"
@@ -3150,7 +3110,7 @@ msgstr "اسم الشركة بالانجليزي"
 msgid "Company Name Arabic"
 msgstr "اسم الشركة بالعربي"
 
-#: .\company\models.py:22
+#: .\company\models.py:22 .\core\templates\print\company_header.html:102
 msgid "MOH Permit No."
 msgstr "رقم التصريح وزارة الحج."
 
@@ -3163,10 +3123,8 @@ msgid "Company Contact"
 msgstr "تواصل الشركة"
 
 #: .\company\models.py:35
-#, fuzzy
-#| msgid "Season"
 msgid "Umrah Season"
-msgstr "الموسم"
+msgstr "موسم عمرة"
 
 #: .\company\models.py:251
 msgid "Designation name english"
@@ -3202,7 +3160,11 @@ msgstr "راتب الشهري"
 
 #: .\company\models.py:274
 msgid "Current Application"
-msgstr ""
+msgstr "التطبيق الحالي"
+
+#: .\company\models.py:306
+msgid "Default Currency"
+msgstr "العملة الافتراضية"
 
 #: .\company\models.py:308
 msgid "Virtual Agents Account"
@@ -3303,21 +3265,19 @@ msgstr "الموظف"
 #: .\company\templates\mandoob_list.html:14
 #: .\core\templates\side_navigation\hr.html:14 .\mandoob\models.py:36
 msgid "Mandoobs"
-msgstr ""
+msgstr "مناديب"
 
 #: .\company\templates\mandoob_list.html:27
-#, fuzzy
-#| msgid "Add New Company"
 msgid "Add New Mandoob"
-msgstr "إضافة شركة جديد"
+msgstr "إضافة مندوب جديد"
 
 #: .\company\templates\mandoob_list.html:40
 msgid "Mobile no"
-msgstr ""
+msgstr "رقم الجوال"
 
 #: .\company\templates\mandoob_list.html:41
 msgid "Place"
-msgstr ""
+msgstr "موقع"
 
 #: .\company\views.py:35
 msgid "New Designation has been Created."
@@ -3594,13 +3554,13 @@ msgstr "رمز الهاتف الدولي"
 #: .\core\templates\apps.html:9 .\core\templates\email\otp.html:5
 #: .\core\templates\email\otp.html:10 .\core\templates\login.html:5
 msgid "UmrahFlow"
-msgstr "عمرة برو"
+msgstr "عمرة فلو"
 
 #: .\core\templates\apps.html:49
 msgid "Select Application to continue"
 msgstr "اختيار التطبيق للمتابعة"
 
-#: .\core\templates\apps.html:64 .\core\templates\base.html:194
+#: .\core\templates\apps.html:64 .\core\templates\base.html:196
 #: .\core\templates\side_navigation.html:35
 #: .\core\templates\side_navigation\accounts.html:4
 #: .\core\templates\side_navigation\side_navigation.html:70
@@ -3612,12 +3572,12 @@ msgstr "المالية و الحسابات"
 msgid "Continue"
 msgstr "استمرار"
 
-#: .\core\templates\apps.html:78 .\core\templates\base.html:203
+#: .\core\templates\apps.html:78 .\core\templates\base.html:205
 #: .\core\templates\side_navigation\side_navigation.html:76
 msgid "Field Operations"
 msgstr "عمليات ميدانية"
 
-#: .\core\templates\apps.html:95 .\core\templates\base.html:213
+#: .\core\templates\apps.html:95 .\core\templates\base.html:215
 #: .\core\templates\side_navigation.html:76
 #: .\core\templates\side_navigation\hr.html:3
 #: .\core\templates\side_navigation\mandoob.html:3
@@ -3625,26 +3585,24 @@ msgstr "عمليات ميدانية"
 msgid "Human Resources"
 msgstr "الموارد البشرية"
 
-#: .\core\templates\base.html:56 .\core\templates\side_navigation.html:97
+#: .\core\templates\base.html:58 .\core\templates\side_navigation.html:97
 #: .\core\templates\side_navigation\side_navigation.html:92
 msgid "Log out"
 msgstr "تسجيل الخروج"
 
-#: .\core\templates\base.html:180
+#: .\core\templates\base.html:182
 #: .\core\templates\side_navigation\side_navigation.html:62
 msgid "Apps"
 msgstr "التطبيقات"
 
-#: .\core\templates\core.html:139
+#: .\core\templates\core.html:150
 #: .\payment\templates\popup_forms\withdraw_payment.html:41
 msgid "Select"
 msgstr "اختيار"
 
-#: .\core\templates\core.html:221
-#, fuzzy
-#| msgid "Processing Fees"
+#: .\core\templates\core.html:232
 msgid "Processing..."
-msgstr "رسوم المعالجة"
+msgstr "يتم المعالجة..."
 
 #: .\core\templates\dashboard.html:45
 #: .\visa_group\templates\umrah_visa_group_invoice_list.html:52
@@ -3692,16 +3650,12 @@ msgid "Page not found"
 msgstr ""
 
 #: .\core\templates\errors\404.html:11 .\core\templates\errors\500.html:11
-#, fuzzy
-#| msgid "Dashboard"
 msgid "Back to Dashboard"
-msgstr "لوحة التحكم"
+msgstr "العودة إلى لوحة التحكم"
 
 #: .\core\templates\errors\500.html:10
-#, fuzzy
-#| msgid "Something went wrong: "
 msgid "Something went wrong here"
-msgstr "حدث خطأ"
+msgstr "حدث خطأ ما هنا"
 
 #: .\core\templates\lang.html:42
 msgid "TestDriven.io Courses"
@@ -3713,7 +3667,7 @@ msgstr "اللغة"
 
 #: .\core\templates\login.html:5
 msgid "Login"
-msgstr ""
+msgstr "تسجيل الدخول"
 
 #: .\core\templates\login.html:15 .\core\templates\login.html:31
 #: .\core\templates\login.html:97 .\core\templates\otp.html:22
@@ -3729,17 +3683,15 @@ msgstr "رمز التحقق Google Authenticator"
 
 #: .\core\templates\login.html:126 .\core\templates\otp.html:117
 msgid "Log in"
-msgstr ""
+msgstr "تسجيل الدخول"
 
 #: .\core\templates\otp.html:14
-#, fuzzy
-#| msgid "Email Verification OTP"
 msgid "OTP Verification"
-msgstr "الرمز التحقق - عمرة برو"
+msgstr "التحقق من OTP"
 
 #: .\core\templates\otp.html:16 .\core\templates\otp.html:17
 msgid "One time Password"
-msgstr ""
+msgstr "كلمة السر لمرة واحدة"
 
 #: .\core\templates\side_navigation.html:39
 #: .\payment\templates\treasury.html:15
@@ -3768,66 +3720,58 @@ msgstr "مصروفات الشركة / مكتب"
 msgid "Salaries"
 msgstr "الرواتب"
 
-#: .\core\templates\side_navigation\accounts.html:11
-msgid "Virtual Agent Accounts"
-msgstr "حسابات وكلاء الافتراضي"
-
-#: .\core\templates\side_navigation\accounts.html:17
-msgid "External Agent Accounts"
-msgstr "حسابات وكلاء الخارجي"
-
-#: .\core\templates\side_navigation\accounts.html:23
+#: .\core\templates\side_navigation\accounts.html:29
 msgid "Transactions"
 msgstr "العمليات"
 
-#: .\core\templates\side_navigation\accounts.html:41
-#: .\core\templates\side_navigation\accounts.html:61
+#: .\core\templates\side_navigation\accounts.html:47
+#: .\core\templates\side_navigation\accounts.html:67
 msgid "Add new"
 msgstr "إضافة جديد"
 
-#: .\core\templates\side_navigation\accounts.html:77
+#: .\core\templates\side_navigation\accounts.html:83
 msgid "Invoices"
 msgstr "فواتير"
 
-#: .\core\templates\side_navigation\accounts.html:82
+#: .\core\templates\side_navigation\accounts.html:88
 #: .\voucher\templates\voucher_list\sub_agent_voucher_list.html:15
 msgid "Visa Invoices"
 msgstr "فواتير التاشيرات"
 
-#: .\core\templates\side_navigation\accounts.html:90
+#: .\core\templates\side_navigation\accounts.html:96
 #: .\voucher\templates\transport_invoice_list.html:15
 msgid "Transport Invoices"
 msgstr "فواتير النقل"
 
-#: .\core\templates\side_navigation\accounts.html:99
+#: .\core\templates\side_navigation\accounts.html:105
 msgid "Arrival Voucher Invoices"
 msgstr "فواتير اشعارات الوصول"
 
-#: .\core\templates\side_navigation\accounts.html:117
+#: .\core\templates\side_navigation\accounts.html:123
 msgid "Agents"
 msgstr "الوكلاء"
 
-#: .\core\templates\side_navigation\agent.html:7
-#: .\core\templates\side_navigation\operations.html:4
+#: .\core\templates\side_navigation\agent.html:24
+#: .\core\templates\side_navigation\operations.html:20
 msgid "Operations"
 msgstr "العمليات"
 
-#: .\core\templates\side_navigation\agent.html:26
-#: .\core\templates\side_navigation\operations.html:58
+#: .\core\templates\side_navigation\agent.html:43
+#: .\core\templates\side_navigation\operations.html:85
 msgid "Tomorrow"
 msgstr "غداً"
 
-#: .\core\templates\side_navigation\agent.html:30
-#: .\core\templates\side_navigation\operations.html:62
+#: .\core\templates\side_navigation\agent.html:47
+#: .\core\templates\side_navigation\operations.html:89
 msgid "Today"
 msgstr "اليوم"
 
-#: .\core\templates\side_navigation\agent.html:34
-#: .\core\templates\side_navigation\operations.html:66
+#: .\core\templates\side_navigation\agent.html:51
+#: .\core\templates\side_navigation\operations.html:93
 msgid "Yesterday"
 msgstr ""
 
-#: .\core\templates\side_navigation\operations.html:84
+#: .\core\templates\side_navigation\operations.html:111
 #: .\transport\models.py:396
 #, fuzzy
 #| msgid "Transport Price"
@@ -3897,19 +3841,15 @@ msgstr "رقم الفاتورة"
 #: .\invoice\models.py:18 .\supplier\forms.py:11 .\supplier\models.py:13
 #: .\visa_group\models.py:28
 msgid "VAT Percentage"
-msgstr ""
+msgstr "نسبة ضريبة القيمة المضافة"
 
 #: .\invoice\models.py:19
-#, fuzzy
-#| msgid "Amount"
 msgid "VAT Amount"
-msgstr "المبلغ"
+msgstr "قيمة الضريبة"
 
 #: .\invoice\models.py:21 .\voucher\models.py:348
-#, fuzzy
-#| msgid "Total Movements"
 msgid "Additional Movement"
-msgstr "إجمالي الحركات"
+msgstr "حركة إضافية"
 
 #: .\invoice\models.py:23
 msgid "Supplier Entry"
@@ -4182,13 +4122,6 @@ msgstr "تخويل الى / من"
 msgid "Add New Account"
 msgstr "إضافة حساب جديد"
 
-#: .\payment\templates\agent_account_view.html:49
-#: .\payment\templates\payment_agent_list.html:105
-#: .\payment\templates\print\agents_current_balance_print.html:39
-#: .\payment\templates\print\print_receipt_vouchers_report.html:95
-msgid "Total Visas"
-msgstr "إجمالي عدد التأشيرات"
-
 #: .\payment\templates\agent_account_view.html:64
 #, fuzzy
 #| msgid "Transport"
@@ -4220,15 +4153,6 @@ msgstr "فواتير النقل"
 #: .\payment\templates\payment_agent_list.html:20
 msgid "Agent Accounts"
 msgstr "حسابات الوكلاء"
-
-#: .\payment\templates\payment_agent_list.html:124
-msgid "View Account"
-msgstr "عرض الحساب"
-
-#: .\payment\templates\payment_agent_list.html:145
-#: .\voucher\templates\transport_invoice_list.html:55 .\voucher\views.py:190
-msgid "All Agents"
-msgstr "كل الوكلاء"
 
 #: .\payment\templates\payroll_view.html:4
 #: .\payment\templates\payroll_view.html:15
@@ -4310,6 +4234,13 @@ msgstr "اسم المستلم"
 #: .\payment\templates\print\agents_current_balance_print.html:25
 msgid "Agents Current Balance Sheet"
 msgstr "تقرير أرصدة الوكلاء"
+
+#: .\payment\templates\print\agents_current_balance_print.html:29
+#: .\payment\templates\print\print_agent_account_statement.html:42
+#: .\payment\templates\print\print_receipt_vouchers_report.html:101
+#: .\payment\templates\print\print_treasury_report.html:98
+msgid "Print Date"
+msgstr "تاريخ الطباعة"
 
 #: .\payment\templates\print\print_agent_account_statement.html:35
 #: .\payment\templates\print\print_agent_account_statement.html:37
@@ -4584,62 +4515,62 @@ msgstr ""
 msgid "Suppliers"
 msgstr "الموردين"
 
-#: .\transport\forms.py:20 .\transport\models.py:48
+#: .\transport\forms.py:48 .\transport\models.py:48
 msgid "From English"
 msgstr "من (الإنجليزي)"
 
-#: .\transport\forms.py:21 .\transport\models.py:49
+#: .\transport\forms.py:49 .\transport\models.py:49
 msgid "From Arabic"
 msgstr "من (العربية)"
 
-#: .\transport\forms.py:22 .\transport\models.py:50
+#: .\transport\forms.py:50 .\transport\models.py:50
 msgid "To English"
 msgstr "الى (الإنجليزي)"
 
-#: .\transport\forms.py:23 .\transport\models.py:51
+#: .\transport\forms.py:51 .\transport\models.py:51
 msgid "To Arabic"
 msgstr "الى (العربية)"
 
-#: .\transport\forms.py:24 .\transport\models.py:52
+#: .\transport\forms.py:52 .\transport\models.py:52
 msgid "Distance (km)"
 msgstr "المسافة (كم)"
 
-#: .\transport\forms.py:25 .\transport\models.py:67
+#: .\transport\forms.py:53 .\transport\models.py:67
 msgid "Mandoob who can Mark as completed"
 msgstr ""
 
-#: .\transport\forms.py:26 .\transport\models.py:68
+#: .\transport\forms.py:54 .\transport\models.py:68
 msgid "Mandoob who can Mark as on the way"
 msgstr ""
 
-#: .\transport\forms.py:43 .\transport\forms.py:46 .\transport\forms.py:49
-#: .\transport\forms.py:52
+#: .\transport\forms.py:71 .\transport\forms.py:74 .\transport\forms.py:77
+#: .\transport\forms.py:80
 msgid "This city name is too long."
 msgstr ""
 
-#: .\transport\forms.py:55
+#: .\transport\forms.py:83
 msgid "This distance is too long."
 msgstr ""
 
-#: .\transport\forms.py:182
+#: .\transport\forms.py:250
 #, fuzzy
 #| msgid "Agent Name English"
 msgid "Name English"
 msgstr "اسم الوكيل بالانجليزي"
 
-#: .\transport\forms.py:183
+#: .\transport\forms.py:251
 #, fuzzy
 #| msgid "Agent Name Arabic"
 msgid "Name Arabic"
 msgstr "اسم الوكيل بالعربي"
 
-#: .\transport\forms.py:201 .\transport\models.py:382
+#: .\transport\forms.py:269 .\transport\models.py:382
 #, fuzzy
 #| msgid "Agent Name English"
 msgid "Package Name English"
 msgstr "اسم الوكيل بالانجليزي"
 
-#: .\transport\forms.py:202 .\transport\models.py:383
+#: .\transport\forms.py:270 .\transport\models.py:383
 #, fuzzy
 #| msgid "Agent Name Arabic"
 msgid "Package Name Arabic"
@@ -4869,14 +4800,6 @@ msgstr "انتهت الجلسة. الرجاء تسجيل الدخول مرة أ�
 #: .\visa_group\ajax_datatable_views.py:52 .\visa_group\models.py:25
 msgid "Transport Included"
 msgstr "شامل النقل"
-
-#: .\visa_group\ajax_datatable_views.py:77
-msgid "Yes"
-msgstr ""
-
-#: .\visa_group\ajax_datatable_views.py:77
-msgid "No"
-msgstr "لا"
 
 #: .\visa_group\models.py:19
 #: .\voucher\templates\voucher_list\b2c_voucher_list.html:48
@@ -5194,6 +5117,43 @@ msgstr "تم تعديل  الفاتورة بنجاح."
 #: .\voucher\views.py:311
 msgid "Invoice has been deleted successfully."
 msgstr "تم حذف الفاتورة بنجاح."
+
+#~ msgid "Credit Account"
+#~ msgstr "حساب دائن"
+
+#~ msgid "Debit Account"
+#~ msgstr "حساب مدين"
+
+#~ msgid "Account Settlement Credit"
+#~ msgstr "تسوية حساب دائن"
+
+#~ msgid "Account Settlement Credits"
+#~ msgstr "تسوية حساب دائن"
+
+#~ msgid "Account Settlement Debit"
+#~ msgstr "تسوية حساب مدين"
+
+#~ msgid "Account Settlement Debits"
+#~ msgstr "تسوية حساب مدين"
+
+#, fuzzy
+#~| msgid "Receipt Vouchers Report"
+#~ msgid "Account Settlement Debit has been added."
+#~ msgstr "تقرير سندات قبض"
+
+#~ msgid "Submit to Company"
+#~ msgstr "ارسال الى شركة"
+
+#~ msgid "Season"
+#~ msgstr "الموسم"
+
+#, fuzzy
+#~| msgid "Group No"
+#~ msgid "Group No."
+#~ msgstr "رقم المجموعة"
+
+#~ msgid "Rawdah Permit"
+#~ msgstr "تصريح الروضة"
 
 #~ msgid "Agent Account Tree"
 #~ msgstr "حساب الوكلاء"

@@ -49,13 +49,15 @@
                       <td>{{forloop.counter}}</td>
                       <td>{{company}}</td>
                       <td>{{company.account.code}}</td>
-                      <td {% if company.account.balance >= 0.00 %}class='table-success'{% else %}class='table-danger'{% endif %}>
-                      <strong><span dir="ltr">{{company.account.balance}}</span></strong>
+                      <td>
+                      <strong><span dir="ltr" class="{{company.account.balance_color}}">{{company.account.balance}}</span></strong>
                       </td>
 
                       <td>
+                        {% if company.account %}
                         <a href="{% url "account_view" company.account.id %}"   class="btn btn-link btn-sm"><i class="fe fe-eye fe-16"></i></a>
                         <a onClick="popupCenter({url: '{% url 'edit_transport_company' company.id %}', title: 'xtf', w: 900, h: 900});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a>
+                        {% endif %}
                       </td>
 
                     </tr>

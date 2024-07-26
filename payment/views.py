@@ -79,35 +79,35 @@ def payments_agents_list(request):
     }
     return render(request, "payment_agent_list.html", context)
 
-@login_required()
-def agent_account_view(request, agent_type, agent_id):
-    agent = Agent.objects.get(company=request.user.employee.company.id, id=agent_id)
-    main_transactions = AgentPaymentTransaction.objects.filter(company = request.user.employee.company.id, agent__id = agent_id, transaction_type__in = ['c', 'd']).order_by('date', 'time')  
-    balance = 0.00
-    transactions = []
-    for t in main_transactions:
-        if t.transaction_type == "c":
-            balance += float(t.amount)
-        elif t.transaction_type == "d":
-            balance -= float(t.amount)
-        else:
-            pass
-        t.balance = balance
-        transactions.append({
-            "transaction": t,
-            "balance": balance
-        })
+# @login_required()
+# def agent_account_view(request, agent_type, agent_id):
+#     agent = Agent.objects.get(company=request.user.employee.company.id, id=agent_id)
+#     main_transactions = AgentPaymentTransaction.objects.filter(company = request.user.employee.company.id, agent__id = agent_id, transaction_type__in = ['c', 'd']).order_by('date', 'time')  
+#     balance = 0.00
+#     transactions = []
+#     for t in main_transactions:
+#         if t.transaction_type == "c":
+#             balance += float(t.amount)
+#         elif t.transaction_type == "d":
+#             balance -= float(t.amount)
+#         else:
+#             pass
+#         t.balance = balance
+#         transactions.append({
+#             "transaction": t,
+#             "balance": balance
+#         })
 
 
     
-    context = {
-        "agent" : agent,
-        # "transactions": main_transactions,
-        "agent_type": agent_type,
-        "transactions": transactions
+#     context = {
+#         "agent" : agent,
+#         # "transactions": main_transactions,
+#         "agent_type": agent_type,
+#         "transactions": transactions
         
-    }
-    return render(request, "agent_account_view.html", context)
+#     }
+#     return render(request, "agent_account_view.html", context)
 
 @permission_required('payments.add_agentpaymenttransaction',raise_exception=True)
 def collect_payment(request, agent_type, agent_id):

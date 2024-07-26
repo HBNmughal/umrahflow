@@ -37,12 +37,9 @@ class Agent(models.Model):
     history = HistoricalRecords(
         user_model='auth.User',
     )
-
     account = models.ForeignKey('account.Account', on_delete=models.PROTECT, verbose_name=_("Account"), blank=True, null=True, limit_choices_to={'level': 5, 'account_type': 'A'})
 
-
-
-
+    can_view_account_statement = models.BooleanField(_("Can View Account Statement"), default=False)
     def save(self, *args, **kwargs):
         if self.account:
             account = Account.objects.get(pk=self.account.pk)

@@ -30,6 +30,9 @@
                   <div class="col">
                     <span dir="ltr" class="h2 mb-0 {{account.balance_color}}">{{account.balance}}</span>
                     <span class="small">{{request.user.employee.company.settings.get_default_currency_display}} </span>
+                    {% if agent %}
+                    <span class="small">{{request.user.agent.company.settings.get_default_currency_display}} </span>
+                    {% endif %} 
                     <p class="small text-muted mb-0">{% trans "Account Balance" %}</p>
                   </div>
                   <div class="col-auto">
@@ -75,6 +78,7 @@
           
         </div>
         <!-- /.row -->
+        {% if not agent %}
         <div class="card card-success card-outline">
           <div class="card-body">
             {% comment %} <button type="button" class="btn btn-primary swalDefaultSuccess" data-toggle="modal" data-target="#print_account_statement" >
@@ -106,7 +110,7 @@
             </button> {% endcomment %}
           </div>
         </div>
-
+        {% endif %}
         
   
           <!-- /.card-header -->
@@ -122,21 +126,27 @@
                     <th>{% trans "Date" %}</th>
                     <th dir="ltr">{% trans "Debit" %}</th>
                     <th dir="ltr">{% trans "Credit" %}</th>
-                    <th dir="ltr">{% trans "Account Balance" %}</th>
+                    <th dir="ltr">{% trans "Balance" %}</th>
                     <th>{% trans "Discription" %}</th>
                     {% comment %} {% if agent %}
                     <th>{% trans "Group No" %}</th>
                     {% endif %} {% endcomment %}
                     <th>{% trans "Reference No" %}</th>
+                    {% if not agent %}
                     <th>{% trans "Username" %}</th>
                     <th>{% trans "Print" %}</th>
+                    {% endif %}
                   </tr>
                   </thead>
                   <tbody>
                     {% for t in journal_entries %}
                     <tr>
                       <td>
+                        {% if not agent %}
                         <a href="{% url "transaction_view" t.entry.transaction.id %}">{{t.entry.transaction.id}}</a>
+                        {% else %}
+                        {{t.entry.transaction.id}}
+                        {% endif %}
                       </td>
                       <td>{{t.entry.id}}</td>
                       <td>
@@ -173,6 +183,8 @@
                     {% endif %}
                        
                       </td>
+                    {% if not agent %}
+
                       <td>
                         {{t.entry.transaction.username}}
                        
@@ -181,7 +193,8 @@
                         {% if t.transaction.receipt_voucher %}
                         <button type="button" class="btn btn-success swalDefaultSuccess" onClick="popupCenter({url: '{% url 'print_receipt_voucher' t.entry.transaction %}', title: 'xtf', w: 900, h: 900});">
                         {% endif %}
-                        </td>
+                      </td>
+                    {% endif %}
                     </tr>
                     {% endfor %}
                     </tbody>

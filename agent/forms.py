@@ -15,7 +15,7 @@ class AgentForm(forms.ModelForm):
     
     class Meta:
         model = Agent
-        fields = ("company", "country", "code", "agent_type", "name_en", "name_ar", "address", "contact")
+        fields = ("company", "country", "code", "agent_type", "name_en", "name_ar", "address", "contact", 'can_view_account_statement')
 
         widgets = {
             "company": forms.HiddenInput(attrs={}),
@@ -26,6 +26,7 @@ class AgentForm(forms.ModelForm):
             "name_ar": forms.TextInput(attrs={"class": "form-control"}),
             "address": forms.Textarea(attrs={"class": "form-control"}),
             "contact": forms.Textarea(attrs={"class": "form-control"}),
+            "can_view_account_statement": forms.CheckboxInput(attrs={"class": "form-control", "type": "checkbox"}),
         }
         
 class AgentPriceForm(forms.ModelForm):

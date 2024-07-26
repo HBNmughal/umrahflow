@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
@@ -20,45 +21,40 @@
   
       <!-- Main content -->
       <section class="content">
-        <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>{{request.user.agent.total_visas}}</h3>
-  
-                  <p>{% trans "Total Pilgrims" %}</p>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0 text-success">{{request.user.agent.total_visas}}</span>
+                    <p class="small text-muted mb-0">{% trans "Total Pilgrims" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-user text-muted mb-0"></span>
+                  </div>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-contacts"></i>
-                </div>
-                <a href="#" class="small-box-footer">{% trans "Season" %}: 1445</a>
               </div>
             </div>
-            <!-- ./col -->
-            
-            <!-- ./col -->
-           
-            <!-- ./col -->
-            {% comment %} <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>65</h3>
-  
-                  <p>Unique Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col --> {% endcomment %}
           </div>
-          <!-- /.row -->
-          <!-- Main row -->
+          {% if request.user.agent.can_view_account_statement %}
+          <div class="col-md-4 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span dir="ltr" class="h2 mb-0  {{request.user.agent.account.balance_color}}">{{request.user.agent.account.balance}}</span>
+                    <span class="small">{{request.user.agent.company.settings.get_default_currency_display}} </span>
+
+                    <p class="small text-muted mb-0">{% trans "Account Balance" %}</p>
+                  </div>
+                  <div class="col-auto">
+                    <span class="fe fe-32 fe-dollar-sign text-muted mb-0"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
           
 {% endblock %}

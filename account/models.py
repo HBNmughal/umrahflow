@@ -230,15 +230,17 @@ class Account(models.Model):
             return round(balance,2)
         
     def balance_color(self):
-        if self.balance() >= 0.00 and self.account_type in ['A', 'E', 'R']:
-            return 'text-danger'
-        elif self.balance() < 0.00 and self.account_type in ['A', 'E', 'R']:
-            return 'text-success'
-        elif self.balance() >= 0.00 and self.account_type in ['L', 'X']:
-            return 'text-success'
-        elif self.balance() < 0.00 and self.account_type in ['L', 'X']:
-            return 'text-danger'
-        
+        try:
+            if self.balance() >= 0.00 and self.account_type in ['A', 'E', 'R']:
+                return 'text-danger'
+            elif self.balance() < 0.00 and self.account_type in ['A', 'E', 'R']:
+                return 'text-success'
+            elif self.balance() >= 0.00 and self.account_type in ['L', 'X']:
+                return 'text-success'
+            elif self.balance() < 0.00 and self.account_type in ['L', 'X']:
+                return 'text-danger'
+        except:
+            return 'text-dark'
     def set_account_level(self):
         if self.parent_account:
             if self.parent_account.account_level() == 5:
@@ -417,12 +419,7 @@ class ReceiptVoucher(models.Model):
         
         credit_account = None
         debit_account = None
-        if self.collected_from.account_type in ['A', 'E', 'R']:
-            credit_account = self.collected_from
-            debit_account = self.to_account
-        elif self.collected_from.account_type in ['L', 'X']:
-            credit_account = self.to_account
-            debit_account = self.collected_from
+        
         
         
 
@@ -434,13 +431,13 @@ class ReceiptVoucher(models.Model):
             reference_no=self.reference_no,
             ledger_entries=[
                 {
-                'account': credit_account.id,
+                'account': self.collected_from.id,
                 'transaction_type': 'credit',
                 'amount': self.amount,
                 'entry_for': 'receipt_voucher_collected_from'
                 },
                 {
-                'account': debit_account.id,
+                'account': self.to_account.id,
                 'transaction_type': 'debit',
                 'amount': self.amount,
                 'entry_for': 'receipt_voucher_to_account'

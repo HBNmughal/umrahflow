@@ -57,6 +57,21 @@ class ArrivalVoucherGroupDetailsForm(forms.ModelForm):
 
         }
     
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(ArrivalVoucherGroupDetailsForm, self).__init__(*args, **kwargs)
+        # if user is employee
+        try:
+            self.fields['agent'].queryset = Agent.objects.filter(company=user.employee.company)
+        except:
+            pass
+        
+        # if user is agent
+        try:
+            self.fields['agent'].queryset = Agent.objects.filter(pk=user.agent.pk)
+        except:
+            pass
+    
         
 class ArrivalVoucherFlightDetailsForm(forms.ModelForm):
     class Meta:
@@ -97,6 +112,12 @@ class ArrivalVoucherFlightDetailsForm(forms.ModelForm):
             'departure_airport': _('Departure airport'),
         }
 
+    
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(ArrivalVoucherFlightDetailsForm, self).__init__(*args, **kwargs)
+
+
 class ArrivalVoucherAccommodationDetailsForm(forms.ModelForm):
     class Meta:
         model = ArrivalVoucher
@@ -111,6 +132,22 @@ class ArrivalVoucherAccommodationDetailsForm(forms.ModelForm):
             'medina_hotel': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
+    
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(ArrivalVoucherAccommodationDetailsForm, self).__init__(*args, **kwargs)
+        # if user is employee
+        try:
+            pass
+        except:
+            pass
+
+        # if user is agent
+        try:
+            pass
+        except:
+            pass
+
 class GroupLeaderForm(forms.ModelForm):
     class Meta:
         model = ArrivalVoucher
@@ -124,6 +161,7 @@ class GroupLeaderForm(forms.ModelForm):
             'group_leader': forms.TextInput(attrs={'class': 'form-control'}),
             'group_leader_contact': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
 
 class TransportBrnForm(forms.ModelForm):
     class Meta:
@@ -148,6 +186,20 @@ class TransportBrnForm(forms.ModelForm):
             'transport_remarks': forms.Textarea(attrs={'class': 'form-control', 'rows': 1}),
             'transport_package': forms.Select(attrs={'class': 'form-control select2'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(TransportBrnForm, self).__init__(*args, **kwargs)
+        try:
+            self.fields['transport_company'].queryset = TransportCompany.objects.filter(company=user.employee.company)
+            self.fields['transport_type'].queryset = TransportType.objects.filter(company=user.employee.company)
+        except:
+            pass
+        try:
+            self.fields['transport_company'].queryset = TransportCompany.objects.filter(company=user.agent.company)
+            self.fields['transport_type'].queryset = TransportType.objects.filter(company=user.agent.company)
+        except:
+            pass
 
 from django import forms
 from django import forms
@@ -190,6 +242,11 @@ class RawdahPermitForm(forms.ModelForm):
             'rawdah_women_status': forms.Select(attrs={'class': 'form-control select2'}),
 
         }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(RawdahPermitForm, self).__init__(*args, **kwargs)
+        
  
 
 
@@ -248,7 +305,19 @@ class ArrivalVoucherForm(forms.ModelForm):
 
 
         }
+    
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(ArrivalVoucherForm, self).__init__(*args, **kwargs)
+        try:
+            self.fields['agent'].queryset = Agent.objects.filter(company=user.employee.company)
+        except:
+            pass
 
+        try:
+            self.fields['agent'].queryset = Agent.objects.filter(pk=user.agent.pk)
+        except:
+            pass
 class ArrivalVoucherForm(forms.ModelForm):
     class Meta:
         model = ArrivalVoucher
@@ -302,6 +371,8 @@ class ArrivalVoucherForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+
+        user = kwargs.pop('user')
         super(ArrivalVoucherForm, self).__init__(*args, **kwargs)
         self.fieldsets = (
             ('Group Information', {
@@ -320,7 +391,13 @@ class ArrivalVoucherForm(forms.ModelForm):
                 'fields': ('transport_type', 'transport_company', 'transport_brn', 'transport_status'),
             }),
         )
+        if user.employee:
+            self.fields['agent'].queryset = Agent.objects.filter(company=user.employee.company)
+        elif user.agent:
+            self.fields['agent'].queryset = Agent.objects.filter(pk=user.agent.pk)
 
+
+    
 
 class ArrivalVoucherApprovalForm(forms.ModelForm):
     class Meta:
@@ -369,6 +446,7 @@ class OperatingScheduleFilterForm(forms.Form):
 
 
 
+
 class ArrivalVoucherFilterForm(forms.Form):
     voucher = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Voucher No'))
     agent = forms.ModelChoiceField(queryset=Agent.objects.all(), required=False, widget=forms.Select(attrs={'class': 'form-control select2 '}), label=_('Agent'))
@@ -380,4 +458,5 @@ class ArrivalVoucherFilterForm(forms.Form):
     group_no = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Group No'))
     group_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Group Name'))
     transport_status = forms.ChoiceField(choices=(('', _('All')), ('pending', _('Pending')), ('approved', _('Approved')), ('rejected', _('Rejected'))), required=False, widget=forms.Select(attrs={'class': 'form-control select2'}), label=_('Transport Status'))
-    
+
+

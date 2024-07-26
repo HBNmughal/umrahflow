@@ -41,6 +41,8 @@
                     <th>{% trans "Agent" %}</th>
                     <th>{% trans "Agent type" %}</th>
                     <th>{% trans "Current Price" %}</th>
+                    <th>{% trans "Can View Account Statement" %}</th>
+
                     <th>{% trans "Commission" %}</th>
 
                     <th>{% trans "Code" %}</th>
@@ -58,8 +60,9 @@
 
                       <td>{{agent.get_agent_type_display}}</td>
                       <td>{% trans "Visa Price" %}: {{agent.current_visa_price}} <br> {% trans "Visa Including Transport Price" %}: {{agent.current_visa_including_transport_price}} <a onClick="popupCenter({url: '{% url 'agent_price_list' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a></td>
+                      <td>{% if agent.can_view_account_statement %} <span class="badge badge-success">{% trans "Yes" %}</span> {% else %} <span class="badge badge-danger">{% trans "No" %}</span> {% endif %}</td>
                       <td>{% trans "Comission Holder Account" %}: {{agent.commission.comission_holder_account}} <br> {% trans "Commission Per Visa Without Transport" %}: {{agent.commission.commission_per_visa_without_transport}} <br> {% trans "Commission Per Visa With Transport" %}: {{agent.commission.commission_per_visa_with_transport}} <br> <a onClick="popupCenter({url: '{% url 'agent_commission_form' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i></a></td>
-
+                      
                       <td>
                         <a onClick="popupCenter({url: '{% url 'agent_code_form' agent.id %}', title: 'xtf'});"   class="btn btn-link"><i class="fe fe-edit fe-16"></i>
                           <span class="badge badge-primary right">{% trans "Total" %} {{agent.code_count}}</span>
@@ -67,7 +70,7 @@
                       </td>
                       <td>
                         {% if agent.user %}
-                        <a onClick="popupCenter({url: '{% url 'edit_agent_user' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i> {{agent.code_count}}</a>
+                        <a onClick="popupCenter({url: '{% url 'edit_agent_user' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-edit fe-16"></i> {{agent.user.username}}</a>
                         {% else %}
                           <a onClick="popupCenter({url: '{% url 'create_agent_user' agent.id %}', title: 'xtf'});"   class="btn btn-link btn-sm"><i class="fe fe-plus fe-16"></i> {% trans "Create" %}</a>
                         {% endif %}                         

@@ -18,6 +18,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django import forms
+from transport.models import TransportMovement, TransportType
 
 
 from django.contrib.auth.decorators import login_required
@@ -235,10 +236,7 @@ def agent_dashboard(request):
 
 
 def arrival_vouchers_list_htmx(request):
-    add_voucher_form = ArrivalVoucherGroupDetailsForm()
-    add_voucher_form.fields['agent'].queryset = Agent.objects.filter(id=request.user.agent.id)
-    add_voucher_form.fields['company'].initial = request.user.agent.company
-    add_voucher_form.fields['agent'].initial = request.user.agent
+    add_voucher_form = ArrivalVoucherGroupDetailsForm(user=request.user)
 
     # get all arrival vouchers for the company order by date
     arrival_vouchers = ArrivalVoucher.objects.filter(agent=request.user.agent).order_by('-id')
@@ -348,123 +346,15 @@ def add_arrival_voucher(request):
 
 
 
-# @login_required()
-# def agent_arrival_voucher(request, pk):
-#     allow_edit = False
-    
-#     voucher = get_object_or_404(ArrivalVoucher, pk=pk, agent=request.user.agent)
-#     if voucher.status == 'pending':
-#         allow_edit = False
-#     elif voucher.status == 'approved':
-#         allow_edit = False
-#     elif voucher.status == 'with_agent_rejected':
-#         allow_edit = True
-#     elif voucher.status == 'with_agent_draft':
-#         allow_edit = True
-#     elif voucher.status == 'draft':
-#         allow_edit = False
-#     else:
-#         allow_edit = False
-#     group_details_form = ArrivalVoucherGroupDetailsForm(instance=voucher)
-#     arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(instance=voucher)
-#     arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(instance=voucher)
-#     transport_movement_formset = TransportMovementFormsetAgent(instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
-#     group_details_form.fields['agent'].queryset = Agent.objects.filter(id=request.user.agent.id)
-
-    
-        
-    
-#     if request.method == "POST":
-#         group_details_form = ArrivalVoucherGroupDetailsForm(request.POST, instance=voucher)
-#         arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(request.POST, instance=voucher)
-#         arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(request.POST, instance=voucher)
-#         transport_formset = TransportMovementFormsetAgent(request.POST, instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
-#         if group_details_form.is_valid():
-#             print('group_details_form is valid')
-#         if arrival_voucher_flight_details_form.is_valid():
-#             print('arrival_voucher_flight_details_form is valid')
-#         if arrival_voucher_accommodation_details_form.is_valid():
-#             print('arrival_voucher_accommodation_details_form is valid')
-#         if transport_formset.is_valid():
-#             print('transport_formset is valid')
-#         else:
-#             print('transport_formset is not valid')
-#             print(transport_formset.errors)
-#         if group_details_form.is_valid() and arrival_voucher_flight_details_form.is_valid() and arrival_voucher_accommodation_details_form.is_valid() and transport_movement_formset.is_valid():
-#             group_details_form.save()
-#             arrival_voucher_flight_details_form.save()
-#             arrival_voucher_accommodation_details_form.save()
-
-#             messages.success(request, _('Arrival voucher updated successfully'))
-#             return HttpResponseRedirect(reverse('agent_arrival_voucher', kwargs={'pk': pk}))
-#         else:
-#             messages.error(request, _('Error while updating arrival voucher'))
-#             # print errors 
-#             print(group_details_form.errors)
-#             print(arrival_voucher_flight_details_form.errors)
-#             print(arrival_voucher_accommodation_details_form.errors)
-#             print(transport_movement_formset.errors)
-
-#             context = {
-#                 'group_details_form': group_details_form,
-#                 'arrival_voucher_flight_details_form': arrival_voucher_flight_details_form,
-#                 'arrival_voucher_accommodation_details_form': arrival_voucher_accommodation_details_form,
-#                 'transport_formset': transport_movement_formset,
-#                 'voucher': voucher,
-#                 'allow_edit': allow_edit,
-#             }
-#             return render(request, 'agent_arrival_voucher.html', context)
-#     else:
-#         group_details_form = ArrivalVoucherGroupDetailsForm(instance=voucher)
-#         arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(instance=voucher)
-#         arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(instance=voucher)
-#         transport_formset = TransportMovementFormsetAgent(instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
-
-#         # disable all forms in case of allow_edit = False
-#         if allow_edit == False:
-#             for field in group_details_form.fields:
-#                 group_details_form.fields[field].disabled = True
-#             for field in arrival_voucher_flight_details_form.fields:
-#                 arrival_voucher_flight_details_form.fields[field].disabled = True
-#             for field in arrival_voucher_accommodation_details_form.fields:
-#                 arrival_voucher_accommodation_details_form.fields[field].disabled = True
-#             for form in transport_formset:
-#                 for field in form.fields:
-#                     form.fields[field].disabled = True
-
-#             for form in transport_formset:
-#                 for field in form.fields:
-#                     form.fields[field].disabled = True
-
-#         else:
-#             for form in transport_formset:
-#                 form.fields['status'].disabled = True
-#                 form.fields['transport_company'].disabled = True
-#                 # hide
-#                 form.fields['transport_company'].widget = forms.HiddenInput()
-#                 form.fields['status'].widget = forms.HiddenInput()
-
-
-#         context = {
-#             'group_details_form': group_details_form,
-#             'arrival_voucher_flight_details_form': arrival_voucher_flight_details_form,
-#             'arrival_voucher_accommodation_details_form': arrival_voucher_accommodation_details_form,
-#             'voucher': voucher,
-#             'transport_formset': transport_formset,
-#             'allow_edit': allow_edit,
-
-#         }
-#         return render(request, 'agent_arrival_voucher.html', context)
 
 
 @login_required()
 def agent_arrival_voucher(request, pk):
     voucher = get_object_or_404(ArrivalVoucher, pk=pk, agent=request.user.agent)
-    group_details_form = ArrivalVoucherGroupDetailsForm(instance=voucher)
-    arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(instance=voucher)
-    arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(instance=voucher)
+    group_details_form = ArrivalVoucherGroupDetailsForm(instance=voucher, user=request.user)
+    arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(instance=voucher, user=request.user)
+    arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(instance=voucher, user=request.user)
     transport_movement_formset = TransportMovementFormsetAgent(instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
-    group_details_form.fields['agent'].queryset = Agent.objects.filter(id=request.user.agent.id)
     if voucher.status == 'pending':
         allow_edit = False
     elif voucher.status == 'approved':
@@ -485,10 +375,10 @@ def agent_arrival_voucher(request, pk):
 
 
     if request.method == "POST":
-        group_details_form = ArrivalVoucherGroupDetailsForm(request.POST, instance=voucher)
-        arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(request.POST, instance=voucher)
-        arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(request.POST, instance=voucher)
-        transport_movement_formset = TransportMovementFormsetAgent(request.POST, instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
+        group_details_form = ArrivalVoucherGroupDetailsForm(request.POST, instance=voucher, user=request.user)
+        arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(request.POST, instance=voucher, user=request.user)
+        arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(request.POST, instance=voucher, user=request.user)
+        transport_movement_formset = TransportMovementFormsetAgent(request.POST, instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk), user=request.user)
         max_pax = 51
         pax = group_details_form.data['pax']
         if group_details_form.is_valid() and arrival_voucher_flight_details_form.is_valid() and arrival_voucher_accommodation_details_form.is_valid() and transport_movement_formset.is_valid() and int(pax) <= max_pax:
@@ -513,6 +403,8 @@ def agent_arrival_voucher(request, pk):
             }
             return render(request, 'agent_arrival_voucher.html', context)
     else:
+
+
         allow_submit = False
         for movement in voucher.transportmovement_set.all():
             if movement:
@@ -535,11 +427,11 @@ def agent_arrival_voucher(request, pk):
             messages.error(request, _(_("Rejection Reason")+ ": " + voucher.rejected_reason))
 
 
-        group_details_form = ArrivalVoucherGroupDetailsForm(instance=voucher)
-        arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(instance=voucher)
-        arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(instance=voucher)
+        group_details_form = ArrivalVoucherGroupDetailsForm(instance=voucher, user=request.user)
+        arrival_voucher_flight_details_form = ArrivalVoucherFlightDetailsForm(instance=voucher, user=request.user)
+        arrival_voucher_accommodation_details_form = ArrivalVoucherAccommodationDetailsForm(instance=voucher, user=request.user)
 
-        transport_formset = TransportMovementFormsetAgent(instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk))
+        transport_formset = TransportMovementFormsetAgent(instance=voucher, queryset=TransportMovement.objects.order_by('date', 'time').filter(voucher=voucher.pk), user=request.user)
 
         if allow_edit == False:
             # disable all forms
@@ -637,3 +529,32 @@ def agent_commission_form(request, pk):
     return render(request, "form.html", context)
 
 
+@login_required
+def agent_account_view(request):
+    from account.models import Account, JournalEntry
+    from decimal import Decimal
+    agent = get_object_or_404(Agent, id=request.user.agent.id, can_view_account_statement=True) 
+    account = Account.objects.get(pk=agent.account.pk)
+    journal_entries = JournalEntry.objects.filter(account=account).order_by('date', 'pk')
+    balance = Decimal(0.00)
+
+
+   
+
+    entries = []
+    for entry in journal_entries:
+        balance += Decimal(entry.entry_amount())
+        entries.append({
+            'entry': entry,
+            'balance': balance,
+        })
+
+
+
+
+    
+
+
+
+    context = {'account': account, 'journal_entries': entries, 'agent':True}
+    return render(request, 'account.html', context)

@@ -27,7 +27,7 @@ class TransportCompany(models.Model):
         super().save(*args, **kwargs)
         if self.account is None:
             parent_account = SystemSettings.objects.get(company=self.company).transport_company_account_tree
-            account = Account(company=self.company, account_name_en=self.name_en, account_name_ar=self.name_ar, parent_account=parent_account, allow_edit=False, allow_child_accounts=False)
+            account = Account(company=self.company, account_name_en=self.name_en, account_name_ar=self.name_ar, parent_account=parent_account)
             account.save()
             self.account = account
             self.save()

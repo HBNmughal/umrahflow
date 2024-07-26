@@ -3,6 +3,23 @@
 
 {% load i18n %}
 
+    {% if request.user.agent.can_view_account_statement %}
+    <p class="text-muted nav-heading mt-4 mb-1">
+      <span>{% trans "Accounts" %}</span>
+    </p>
+
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="{% url 'agent_account_view' %}">
+          <i class="fe fe-dollar-sign fe-16"></i>
+          <span class="ml-3 item-text">{% trans "Account Statement" %}</span>
+        </a>
+      </li>
+    </ul>
+    {% endif %}
+    
+
+
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>{% trans "Operations" %}</span>
       </p>
@@ -37,6 +54,7 @@
         </ul>
       </li>
     </ul>
+    
     
     
 </ul>

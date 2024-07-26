@@ -19,7 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('agent_list/', payments_agents_list, name="payments_agents_list"),
     path('agent_list/agents_current_balance_print/', agents_current_balance_print, name="agents_current_balance_print"),
-    path('payment_account/<agent_type>/<agent_id>', agent_account_view, name="agent_account_view"),
+    # path('payment_account/<agent_type>/<agent_id>', agent_account_view, name="agent_account_view"),
     path('payment_account/<agent_id>/print_agent_reciept_voucher_report/', print_agent_reciept_voucher_report, name="print_agent_reciept_voucher_report"),
     path('payment_account/<agent_id>/print_agent_transactions/', print_agent_account_statement, name="print_agent_account_statement"),
     path('payment_account/print_all_agents_reciept_voucher_report/', print_all_agents_reciept_voucher_report, name="print_all_agents_reciept_voucher_report"),

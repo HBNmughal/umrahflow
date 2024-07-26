@@ -1,10 +1,38 @@
 # create forms here 
 
 from django import forms
-from .models import TransportRoute, TransportMovement, TransportCompany, TransportPackage
+from .models import TransportRoute, TransportMovement, TransportCompany, TransportPackage, TransportType
 from arrival_voucher.models import ArrivalVoucher
 from django.utils.translation import gettext_lazy as _
-from django.forms import formset_factory, inlineformset_factory
+from django.forms import formset_factory, inlineformset_factory, BaseInlineFormSet
+
+
+
+class BaseTransportMovementFormSet(BaseInlineFormSet):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(BaseTransportMovementFormSet, self).__init__(*args, **kwargs)
+        for form in self.forms:
+
+            try:
+                form.fields['route'].queryset = TransportRoute.objects.filter(company=self.user.employee.company)
+                form.fields['transport_company'].queryset = TransportCompany.objects.filter(company=self.user.employee.company)
+                form.fields['type'].queryset = TransportType.objects.filter(company=self.user.employee.company)
+            except:
+                pass
+
+class BaseTransportMovementFormSetAgent(BaseInlineFormSet):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(BaseTransportMovementFormSetAgent, self).__init__(*args, **kwargs)
+        for form in self.forms:
+
+            try:
+                form.fields['route'].queryset = TransportRoute.objects.filter(company=self.user.agent.company)
+                form.fields['type'].queryset = TransportType.objects.filter(company=self.user.agent.company)
+            except:
+                pass
+
 
 class TransportRouteForm(forms.ModelForm):
     class Meta:
@@ -94,8 +122,28 @@ class TransportMovementForm(forms.ModelForm):
             'sale_amount': forms.NumberInput(attrs={'class': 'form-control', 'style': 'border: 0; box-shadow: none;'}),
         }
 
-            
-TransportMovementFormset = inlineformset_factory(ArrivalVoucher, TransportMovement, form=TransportMovementForm,extra=6,max_num=10 )
+    # def __init__(self, *args, **kwargs):
+    #     user = kwargs.pop('user')
+    #     super(TransportMovementForm, self).__init__(*args, **kwargs)
+
+    #     # if user is employee
+    #     try:
+    #         self.fields['route'].queryset = TransportRoute.objects.filter(company=user.employee.company)
+    #         self.fields['transport_company'].queryset = TransportCompany.objects.filter(company=user.employee.company)
+    #         self.fields['type'].queryset = TransportPackage.objects.filter(company=user.employee.company)
+    #     except:
+    #         pass
+
+    #     # if user is agent
+    #     try:
+    #         self.fields['route'].queryset = TransportRoute.objects.filter(company=user.agent.company)
+    #         self.fields['transport_company'].queryset = TransportCompany.objects.filter(company=user.agent.company)
+    #         self.fields['type'].queryset = TransportPackage.objects.filter(company=user.agent.company)
+    #     except:
+    #         pass
+
+       
+TransportMovementFormset = inlineformset_factory(ArrivalVoucher, TransportMovement, form=TransportMovementForm,extra=6,max_num=10, formset=BaseTransportMovementFormSet)
 
 
 class TransportMovementFormAgent(forms.ModelForm):
@@ -131,8 +179,28 @@ class TransportMovementFormAgent(forms.ModelForm):
             'sale_amount': forms.NumberInput(attrs={'class': 'form-control', 'style': 'border: 0; box-shadow: none;'}),
         }
 
+    # def __init__(self, *args, **kwargs):
+    #     user = kwargs.pop('user')
+    #     super(TransportRouteForm, self).__init__(*args, **kwargs)
+
+    #     # if user is employee
+    #     try:
+    #         self.fields['route'].queryset = TransportRoute.objects.filter(company=user.employee.company)
+    #         self.fields['transport_company'].queryset = TransportCompany.objects.filter(company=user.employee.company)
+    #         self.fields['type'].queryset = TransportPackage.objects.filter(company=user.employee.company)
+    #     except:
+    #         pass
+
+    #     # if user is agent
+    #     try:
+    #         self.fields['route'].queryset = TransportRoute.objects.filter(company=user.agent.company)
+    #         self.fields['transport_company'].queryset = TransportCompany.objects.filter(company=user.agent.company)
+    #         self.fields['type'].queryset = TransportPackage.objects.filter(company=user.agent.company)
+    #     except:
+    #         pass
+
 TransportMovementFormsetAgent = inlineformset_factory(ArrivalVoucher, TransportMovement, form=TransportMovementFormAgent,
-                                                
+                                                formset=BaseTransportMovementFormSetAgent,
                                                 can_delete=True,
                                                 extra=6,
                                                 max_num=10,

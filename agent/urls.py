@@ -36,6 +36,8 @@ urlpatterns = [
 
     path('agent_list/add_external_agent/', add_agent_external, name="add_external_agent"),
 
+    path('account/', agent_account_view, name="agent_account_view"),
+
     path('arrival_vouchers/', arrival_vouchers_list_htmx, name="agent_arrival_vouchers_list"),
     path('arrival_vouchers/<int:pk>/', agent_arrival_voucher, name='agent_arrival_voucher'),
     path('arrival_vouchers/<int:pk>/submit/', submit_arrival_voucher, name='agent_submit_arrival_voucher'),
