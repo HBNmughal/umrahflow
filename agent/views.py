@@ -307,8 +307,7 @@ def agent_operating_schedule(request, day):
 @login_required()
 def add_arrival_voucher(request):
     if request.method == 'POST':
-        arrival_voucher_group_details_form = ArrivalVoucherGroupDetailsForm(request.POST)
-        arrival_voucher_group_details_form.fields['agent'].queryset = Agent.objects.filter(id=request.user.agent.id)
+        arrival_voucher_group_details_form = ArrivalVoucherGroupDetailsForm(request.POST, user=request.user)
         max_pax = 51
         total_visas = request.user.agent.total_visas()
         total_transport_pax = request.user.agent.total_transport_pax()
@@ -334,8 +333,7 @@ def add_arrival_voucher(request):
 
         return HttpResponseRedirect(reverse('agent_arrival_vouchers_list'))
     else:
-        arrival_voucher_group_details_form = ArrivalVoucherGroupDetailsForm()
-        arrival_voucher_group_details_form.fields['agent'].queryset = Agent.objects.filter(company=request.user.agent)
+        arrival_voucher_group_details_form = ArrivalVoucherGroupDetailsForm(user=request.user)
         arrival_voucher_group_details_form.fields['company'].initial = request.user.agent.company
         arrival_voucher_group_details_form.fields['agent'].initial = request.user.agent
         context = {
