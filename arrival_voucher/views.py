@@ -584,16 +584,20 @@ def print_operating_schedule(request, day):
     return render(request, 'print/operating_schedule.html', context)
 
 
-def schedule_tracking_screen(request, company_id, content=None):
+def schedule_tracking_screen(request, key, content=None):
     target_date = timezone.now()  # You can replace this with your specific date
+    
+
+
+
 
     # Calculate the date range
     date_range_start = target_date - timedelta(days=1)
     date_range_end = target_date + timedelta(days=1)
+    company = get_object_or_404(Company, schedule_screen_key=key)
 
 
-    transport_movements = TransportMovement.objects.filter(voucher__company=company_id, date__range=(date_range_start, date_range_end)).order_by('date', 'time').filter(voucher__status='approved').exclude(status='date_open')
-    company = get_object_or_404(Company, pk=company_id)
+    transport_movements = TransportMovement.objects.filter(voucher__company=company.id, date__range=(date_range_start, date_range_end)).order_by('date', 'time').filter(voucher__status='approved').exclude(status='date_open')
     context = {
         'movements': transport_movements,
         'company': company,

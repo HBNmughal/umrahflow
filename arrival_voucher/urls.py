@@ -59,8 +59,8 @@ urlpatterns = (
 
 
     # Operating Schedule Tracking Screen
-    path('schedule_tracking_screen/<int:company_id>/', schedule_tracking_screen, name='schedule_tracking_screen'),
-    path('schedule_tracking_screen/<int:company_id>/<str:content>/', schedule_tracking_screen, name='schedule_tracking_screen_content'),
+    path('schedule_tracking_screen/<str:key>/', schedule_tracking_screen, name='schedule_tracking_screen'),
+    path('schedule_tracking_screen/<str:key>/<str:content>/', schedule_tracking_screen, name='schedule_tracking_screen_content'),
 
 
 

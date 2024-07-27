@@ -27,7 +27,51 @@
         }
       }
     </style>
+    <style>
+      /* Styling for fallback message */
+      #fallback-message {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          color: white;
+          text-align: center;
+          padding: 20px;
+          font-size: 1.5em;
+          z-index: 1000;
+      }
+  </style>
+  <script>
+    let wakeLock = null;
+    const fallbackMessage = document.getElementById('fallback-message');
 
+    async function requestWakeLock() {
+        if ('wakeLock' in navigator) {
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                console.log('Wake Lock is active');
+
+                
+                // Handle the wake lock being released
+                wakeLock.addEventListener('release', () => {
+                    console.log('Wake Lock was released');
+                    requestWakeLock(); // Re-request the wake lock if released
+                });
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        } else {
+            // Wake Lock API is not supported, show fallback message
+            fallbackMessage.style.display = 'block';
+        }
+    }
+
+    // Request wake lock when the page loads
+    requestWakeLock();
+</script>
   </head>
   <body 
   {% if request.LANGUAGE_CODE == 'ar' %}
@@ -82,6 +126,9 @@
                 <span>{% trans "Last Update" %}:</span>
                 <strong class="text" id="last_status"></strong>
               </div>
+              <div id="fallback-message">
+                Your browser does not support the Wake Lock API. Please adjust your device settings to prevent the screen from sleeping.
+              </div>
               
            
             </div>
@@ -96,7 +143,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript">
       function refreshContent() {
-        fetch('{% url "schedule_tracking_screen_content" company.id "content" %}')
+        fetch('{% url "schedule_tracking_screen_content" company.schedule_screen_key "content" %}')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('content_table').innerHTML = data;

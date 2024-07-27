@@ -34,7 +34,13 @@ class Company(models.Model ):
 
     umrah_season = models.IntegerField(verbose_name=_("Umrah Season"), null=True)
 
+    schedule_screen_key = models.CharField(max_length=256, blank=True, null=True, verbose_name=_("Schedule Screen Key"))
     def save(self, *args, **kwargs):
+
+        if self.schedule_screen_key is None:
+            # generate a random key for the company
+            self.schedule_screen_key = secrets.token_urlsafe(6).upper()
+            
         # create basic accounts on create
         from arrival_voucher.models import ArrivalVoucher
         from visa_group.models import UmrahVisaGroupInvoiceDefaultPrices
@@ -245,6 +251,9 @@ class Company(models.Model ):
     
     def agents_total_credit(self):
         return AgentPaymentTransaction.objects.filter(company=self, transaction_type='c').aggregate(Sum('amount'))['amount__sum']
+    
+    # lets generate a token for the company to use in KDS
+
 
 class Designation(models.Model):
     company = models.ForeignKey('company.Company', on_delete=models.PROTECT)
