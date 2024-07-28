@@ -598,9 +598,11 @@ def schedule_tracking_screen(request, key, content=None):
 
 
     transport_movements = TransportMovement.objects.filter(voucher__company=company.id, date__range=(date_range_start, date_range_end)).order_by('date', 'time').filter(voucher__status='approved').exclude(status='date_open')
+    pending_vouchers = ArrivalVoucher.objects.filter(company=company, status='pending').order_by('id')
     context = {
         'movements': transport_movements,
         'company': company,
+        'pending_vouchers': pending_vouchers,
      
     }
     if content:

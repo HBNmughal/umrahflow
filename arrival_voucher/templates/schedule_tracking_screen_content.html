@@ -18,6 +18,30 @@
           </tr>
         </thead>
         <tbody>
+          {% for voucher in pending_vouchers %}
+          
+          <tr class="table-warning pending blink">
+            <th scope="row" class="text-center align-middle"></th>
+            <th class="text-center align-middle"></th>
+            <th class="text-center align-middle"></th>
+            <th class="text-center align-middle">UP-{{voucher.id}}</th>
+            <th class="text-center align-middle">{{voucher.agent.id}} - {{voucher.agent.hidden_name}}</th>
+            <th class="text-center align-middle">{{voucher.country}}</th>
+            <th class="text-center align-middle">{{voucher.pax}}</th>
+            <th class="align-middle text-center" colspan="4"></th>
+            <th class="text-center align-middle bg-warning"><span class="">{% trans "Pending" %}</span></th>
+
+          </th>
+
+
+          </tr>
+          {% endfor %}
+
+
+
+
+
+
           {% for movement in movements %}
           {% if movement.show_on_tracking_screen %}
           {% if movement.status == 'draft' %}
