@@ -26,6 +26,10 @@
           opacity: 0;
         }
       }
+
+      .bg-black {
+        background-color: #000000;
+      }
     </style>
     <style>
       /* Styling for fallback message */
@@ -78,17 +82,16 @@
   dir="rtl" 
   {% endif %}
   
-  class="bg-dark">
+  class="bg-black">
     <table>
         <tr>
             <th>
-            <img src="{% static 'assets\images\umrahflow_logo_light.png' %}" alt="" style="margin-left: 20px; margin-right: 20px; width: 150px;"> 
+            <img src="{% static 'assets\images\umrahflow_logo_white.png' %}" alt="" style="margin-left: 20px; margin-right: 20px; width: 150px;"> 
             </th>
             <th>
             <h1 class="text-light">{% trans "Live Field Operation Dashboard" %} - {{company}}</h1>
             </th>
             <th>
-              
             </th>
     </tr>
     <table class="table table-sm" id="content_table">
