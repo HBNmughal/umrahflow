@@ -136,7 +136,6 @@
       
       
                           </tr>
-                          {% if movement.second_driver_name or movement.second_driver_phone %}
                           <tr class="trow">
                             <td class="rowspan2">
                               {%if movement.second_driver_name %}
@@ -150,7 +149,6 @@
                               {% endif %}
                             </td>
                           </tr>
-                          {% endif %}
                           {% endfor %}
       
                   </tbody>
