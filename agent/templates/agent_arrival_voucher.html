@@ -15,24 +15,21 @@
           <h2 class="page-title">{% trans "Voucher " %} - UP-{{voucher.id}}</h2>
         </div>
         <div class="col-auto">
-              
-
-              
-              {% if voucher %}
-              <button type="button" class="btn btn-primary printButton swalDefaultSuccess"
-                    onClick="popupCenter({url: '{% url 'agent_arrival_voucher_print' voucher.id %}', title: 'xtf', w: 900, h: 900});" id="printVoucher" >
-                    {% trans "Print Voucher" %} 
-              </button>
-
-                <button type="button" class="btn btn-warning printButton swalDefaultSuccess"
-                    onClick="popupCenter({url: '{% url 'arrival_voucher_print' voucher.id %}?type=transport_request', title: 'xtf', w: 900, h: 900});" id="printTransportRequest" >
-                    {% trans "Print Transport Request" %} 
-                </button>
-              {% endif %}
-              {% if allow_edit %}
-              <button class="btn btn-success swalDefaultSuccess" type="submit" id="saveButton" onClick="document.getElementById('arrival_voucher_form').submit();" 
-              >{% trans "Save" %}</button>
-              {% endif %}
+          {% if allow_edit %}
+          <button class="btn btn-primary swalDefaultSuccess" type="submit">{% trans "Save" %}</button>
+          {% endif %}
+          
+          {% if voucher %}
+          <button type="button" class="btn btn-primary swalDefaultSuccess"
+                onClick="popupCenter({url: '{% url 'agent_arrival_voucher_print' voucher.id %}', title: 'xtf', w: 900, h: 900});">
+                {% trans "Print" %} 
+            </button>
+          {% endif %}
+          {% if allow_submit %}
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submit">
+              {% trans "Submit to Company" %}
+            </button>
+          {% endif %}
         </div>
       </div>
   
