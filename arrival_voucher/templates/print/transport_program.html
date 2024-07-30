@@ -186,12 +186,7 @@
 
         <footer>
         <div class="footer">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&amp;data=UP-{{voucher.id}}" alt="">
-            <br>
-            <img width="100px" src="{% static 'assets/images/umrahflow_logo.png'%}" alt="UmrahFlow Logo">
-            <br>
-            <small>{% trans "Printed by" %}: {{request.user}} {% trans "Date" %}: {% now "d/m/Y " %} {% trans "Time" %}: {% now "H:i" %}</small>
-
+            <p>{% trans "Created with" %} <img width="100px" src="{% static 'assets/images/umrahflow_logo.png'%}" alt="UmrahFlow"> {% trans "Print By" %} {{request.user}} {% trans "Date" %}: {% now "d/m/Y H:i" %}</p>
         </div>
         </footer>
         
