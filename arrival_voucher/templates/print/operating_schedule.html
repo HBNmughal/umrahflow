@@ -39,26 +39,26 @@
                       <tbody>
                           {% for movement in movements %}
                           <tr class="trow">
-                            <td class="align-middle" rowspan="2">{{forloop.counter}}</td>
-                            <td class="align-middle"  rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>{{forloop.counter}}</td>
+                            <td class="align-middle"  {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               {% if movement.voucher.transport_brn %}
                               {{movement.voucher.transport_brn}}
                               {% endif %}
                             </td>
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               UP-{{movement.voucher.id}}
                             </td>
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               {% if movement.voucher.agent_referance_no %}
                               {{movement.voucher.agent_referance_no}}
                               {% endif %}
                             </td>
-                            <td class="align-middle" rowspan="2">{{movement.date|date:"d/m/Y"}}</td>
-                            <td class="align-middle" rowspan="2">{{movement.time|date:"H:i"}}</td>
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>{{movement.date|date:"d/m/Y"}}</td>
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>{{movement.time|date:"H:i"}}</td>
       
-                            <td class="align-middle" rowspan="2">{{movement.voucher.agent}} ({{movement.voucher.country}})</td>
-                            <td class="align-middle" rowspan="2"><strong>{{movement.voucher.pax}}</strong></td>
-                            <td class="align-middle" rowspan="2"><strong>{{movement.route.route_from}}</strong>
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>{{movement.voucher.agent}} ({{movement.voucher.country}})</td>
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}><strong>{{movement.voucher.pax}}</strong></td>
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}><strong>{{movement.route.route_from}}</strong>
                               {% if movement.movement_from_hotel %}
                               <br>
                               {{movement.movement_from_hotel}}
@@ -68,7 +68,7 @@
                               {{movement.flight_no}} - {{movement.voucher.arrival_time|date:"H:i"}} {% if movement.flight_date_differance %}<sup> {{movement.flight_date_differance}}</sup>{% endif %}
                               {% endif %}
                             </td>
-                            <td class="align-middle" rowspan="2"><strong>{{movement.route.route_to}}</strong>
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}><strong>{{movement.route.route_to}}</strong>
                               {% if movement.movement_to_hotel %}
                               <br>
                               {{movement.movement_to_hotel}}
@@ -78,12 +78,12 @@
                               {{movement.flight_no}} - {{movement.voucher.departure_time|date:"H:i"}} {% if movement.flight_date_differance %}<sup> {{movement.flight_date_differance}}</sup>{% endif %}
                               {% endif %}
                             </td>
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               {% if movement.type %}
                               {{movement.type}}
                               {% endif %}
                             </td>
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               {% if movement.transport_company %}
                               {{movement.transport_company}}
                               {% elif movement.voucher.transport_company %}
@@ -93,7 +93,7 @@
                     
       
       
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                                 <strong>
                                   {%if movement.voucher.group_leader %}
                                   {{movement.voucher.group_leader}}</strong>
@@ -118,17 +118,17 @@
       
       
       
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               {% if movement.no_plate %}
                               {{movement.no_plate}}
                               {% endif %}
                             </td>
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               {% if movement.remarks %}
                               {{movement.remarks}}
                               {% endif %}
                             </td>
-                            <td class="align-middle" rowspan="2">
+                            <td class="align-middle" {% if movement.second_driver_name or movement.second_driver_phone %}rowspan="2"{% endif %}>
                               {% if movement.status %}
                               {{movement.get_status_display}}
                               {% endif %}
@@ -136,6 +136,7 @@
       
       
                           </tr>
+                          {% if movement.second_driver_name or movement.second_driver_phone %}
                           <tr class="trow">
                             <td class="rowspan2">
                               {%if movement.second_driver_name %}
@@ -149,6 +150,7 @@
                               {% endif %}
                             </td>
                           </tr>
+                          {% endif %}
                           {% endfor %}
       
                   </tbody>
