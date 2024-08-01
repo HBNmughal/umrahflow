@@ -60,7 +60,7 @@ def create_account(request, pk=None):
     if pk:
         parent_account = Account.objects.get(pk=pk)       
     if request.method == 'POST':
-        form = AccountForm(request.POST)
+        form = AccountForm(request.POST, user=request.user)
         if form.is_valid():
             account = form.save(commit=False)
             account.company = request.user.employee.company
@@ -68,7 +68,7 @@ def create_account(request, pk=None):
             messages.success(request, _('Account Created.'))
             return render(request, "close_popup.html")
     else:
-        form = AccountForm()
+        form = AccountForm(user = request.user)
         form['company'].initial = request.user.employee.company
         parent_account = Account.objects.get(pk=pk)
         form['parent_account'].initial = Account.objects.get(pk=pk)
@@ -84,7 +84,7 @@ def create_account(request, pk=None):
 def edit_account(request, pk):
     account = Account.objects.get(pk=pk)
     if request.method == 'POST':
-        form = AccountForm(request.POST, instance=account)
+        form = AccountForm(request.POST, instance=account, user=request.user)
         if form.is_valid():
             account = form.save(commit=False)
             account.company = request.user.employee.company
@@ -92,7 +92,7 @@ def edit_account(request, pk):
             messages.success(request, _('Account Updated.'))
             return render(request, "close_popup.html")
     else:
-        form = AccountForm(instance=account)
+        form = AccountForm(instance=account, user=request.user)
         form['company'].initial = request.user.employee.company
         form['parent_account'].initial = account.parent_account
         form['account_type'].initial = account.account_type
@@ -216,7 +216,7 @@ def payment_voucher_view(request, pk):
 @login_required
 def receipt_voucher_add_view(request):
     if request.method == 'POST':
-        form = ReceiptVoucherForm(request.POST)
+        form = ReceiptVoucherForm(request.POST, user=request.user)
         try:
             print('1')
             if form.is_valid():
@@ -228,7 +228,7 @@ def receipt_voucher_add_view(request):
                 print('added')
                 return redirect('receipt_voucher_edit_view', pk=voucher_id)
             else:
-                form = ReceiptVoucherForm(request.POST)
+                form = ReceiptVoucherForm(request.POST, user=request.user)
                 context = {
                 'form': form,
                 'title': _('Receipt Voucher'),
@@ -239,7 +239,7 @@ def receipt_voucher_add_view(request):
             print('3')
             print(e)
             messages.error(request, e)
-            form = ReceiptVoucherForm(request.POST)
+            form = ReceiptVoucherForm(request.POST, user=request.user)
             context = {
             'form': form,
             'title': _('Receipt Voucher'),
@@ -247,7 +247,7 @@ def receipt_voucher_add_view(request):
             }
             return render(request, 'receipt_voucher_form.html', context)
     else:
-        form = ReceiptVoucherForm()
+        form = ReceiptVoucherForm(user=request.user)
         form.fields['company'].initial = request.user.employee.company
         form.fields['collected_from'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
         form.fields['to_account'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
@@ -267,7 +267,7 @@ def receipt_voucher_edit_view(request, pk):
     delete = delete_allowed(voucher.company, voucher)
     edit = edit_allowed(voucher.company, voucher)
     if request.method == 'POST':
-        form = ReceiptVoucherForm(request.POST, instance=voucher)
+        form = ReceiptVoucherForm(request.POST, instance=voucher, user=request.user)
         try:
             if form.is_valid():
                 voucher = form.save(commit=False)
@@ -278,7 +278,7 @@ def receipt_voucher_edit_view(request, pk):
                 return redirect('receipt_voucher_list_view')
             else:
 
-                form = ReceiptVoucherForm(request.POST)
+                form = ReceiptVoucherForm(request.POST, user=request.user)
                 context = {
                 'form': form,
                 'title': _('Receipt Voucher') + ' ' + str(voucher.pk),
@@ -289,7 +289,7 @@ def receipt_voucher_edit_view(request, pk):
         except ValidationError as e:
             print(e)
             messages.error(request, e)
-            form = ReceiptVoucherForm(request.POST)
+            form = ReceiptVoucherForm(request.POST, user=request.user)
             context = {
             'form': form,
             'title': _('Receipt Voucher') + ' ' + str(voucher.pk),
@@ -301,7 +301,7 @@ def receipt_voucher_edit_view(request, pk):
                     form.fields[field].widget.attrs['disabled'] = True
             return render(request, 'receipt_voucher_form.html', context)
     else:
-        form = ReceiptVoucherForm(instance=voucher)
+        form = ReceiptVoucherForm(instance=voucher, user=request.user)
         form.fields['company'].initial = request.user.employee.company
         form.fields['collected_from'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
         form.fields['to_account'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
@@ -320,7 +320,7 @@ def receipt_voucher_edit_view(request, pk):
 @login_required
 def payment_voucher_add_view(request):
     if request.method == 'POST':    
-        form = PaymentVoucherForm(request.POST)
+        form = PaymentVoucherForm(request.POST, user=request.user)
         if form.is_valid():
             voucher = form.save(commit=False)
             voucher.company = request.user.employee.company
@@ -329,7 +329,7 @@ def payment_voucher_add_view(request):
             messages.success(request, _('Payment Voucher has been added.'))
             return redirect('payment_voucher_edit_view', pk=voucher_id)
         else:
-            form = PaymentVoucherForm(request.POST)
+            form = PaymentVoucherForm(request.POST, user=request.user)
             context = {
             'form': form,
             'title': _('Payment Voucher'),
@@ -339,7 +339,7 @@ def payment_voucher_add_view(request):
             
 
     else:
-        form = PaymentVoucherForm()
+        form = PaymentVoucherForm(user=request.user)
         form.fields['company'].initial = request.user.employee.company
         form.fields['paid_to'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
         form.fields['from_account'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
@@ -357,7 +357,7 @@ def payment_voucher_edit_view(request, pk):
     voucher = PaymentVoucher.objects.get(pk=pk)
     edit = edit_allowed(voucher.company, voucher)
     if request.method == 'POST':
-        form = PaymentVoucherForm(request.POST, instance=voucher)
+        form = PaymentVoucherForm(request.POST, instance=voucher, user=request.user)
         if form.is_valid():
             voucher = form.save(commit=False)
             voucher.company = request.user.employee.company
@@ -365,7 +365,7 @@ def payment_voucher_edit_view(request, pk):
             messages.success(request, _('Payment Voucher has been updated.'))
             return redirect('payment_voucher_list_view')
         else:
-            form = PaymentVoucherForm(request.POST)
+            form = PaymentVoucherForm(request.POST, user=request.user)
             context = {
             'form': form,
             'title': _('Payment Voucher') + ' ' + str(voucher.pk),
@@ -378,7 +378,7 @@ def payment_voucher_edit_view(request, pk):
             messages.error(request, _('Please correct the errors below.'))
             return render(request, 'payment_voucher_form.html', context)
     else:
-        form = PaymentVoucherForm(instance=voucher)
+        form = PaymentVoucherForm(instance=voucher, user=request.user)
         form.fields['company'].initial = request.user.employee.company
         form.fields['paid_to'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
         form.fields['from_account'].queryset = Account.objects.filter(company=request.user.employee.company, level=5)
@@ -415,9 +415,9 @@ def payment_voucher_print(request, pk):
 def accounts_settings_form(request):
     company = request.user.employee.company
     settings = SystemSettings.objects.get(company=company)
-    form = AccountsSettingsForm(instance=settings)
+    form = AccountsSettingsForm(instance=settings, user=request.user)
     if request.method == "POST":
-        form = AccountsSettingsForm(request.POST, instance=settings)
+        form = AccountsSettingsForm(request.POST, instance=settings, user=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, _('Accounts settings have been updated successfully.'))

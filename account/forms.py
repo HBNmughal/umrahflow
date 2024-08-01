@@ -8,6 +8,8 @@ import calculation
 
 
 class AccountForm(forms.ModelForm):
+
+
     class Meta:
         model = Account
         fields = [
@@ -41,6 +43,12 @@ class AccountForm(forms.ModelForm):
             'allow_child_accounts': (''),
             'account_type': (''),
         }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(AccountForm, self).__init__(*args, **kwargs)
+        self.fields['company'].initial = user.employee.company
+        self.fields['parent_account'].queryset = Account.objects.filter(company=user.employee.company)
         
 
 class ReceiptVoucherForm(forms.ModelForm):
@@ -93,6 +101,12 @@ class ReceiptVoucherForm(forms.ModelForm):
             'reference_no': (''),
             'payment_method': (''),
         }
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(ReceiptVoucherForm, self).__init__(*args, **kwargs)
+        self.fields['company'].initial = user.employee.company
+        self.fields['collected_from'].queryset = Account.objects.filter(company=user.employee.company)
+        self.fields['to_account'].queryset = Account.objects.filter(company=user.employee.company)
 
 class PaymentVoucherForm(forms.ModelForm):
     class Meta:
@@ -144,12 +158,21 @@ class PaymentVoucherForm(forms.ModelForm):
             'reference_no': (''),
             'payment_method': (''),
         }
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(PaymentVoucherForm, self).__init__(*args, **kwargs)
+        self.fields['company'].initial = user.employee.company
+        self.fields['paid_to'].queryset = Account.objects.filter(company=user.employee.company)
+        self.fields['from_account'].queryset = Account.objects.filter(company=user.employee.company)
 
 class LedgerEntryForm(forms.Form):
     account = forms.ModelChoiceField(queryset=Account.objects.all(), widget=forms.Select(attrs={'class': 'form-control select2'}), label=_('Account'))
     description = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), label=_('Description'))
     debit = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control debit_input'}), initial=0.00, label=_('Debit'))
     credit = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control credit_input'}), initial=0.00, label=_('Credit'))
+
+
+
     
 
 LedgerEntryFormSet = forms.formset_factory(LedgerEntryForm, extra=50)
