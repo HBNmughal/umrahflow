@@ -32,8 +32,8 @@ class UmrahVisaGroupInvoiceForm(forms.ModelForm):
         fields = [
             'date',
             'agent',
-            'group_no',
             'voucher_no',
+            'group_no',
             'pax',
             'transport_included',
             'visa_fees',

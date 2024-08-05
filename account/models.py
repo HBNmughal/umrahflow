@@ -579,21 +579,16 @@ class PaymentVoucher(models.Model):
 
                 # amount changed
                 if transaction.entries.first().debit != self.amount or transaction.entries.last().credit != self.amount or transaction.entries.first().account != credit_account or transaction.entries.last().account != debit_account:
-                    if self.paid_to.account_type in ['A', 'E', 'R']:
-                        credit_account = self.paid_to
-                        debit_account = self.from_account
-                    elif self.paid_to.account_type in ['L', 'X']:
-                        credit_account = self.from_account
-                        debit_account = self.paid_to
+                    
 
                     # edit journal entries
                     debit_entry = transaction.entries.get(credit=0.00)
-                    debit_entry.account = debit_account
+                    debit_entry.account = self.from_account
                     debit_entry.debit = self.amount
                     debit_entry.save()
 
                     credit_entry = transaction.entries.get(debit=0.00)
-                    credit_entry.account = credit_account
+                    credit_entry.account = self.paid_to
                     credit_entry.credit = self.amount
                     credit_entry.save()
 
