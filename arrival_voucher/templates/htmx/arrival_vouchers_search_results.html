@@ -24,7 +24,7 @@
                       <tbody >
 
                     {% for v in arrival_vouchers %}
-                    <tr>
+                    <tr {% if v.total_movements_completed == v.total_movement %}class="table-success"{% endif %}>
                       <td>{{ forloop.counter0|add:arrival_vouchers.start_index }}</td>
                       <td>UP-{{v.id}}</td>
                       <td>{% if v.agent_referance_no %}{{v.agent_referance_no}}{% endif %}</td>
